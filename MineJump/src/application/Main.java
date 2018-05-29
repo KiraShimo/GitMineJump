@@ -17,8 +17,8 @@ public class Main extends Application {
 			
 			MainController mainController = root.getController();
 			mainController.setMain(this);
-			Scene scene = new Scene(pane);
-	        primaryStage.setScene(scene); 
+			Scene mainmenu = new Scene(pane);
+	        primaryStage.setScene(mainmenu); 
 	        primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
