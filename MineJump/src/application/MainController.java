@@ -20,8 +20,8 @@ public class MainController {
 	private void BtnStartAction(ActionEvent actionevent) {
 		/*public void game(Stage primaryStage) {
 			try {
-				Scene game = new Scene(HIER DEINE PANE);
-		        primaryStage.setScene(game); 
+				//Scene game = new Scene(HIER DEINE PANE);
+		        primaryStage.setScene(Spiel); 
 		        primaryStage.show();
 			} catch(Exception e) {
 				e.printStackTrace();

@@ -11,13 +11,14 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader root = new FXMLLoader(getClass().getResource("Main.fxml"));
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			AnchorPane pane = root.load();
 			primaryStage.setTitle("MineJump");
 			
 			MainController mainController = root.getController();
 			mainController.setMain(this);
+			
 			Scene mainmenu = new Scene(pane);
+			mainmenu.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	        primaryStage.setScene(mainmenu); 
 	        primaryStage.show();
 		} catch(Exception e) {
