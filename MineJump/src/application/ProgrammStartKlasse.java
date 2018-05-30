@@ -1,12 +1,23 @@
 package application;
 
+
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public abstract class ProgrammStartKlasse extends Application implements Runnable {
 
-	@Override
-	public void init() throws Exception {
+	
+	public void init(Stage primaryStage) throws Exception {
 		super.init();
+		try {
+		Scene SPIEL = new Scene(root,700,700);
+		primaryStage.setScene(SPIEL);
+		primaryStage.show();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void start() throws Exception {
@@ -27,9 +38,7 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 		while (true) {
 
 			repaint();
-			  //Kommentare
-			//sind cool
-			
+			//Hearbeat
 			try {
 			Thread.sleep(17);
 			} catch(InterruptedException e) {
