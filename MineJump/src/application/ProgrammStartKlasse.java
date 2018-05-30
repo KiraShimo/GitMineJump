@@ -11,9 +11,10 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 	public void init(Stage primaryStage) throws Exception {
 		super.init();
 		try {
-		Scene SPIEL = new Scene(root,700,700);
+		Scene SPIEL = new Scene(null, 700,700);
 		primaryStage.setScene(SPIEL);
 		primaryStage.show();
+		//setFocusable(true);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -37,7 +38,7 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 	public void run() {
 		while (true) {
 
-			repaint();
+			//repaint();
 			//Hearbeat
 			try {
 			Thread.sleep(17);
