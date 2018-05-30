@@ -1,10 +1,12 @@
 package application;
 
 
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public abstract class ProgrammStartKlasse extends Application implements Runnable, KeyListener {
 
@@ -21,6 +23,7 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 			e.printStackTrace();
 		}
 	}
+	
 
 	public void start() throws Exception {
 		super.init();
@@ -48,5 +51,55 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 			} 
 
 		}
+	}
+	public void Tastendruck(KeyEvent e) {
+		 
+		   switch (e.getKeyCode()) {
+		   case KeyEvent.VK_UP:
+			   System.out.println("Hoch");
+		   break;
+		 
+		   case KeyEvent.VK_DOWN:
+			   System.out.println("Runter");
+		   break;
+		 
+		   case KeyEvent.VK_LEFT:
+			   System.out.println("Links");
+		   break;
+		 
+		   case KeyEvent.VK_RIGHT:
+			   System.out.println("Rechts");
+		   break;
+		 
+		   case KeyEvent.VK_SPACE:
+			   System.out.println("Sprung");
+		   break;
+		   }
+		}
+	
+	public void KeinTastendruck(KeyEvent e) {
+		
+		switch (e.getKeyCode()) {
+		   case KeyEvent.VK_UP:
+			   System.out.println("STOP");
+		      break;
+ 
+		   case KeyEvent.VK_DOWN:
+			   System.out.println("STOP");
+		      break;
+ 
+		   case KeyEvent.VK_LEFT:
+			   System.out.println("STOP");
+		      break;
+ 
+		   case KeyEvent.VK_RIGHT:
+			   System.out.println("STOP");
+		      break;
+		      
+		   case KeyEvent.VK_SPACE:
+			   System.out.println("STOP");
+		      break;
+ 
+		   }
 	}
 }
