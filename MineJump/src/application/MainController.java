@@ -9,57 +9,40 @@ import javafx.stage.Stage;
 import application.ProgrammStartKlasse;
 
 public class MainController {
-	=======
-	public class MainController {
-		>>>>>>>branch'master'
-		of https:// github.com/KiraShimo/GitMineJump.git
+	//=======
+	//>>>>>>>branch'master' of https:// github.com/KiraShimo/GitMineJump.git
 
-		public Main main;
+	public Main main;
 
-		public void setMain(Main main) {
-			this.main = main;
-		}
+	public void setMain(Main main) {
+		this.main = main;
+	}
 
 	@FXML
 	private void BtnStartAction(ActionEvent actionevent){
-<<<<<<< HEAD
+	//<<<<<<< HEAD
 
-		public void game(Stage primaryStage) {
-
-	=======
-
-		/*@Override
-		public void start(Stage primaryStage) {
->>>>>>> branch 'master' of https://github.com/KiraShimo/GitMineJump.git
-			try {
-				SpielFX Spiel = new SpielFX();
-				Scene game = new Scene(Spiel.getRootPane());
-		        primaryStage.setScene(game); 
-		        primaryStage.show();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-<<<<<<< HEAD
+	//=======
+		
+	public void start(Stage primaryStage) {
+		//villeicht die start methode ausgliedern und dann aufrufen NICHT IN EINER ANDEREN METHODE SCHREIBEN
+		// >>>>>>> branch 'master' of https://github.com/KiraShimo/GitMineJump.git
+		try {
+			ProgrammStartKlasse Spiel = new ProgrammStartKlasse();
+			Scene game = new Scene(Spiel.getRootPane());
+			primaryStage.setScene(game);
+			primaryStage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-=======
-		}*/
->>>>>>> branch 'master' of https://github.com/KiraShimo/GitMineJump.git
+		// <<<<<<< HEAD
 		}
+	//>>>>>>>branch'master'of https:// github.com/KiraShimo/GitMineJump.git
+	}
+	
+	@FXML
+	private void BtnExitAction(ActionEvent actionEvent) {
+		Platform.exit();
 	}
 
-		@FXML
-		private void BtnExitAction(ActionEvent actionEvent) {
-			Platform.exit();
-		}
-
-		public void start(Stage primaryStage) {
-			try {
-				ProgrammStartKlasse Spiel = new ProgrammStartKlasse();
-				Scene game = new Scene(Spiel.getRootPane());
-				primaryStage.setScene(game);
-				primaryStage.show();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 }

@@ -3,15 +3,15 @@ package application;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javafx.application.Application;
+
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public abstract class ProgrammStartKlasse extends Application implements Runnable, KeyListener {
+public class ProgrammStartKlasse implements KeyListener {
 
 	private AnchorPane rootPane;
 
-	@Override
+/*	@Override
 	public void run() {
 		while (true) {
 			// ein Kommentar
@@ -25,8 +25,8 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 
 		}
 	}
-
-	public void Tastendruck(KeyEvent e) {
+*/
+	public void keyPressed(KeyEvent e) {
 
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
@@ -51,7 +51,7 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 		}
 	}
 
-	public void KeinTastendruck(KeyEvent e) {
+	public void keyReleased(KeyEvent e) {
 
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
@@ -77,6 +77,9 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 		}
 	}
 
+	public void keyTyped(KeyEvent e) {}
+	
+	
 	public ProgrammStartKlasse() {
 		rootPane = new AnchorPane();
 	}
