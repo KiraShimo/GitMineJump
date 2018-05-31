@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainController {
@@ -18,14 +19,14 @@ public class MainController {
 	
 	@FXML
 	private void BtnStartAction(ActionEvent actionevent) {
-		/*public void game(Stage primaryStage) {
+		public void game(Stage primaryStage) {
 			try {
-				//Scene game = new Scene(HIER DEINE PANE);
-		        primaryStage.setScene(Spiel); 
+				Scene game = new Scene(game.getRootPane());
+		        primaryStage.setScene(game); 
 		        primaryStage.show();
 			} catch(Exception e) {
 				e.printStackTrace();
-			}*/
+			}
 	}
 	
 	@FXML
