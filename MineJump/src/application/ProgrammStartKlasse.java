@@ -8,13 +8,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public abstract class ProgrammStartKlasse extends Application implements Runnable, KeyListener {
-	
+
 	private AnchorPane rootPane;
 
 	@Override
 	public void run() {
 		while (true) {
-			//ein Kommentar 
+			// ein Kommentar
 			// repaint();
 			// Hearbeat
 			try {
@@ -76,11 +76,11 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 
 		}
 	}
-	
+
 	public void SpielFX() {
 		rootPane = new AnchorPane();
 	}
-	
+
 	public Pane getRootPane() {
 		return rootPane;
 	}

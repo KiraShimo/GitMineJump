@@ -1,10 +1,10 @@
 package application;
-	
+
 import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.fxml.FXMLLoader; 
+import javafx.stage.Stage;
 
 public class Main extends Application {
 	@Override
@@ -13,15 +13,15 @@ public class Main extends Application {
 			FXMLLoader root = new FXMLLoader(getClass().getResource("Main.fxml"));
 			AnchorPane pane = root.load();
 			primaryStage.setTitle("MineJump");
-			
+
 			MainController mainController = root.getController();
 			mainController.setMain(this);
-			
+
 			Scene mainmenu = new Scene(pane);
 			mainmenu.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-	        primaryStage.setScene(mainmenu); 
-	        primaryStage.show();
-		} catch(Exception e) {
+			primaryStage.setScene(mainmenu);
+			primaryStage.show();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

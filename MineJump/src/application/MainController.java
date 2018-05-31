@@ -7,22 +7,22 @@ import javafx.stage.Stage;
 
 import application.ProgrammStartKlasse;
 
-
 public class MainController {
-=======
-public class MainController{
->>>>>>> branch 'master' of https://github.com/KiraShimo/GitMineJump.git
-	
-	public Main main;
-	
-	public void setMain(Main main) {
-		this.main = main;
-	}
-	
+	=======
+	public class MainController {
+		>>>>>>>branch'master'
+		of https:// github.com/KiraShimo/GitMineJump.git
+
+		public Main main;
+
+		public void setMain(Main main) {
+			this.main = main;
+		}
+
 	@FXML
 	private void BtnStartAction(ActionEvent actionevent) {
 <<<<<<< HEAD
-		
+
 		public void game(Stage primaryStage) {
 =======
 		/*@Override
@@ -42,10 +42,10 @@ public class MainController{
 		}*/
 >>>>>>> branch 'master' of https://github.com/KiraShimo/GitMineJump.git
 	}
-	
-	@FXML
-	private void BtnExitAction(ActionEvent actionEvent) {
-		Platform.exit();
-	}
-	
+
+		@FXML
+		private void BtnExitAction(ActionEvent actionEvent) {
+			Platform.exit();
+		}
+
 }
