@@ -54,7 +54,7 @@ public class MainController {
 
 		public void start(Stage primaryStage) {
 			try {
-				spielfx Spiel = new spielfx();
+				
 				Scene game = new Scene(Spiel.getRootPane());
 				primaryStage.setScene(game);
 				primaryStage.show();

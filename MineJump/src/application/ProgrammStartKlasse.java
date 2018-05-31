@@ -84,4 +84,8 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 	public Pane getRootPane() {
 		return rootPane;
 	}
+	
+	public void factory(){
+		spielfx();
+	}
 }
