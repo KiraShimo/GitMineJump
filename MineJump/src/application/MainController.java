@@ -3,9 +3,8 @@ package application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import application.ProgrammStartKlasse;
 
 public class MainController {
 	=======
@@ -20,11 +19,13 @@ public class MainController {
 		}
 
 	@FXML
-	private void BtnStartAction(ActionEvent actionevent) {
+	private void BtnStartAction(ActionEvent actionevent){
 <<<<<<< HEAD
 
 		public void game(Stage primaryStage) {
-=======
+
+	=======
+
 		/*@Override
 		public void start(Stage primaryStage) {
 >>>>>>> branch 'master' of https://github.com/KiraShimo/GitMineJump.git
@@ -41,6 +42,7 @@ public class MainController {
 =======
 		}*/
 >>>>>>> branch 'master' of https://github.com/KiraShimo/GitMineJump.git
+		}
 	}
 
 		@FXML
@@ -48,4 +50,14 @@ public class MainController {
 			Platform.exit();
 		}
 
+		public void start(Stage primaryStage) {
+			try {
+				SpielFX Spiel = new SpielFX();
+				Scene game = new Scene(Spiel.getRootPane());
+				primaryStage.setScene(game);
+				primaryStage.show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 }
