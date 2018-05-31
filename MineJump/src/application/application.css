@@ -1,7 +1,9 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-/* #pane{
-	-fx-back
-}*/
+ .root{
+	-fx-background-image: url("dirt.jpg");
+    -fx-background-repeat: repeat;
+    -fx-background-size: 32 32;
+}
 
 /*@font-face {
   font-family: 'Minecraft';
