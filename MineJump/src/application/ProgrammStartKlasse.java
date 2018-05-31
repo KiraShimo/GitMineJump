@@ -77,7 +77,7 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 		}
 	}
 
-	public void spielfx() {
+	public ProgrammStartKlasse() {
 		rootPane = new AnchorPane();
 	}
 
@@ -85,7 +85,4 @@ public abstract class ProgrammStartKlasse extends Application implements Runnabl
 		return rootPane;
 	}
 	
-	public void factory(){
-		spielfx();
-	}
 }
