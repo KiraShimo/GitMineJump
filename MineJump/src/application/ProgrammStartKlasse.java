@@ -1,12 +1,12 @@
 package application;
 
 
-import java.awt.Color;
-import java.awt.Frame;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public abstract class ProgrammStartKlasse extends Application implements Runnable, KeyListener {
 
