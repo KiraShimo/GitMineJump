@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import application.ProgrammStartKlasse;
+
 public class MainController {
 	=======
 	public class MainController {
@@ -52,7 +54,7 @@ public class MainController {
 
 		public void start(Stage primaryStage) {
 			try {
-				SpielFX Spiel = new SpielFX();
+				spielfx Spiel = new spielfx();
 				Scene game = new Scene(Spiel.getRootPane());
 				primaryStage.setScene(game);
 				primaryStage.show();
