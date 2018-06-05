@@ -81,10 +81,12 @@ public class ProgrammStartKlasse implements KeyListener ,Runnable {
 	
 	public ProgrammStartKlasse() {
 		rootPane = new AnchorPane();
+		//rootpane bearbeiten !
 	}
 
 	public Pane getRootPane() {
 		return rootPane;
+		//gibt rootPane an obere Funktion
 	}
 	
 }
