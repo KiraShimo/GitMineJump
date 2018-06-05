@@ -3,20 +3,19 @@ package application;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class ProgrammStartKlasse implements KeyListener {
+public class ProgrammStartKlasse implements KeyListener ,Runnable {
 
 	private AnchorPane rootPane;
 
-/*	@Override
+	@Override
 	public void run() {
 		while (true) {
-			// ein Kommentar
+			
 			// repaint();
-			// Hearbeat
+			
 			try {
 				Thread.sleep(17);
 			} catch (InterruptedException e) {
@@ -25,7 +24,7 @@ public class ProgrammStartKlasse implements KeyListener {
 
 		}
 	}
-*/
+
 	public void keyPressed(KeyEvent e) {
 
 		switch (e.getKeyCode()) {
