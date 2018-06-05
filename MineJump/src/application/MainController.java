@@ -1,13 +1,15 @@
 package application;
 
 import application.ProgrammStartKlasse;
-import javafx.application.Platform;
+import javafx.application.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainController {
+public class MainController{
+	
+	public Stage primaryStage;
 	
 	public Main main;
 	
@@ -15,9 +17,12 @@ public class MainController {
 		this.main = main;
 	}
 	
+	public void setPrimaryStage(Stage primaryStage) {
+		 this.primaryStage = primaryStage;
+	}
+
 	public void start(Stage primaryStage) {
-		
-		try {
+			try {
 			ProgrammStartKlasse Spiel = new ProgrammStartKlasse();
 			Scene game = new Scene(Spiel.getRootPane());
 			primaryStage.setScene(game);
@@ -30,7 +35,7 @@ public class MainController {
 	
 	@FXML
 	private void BtnStartAction(ActionEvent actionEvent) {
-		
+		start(primaryStage);
 	}
 	
 	@FXML

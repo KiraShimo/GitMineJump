@@ -16,6 +16,7 @@ public class Main extends Application {
 
 			MainController mainController = root.getController();
 			mainController.setMain(this);
+			mainController.setPrimaryStage(primaryStage);
 
 			Scene mainmenu = new Scene(pane);
 			mainmenu.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
