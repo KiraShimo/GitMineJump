@@ -1,11 +1,16 @@
 package application;
 
 import application.ProgrammStartKlasse;
+import application.Spieler;
 import javafx.application.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+
+// import com.oracle.deploy.update.UpdateCheck;
+
 
 public class MainController{
 	
@@ -28,7 +33,6 @@ public class MainController{
 			//UpdateUmgebung();
 			//Repaint();
 			
-			
 			try {
 				Thread.sleep(17);
 			} catch (InterruptedException e) {
@@ -46,16 +50,18 @@ public class MainController{
 			primaryStage.setResizable(true);
 			primaryStage.setWidth(800);
 			primaryStage.setHeight(600);
-			primaryStage.setMaxWidth(1200);
-			primaryStage.setMaxHeight(1000);
+			primaryStage.setMaxWidth(1920);
+			primaryStage.setMaxHeight(1080);
 			primaryStage.setMinWidth(800);
 			primaryStage.setMinHeight(600);
 
 			primaryStage.setScene(game);
 			primaryStage.show();
 			
-			 // run();
+			Spieler Horst = new Spieler();
 			
+			 //run();
+			//run funktioniert irgendwie noch nicht ... wenn kein Kommentar -> Absturz
 			
 		} catch (Exception e) {
 			e.printStackTrace();

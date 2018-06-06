@@ -1,6 +1,6 @@
 package application;
 
-import java.awt.Graphics;
+// import java.awt.Graphics;
 
 //pass die Variablen an !(an mich selbst)
 
