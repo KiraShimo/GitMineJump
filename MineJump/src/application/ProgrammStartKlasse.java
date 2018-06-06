@@ -6,27 +6,12 @@ import java.awt.event.KeyListener;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class ProgrammStartKlasse implements KeyListener ,Runnable {
+public class ProgrammStartKlasse implements KeyListener {
 
 	private AnchorPane rootPane;
 
-	@Override
-	public void run() {
-		while (true) {
-			
-			//UpdateSpieler();
-			//UpdateUmgebung();
-			//Repaint();
-			
-			
-			try {
-				Thread.sleep(17);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
-		}
-	}
+	
+	
 
 	public void keyPressed(KeyEvent e) {
 
@@ -84,6 +69,7 @@ public class ProgrammStartKlasse implements KeyListener ,Runnable {
 	
 	public ProgrammStartKlasse() {
 		rootPane = new AnchorPane();
+		//Erstellt das Neue RootPane
 	}
 
 	public Pane getRootPane() {

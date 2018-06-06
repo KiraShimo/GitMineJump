@@ -20,6 +20,23 @@ public class MainController{
 	public void setPrimaryStage(Stage primaryStage) {
 		 this.primaryStage = primaryStage;
 	}
+	
+	public void run() {
+		while (true) {
+			
+			//UpdateSpieler();
+			//UpdateUmgebung();
+			//Repaint();
+			
+			
+			try {
+				Thread.sleep(17);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
 
 	public void start(Stage primaryStage) {
 			try {
@@ -37,6 +54,8 @@ public class MainController{
 			primaryStage.setScene(game);
 			primaryStage.show();
 			
+			 // run();
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,6 +66,7 @@ public class MainController{
 	@FXML
 	private void BtnStartAction(ActionEvent actionEvent) {
 		start(primaryStage);
+		
 	}
 	
 	@FXML
