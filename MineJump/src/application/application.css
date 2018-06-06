@@ -17,7 +17,9 @@
 .button {
   -fx-height: 40px;
   -fx-width: 400px;
-  -fx-outline: 2px solid black;
+  -fx-stroke: black;
+  -fx-stroke-width: 2px;
+  /*outline: 2px solid black;*/
   -fx-position: relative;
   -fx-margin: 0;
   -fx-display: inline-block;
@@ -27,14 +29,14 @@
   -fx-font-family: Minecraft;
   -fx-text-align: center;
   -fx-color: white;
-  -fx-text-shadow: 3px 3px #4C4C4C;
+  /*-fx-text-shadow: 3px 3px #4C4C4C;*/
   -fx-border-style: solid;
   -fx-border-width: 2px 2px 4px 2px;
   -fx-border-color: #AAA #565656 #565656 #AAA;
-  /*-fx-border-bottom: 4px solid #565656;
-  -fx-border-right: 2px solid #565656;
-  -fx-border-left: 2px solid #AAA;
-  -fx-border-top: 2px solid #AAA;*/
+  /*border-bottom: 4px solid #565656;
+  border-right: 2px solid #565656;
+  border-left: 2px solid #AAA;
+  border-top: 2px solid #AAA;*/
   -fx-box-sizing: border-box;
   -fx-font-size: 16px;
 }
@@ -48,10 +50,10 @@
 .button:hover {
   -fx-border-width: 2px 2px 4px 2px;
   -fx-border-color: #BDC6FF #59639A #59639A #BDC6FF;
-  /*-fx-border-bottom: 4px solid #59639A;
-  -fx-border-right: 2px solid #59639A;
-  -fx-border-left: 2px solid #BDC6FF;
-  -fx-border-top: 2px solid #BDC6FF;*/
+  /*border-bottom: 4px solid #59639A;
+  border-right: 2px solid #59639A;
+  border-left: 2px solid #BDC6FF;
+  border-top: 2px solid #BDC6FF;*/
   -fx-background-image: url('button_active_center.png');
   -fx-color: #FFFFA0;
 }
