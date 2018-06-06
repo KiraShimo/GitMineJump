@@ -8,10 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-// import com.oracle.deploy.update.UpdateCheck;
-
-
 public class MainController{
 	
 	public Stage primaryStage;

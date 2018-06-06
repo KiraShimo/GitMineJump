@@ -19,7 +19,7 @@ public class Main extends Application {
 			mainController.setPrimaryStage(primaryStage);
 
 			Scene mainmenu = new Scene(pane);
-			//mainmenu.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			mainmenu.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setWidth(854);
 			primaryStage.setHeight(480);
 			//primaryStage.setMinWidth(800);
