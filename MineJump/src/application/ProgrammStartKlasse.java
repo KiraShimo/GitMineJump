@@ -14,7 +14,10 @@ public class ProgrammStartKlasse implements KeyListener ,Runnable {
 	public void run() {
 		while (true) {
 			
-			// repaint();
+			//UpdateSpieler();
+			//UpdateUmgebung();
+			//Repaint();
+			
 			
 			try {
 				Thread.sleep(17);

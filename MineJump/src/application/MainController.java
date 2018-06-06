@@ -25,8 +25,19 @@ public class MainController{
 			try {
 			ProgrammStartKlasse Spiel = new ProgrammStartKlasse();
 			Scene game = new Scene(Spiel.getRootPane());
+			
+			primaryStage.setResizable(true);
+			primaryStage.setWidth(800);
+			primaryStage.setHeight(600);
+			primaryStage.setMaxWidth(1200);
+			primaryStage.setMaxHeight(1000);
+			primaryStage.setMinWidth(800);
+			primaryStage.setMinHeight(600);
+
 			primaryStage.setScene(game);
 			primaryStage.show();
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
