@@ -46,14 +46,6 @@ public class MainController{
 			try {
 			ProgrammStartKlasse Spiel = new ProgrammStartKlasse();
 			Scene game = new Scene(Spiel.getRootPane());
-			
-			primaryStage.setResizable(true);
-			primaryStage.setWidth(800);
-			primaryStage.setHeight(600);
-			primaryStage.setMaxWidth(1920);
-			primaryStage.setMaxHeight(1080);
-			primaryStage.setMinWidth(800);
-			primaryStage.setMinHeight(600);
 
 			primaryStage.setScene(game);
 			primaryStage.show();

@@ -3,15 +3,15 @@
 	-fx-background-image: url("dirt.jpg");
     -fx-background-repeat: repeat;
     -fx-background-size: 32 32;
+    -fx-font-family: 'Minecraft';
 }
 
-/*@font-face {
-  font-family: 'Minecraft';
-  src: url('http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.eot');
-  src: url('http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.eot?#iefix') format('embedded-opentype'),
+@font-face {
+  src: url('mcfont.ttf'); /*http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.eot */
+  /*src: url('http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.eot?#iefix') format('embedded-opentype'),
        url('http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.woff') format('woff'),
        url('http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.ttf')  format('truetype'),
-       url('http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.svg#svgFontName') format('svg');
+       url('http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.svg#svgFontName') format('svg');*/
 }
 
 .button {
@@ -21,7 +21,7 @@
   position: relative;
   margin: 0;
   display: inline-block;
-  background-image: url('http://charliecowan.co.uk/mcbuttongenerator/button_center.png');
+  background-image: url('button_center.png');
   background-repeat: repeat;
   padding: 0;
   font-family: Minecraft;
@@ -47,6 +47,6 @@
   border-right: 2px solid #59639A;
   border-left: 2px solid #BDC6FF;
   border-top: 2px solid #BDC6FF;
-  background-image: url('http://charliecowan.co.uk/mcbuttongenerator/button_active_center.png');
+  background-image: url('button_active_center.png');
   color: #FFFFA0;
-}*/
+}
