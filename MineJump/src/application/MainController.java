@@ -1,7 +1,7 @@
 package application;
 
 import application.ProgrammStartKlasse;
-import application.Spieler;
+//import application.Spieler;
 import javafx.application.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,7 +46,7 @@ public class MainController{
 			primaryStage.setScene(game);
 			primaryStage.show();
 			
-			Spieler Horst = new Spieler();
+			//Spieler Horst = new Spieler();
 			
 			 //run();
 			//run funktioniert irgendwie noch nicht ... wenn kein Kommentar -> Absturz
