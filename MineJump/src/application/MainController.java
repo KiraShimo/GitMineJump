@@ -1,11 +1,13 @@
 package application;
 
-import application.ProgrammStartKlasse;
 //import application.Spieler;
-import javafx.application.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class MainController{
@@ -42,6 +44,7 @@ public class MainController{
 			try {
 			ProgrammStartKlasse Spiel = new ProgrammStartKlasse();
 			Scene game = new Scene(Spiel.getRootPane());
+			
 			
  			primaryStage.setScene(game);
  			primaryStage.show();

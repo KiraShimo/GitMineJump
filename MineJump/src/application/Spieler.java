@@ -58,7 +58,7 @@ public class Spieler extends ProgrammStartKlasse {
 	}
 	public void Spring() {
 		if(Gesprungen == false) {
-			TempoY = 20;
+			TempoY = -20;
 			Gesprungen = true;
 		}
 	}
