@@ -83,7 +83,7 @@ public class ProgrammStartKlasse implements KeyListener {
         ImageView Bildaufruf = new ImageView(SpielerBild);
 		rootPane.getChildren().add(Bildaufruf); 
 		//Hintergrund
-		Image imgBackground = new Image(getClass().getResource("*").toExternalForm());
+		Image imgBackground = new Image(getClass().getResource("Title_screen_logo_edited.png").toExternalForm());
         BackgroundImage backgroundImage = new BackgroundImage(
                 imgBackground,
                 BackgroundRepeat.NO_REPEAT,
