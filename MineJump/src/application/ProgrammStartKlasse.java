@@ -74,7 +74,7 @@ public class ProgrammStartKlasse implements KeyListener {
 	public ProgrammStartKlasse() throws IOException {
 		//Erstellt das Neue RootPane
 		rootPane = new Pane();
-		Image SpielerBild = new Image(Main.class.getResource("../img/Steve_Skin.png").openStream());
+		Image SpielerBild = new Image(Main.class.getResource("Steve_Skin.png").openStream());
         ImageView Bildaufruf = new ImageView(SpielerBild);
 		rootPane.getChildren().add(Bildaufruf); 
 	}
