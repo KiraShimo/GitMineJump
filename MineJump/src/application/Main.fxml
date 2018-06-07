@@ -5,18 +5,22 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane styleClass="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Button fx:id="BtnOptions" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="200.0" text="Options" translateX="-100.0" translateY="36.0" />
-      <Button fx:id="BtnStart" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnStartAction" prefHeight="20.0" prefWidth="200.0" snapToPixel="false" text="Start" translateX="-100.0" />
-      <Button fx:id="BtnCredits" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="98.0" text="Credits" translateX="-100.0" translateY="84.0" />
-      <Button fx:id="BtnExit" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnExitAction" prefHeight="20.0" prefWidth="98.0" text="Exit" translateX="2.0" translateY="84.0" />
+      <Button fx:id="BtnOptions" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="200.0" text="Options" textFill="WHITE" translateX="-100.0" translateY="36.0" />
+      <Button fx:id="BtnStart" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnStartAction" prefHeight="20.0" prefWidth="200.0" snapToPixel="false" text="Start" textFill="WHITE" translateX="-100.0" />
+      <Button fx:id="BtnCredits" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="98.0" text="Credits" textFill="WHITE" translateX="-100.0" translateY="84.0" />
+      <Button fx:id="BtnExit" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnExitAction" prefHeight="20.0" prefWidth="98.0" text="Exit" textFill="WHITE" translateX="2.0" translateY="84.0" />
       <ImageView blendMode="SRC_ATOP" fitHeight="97.0" fitWidth="495.0" layoutX="180.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Title_screen_logo_edited.png" />
          </image>
       </ImageView>
-      <Label alignment="BASELINE_RIGHT" blendMode="SRC_ATOP" layoutX="790.0" layoutY="416.0" text="Label" />
+      <Label alignment="CENTER" blendMode="SRC_ATOP" layoutX="790.0" layoutY="416.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </children>
 </Pane>
