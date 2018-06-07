@@ -47,7 +47,7 @@ public class MainController{
  			primaryStage.show();
 			//Spieler Horst = new Spieler();
 			
-			 //run();
+			//run();
 			//run funktioniert irgendwie noch nicht ... wenn kein Kommentar -> Absturz
 			
 		} catch (Exception e) {

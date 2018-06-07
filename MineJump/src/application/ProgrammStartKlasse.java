@@ -71,16 +71,16 @@ public class ProgrammStartKlasse implements KeyListener {
 	
 	
 	public ProgrammStartKlasse() {
-		rootPane = new Pane();
-		Image img = new Image("Steve_Skin.png");
-        ImageView imgView = new ImageView(img);
-		rootPane.getChildren().add(imgView); 
 		//Erstellt das Neue RootPane
+		rootPane = new Pane();
+		Image SpielerBild = new Image("Steve_Skin.png");
+        ImageView Bildaufruf = new ImageView(SpielerBild);
+		rootPane.getChildren().add(Bildaufruf); 
 	}
 
 	public Pane getRootPane() {
-		return rootPane;
 		//gibt rootPane an obere Funktion
+		return rootPane;
 	}
 	
 }
