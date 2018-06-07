@@ -6,6 +6,11 @@ import java.io.IOException;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 
 public class ProgrammStartKlasse implements KeyListener {
@@ -77,6 +82,16 @@ public class ProgrammStartKlasse implements KeyListener {
 		Image SpielerBild = new Image(Main.class.getResource("Steve_Skin.png").openStream());
         ImageView Bildaufruf = new ImageView(SpielerBild);
 		rootPane.getChildren().add(Bildaufruf); 
+		//Hintergrund
+		Image imgBackground = new Image(getClass().getResource("*").toExternalForm());
+        BackgroundImage backgroundImage = new BackgroundImage(
+                imgBackground,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        Background background = new Background(backgroundImage);
+        rootPane.setBackground(background);
 	}
 
 	public Pane getRootPane() {
