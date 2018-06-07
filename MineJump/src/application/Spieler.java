@@ -1,10 +1,16 @@
 package application;
 
+import java.io.IOException;
+
 // import java.awt.Graphics;
 
 //pass die Variablen an !(an mich selbst)
 
 public class Spieler extends ProgrammStartKlasse {
+	public Spieler() throws IOException {
+		super();
+		
+	}
 	private int SpielerPosX = 70;
 	private int SpielerPosY = 300;
 	private int TempoX = 1;

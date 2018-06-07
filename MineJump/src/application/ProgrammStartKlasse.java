@@ -2,6 +2,7 @@ package application;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -70,17 +71,17 @@ public class ProgrammStartKlasse implements KeyListener {
 	public void keyTyped(KeyEvent e) {}
 	
 	
-	public ProgrammStartKlasse() {
-		rootPane = new Pane();
-		Image img = new Image("Steve_Skin.png");
-        ImageView imgView = new ImageView(img);
-		rootPane.getChildren().add(imgView); 
+	public ProgrammStartKlasse() throws IOException {
 		//Erstellt das Neue RootPane
+		rootPane = new Pane();
+		Image SpielerBild = new Image(Main.class.getResource("../img/Steve_Skin.png").openStream());
+        ImageView Bildaufruf = new ImageView(SpielerBild);
+		rootPane.getChildren().add(Bildaufruf); 
 	}
 
 	public Pane getRootPane() {
-		return rootPane;
 		//gibt rootPane an obere Funktion
+		return rootPane;
 	}
 	
 }
