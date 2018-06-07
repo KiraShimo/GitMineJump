@@ -5,12 +5,11 @@ import java.awt.event.KeyListener;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class ProgrammStartKlasse implements KeyListener {
 
-	private AnchorPane rootPane;
+	private Pane rootPane;
 	
 	
 	//private Spieler Horst;
@@ -72,7 +71,7 @@ public class ProgrammStartKlasse implements KeyListener {
 	
 	
 	public ProgrammStartKlasse() {
-		rootPane = new AnchorPane();
+		rootPane = new Pane();
 		Image img = new Image("Steve_Skin.png");
         ImageView imgView = new ImageView(img);
 		rootPane.getChildren().add(imgView); 
