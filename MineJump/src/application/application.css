@@ -1,14 +1,14 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
  .root{
 	/*-fx-background-image: url("dirt.jpg");*/
-	-fx-background-image: url("options_background.png");
+	-fx-background-image: url("ressources/options_background.png");
     -fx-background-repeat: repeat;
     -fx-background-size: 48 48;
-    -fx-font-family: "Minecraft";
+    -fx-font-family: 'Minecraft';
 }
 
 @font-face {
-  src: url('mcfont.ttf'); /*http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.eot */
+  src: url('ressources/mcfont.ttf'); /*http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.eot */
   /*src: url('http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.eot?#iefix') format('embedded-opentype'),
        url('http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.woff') format('woff'),
        url('http://charliecowan.co.uk/mcbuttongenerator/fonts/mcfont.ttf')  format('truetype'),
@@ -24,10 +24,10 @@
   -fx-position: relative;
   -fx-margin: 0;
   -fx-display: inline-block;
-  -fx-background-image: url('button_center.png');
+  -fx-background-image: url('ressources/button_center.png');
   -fx-background-repeat: repeat;
   -fx-padding: 0;
-  -fx-font-family: Minecraft;
+  -fx-font-family: 'Minecraft';
   -fx-text-align: center;
   -fx-color: white;
   /*-fx-text-shadow: 3px 3px #4C4C4C;*/
@@ -55,6 +55,6 @@
   border-right: 2px solid #59639A;
   border-left: 2px solid #BDC6FF;
   border-top: 2px solid #BDC6FF;*/
-  -fx-background-image: url('button_active_center.png');
+  -fx-background-image: url('ressources/button_active_center.png');
   -fx-color: #FFFFA0;
 }

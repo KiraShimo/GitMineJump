@@ -17,11 +17,6 @@ public class ProgrammStartKlasse implements KeyListener {
 
 	private Pane rootPane;
 	
-	
-	//private Spieler Horst;
-	
-	
-
 	public void keyPressed(KeyEvent e) {
 
 		switch (e.getKeyCode()) {
@@ -79,11 +74,11 @@ public class ProgrammStartKlasse implements KeyListener {
 	public ProgrammStartKlasse() throws IOException {
 		//Erstellt das Neue RootPane
 		rootPane = new Pane();
-		Image SpielerBild = new Image(Main.class.getResource("Steve_Skin.png").openStream());
+		Image SpielerBild = new Image(Main.class.getResource("ressources/Steve_Skin.png").openStream());
         ImageView Bildaufruf = new ImageView(SpielerBild);
 		rootPane.getChildren().add(Bildaufruf); 
 		//Hintergrund
-		Image imgBackground = new Image(getClass().getResource("Title_screen_logo_edited.png").toExternalForm());
+		Image imgBackground = new Image(getClass().getResource("ressources/Title_screen_logo_edited.png").toExternalForm());
         BackgroundImage backgroundImage = new BackgroundImage(
                 imgBackground,
                 BackgroundRepeat.NO_REPEAT,

@@ -1,6 +1,7 @@
 package application;
 
-//import application.Spieler;
+import application.Spieler;
+import application.ProgrammStartKlasse;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,29 +24,25 @@ public class MainController{
 	
 	public void run() {
 		while (true) {
-			
-			//UpdateSpieler();
-			//UpdateUmgebung();
-			//Repaint();
-			
 			try {
+				//UpdateSpieler();
+				//UpdateUmgebung();
+				//Repaint();
 				Thread.sleep(17);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
 		}
 	}
 
 	public void start(Stage primaryStage) {
-			try {
+		try {
 			ProgrammStartKlasse Spiel = new ProgrammStartKlasse();
 			Scene game = new Scene(Spiel.getRootPane());
 			
-			
  			primaryStage.setScene(game);
  			primaryStage.show();
-			//Spieler Horst = new Spieler();
+			Spieler Steve = new Spieler();
 			
 			//run();
 			//run funktioniert irgendwie noch nicht ... wenn kein Kommentar -> Absturz

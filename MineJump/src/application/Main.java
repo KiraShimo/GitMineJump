@@ -14,10 +14,12 @@ public class Main extends Application {
 			Pane pane = root.load();
 			primaryStage.setTitle("MineJump");
 
+			//Initialisierung des MainControllers
 			MainController mainController = root.getController();
 			mainController.setMain(this);
 			mainController.setPrimaryStage(primaryStage);
 
+			//Initialisierung Scene und Stage
 			Scene mainmenu = new Scene(pane);
 			mainmenu.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setWidth(854);
