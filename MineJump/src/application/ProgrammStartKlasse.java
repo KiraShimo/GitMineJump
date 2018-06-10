@@ -4,6 +4,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -39,6 +45,9 @@ public class ProgrammStartKlasse implements KeyListener {
 		case KeyEvent.VK_SPACE:
 			System.out.println("Sprung");
 			break;
+		case KeyEvent.VK_ESCAPE:
+			System.out.println("Escape gedrückt");
+			break;
 		}
 	}
 
@@ -64,6 +73,8 @@ public class ProgrammStartKlasse implements KeyListener {
 		case KeyEvent.VK_SPACE:
 			System.out.println("STOP");
 			break;
+		case KeyEvent.VK_ESCAPE:
+			break;
 
 		}
 	}
@@ -87,6 +98,19 @@ public class ProgrammStartKlasse implements KeyListener {
                 BackgroundSize.DEFAULT);
         Background background = new Background(backgroundImage);
         rootPane.setBackground(background);
+        Button btn = new Button();
+        //Unser Spieler ^^ momentan ein Button   
+        btn.setText("'TEST'");
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+             System.out.println("Hello World!");
+            }
+        });
+        btn.setLayoutX(10);
+        btn.setLayoutY(10);
+        rootPane.getChildren().add(btn);
 	}
 
 	public Pane getRootPane() {
