@@ -6,13 +6,14 @@ import java.io.IOException;
 
 //pass die Variablen an !(an mich selbst)
 
-public class Spieler extends ProgrammStartKlasse {
+public class Spieler {
+	int X,Y;
 	public Spieler() throws IOException {
 		super();
 		
 	}
-	private int SpielerPosX = 70;
-	private int SpielerPosY = 300;
+	public int SpielerPosX = 70;
+	public int SpielerPosY = 300;
 	private int TempoX = 1;
 	private int TempoY = 0;
 	private boolean Gesprungen = false;
@@ -69,5 +70,17 @@ public class Spieler extends ProgrammStartKlasse {
 		}
 	}
 	
+	
+	public int getSpielerposY() {
+		Y = SpielerPosY;
+		return Y; 
+		
+	}
+	
+	public int getSpielerposX() {
+		X = SpielerPosX;
+		return X; 
+		
+	}
 
 }
