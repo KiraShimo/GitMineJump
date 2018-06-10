@@ -46,4 +46,8 @@ public class MainController{
 		Platform.exit();
 	}
 	
+	@FXML
+	private void BtnLevel1Action(ActionEvent actionEvent) {
+		menu.spiel(primaryStage);        //Spielaufruf in Menu.java
+	}
 }
