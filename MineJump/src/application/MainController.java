@@ -1,11 +1,9 @@
 package application;
 
-import application.Spieler;
-import application.ProgrammStartKlasse;
+//import application.Menu;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainController{
@@ -13,6 +11,8 @@ public class MainController{
 	public Stage primaryStage;
 	
 	public Main main;
+	
+	Menu menu = new Menu();
 	
 	public void setMain(Main main) {
 		this.main = main;
@@ -22,7 +22,7 @@ public class MainController{
 		 this.primaryStage = primaryStage;
 	}
 	
-	public void run() {
+	/*public void run() {                 Muss evtl. in Menu.java?
 		while (true) {
 			try {
 				//UpdateSpieler();
@@ -33,30 +33,12 @@ public class MainController{
 				e.printStackTrace();
 			}
 		}
-	}
-
-	public void start(Stage primaryStage) {
-		try {
-			ProgrammStartKlasse Spiel = new ProgrammStartKlasse();
-			Scene game = new Scene(Spiel.getRootPane());
-			
- 			primaryStage.setScene(game);
- 			primaryStage.show();
-			Spieler Steve = new Spieler();
-			
-			//run();
-			//run funktioniert irgendwie noch nicht ... wenn kein Kommentar -> Absturz
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
+	}*/
 	
 	@FXML
 	private void BtnStartAction(ActionEvent actionEvent) {
-		start(primaryStage);
-		
+		//menu.level(primaryStage);
+		menu.spiel(primaryStage);        //Spielaufruf in Menu.java
 	}
 	
 	@FXML

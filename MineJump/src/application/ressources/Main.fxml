@@ -15,7 +15,7 @@
       <Button fx:id="BtnExit" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnExitAction" prefHeight="20.0" prefWidth="98.0" text="Exit" textFill="WHITE" translateX="2.0" translateY="84.0" />
       <ImageView blendMode="SRC_ATOP" fitHeight="97.0" fitWidth="490.0" layoutX="180.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@ressources/Title_screen_logo_edited.png" />
+            <Image url="@Title_screen_logo_edited.png" />
          </image>
       </ImageView>
       <Label alignment="CENTER" blendMode="SRC_ATOP" layoutX="5.0" layoutY="414.0" text="Early Alpha v_1043.17" textFill="WHITE">

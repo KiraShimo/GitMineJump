@@ -10,9 +10,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader root = new FXMLLoader(getClass().getResource("Main.fxml"));
+			//Hauptmenü laden
+			FXMLLoader root = new FXMLLoader(getClass().getResource("ressources/Main.fxml"));
 			Pane pane = root.load();
-			primaryStage.setTitle("MineJump");
 
 			//Initialisierung des MainControllers
 			MainController mainController = root.getController();
@@ -21,7 +21,8 @@ public class Main extends Application {
 
 			//Initialisierung Scene und Stage
 			Scene mainmenu = new Scene(pane);
-			mainmenu.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			mainmenu.getStylesheets().add(getClass().getResource("ressources/application.css").toExternalForm());
+			primaryStage.setTitle("MineJump");
 			primaryStage.setWidth(854);
 			primaryStage.setHeight(480);
 			//primaryStage.setMinWidth(800);

@@ -1,7 +1,7 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
  .root{
 	/*-fx-background-image: url("dirt.jpg");*/
-	-fx-background-image: url("ressources/options_background.png");
+	-fx-background-image: url("options_background.png");
     -fx-background-repeat: repeat;
     -fx-background-size: 48 48;
     -fx-font-family: 'Minecraft';
@@ -24,7 +24,7 @@
   -fx-position: relative;
   -fx-margin: 0;
   -fx-display: inline-block;
-  -fx-background-image: url('ressources/button_center.png');
+  -fx-background-image: url('button_center.png');
   -fx-background-repeat: repeat;
   -fx-padding: 0;
   -fx-font-family: 'Minecraft';
@@ -55,6 +55,6 @@
   border-right: 2px solid #59639A;
   border-left: 2px solid #BDC6FF;
   border-top: 2px solid #BDC6FF;*/
-  -fx-background-image: url('ressources/button_active_center.png');
+  -fx-background-image: url('button_active_center.png');
   -fx-color: #FFFFA0;
 }
