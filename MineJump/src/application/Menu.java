@@ -23,6 +23,8 @@ public class Menu{
 			ProgrammStartKlasse Spiel = new ProgrammStartKlasse(100, 100);
 			Scene game = new Scene(Spiel.getRootPane());
 			
+			game.getStylesheets().add(getClass().getResource("ressources/application.css").toExternalForm());
+			
  			primaryStage.setScene(game);
  			primaryStage.show();
 			Spieler Steve = new Spieler();
