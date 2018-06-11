@@ -84,12 +84,9 @@ public class ProgrammStartKlasse extends Canvas implements KeyListener {
 		rootPane = new Pane();
 		Image SpielerBild = new Image(Main.class.getResource("ressources/Steve_Skin.png").openStream());
 		ImageView Bildaufruf = new ImageView(SpielerBild);
-
-		Button Spieler = new Button("", Bildaufruf);
-
-		Spieler.setLayoutX(X);
-		Spieler.setLayoutY(Y);
-		rootPane.getChildren().add(Spieler);
+		Bildaufruf.setX(X);
+		Bildaufruf.setY(Y);
+		rootPane.getChildren().add(Bildaufruf);
 
 		// Hintergrund
 		Image imgBackground = new Image(

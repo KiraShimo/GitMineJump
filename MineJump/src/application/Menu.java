@@ -20,7 +20,7 @@ public class Menu{
 	}
 	public void spiel(Stage primaryStage) {
 		try {
-			ProgrammStartKlasse Spiel = new ProgrammStartKlasse(0, 0);
+			ProgrammStartKlasse Spiel = new ProgrammStartKlasse(100, 100);
 			Scene game = new Scene(Spiel.getRootPane());
 			
  			primaryStage.setScene(game);
