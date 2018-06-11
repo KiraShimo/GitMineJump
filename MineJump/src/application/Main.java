@@ -10,6 +10,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			
 			//Hauptmenü laden
 			FXMLLoader root = new FXMLLoader(getClass().getResource("ressources/Main.fxml"));
 			Pane pane = root.load();
