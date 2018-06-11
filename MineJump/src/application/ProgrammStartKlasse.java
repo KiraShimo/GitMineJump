@@ -5,7 +5,6 @@ import java.awt.event.KeyListener;
 import java.io.IOException;
 
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -79,16 +78,18 @@ public class ProgrammStartKlasse extends Canvas implements KeyListener {
 	}
 
 	public ProgrammStartKlasse(int Y, int X) throws IOException {
+		
 		// Erstellt das Neue RootPane
 		
 		rootPane = new Pane();
 		Image SpielerBild = new Image(Main.class.getResource("ressources/Steve_Skin.png").openStream());
 		ImageView Bildaufruf = new ImageView(SpielerBild);
-		Bildaufruf.setX(X);
-		Bildaufruf.setY(Y);
+		Bildaufruf.setX(Y);
+		Bildaufruf.setY(X);
 		rootPane.getChildren().add(Bildaufruf);
 
 		// Hintergrund
+		
 		Image imgBackground = new Image(
 				getClass().getResource("ressources/Title_screen_logo_edited.png").toExternalForm());
 		BackgroundImage backgroundImage = new BackgroundImage(imgBackground, BackgroundRepeat.NO_REPEAT,

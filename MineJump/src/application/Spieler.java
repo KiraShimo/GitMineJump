@@ -12,8 +12,8 @@ public class Spieler {
 		super();
 		
 	}
-	public int SpielerPosX = 70;
-	public int SpielerPosY = 300;
+	public int SpielerPosX = 120;
+	public int SpielerPosY = 280;
 	private int TempoX = 1;
 	private int TempoY = 0;
 	private boolean Gesprungen = false;

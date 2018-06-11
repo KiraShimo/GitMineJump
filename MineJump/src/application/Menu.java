@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 
 public class Menu{
 	public void level(Stage primaryStage) {
+		
+		
 		try {
 			FXMLLoader root = new FXMLLoader(getClass().getResource("ressources/Level.fxml"));
 			Pane pane = root.load();
@@ -20,7 +22,12 @@ public class Menu{
 	}
 	public void spiel(Stage primaryStage) {
 		try {
-			ProgrammStartKlasse Spiel = new ProgrammStartKlasse(100, 100);
+			
+			Spieler Test = new Spieler();
+			int X = Test.getSpielerposX();
+			int Y = Test.getSpielerposY();
+			
+			ProgrammStartKlasse Spiel = new ProgrammStartKlasse( X, Y);
 			Scene game = new Scene(Spiel.getRootPane());
 			
 			game.getStylesheets().add(getClass().getResource("ressources/application.css").toExternalForm());
@@ -29,8 +36,6 @@ public class Menu{
  			primaryStage.show();
 			Spieler Steve = new Spieler();
 			
-			//run();
-			//run funktioniert irgendwie noch nicht ... wenn kein Kommentar -> Absturz
 			
 		} catch (Exception e) {
 			e.printStackTrace();
