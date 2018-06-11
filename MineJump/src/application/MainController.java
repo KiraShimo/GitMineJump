@@ -22,19 +22,6 @@ public class MainController{
 		 this.primaryStage = primaryStage;
 	}
 	
-	/*public void run() {                 Muss evtl. in Menu.java?
-		while (true) {
-			try {
-				//UpdateSpieler();
-				//UpdateUmgebung();
-				//Repaint();
-				Thread.sleep(17);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}*/
-	
 	@FXML
 	private void BtnStartAction(ActionEvent actionEvent) {
 		//menu.level(primaryStage);
