@@ -9,12 +9,11 @@ import javafx.stage.Stage;
 
 public class Menu {
 	public void level(Stage primaryStage) {
-
 		try {
+			//Levelmenü laden und anzeigen
 			FXMLLoader root = new FXMLLoader(getClass().getResource("ressources/Level.fxml"));
 			Pane pane = root.load();
 			Scene level = new Scene(pane);
-
 			primaryStage.setScene(level);
 			primaryStage.show();
 		} catch (Exception e) {
@@ -24,7 +23,7 @@ public class Menu {
 
 	public void spiel(Stage primaryStage) {
 		try {
-
+			//Spiel initialisieren
 			Spieler Steve = new Spieler();
 			int X = Steve.getSpielerposX();
 			int Y = Steve.getSpielerposY();
@@ -42,7 +41,7 @@ public class Menu {
 						System.out.println("HOCH");
 						break;
 					case DOWN:
-						System.out.println("RUNTER");
+						System.out.println("RUNTER");    //brauchen wir das wirklich?
 						break;
 					case LEFT:
 						System.out.println("LINKS");
@@ -51,7 +50,7 @@ public class Menu {
 						System.out.println("RECHTS");
 						break;
 					case ESCAPE:
-						System.out.println("RAUS");
+						System.out.println("ESC");
 						//Hier bitte main menu wieder einbinden (als Aufruf ^^)
 						break;
 					default:
@@ -77,7 +76,7 @@ public class Menu {
 						System.out.println("STOP");
 						break;
 					case ESCAPE:
-						System.out.println("STOP");
+						System.out.println("STOP");   //brauchen wir ja eigentlich auch nicht
 						break;
 					default:
 						break;

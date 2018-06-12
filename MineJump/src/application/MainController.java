@@ -1,6 +1,5 @@
 package application;
 
-//import application.Menu;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
