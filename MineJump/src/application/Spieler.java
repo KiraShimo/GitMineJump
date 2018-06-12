@@ -2,10 +2,6 @@ package application;
 
 import java.io.IOException;
 
-// import java.awt.Graphics;
-
-//pass die Variablen an !(an mich selbst)
-
 public class Spieler {
 	int X,Y;
 	public Spieler() throws IOException {
@@ -53,6 +49,13 @@ public class Spieler {
 			SpielerPosX = 51;
 		}
 	}
+	//regelt den Sprung
+	public void Spring() {
+		if(Gesprungen == false) {
+			TempoY = -20;
+			Gesprungen = true;
+		}
+	}
 	
 	public void Rechts() {
 		TempoX = 10;
@@ -63,24 +66,63 @@ public class Spieler {
 	public void Halt() {
 		TempoX = 0;
 	}
-	public void Spring() {
-		if(Gesprungen == false) {
-			TempoY = -20;
-			Gesprungen = true;
-		}
+	
+	// get und set methoden 
+	
+	public int getX() {
+		return X;
 	}
-	
-	
-	public int getSpielerposY() {
-		Y = SpielerPosY;
-		return Y; 
-		
+
+	public int getY() {
+		return Y;
 	}
-	
-	public int getSpielerposX() {
-		X = SpielerPosX;
-		return X; 
-		
+
+	public int getSpielerPosX() {
+		return SpielerPosX;
+	}
+
+	public int getSpielerPosY() {
+		return SpielerPosY;
+	}
+
+	public int getTempoX() {
+		return TempoX;
+	}
+
+	public int getTempoY() {
+		return TempoY;
+	}
+
+	public boolean isGesprungen() {
+		return Gesprungen;
+	}
+
+	public void setX(int x) {
+		X = x;
+	}
+
+	public void setY(int y) {
+		Y = y;
+	}
+
+	public void setSpielerPosX(int spielerPosX) {
+		SpielerPosX = spielerPosX;
+	}
+
+	public void setSpielerPosY(int spielerPosY) {
+		SpielerPosY = spielerPosY;
+	}
+
+	public void setTempoX(int tempoX) {
+		TempoX = tempoX;
+	}
+
+	public void setTempoY(int tempoY) {
+		TempoY = tempoY;
+	}
+
+	public void setGesprungen(boolean gesprungen) {
+		Gesprungen = gesprungen;
 	}
 
 }

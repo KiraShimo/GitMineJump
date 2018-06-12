@@ -1,27 +1,13 @@
 package application;
 
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+//import javafx.event.EventHandler;
+//import javafx.scene.Scene;
+//import javafx.scene.input.KeyEvent;
+//import javafx.stage.Stage;
 
-public class Menu {
-	public void level(Stage primaryStage) {
-		try {
-			//Levelmenü laden und anzeigen
-			FXMLLoader root = new FXMLLoader(getClass().getResource("ressources/Level.fxml"));
-			Pane pane = root.load();
-			Scene level = new Scene(pane);
-			primaryStage.setScene(level);
-			primaryStage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+public class SchleifeMenu {
 
-	public void spiel(Stage primaryStage) {
+	/*public static void spiel(Stage primaryStage) {
 		try {
 			//Spiel initialisieren
 			Spieler Steve = new Spieler();
@@ -37,17 +23,20 @@ public class Menu {
 				@Override
 				public void handle(KeyEvent event) {
 					switch (event.getCode()) {
-					case UP:
-						System.out.println("HOCH");
+					case SPACE:
+						Spieler.Spring();
+						Menu.spiel(primaryStage);
 						break;
 					case DOWN:
-						System.out.println("RUNTER");    //brauchen wir das wirklich?
+						System.out.println("RUNTER");    //brauchen wir das wirklich? - ja ... ducken evtl. 
 						break;
 					case LEFT:
-						System.out.println("LINKS");
+						Spieler.geheLinks();
+						Menu.spiel(primaryStage);
 						break;
 					case RIGHT:
-						System.out.println("RECHTS");
+						Spieler.geheRechts();
+						Menu.spiel(primaryStage);
 						break;
 					case ESCAPE:
 						System.out.println("ESC");
@@ -63,35 +52,25 @@ public class Menu {
 				@Override
 				public void handle(KeyEvent event) {
 					switch (event.getCode()) {
-					case UP:
+					case SPACE:
 						System.out.println("STOP");
 						break;
 					case DOWN:
 						System.out.println("STOP");
 						break;
 					case LEFT:
-						System.out.println("STOP");
+						Spieler.Stop();
 						break;
 					case RIGHT:
-						System.out.println("STOP");
-						break;
-					case ESCAPE:
-						System.out.println("STOP");   //brauchen wir ja eigentlich auch nicht
+						Spieler.Stop();
 						break;
 					default:
 						break;
 					}
 				}
 			});
-			
-
-			game.getStylesheets().add(getClass().getResource("ressources/application.css").toExternalForm());
-
-			primaryStage.setScene(game);
-			primaryStage.show();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	} */
 }

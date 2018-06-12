@@ -17,7 +17,7 @@ public class ProgrammStartKlasse extends Canvas {
 	private Pane rootPane;
 
 	public ProgrammStartKlasse(int Y, int X) throws IOException {
-
+		
 		// Erstellt das Neue RootPane
 		rootPane = new Pane();
 		Image SpielerBild = new Image(Main.class.getResource("ressources/Steve_Skin.png").openStream());
@@ -34,7 +34,17 @@ public class ProgrammStartKlasse extends Canvas {
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		Background background = new Background(backgroundImage);
 		rootPane.setBackground(background);
-
+		
+		// Schleife für Spielbilder (FPS =60)
+		// noch nicht fertig
+		
+		
+		try {
+			Thread.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public Pane getRootPane() {
