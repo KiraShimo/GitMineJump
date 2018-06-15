@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -23,4 +24,7 @@
             <Font size="18.0" />
          </font></Label>
    </children>
+   <effect>
+      <BoxBlur height="91.07" iterations="2" width="0.0" />
+   </effect>
 </Pane>
