@@ -16,10 +16,8 @@ public class Spieler {
 
 	public void NeuLaden() {
 		//Bewegen und Anpassen
-		if (TempoX < 0) {
-			SpielerPosX += TempoX;
-		} else if (TempoX == 0) {
-			System.out.println("Spieler steht still");
+		if (TempoX > 0) {
+			SpielerPosX = SpielerPosX + TempoX;
 		} else {
 			if (SpielerPosX <= 110) {
 				SpielerPosX += TempoX;

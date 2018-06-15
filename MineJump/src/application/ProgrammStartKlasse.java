@@ -35,15 +35,6 @@ public class ProgrammStartKlasse extends Canvas {
 		Background background = new Background(backgroundImage);
 		rootPane.setBackground(background);
 		
-		// Schleife für Spielbilder (FPS =60)
-		// noch nicht fertig
-		
-		
-		try {
-			Thread.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		
 	}
 

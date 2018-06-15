@@ -23,9 +23,10 @@ public class MainController{
 	}
 	
 	@FXML
-	private void BtnStartAction(ActionEvent actionEvent) {
-		//menu.level(primaryStage);
-		menu.spiel(primaryStage);        //Spielaufruf in Menu.java
+	private void BtnStartAction(ActionEvent actionEvent) throws InterruptedException {
+		
+		menu.spiel(primaryStage);
+		       
 	}
 	
 	@FXML
