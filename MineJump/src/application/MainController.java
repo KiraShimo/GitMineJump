@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +29,7 @@ public class MainController{
 	
 	//Level starten - Spielaufruf in Menu.java
 	@FXML
-	private void BtnLevel1Action(ActionEvent actionEvent) {
+	private void BtnLevel1Action(ActionEvent actionEvent) throws IOException {
 		menu.spiel(primaryStage);
 	}
 	

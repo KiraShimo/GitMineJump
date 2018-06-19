@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -23,12 +25,9 @@ public class Menu {
 		}
 	}
 
-	public void spiel(Stage primaryStage) {
+	public void spiel(Stage primaryStage) throws IOException {
 		
-		Spieler Steve = new Spieler();
-		int X = Steve.getSpielerPosX();
-		int Y = Steve.getSpielerPosY();
-		
+			
 		SchleifeMenu Spiel = new SchleifeMenu();
 		Spiel.spiel(primaryStage);
 		
