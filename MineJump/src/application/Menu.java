@@ -24,7 +24,11 @@ public class Menu {
 	}
 
 	public void spiel(Stage primaryStage) {
-	
+		
+		Spieler Steve = new Spieler();
+		int X = Steve.getSpielerPosX();
+		int Y = Steve.getSpielerPosY();
+		
 		SchleifeMenu Spiel = new SchleifeMenu();
 		Spiel.spiel(primaryStage);
 		

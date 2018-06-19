@@ -1,8 +1,7 @@
 package application;
 
-import java.io.IOException;
 
-public class Spieler {
+public class Spieler{
 	
 	public int SpielerPosX = 120;
 	public int SpielerPosY = 280;
@@ -10,11 +9,6 @@ public class Spieler {
 	private int TempoY = 0;
 	private boolean Gesprungen = false;
 	int X,Y;
-	
-	public Spieler() throws IOException {
-		super();
-		
-	}
 	
 
 	public void Spring() {
@@ -37,7 +31,7 @@ public class Spieler {
 		TempoX = 0;
 	}
 	
-	public void NeuLaden(int TempoX , int TempoY) {
+	public void NeuLaden() {
 		//Bewegen und Anpassen
 		//Anpassen X
 		if (TempoX != 0) {
