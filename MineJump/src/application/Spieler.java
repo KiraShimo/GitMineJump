@@ -3,54 +3,26 @@ package application;
 import java.io.IOException;
 
 public class Spieler {
-	int X,Y;
-	public Spieler() throws IOException {
-		super();
-		
-	}
+	
 	public int SpielerPosX = 120;
 	public int SpielerPosY = 280;
 	private int TempoX = 1;
 	private int TempoY = 0;
 	private boolean Gesprungen = false;
-
-	public void NeuLaden() {
-		//Bewegen und Anpassen
-		if (TempoX > 0) {
-			SpielerPosX = SpielerPosX + TempoX;
-		} else {
-			if (SpielerPosX <= 110) {
-				SpielerPosX += TempoX;
-			} else {
-				System.out.println("Beweg Background");
-			}
-		}
-		if (SpielerPosY + TempoY >= 300) {
-			SpielerPosY = 300;
-		} else {
-			SpielerPosY += TempoY;
-		}
-		//Kontrolle über das Springen
+	int X,Y;
+	
+	public Spieler() throws IOException {
+		super();
 		
-		if (Gesprungen == true) {
-			TempoY += 1;
-
-			if (SpielerPosY + TempoY >= 300) {
-				SpielerPosY = 300;
-				TempoY = 0;
-				Gesprungen = false;
-			}
-
-		}
-		
-		if(SpielerPosX + TempoX < 50) {
-			SpielerPosX = 51;
-		}
 	}
-	//regelt den Sprung
+	
+
 	public void Spring() {
 		if(Gesprungen == false) {
-			TempoY = -20;
+			for( int i = 1; i <= 20; i ++ ) {
+				TempoY = -1;
+				SpielerPosY += TempoY;
+			}
 			Gesprungen = true;
 		}
 	}
@@ -59,28 +31,45 @@ public class Spieler {
 		TempoX = 10;
 	}
 	public void Links() {
-		TempoX = 10;
+		TempoX = -10;
 	}
 	public void Halt() {
 		TempoX = 0;
 	}
 	
+	public void NeuLaden(int TempoX , int TempoY) {
+		//Bewegen und Anpassen
+		//Anpassen X
+		if (TempoX != 0) {
+			setSpielerPosX(SpielerPosX + TempoX);
+		} else {
+			System.out.println("Stillstand X");
+		}
+		//Anpassen Y
+		if (Gesprungen == true) {
+			for(int i = 1; i < 20; i++) {
+				TempoY = 1;
+				setSpielerPosY( SpielerPosY + TempoY);
+			}
+				TempoY = 0;
+				Gesprungen = false;
+		}
+		if(SpielerPosX + TempoX < 50) {
+			SpielerPosX = 51;
+		}
+	}
+
+		
+	
 	// get und set methoden 
 	
-	public int getX() {
-		return X;
-	}
-
-	public int getY() {
-		return Y;
-	}
-
-	public int getSpielerPosX() {
-		return SpielerPosX;
-	}
 
 	public int getSpielerPosY() {
 		return SpielerPosY;
+	}
+	
+	public int getSpielerPosX() {
+		return SpielerPosX;
 	}
 
 	public int getTempoX() {
@@ -103,12 +92,14 @@ public class Spieler {
 		Y = y;
 	}
 
-	public void setSpielerPosX(int spielerPosX) {
+	public int setSpielerPosX(int spielerPosX) {
 		SpielerPosX = spielerPosX;
+		return SpielerPosX;
 	}
 
-	public void setSpielerPosY(int spielerPosY) {
+	public int setSpielerPosY(int spielerPosY) {
 		SpielerPosY = spielerPosY;
+		return SpielerPosY;
 	}
 
 	public void setTempoX(int tempoX) {

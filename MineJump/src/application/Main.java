@@ -39,17 +39,17 @@ public class Main extends Application {
 		//Zufallswiedergabe muss noch eingefügt werden
 		
 		//Musik initialisieren
-		Media media = new Media(getClass().getResource("/music/07_Boo.mp3").toExternalForm());
-		MediaPlayer musicplayer = new MediaPlayer(media);
-        musicplayer.setAutoPlay(true);
-        musicplayer.setVolume(0.1);   // from 0 to 1      
+		//Media media = new Media(getClass().getResource("/music/07_Boo.mp3").toExternalForm());
+		//MediaPlayer musicplayer = new MediaPlayer(media);
+        //musicplayer.setAutoPlay(true);
+        //musicplayer.setVolume(0.1);   // from 0 to 1      
 
         //Musik loopen
-        musicplayer.setOnEndOfMedia(new Runnable() {    
-        	public void run() {
-        		musicplayer.seek(Duration.ZERO); 
-        	}
-         });  
+        //musicplayer.setOnEndOfMedia(new Runnable() {    
+        //	public void run() {
+        //		musicplayer.seek(Duration.ZERO); 
+        //	}
+        // });  
 	}
 
 	public static void main(String[] args) {

@@ -6,18 +6,21 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class SchleifeMenu {
-//dient momentan zu nichts ...
-	//wird bald wieder entfehrnt einfach ignorieren
-	public static void spiel(Stage primaryStage) {
+	
+	
+	public void spiel(Stage primaryStage) {
 		try {
 			//Spiel initialisieren
+			
 			Spieler Steve = new Spieler();
 			int X = Steve.getSpielerPosX();
 			int Y = Steve.getSpielerPosY();
-			
+
 			ProgrammStartKlasse Spiel = new ProgrammStartKlasse(X, Y);
 			Scene game = new Scene(Spiel.getRootPane());
-
+			int TempoX = Steve.getTempoX();
+			int TempoY = Steve.getTempoY();
+			Steve.NeuLaden(TempoX, TempoY);
 			// Eventhandler
 
 			game.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -27,26 +30,35 @@ public class SchleifeMenu {
 					case SPACE:
 						System.out.println("HOCH");
 						Steve.Spring();
-						Steve.NeuLaden();
+						Steve.getTempoX();
+						Steve.getTempoY();
+						Steve.NeuLaden(TempoX, TempoY);
+						int X = Steve.getSpielerPosX();
+						int Y = Steve.getSpielerPosY();
 						Menu spiel = new Menu();
 						spiel.spiel(primaryStage);
 						System.out.println("X = " + X);
+						
 						break;
 					case LEFT:
 						System.out.println("LINKS");
 						Steve.Links();
-						Steve.NeuLaden();
+						Steve.NeuLaden(TempoX, TempoY);
+						int X1 = Steve.getSpielerPosX();
+						int Y1 = Steve.getSpielerPosY();
 						Menu spiel1 = new Menu();
 						spiel1.spiel(primaryStage);
-						System.out.println("X = " + X);
+						System.out.println("X = " + X1);
 						break;
 					case RIGHT:
-						System.out.println("HOCH");
-						Steve.Spring();
-						Steve.NeuLaden();
+						System.out.println("RECHTS");
+						Steve.Rechts();
+						Steve.NeuLaden(TempoX, TempoY);
+						int X2 = Steve.getSpielerPosX();
+						int Y2 = Steve.getSpielerPosY();
 						Menu spiel2 = new Menu();
 						spiel2.spiel(primaryStage);
-						System.out.println("X = " + X);
+						System.out.println("X = " + X2);
 						break;
 					case ESCAPE:
 						System.out.println("ESC");
@@ -82,8 +94,16 @@ public class SchleifeMenu {
 					}
 				}
 			});
+			
+
+			game.getStylesheets().add(getClass().getResource("ressources/application.css").toExternalForm());
+			
+			primaryStage.setScene(game);
+			primaryStage.show();
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	} 
+	}
 }
