@@ -96,8 +96,8 @@ public class SchleifeMenu {
 					PosY = 300;
 				}
 				// RENDER
-				Bildaufruf.setX(PosY);
-				Bildaufruf.setY(PosX);
+				Bildaufruf.setX(PosX);
+				Bildaufruf.setY(PosY);
 			}
 		};
 
