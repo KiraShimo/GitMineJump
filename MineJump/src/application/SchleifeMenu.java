@@ -28,7 +28,6 @@ public class SchleifeMenu {
 
 	Spieler Steve = new Spieler();
 
-	@SuppressWarnings("unchecked")
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren

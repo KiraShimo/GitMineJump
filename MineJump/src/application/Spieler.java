@@ -30,6 +30,7 @@ public class Spieler{
 	public void Halt() {
 		TempoX = 0;
 	}
+	//tadaaaa
 	
 	public void NeuLaden() {
 		//Bewegen und Anpassen

@@ -43,8 +43,8 @@ public class Main extends Application {
 		MediaPlayer musicplayer = new MediaPlayer(media);
         musicplayer.setAutoPlay(true);
         musicplayer.setVolume(0.1);   // from 0 to 1      
-
-        //Musik loopen
+        
+        //Musik loopen 
         musicplayer.setOnEndOfMedia(new Runnable() {    
         	public void run() {
         		musicplayer.seek(Duration.ZERO); 
