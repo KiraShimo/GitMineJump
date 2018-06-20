@@ -12,10 +12,10 @@ public class Menu {
 	public void level(Stage primaryStage) {
 		try {
 			//Levelmenü laden und anzeigen & MainController aktualisieren
-			FXMLLoader root = new FXMLLoader(getClass().getResource("ressources/Level.fxml"));
+			FXMLLoader root = new FXMLLoader(getClass().getResource("/Level.fxml"));
 			Pane pane = root.load();
 			Scene level = new Scene(pane);
-			level.getStylesheets().add(getClass().getResource("ressources/application.css").toExternalForm());
+			//level.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
 			MainController mainController = root.getController();
 			mainController.setPrimaryStage(primaryStage);
 			primaryStage.setScene(level);
@@ -27,7 +27,6 @@ public class Menu {
 
 	public void spiel(Stage primaryStage) throws IOException {
 		
-			
 		SchleifeMenu Spiel = new SchleifeMenu();
 		Spiel.spiel(primaryStage);
 		

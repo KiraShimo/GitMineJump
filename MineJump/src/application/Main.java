@@ -13,7 +13,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			//Hauptmenü laden
-			FXMLLoader root = new FXMLLoader(getClass().getResource("ressources/Main.fxml"));
+			FXMLLoader root = new FXMLLoader(getClass().getResource("/Main.fxml"));
 			Pane pane = root.load();
 
 			//Initialisierung des MainControllers
@@ -23,7 +23,7 @@ public class Main extends Application {
 
 			//Initialisierung Scene und Stage
 			Scene mainmenu = new Scene(pane);
-			mainmenu.getStylesheets().add(getClass().getResource("ressources/application.css").toExternalForm());
+			//mainmenu.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
 			primaryStage.setTitle("MineJump");
 			primaryStage.setWidth(854);
 			primaryStage.setHeight(480);
@@ -39,17 +39,17 @@ public class Main extends Application {
 		//Zufallswiedergabe muss noch eingefügt werden
 		
 		//Musik initialisieren
-		//Media media = new Media(getClass().getResource("/music/07_Boo.mp3").toExternalForm());
-		//MediaPlayer musicplayer = new MediaPlayer(media);
-        //musicplayer.setAutoPlay(true);
-        //musicplayer.setVolume(0.1);   // from 0 to 1      
+		Media media = new Media(getClass().getResource("/music/07_Boo.mp3").toExternalForm());
+		MediaPlayer musicplayer = new MediaPlayer(media);
+        musicplayer.setAutoPlay(true);
+        musicplayer.setVolume(0.1);   // from 0 to 1      
 
         //Musik loopen
-        //musicplayer.setOnEndOfMedia(new Runnable() {    
-        //	public void run() {
-        //		musicplayer.seek(Duration.ZERO); 
-        //	}
-        // });  
+        musicplayer.setOnEndOfMedia(new Runnable() {    
+        	public void run() {
+        		musicplayer.seek(Duration.ZERO); 
+        	}
+         });  
 	}
 
 	public static void main(String[] args) {
