@@ -4,7 +4,7 @@
 	-fx-background-image: url("pictures/options_background.png");
     -fx-background-repeat: repeat;
     -fx-background-size: 48 48;
-    -fx-font-family: 'Minecraft';
+    /*-fx-font-family: "Minecraft";*/
 }
 
 @font-face {
@@ -27,7 +27,7 @@
   -fx-background-image: url('pictures/button_center.png');
   -fx-background-repeat: repeat;
   -fx-padding: 0;
-  -fx-font-family: 'Minecraft';
+  /*-fx-font-family: 'Minecraft';*/
   -fx-text-align: center;
   -fx-color: white;
   /*-fx-text-shadow: 3px 3px #4C4C4C;*/
@@ -39,7 +39,7 @@
   border-left: 2px solid #AAA;
   border-top: 2px solid #AAA;*/
   -fx-box-sizing: border-box;
-  -fx-font-size: 16px;
+  /*-fx-font-size: 16px;*/
 }
 
 .button span {
