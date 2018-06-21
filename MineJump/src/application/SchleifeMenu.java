@@ -115,7 +115,7 @@ public class SchleifeMenu {
 	public void Spring() {
 		if (Gesprungen == false) {
 			for (int i = 1; i <= 20; i++) {
-				TempoY = -1;
+				TempoY = 1;
 				PosY += TempoY;
 			}
 			Gesprungen = true;
