@@ -123,11 +123,11 @@ public class SchleifeMenu {
 	}
 
 	public void Rechts() {
-		TempoX = 8;
+		TempoX = 80;
 	}
 
 	public void Links() {
-		TempoX = -8;
+		TempoX = -80;
 	}
 
 	public void Halt() {
