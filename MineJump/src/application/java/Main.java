@@ -1,4 +1,4 @@
-package application;
+package application.java;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +13,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			//Hauptmenü laden
-			FXMLLoader root = new FXMLLoader(getClass().getResource("/Main.fxml"));
+			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Main.fxml"));
 			Pane pane = root.load();
 
 			//Initialisierung des MainControllers
@@ -39,7 +39,7 @@ public class Main extends Application {
 		//Zufallswiedergabe muss noch eingefügt werden
 		
 		//Musik initialisieren
-		Media media = new Media(getClass().getResource("/music/07_Boo.mp3").toExternalForm());
+		Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
 		MediaPlayer musicplayer = new MediaPlayer(media);
         musicplayer.setAutoPlay(true);
         musicplayer.setVolume(0.1);   // from 0 to 1      

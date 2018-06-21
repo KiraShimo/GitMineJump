@@ -1,4 +1,4 @@
-package application;
+package application.java;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ public class Menu {
 	public void level(Stage primaryStage) {
 		try {
 			//Levelmenü laden und anzeigen & MainController aktualisieren
-			FXMLLoader root = new FXMLLoader(getClass().getResource("/Level.fxml"));
+			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Level.fxml"));
 			Pane pane = root.load();
 			Scene level = new Scene(pane);
 			//level.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());

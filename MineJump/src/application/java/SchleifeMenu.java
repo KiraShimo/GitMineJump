@@ -1,4 +1,4 @@
-package application;
+package application.java;
 
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -34,7 +34,7 @@ public class SchleifeMenu {
 
 		// Erstellt das Neue RootPane
 		rootPane = new Pane();
-		Image SpielerBild = new Image(Main.class.getResource("/pictures/Steve_Skin.png").openStream());
+		Image SpielerBild = new Image(Main.class.getResource("/application/ressources/pictures/Steve_Skin.png").openStream());
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
@@ -43,7 +43,7 @@ public class SchleifeMenu {
 		// Hintergrund
 
 		Image imgBackground = new Image(
-				getClass().getResource("/pictures/Title_screen_logo_edited.png").toExternalForm());
+				getClass().getResource("/application/ressources/pictures/Title_screen_logo_edited.png").toExternalForm());
 		BackgroundImage backgroundImage = new BackgroundImage(imgBackground, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		Background background = new Background(backgroundImage);
@@ -51,7 +51,7 @@ public class SchleifeMenu {
 
 		Scene game = new Scene(rootPane);
 
-		game.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+		//game.getStylesheets().add(getClass().getResource("/application/ressources/application.css").toExternalForm());
 
 		// need to attach KeyEvent caller to a Node of some sort.
 		// How about an invisible Box?
