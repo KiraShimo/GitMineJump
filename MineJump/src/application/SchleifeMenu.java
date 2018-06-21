@@ -26,8 +26,6 @@ public class SchleifeMenu {
 	private int TempoY = 0;
 	private boolean Gesprungen = false;
 
-	Spieler Steve = new Spieler();
-
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
@@ -68,33 +66,42 @@ public class SchleifeMenu {
 		primaryStage.show();
 
 		AnimationTimer animator = new AnimationTimer() {
-
+			//Spielschleife 
 			@Override
 			public void handle(long arg0) {
 
-				// UPDATE
+				
 				// Bewegen und Anpassen
-				// Anpassen X
-				if (TempoX != 0) {
-					PosX += TempoX;
-				} else {
-					System.out.println("Stillstand X");
-				}
-				// Anpassen Y
-				if (Gesprungen == true) {
-					for (int i = 1; i < 20; i++) {
-						TempoY = 1;
+					if (TempoX < 0) {
+						PosX += TempoX;
+					} else if (TempoX == 0) {
+						System.out.println("Hintergrund nicht bewegen.");
+		 
+					} else {
+						if (PosX <= 150) { PosX += TempoX;
+		 				} else { System.out.println("Hintergrund bewegen");} 
+					} 			 			
+		                        if (PosY + TempoY >= 382) {
+		                        	PosY = 382;
+					}else{                    
 						PosY += TempoY;
+			                }
+		 
+					if (Gesprungen == true) {
+						TempoY += 1;
+		 
+						if (PosY + TempoY >= 382) {
+							PosY = 382;
+							TempoY = 0;
+							Gesprungen = false;
+						}
+		 
 					}
-					TempoY = 0;
-					Gesprungen = false;
-				}
-				if (PosX + TempoX < 50) {
-					PosX = 51;
-				}
-				if (PosY + TempoY < 300) {
-					PosY = 300;
-				}
+		 
+					if (PosX + TempoX <= 60) {
+						PosX = 61;
+					}
+				
 				// RENDER
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
@@ -133,20 +140,17 @@ public class SchleifeMenu {
 			switch (event.getCode()) {
 			case SPACE:
 				System.out.println("HOCH");
-				Steve.Spring();
-				Steve.NeuLaden();
+				Spring();
 				System.out.println("testup");
 				break;
 			case LEFT:
 				System.out.println("LINKS");
-				Steve.Links();
-				Steve.NeuLaden();
+				Links();
 				System.out.println("testleft");
 				break;
 			case RIGHT:
 				System.out.println("RECHTS");
-				Steve.Rechts();
-				Steve.NeuLaden();
+				Rechts();
 				System.out.println("testright");
 				break;
 			case ESCAPE:
