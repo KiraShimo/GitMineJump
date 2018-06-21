@@ -78,28 +78,28 @@ public class SchleifeMenu {
 						System.out.println("Hintergrund nicht bewegen.");
 		 
 					} else {
-						if (PosX <= 150) { PosX += TempoX;
+						if (PosX <= 120) { PosX += TempoX;
 		 				} else { System.out.println("Hintergrund bewegen");} 
 					} 			 			
-		                        if (PosY + TempoY >= 382) {
-		                        	PosY = 382;
+		                        if (PosY + TempoY >= 280) {
+		                        	PosY = 280;
 					}else{                    
 						PosY += TempoY;
 			                }
 		 
 					if (Gesprungen == true) {
-						TempoY += -1;
+						TempoY += 1;
 		 
-						if (PosY + TempoY >= 382) {
-							PosY = 382;
+						if (PosY + TempoY >= 280) {
+							PosY = 280;
 							TempoY = 0;
 							Gesprungen = false;
 						}
 		 
 					}
 		 
-					if (PosX + TempoX <= 60) {
-						PosX = 61;
+					if (PosX + TempoX <= 50) {
+						PosX = 51;
 					}
 				
 				// RENDER
