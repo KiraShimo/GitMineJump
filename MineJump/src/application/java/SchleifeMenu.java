@@ -22,7 +22,7 @@ public class SchleifeMenu {
 
 	public int PosX = 120;
 	public int PosY = 280;
-	private int TempoX = 1;
+	private int TempoX = 0;
 	private int TempoY = 0;
 	private boolean Gesprungen = false;
 
@@ -34,7 +34,8 @@ public class SchleifeMenu {
 
 		// Erstellt das Neue RootPane
 		rootPane = new Pane();
-		Image SpielerBild = new Image(Main.class.getResource("/application/ressources/pictures/Steve_Skin.png").openStream());
+		Image SpielerBild = new Image(
+				Main.class.getResource("/application/ressources/pictures/Steve_Skin.png").openStream());
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
@@ -42,8 +43,8 @@ public class SchleifeMenu {
 
 		// Hintergrund
 
-		Image imgBackground = new Image(
-				getClass().getResource("/application/ressources/pictures/Title_screen_logo_edited.png").toExternalForm());
+		Image imgBackground = new Image(getClass()
+				.getResource("/application/ressources/pictures/Title_screen_logo_edited.png").toExternalForm());
 		BackgroundImage backgroundImage = new BackgroundImage(imgBackground, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		Background background = new Background(backgroundImage);
@@ -51,7 +52,7 @@ public class SchleifeMenu {
 
 		Scene game = new Scene(rootPane);
 
-		//game.getStylesheets().add(getClass().getResource("/application/ressources/application.css").toExternalForm());
+		// game.getStylesheets().add(getClass().getResource("/application/ressources/application.css").toExternalForm());
 
 		// need to attach KeyEvent caller to a Node of some sort.
 		// How about an invisible Box?
@@ -59,6 +60,7 @@ public class SchleifeMenu {
 		keyboardNode.setFocusTraversable(true);
 		keyboardNode.requestFocus();
 		keyboardNode.setOnKeyPressed(keyEventHandler);
+		keyboardNode.setOnKeyReleased(TasteLoslassen);
 
 		rootPane.getChildren().add(keyboardNode);
 
@@ -66,42 +68,44 @@ public class SchleifeMenu {
 		primaryStage.show();
 
 		AnimationTimer animator = new AnimationTimer() {
-			//Spielschleife 
+			// Spielschleife
 			@Override
 			public void handle(long arg0) {
 
-				
 				// Bewegen und Anpassen
-					if (TempoX < 0) {
+				if (TempoX < 0) {
+					PosX += TempoX;
+				} else if (TempoX == 0) {
+					// System.out.println("Hintergrund nicht bewegen.");
+
+				} else {
+					if (PosX <= 280) {
 						PosX += TempoX;
-					} else if (TempoX == 0) {
-						System.out.println("Hintergrund nicht bewegen.");
-		 
 					} else {
-						if (PosX <= 120) { PosX += TempoX;
-		 				} else { System.out.println("Hintergrund bewegen");} 
-					} 			 			
-		                        if (PosY + TempoY >= 280) {
-		                        	PosY = 280;
-					}else{                    
-						PosY += TempoY;
-			                }
-		 
-					if (Gesprungen == true) {
-						TempoY += 1;
-		 
-						if (PosY + TempoY >= 280) {
-							PosY = 280;
-							TempoY = 0;
-							Gesprungen = false;
-						}
-		 
+						// System.out.println("Hintergrund bewegen");
 					}
-		 
-					if (PosX + TempoX <= 50) {
-						PosX = 51;
+				}
+				if (PosY + TempoY >= 280) {
+					PosY = 280;
+				} else {
+					PosY += TempoY;
+				}
+
+				if (Gesprungen == true) {
+					TempoY += 1;
+
+					if (PosY + TempoY >= 280) {
+						PosY = 280;
+						TempoY = 0;
+						Gesprungen = false;
 					}
-				
+
+				}
+
+				if (PosX + TempoX <= 50) {
+					PosX = 51;
+				}
+
 				// RENDER
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
@@ -114,11 +118,9 @@ public class SchleifeMenu {
 
 	public void Spring() {
 		if (Gesprungen == false) {
-			
-			
-				TempoY = -15;
-				
-			
+
+			TempoY = -15;
+
 			Gesprungen = true;
 		}
 	}
@@ -153,6 +155,32 @@ public class SchleifeMenu {
 				System.out.println("RECHTS");
 				Rechts();
 				System.out.println("testright");
+				break;
+			case ESCAPE:
+				System.out.println("ESC");
+				// Hier bitte main menu wieder einbinden (als Aufruf ^^)
+				break;
+			default:
+				break;
+			}
+		}
+	};
+	
+	final EventHandler<KeyEvent> TasteLoslassen = new EventHandler<KeyEvent>() {
+
+		public void handle(KeyEvent event) {
+			switch (event.getCode()) {
+			case SPACE:
+				System.out.println("STOP");
+				Halt();
+				break;
+			case LEFT:
+				System.out.println("STOP");
+				Halt();
+				break;
+			case RIGHT:
+				System.out.println("STOP");
+				Halt();
 				break;
 			case ESCAPE:
 				System.out.println("ESC");
