@@ -24,7 +24,8 @@ public class SchleifeMenu {
 	public int PosY = 280;
 	private int TempoX = 0;
 	private int TempoY = 0;
-	private boolean Gesprungen = false;
+	private int t = 0;
+ 	private boolean Gesprungen = false;
 
 	public void spiel(Stage primaryStage) throws IOException {
 
@@ -118,19 +119,22 @@ public class SchleifeMenu {
 
 	public void Spring() {
 		if (Gesprungen == false) {
-
-			TempoY = -15;
-
+			
+			TempoY = -3;
+			t += 1;
+			if(t > 4) {
 			Gesprungen = true;
+			t = 0;
+			}
 		}
 	}
 
 	public void Rechts() {
-		TempoX = 8;
+		TempoX = 6;
 	}
 
 	public void Links() {
-		TempoX = -8;
+		TempoX = -6;
 	}
 
 	public void Halt() {
@@ -173,6 +177,7 @@ public class SchleifeMenu {
 			case SPACE:
 				System.out.println("STOP");
 				Halt();
+				t = 4;
 				break;
 			case LEFT:
 				System.out.println("STOP");
