@@ -24,8 +24,7 @@ public class SchleifeMenu {
 	public int PosY = 280;
 	private int TempoX = 0;
 	private int TempoY = 0;
-	private int t = 0;
- 	private boolean Gesprungen = false;
+	private boolean Gesprungen = false;
 
 	public void spiel(Stage primaryStage) throws IOException {
 
@@ -73,39 +72,7 @@ public class SchleifeMenu {
 			@Override
 			public void handle(long arg0) {
 
-				// Bewegen und Anpassen
-				if (TempoX < 0) {
-					PosX += TempoX;
-				} else if (TempoX == 0) {
-					// System.out.println("Hintergrund nicht bewegen.");
-
-				} else {
-					if (PosX <= 280) {
-						PosX += TempoX;
-					} else {
-						// System.out.println("Hintergrund bewegen");
-					}
-				}
-				if (PosY + TempoY >= 280) {
-					PosY = 280;
-				} else {
-					PosY += TempoY;
-				}
-
-				if (Gesprungen == true) {
-					TempoY += 1;
-
-					if (PosY + TempoY >= 280) {
-						PosY = 280;
-						TempoY = 0;
-						Gesprungen = false;
-					}
-
-				}
-
-				if (PosX + TempoX <= 50) {
-					PosX = 51;
-				}
+				NeuLaden();
 
 				// RENDER
 				Bildaufruf.setX(PosX);
@@ -115,40 +82,6 @@ public class SchleifeMenu {
 
 		animator.start();
 
-	}
-
-	public void Spring() {
-		if (Gesprungen == false) {
-			
-			TempoY = -2;
-			t += 1;
-			if(t > 3) {
-			Gesprungen = true;
-			t = 0;
-			}
-		}
-	}
-
-	public void Rechts() {
-		TempoX = 6;
-		t += 1;
-		if(t > 3) {
-			Gesprungen = true;
-			t = 0;
-		}
-	}
-
-	public void Links() {
-		TempoX = -6;
-		t += 1;
-		if(t > 3) {
-			Gesprungen = true;
-			t = 0;
-		}
-	}
-
-	public void Halt() {
-		TempoX = 0;
 	}
 
 	final EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
@@ -179,7 +112,7 @@ public class SchleifeMenu {
 			}
 		}
 	};
-	
+
 	final EventHandler<KeyEvent> TasteLoslassen = new EventHandler<KeyEvent>() {
 
 		public void handle(KeyEvent event) {
@@ -187,8 +120,6 @@ public class SchleifeMenu {
 			case SPACE:
 				System.out.println("STOP");
 				Halt();
-				Gesprungen = true;
-				t = 0;
 				break;
 			case LEFT:
 				System.out.println("STOP");
@@ -207,5 +138,63 @@ public class SchleifeMenu {
 			}
 		}
 	};
+
+	public void Spring() {
+		if (Gesprungen == false) {
+
+			TempoY = -10;
+	
+		}
+	}
+
+	public void Rechts() {
+		TempoX = 6;
+		
+	}
+
+	public void Links() {
+		TempoX = -6;
+	
+	}
+
+	public void Halt() {
+		TempoX = 0;
+	}
+
+	public void NeuLaden() {
+		// Bewegen und Anpassen
+		if (TempoX < 0) {
+			PosX += TempoX;
+		} else if (TempoX == 0) {
+			// System.out.println("Hintergrund nicht bewegen.");
+
+		} else {
+			if (PosX <= 280) {
+				PosX += TempoX;
+			} else {
+				// System.out.println("Hintergrund bewegen");
+			}
+		}
+		if (PosY + TempoY >= 280) {
+			PosY = 280;
+		} else {
+			PosY += TempoY;
+		}
+
+		if (Gesprungen == true) {
+			TempoY += 1;
+
+			if (PosY + TempoY >= 280) {
+				PosY = 280;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+
+		}
+
+		if (PosX + TempoX <= 50) {
+			PosX = 51;
+		}
+	}
 
 }
