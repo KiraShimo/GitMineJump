@@ -42,7 +42,7 @@ public class Main extends Application {
 		Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
 		MediaPlayer musicplayer = new MediaPlayer(media);
         musicplayer.setAutoPlay(true);
-        musicplayer.setVolume(0.1);   // from 0 to 1      
+        musicplayer.setVolume(0.1);   //zwischen 0 und 1      
         
         //Musik loopen 
         musicplayer.setOnEndOfMedia(new Runnable() {    

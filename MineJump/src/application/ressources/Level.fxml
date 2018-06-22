@@ -7,14 +7,69 @@
 
 <Pane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.java.MainController">
    <children>
-      <Button fx:id="BtnLevel1" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnLevel1Action" prefHeight="50.0" prefWidth="50.0" text="1" textFill="WHITE" translateX="-100.0">
+      <Button fx:id="BtnLevel1" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" onAction="#BtnLevel1Action" prefHeight="50.0" prefWidth="50.0" text="1" textFill="WHITE" translateX="-200.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Button>
-      <Label layoutX="327.0" layoutY="86.0" text="Levelauswahl" textFill="WHITE">
+      <Label layoutX="427.0" layoutY="60.0" text="Levelauswahl" textFill="WHITE" translateX="-149.36">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
+      <Button fx:id="BtnLevel2" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" onAction="#BtnLevel2Action" prefHeight="50.0" prefWidth="50.0" text="2" textFill="WHITE" translateX="-130.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel3" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="3" textFill="WHITE" translateX="-60.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel4" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="4" textFill="WHITE" translateX="10.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel5" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="5" textFill="WHITE" translateX="80.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel6" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="6" textFill="WHITE" translateX="150.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel10" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="10" textFill="WHITE" translateX="10.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel11" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="11" textFill="WHITE" translateX="80.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel9" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="9" textFill="WHITE" translateX="-60.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel8" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="8" textFill="WHITE" translateX="-130.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel7" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="7" textFill="WHITE" translateX="-200.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel12" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="12" textFill="WHITE" translateX="150.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

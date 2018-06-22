@@ -33,6 +33,12 @@ public class MainController{
 		menu.spiel(primaryStage);
 	}
 	
+	//Level 2 starten - Spielaufruf in Menu.java
+	@FXML
+	private void BtnLevel2Action(ActionEvent actionEvent) throws IOException {
+		menu.spiel(primaryStage);
+	}
+	
 	//Spiel beenden
 	@FXML
 	private void BtnExitAction(ActionEvent actionEvent) {
