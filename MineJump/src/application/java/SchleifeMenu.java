@@ -120,9 +120,9 @@ public class SchleifeMenu {
 	public void Spring() {
 		if (Gesprungen == false) {
 			
-			TempoY = -3;
+			TempoY = -4;
 			t += 1;
-			if(t > 4) {
+			if(t > 1) {
 			Gesprungen = true;
 			t = 0;
 			}
@@ -177,7 +177,8 @@ public class SchleifeMenu {
 			case SPACE:
 				System.out.println("STOP");
 				Halt();
-				t = 4;
+				Gesprungen = true;
+				t = 0;
 				break;
 			case LEFT:
 				System.out.println("STOP");
