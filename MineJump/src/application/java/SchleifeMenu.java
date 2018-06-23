@@ -143,6 +143,7 @@ public class SchleifeMenu {
 		if (Gesprungen == false) {
 
 			TempoY = -10;
+			Gesprungen = true;
 	
 		}
 	}
