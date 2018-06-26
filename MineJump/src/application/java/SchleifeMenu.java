@@ -88,7 +88,7 @@ public class SchleifeMenu {
 
 		public void handle(KeyEvent event) {
 			switch (event.getCode()) {
-			case SPACE:
+			case UP:
 				System.out.println("HOCH");
 				Spring();
 				System.out.println("testup");
@@ -117,7 +117,7 @@ public class SchleifeMenu {
 
 		public void handle(KeyEvent event) {
 			switch (event.getCode()) {
-			case SPACE:
+			case UP:
 				System.out.println("STOP");
 				Halt();
 				break;
