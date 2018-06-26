@@ -25,13 +25,14 @@ public class SchleifeMenu {
 	private int TempoX = 0;
 	private int TempoY = 0;
 	private boolean Gesprungen = false;
-
+    
+	
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
 
 		Pane rootPane;
-
+		
 		// Erstellt das Neue RootPane
 		rootPane = new Pane();
 		Image SpielerBild = new Image(
@@ -91,7 +92,7 @@ public class SchleifeMenu {
 			case UP:
 				System.out.println("HOCH");
 				Spring();
-				System.out.println("testup");
+				System.out.println("testup");                      //soll alles in den MainController
 				break;
 			case LEFT:
 				System.out.println("LINKS");
