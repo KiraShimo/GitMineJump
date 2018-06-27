@@ -4,9 +4,7 @@ import java.io.IOException;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class MainController{
@@ -36,12 +34,14 @@ public class MainController{
 
 	@FXML
 	private void BtnSettingsAbortAction(ActionEvent actionEvent) throws InterruptedException {
-		main.start(primaryStage);
+		//main.start(primaryStage);
+		menu.mainmenu(primaryStage);
 	}
 
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
-		main.start(primaryStage);
+		//main.start(primaryStage);
+		menu.mainmenu(primaryStage);
 	}
 	
 	@FXML
@@ -66,64 +66,4 @@ public class MainController{
 	private void BtnLevel2Action(ActionEvent actionEvent) throws IOException {
 		menu.spiel(primaryStage);
 	}
-	
-	
-	/*final EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
-		SchleifeMenu Spiel = new SchleifeMenu();
-		
-		public void handle(KeyEvent event) {
-			switch (event.getCode()) {
-			case UP:
-				System.out.println("HOCH");
-				Spiel.Spring();
-				System.out.println("testup");
-				break;
-			case LEFT:
-				System.out.println("LINKS");
-				Spiel.Links();
-				System.out.println("testleft");
-				break;
-			case RIGHT:
-				System.out.println("RECHTS");
-				Spiel.Rechts();
-				System.out.println("testright");
-				break;
-			case ESCAPE:
-				System.out.println("ESC");
-				// Hier bitte main menu wieder einbinden (als Aufruf ^^)
-				main.start(primaryStage);
-				break;
-			default:
-				break;
-			}
-		}
-	};
-
-	final EventHandler<KeyEvent> TasteLoslassen = new EventHandler<KeyEvent>() {
-		SchleifeMenu Spiel = new SchleifeMenu();
-		
-		public void handle(KeyEvent event) {
-			switch (event.getCode()) {
-			case UP:
-				System.out.println("STOP");
-				Spiel.Halt();
-				break;
-			case LEFT:
-				System.out.println("STOP");
-				Spiel.Halt();
-				break;
-			case RIGHT:
-				System.out.println("STOP");
-				Spiel.Halt();
-				break;
-			case ESCAPE:
-				System.out.println("ESC");
-				// Hier bitte main menu wieder einbinden (als Aufruf ^^)
-				main.start(primaryStage);
-				break;
-			default:
-				break;
-			}
-		}
-	};*/
 }
