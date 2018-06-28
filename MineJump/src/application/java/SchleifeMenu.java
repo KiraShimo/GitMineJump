@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 public class SchleifeMenu {
 
 	public int PosX = 120;
-	public int PosY = 280;
+	public int PosY = 252;
 	public int bgPosX = 0;
 	public int bgPoY = -220;
 	public int UPosX = 0;
@@ -44,7 +44,7 @@ public class SchleifeMenu {
 		rootPane.getChildren().add(HintergrundImageAufruf);
 
 		Image SpielerBild = new Image(
-				Main.class.getResource("/application/ressources/pictures/Steve_Skin.png").openStream());
+				Main.class.getResource("/application/ressources/pictures/Steve_Vorne.png").openStream());
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
@@ -220,8 +220,8 @@ public class SchleifeMenu {
 		if (Gesprungen == true) {
 			TempoY += 1;
 
-			if (PosY + TempoY >= 280) {
-				PosY = 280;
+			if (PosY + TempoY >= 252) {
+				PosY = 252;
 				TempoY = 0;
 				Gesprungen = false;
 			}
