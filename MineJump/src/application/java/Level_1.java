@@ -35,10 +35,12 @@ public class Level_1 {
 		// Erstellt das Neue RootPane
 		rootPane = new Pane();
 
-		Image SpielerRechts = new Image(Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
-		Image SpielerLinks = new Image(Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
+		Image SpielerRechts = new Image(
+				Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
+		Image SpielerLinks = new Image(
+				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
 		Image HintergrundImage = new Image(
-				Main.class.getResource("/application/ressources/pictures/Hintergrund.png").openStream());
+				Main.class.getResource("/application/ressources/pictures/Hintergrund2.0.png").openStream());
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
 		HintergrundImageAufruf.setX(bgPosX);
 		HintergrundImageAufruf.setY(bgPoY);
@@ -50,14 +52,14 @@ public class Level_1 {
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
-		
+
 		Image Untergrund = new Image(
-				Main.class.getResource("/application/ressources/pictures/Untergrund2.png").openStream());
+				Main.class.getResource("/application/ressources/pictures/Untergrund1.0.png").openStream());
 		ImageView UntergrundAnzeigen = new ImageView(Untergrund);
 		UntergrundAnzeigen.setX(UPosX);
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
-
+		
 
 		Scene game = new Scene(rootPane);
 
@@ -80,19 +82,20 @@ public class Level_1 {
 				NeuLaden();
 
 				// Position Updaten
-				if(RLN == 0) {
-				Bildaufruf.setImage(SpielerBild);	
+				if (RLN == 0) {
+					Bildaufruf.setImage(SpielerBild);
 				}
-				if(RLN == 1) {
-				Bildaufruf.setImage(SpielerLinks);	
+				if (RLN == 1) {
+					Bildaufruf.setImage(SpielerLinks);
 				}
-				if(RLN == 2) {
-				Bildaufruf.setImage(SpielerRechts);	
+				if (RLN == 2) {
+					Bildaufruf.setImage(SpielerRechts);
 				}
 				HintergrundImageAufruf.setX(bgPosX);
-				HintergrundImageAufruf.setY(bgPoY);
+				UntergrundAnzeigen.setX(UPosX);
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
+				
 			}
 		};
 
@@ -115,9 +118,9 @@ public class Level_1 {
 
 				break;
 			case LEFT:
-				
+
 				Links();
-				
+
 				break;
 			case RIGHT:
 
@@ -200,12 +203,15 @@ public class Level_1 {
 				PosX += TempoX;
 			} else {
 				System.out.println("Hintergrund bewegen");
-				bgPosX -= TempoX; 
+				UPosX -= TempoX;
+				bgPosX -= TempoX;
+
 			}
 		}
-		if(bgPosX <= -1786)
-			bgPosX = -595;
-		
+		if (bgPosX <= -2382)
+			bgPosX = 0;
+		if (UPosX <= -1200)
+			UPosX = 0;
 		if (PosY + TempoY >= 382) {
 			PosY = 382;
 		} else {
@@ -225,9 +231,9 @@ public class Level_1 {
 
 		if (PosX + TempoX <= 50) {
 			PosX = 51;
-			
+
 		}
-		
+
 	}
 
 }
