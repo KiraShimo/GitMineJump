@@ -22,6 +22,8 @@ public class SchleifeMenu {
 
 	public int PosX = 120;
 	public int PosY = 280;
+	public int bgPosX = 0;
+	public int bgPoY = -220;
 	private int TempoX = 0;
 	private int TempoY = 0;
 	private boolean Gesprungen = false;
@@ -34,6 +36,14 @@ public class SchleifeMenu {
 
 		// Erstellt das Neue RootPane
 		rootPane = new Pane();
+
+		Image HintergrundImage = new Image(
+				Main.class.getResource("/application/ressources/pictures/Hintergrundtest.png").openStream());
+		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
+		HintergrundImageAufruf.setX(bgPosX);
+		HintergrundImageAufruf.setY(bgPoY);
+		rootPane.getChildren().add(HintergrundImageAufruf);
+
 		Image SpielerBild = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Skin.png").openStream());
 		ImageView Bildaufruf = new ImageView(SpielerBild);
@@ -43,13 +53,16 @@ public class SchleifeMenu {
 
 		// Hintergrund
 
-		Image Wald = new Image(getClass().getResource("/application/ressources/pictures/Title_screen_logo_edited.png")
-				.toExternalForm());
-		BackgroundImage HintergrundBild = new BackgroundImage(Wald, BackgroundRepeat.NO_REPEAT,
-				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-		Background Hintergrund = new Background(HintergrundBild);
-
-		rootPane.setBackground(Hintergrund);
+		/*
+		 * Image Wald = new Image(
+		 * getClass().getResource("/application/ressources/pictures/Hintergrundtest.png"
+		 * ).toExternalForm()); BackgroundImage HintergrundBild = new
+		 * BackgroundImage(Wald, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+		 * BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT); Background Hintergrund =
+		 * new Background(HintergrundBild);
+		 * 
+		 * rootPane.setBackground(Hintergrund);
+		 */
 
 		Scene game = new Scene(rootPane);
 
@@ -72,7 +85,8 @@ public class SchleifeMenu {
 				NeuLaden();
 
 				// Position Updaten
-
+				HintergrundImageAufruf.setX(bgPosX);
+				HintergrundImageAufruf.setY(bgPoY);
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
 			}
@@ -87,19 +101,24 @@ public class SchleifeMenu {
 		public void handle(KeyEvent event) {
 			switch (event.getCode()) {
 			case UP:
-				System.out.println("HOCH");
+
 				Spring();
-				System.out.println("testup");
+
+				break;
+			case SPACE:
+
+				Spring();
+
 				break;
 			case LEFT:
-				System.out.println("LINKS");
+
 				Links();
-				System.out.println("testleft");
+
 				break;
 			case RIGHT:
-				System.out.println("RECHTS");
+
 				Rechts();
-				System.out.println("testright");
+
 				break;
 			case ESCAPE:
 				System.out.println("ESC");
@@ -116,15 +135,17 @@ public class SchleifeMenu {
 		public void handle(KeyEvent event) {
 			switch (event.getCode()) {
 			case UP:
-				System.out.println("STOP");
-				Halt();
+
+				break;
+			case SPACE:
+
 				break;
 			case LEFT:
-				System.out.println("STOP");
+
 				Halt();
 				break;
 			case RIGHT:
-				System.out.println("STOP");
+
 				Halt();
 				break;
 			case ESCAPE:
@@ -140,7 +161,7 @@ public class SchleifeMenu {
 	public void Spring() {
 		if (Gesprungen == false) {
 
-			TempoY = -10;
+			TempoY = -15;
 			Gesprungen = true;
 
 		}
@@ -165,17 +186,17 @@ public class SchleifeMenu {
 		if (TempoX < 0) {
 			PosX += TempoX;
 		} else if (TempoX == 0) {
-			// System.out.println("Hintergrund nicht bewegen.");
+			System.out.println("Hintergrund nicht bewegen.");
 
 		} else {
-			if (PosX <= 280) {
+			if (PosX <= 300) {
 				PosX += TempoX;
 			} else {
-				// System.out.println("Hintergrund bewegen");
+				System.out.println("Hintergrund bewegen");
 			}
 		}
-		if (PosY + TempoY >= 280) {
-			PosY = 280;
+		if (PosY + TempoY >= 382) {
+			PosY = 382;
 		} else {
 			PosY += TempoY;
 		}
