@@ -23,6 +23,7 @@ public class SchleifeMenu {
 	public int RLN = 0;
 	private int TempoX = 0;
 	private int TempoY = 0;
+	private int RealPosX = 0;
 	private boolean Gesprungen = false;
 
 	public void spiel(Stage primaryStage) throws IOException {
@@ -37,7 +38,7 @@ public class SchleifeMenu {
 		Image SpielerRechts = new Image(Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
 		Image SpielerLinks = new Image(Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
 		Image HintergrundImage = new Image(
-				Main.class.getResource("/application/ressources/pictures/Hintergrundtest.png").openStream());
+				Main.class.getResource("/application/ressources/pictures/Hintergrund.png").openStream());
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
 		HintergrundImageAufruf.setX(bgPosX);
 		HintergrundImageAufruf.setY(bgPoY);
@@ -184,11 +185,13 @@ public class SchleifeMenu {
 
 	public void Rechts() {
 		TempoX = 6;
+		RealPosX += TempoX;
 		RLN = 2;
 	}
 
 	public void Links() {
 		TempoX = -6;
+		RealPosX += TempoX;
 		RLN = 1;
 
 	}
@@ -209,8 +212,12 @@ public class SchleifeMenu {
 				PosX += TempoX;
 			} else {
 				System.out.println("Hintergrund bewegen");
+				bgPosX -= TempoX; 
 			}
 		}
+		if(bgPosX <= -1786)
+			bgPosX = -595;
+		
 		if (PosY + TempoY >= 382) {
 			PosY = 382;
 		} else {
@@ -230,6 +237,7 @@ public class SchleifeMenu {
 
 		if (PosX + TempoX <= 50) {
 			PosX = 51;
+			
 		}
 		
 	}
