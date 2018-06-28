@@ -134,7 +134,6 @@ public class Level_1 {
 				break;
 			case ESCAPE:
 				System.out.println("ESC");
-				// Hier bitte main menu wieder einbinden (als Aufruf ^^)
 				break;
 			default:
 				break;
@@ -209,7 +208,7 @@ public class Level_1 {
 			} else {
 				//Bewege Hintergrund
 				UPosX -= TempoX;
-				bgPosX -= TempoX;
+				bgPosX -= (TempoX/2);
 
 			}
 		}
