@@ -1,22 +1,16 @@
 package application.java;
 
+import java.io.IOException;
+
+import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Box;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-
-import javafx.animation.AnimationTimer;
 
 public class SchleifeMenu {
 
@@ -24,6 +18,9 @@ public class SchleifeMenu {
 	public int PosY = 280;
 	public int bgPosX = 0;
 	public int bgPoY = -220;
+	public int UPosX = 0;
+	public int UPosY = 380;
+	public int RLN = 0;
 	private int TempoX = 0;
 	private int TempoY = 0;
 	private boolean Gesprungen = false;
@@ -37,6 +34,8 @@ public class SchleifeMenu {
 		// Erstellt das Neue RootPane
 		rootPane = new Pane();
 
+		Image SpielerRechts = new Image(Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
+		Image SpielerLinks = new Image(Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
 		Image HintergrundImage = new Image(
 				Main.class.getResource("/application/ressources/pictures/Hintergrundtest.png").openStream());
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
@@ -50,6 +49,13 @@ public class SchleifeMenu {
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
+		
+		Image Untergrund = new Image(
+				Main.class.getResource("/application/ressources/pictures/Untergrund2.png").openStream());
+		ImageView UntergrundAnzeigen = new ImageView(Untergrund);
+		UntergrundAnzeigen.setX(UPosX);
+		UntergrundAnzeigen.setY(UPosY);
+		rootPane.getChildren().add(UntergrundAnzeigen);
 
 		// Hintergrund
 
@@ -85,6 +91,15 @@ public class SchleifeMenu {
 				NeuLaden();
 
 				// Position Updaten
+				if(RLN == 0) {
+				Bildaufruf.setImage(SpielerBild);	
+				}
+				if(RLN == 1) {
+				Bildaufruf.setImage(SpielerLinks);	
+				}
+				if(RLN == 2) {
+				Bildaufruf.setImage(SpielerRechts);	
+				}
 				HintergrundImageAufruf.setX(bgPosX);
 				HintergrundImageAufruf.setY(bgPoY);
 				Bildaufruf.setX(PosX);
@@ -111,9 +126,9 @@ public class SchleifeMenu {
 
 				break;
 			case LEFT:
-
+				
 				Links();
-
+				
 				break;
 			case RIGHT:
 
@@ -141,11 +156,11 @@ public class SchleifeMenu {
 
 				break;
 			case LEFT:
-
+				RLN = 0;
 				Halt();
 				break;
 			case RIGHT:
-
+				RLN = 0;
 				Halt();
 				break;
 			case ESCAPE:
@@ -169,11 +184,12 @@ public class SchleifeMenu {
 
 	public void Rechts() {
 		TempoX = 6;
-
+		RLN = 2;
 	}
 
 	public void Links() {
 		TempoX = -6;
+		RLN = 1;
 
 	}
 
@@ -215,6 +231,7 @@ public class SchleifeMenu {
 		if (PosX + TempoX <= 50) {
 			PosX = 51;
 		}
+		
 	}
 
 }
