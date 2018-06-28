@@ -56,7 +56,7 @@ public class Menu {
 	
 	public void spiel(Stage primaryStage) throws IOException {
 		
-		SchleifeMenu Spiel = new SchleifeMenu();
+		Level_1 Spiel = new Level_1();
 		Spiel.spiel(primaryStage);
 		
 	}
