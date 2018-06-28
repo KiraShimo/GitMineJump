@@ -56,11 +56,6 @@ public class MainController{
 		menu.mainmenu(primaryStage);
 	}
 	
-	@FXML
-	private void SliderMusicAction(ActionEvent actionEvent) throws InterruptedException {
-		
-	}
-	
 	//Spiel beenden
 	@FXML
 	private void BtnExitAction(ActionEvent actionEvent) {
