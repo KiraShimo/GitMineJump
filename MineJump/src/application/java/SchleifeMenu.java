@@ -25,14 +25,13 @@ public class SchleifeMenu {
 	private int TempoX = 0;
 	private int TempoY = 0;
 	private boolean Gesprungen = false;
-    
-	
+
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
 
 		Pane rootPane;
-		
+
 		// Erstellt das Neue RootPane
 		rootPane = new Pane();
 		Image SpielerBild = new Image(
@@ -44,22 +43,23 @@ public class SchleifeMenu {
 
 		// Hintergrund
 
-		Image imgBackground = new Image(getClass()
-				.getResource("/application/ressources/pictures/Title_screen_logo_edited.png").toExternalForm());
-		BackgroundImage backgroundImage = new BackgroundImage(imgBackground, BackgroundRepeat.NO_REPEAT,
+		Image Wald = new Image(getClass().getResource("/application/ressources/pictures/Title_screen_logo_edited.png")
+				.toExternalForm());
+		BackgroundImage HintergrundBild = new BackgroundImage(Wald, BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-		Background background = new Background(backgroundImage);
-		rootPane.setBackground(background);
+		Background Hintergrund = new Background(HintergrundBild);
+
+		rootPane.setBackground(Hintergrund);
 
 		Scene game = new Scene(rootPane);
 
-		final Box keyboardNode = new Box();
-		keyboardNode.setFocusTraversable(true);
-		keyboardNode.requestFocus();
-		keyboardNode.setOnKeyPressed(keyEventHandler);
-		keyboardNode.setOnKeyReleased(TasteLoslassen);
+		final Box Listener = new Box();
+		Listener.setFocusTraversable(true);
+		Listener.requestFocus();
+		Listener.setOnKeyPressed(keyEventHandler);
+		Listener.setOnKeyReleased(TasteLoslassen);
 
-		rootPane.getChildren().add(keyboardNode);
+		rootPane.getChildren().add(Listener);
 
 		primaryStage.setScene(game);
 		primaryStage.show();
@@ -71,8 +71,8 @@ public class SchleifeMenu {
 
 				NeuLaden();
 
-				//Position Updaten
-				
+				// Position Updaten
+
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
 			}
@@ -89,7 +89,7 @@ public class SchleifeMenu {
 			case UP:
 				System.out.println("HOCH");
 				Spring();
-				System.out.println("testup");                      
+				System.out.println("testup");
 				break;
 			case LEFT:
 				System.out.println("LINKS");
@@ -142,18 +142,18 @@ public class SchleifeMenu {
 
 			TempoY = -10;
 			Gesprungen = true;
-	
+
 		}
 	}
 
 	public void Rechts() {
 		TempoX = 6;
-		
+
 	}
 
 	public void Links() {
 		TempoX = -6;
-	
+
 	}
 
 	public void Halt() {
