@@ -9,21 +9,21 @@
 
 <Pane styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.java.MainController">
    <children>
-      <Button fx:id="BtnOptions" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="200.0" text="Options" textFill="WHITE" translateX="-100.0" translateY="36.0">
+      <Button fx:id="BtnOptions" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnOptionsAction" prefHeight="20.0" prefWidth="200.0" text="Options" textFill="WHITE" translateX="-100.0" translateY="36.0">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Button>
       <Button fx:id="BtnStart" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnStartAction" prefHeight="20.0" prefWidth="200.0" snapToPixel="false" text="Start" textFill="WHITE" translateX="-100.0">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Button>
       <Button fx:id="BtnCredits" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="98.0" text="Credits" textFill="WHITE" translateX="-100.0" translateY="84.0">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Button>
       <Button fx:id="BtnExit" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnExitAction" prefHeight="20.0" prefWidth="98.0" text="Exit" textFill="WHITE" translateX="2.0" translateY="84.0">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Button>
       <ImageView blendMode="SRC_ATOP" fitHeight="97.0" fitWidth="490.0" layoutX="180.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
          <image>

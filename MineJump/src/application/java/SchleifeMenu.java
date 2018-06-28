@@ -25,13 +25,14 @@ public class SchleifeMenu {
 	private int TempoX = 0;
 	private int TempoY = 0;
 	private boolean Gesprungen = false;
-
+    
+	
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
 
 		Pane rootPane;
-
+		
 		// Erstellt das Neue RootPane
 		rootPane = new Pane();
 		Image SpielerBild = new Image(
@@ -52,10 +53,6 @@ public class SchleifeMenu {
 
 		Scene game = new Scene(rootPane);
 
-		// game.getStylesheets().add(getClass().getResource("/application/ressources/application.css").toExternalForm());
-
-		// need to attach KeyEvent caller to a Node of some sort.
-		// How about an invisible Box?
 		final Box keyboardNode = new Box();
 		keyboardNode.setFocusTraversable(true);
 		keyboardNode.requestFocus();
@@ -74,7 +71,8 @@ public class SchleifeMenu {
 
 				NeuLaden();
 
-				// RENDER
+				//Position Updaten
+				
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
 			}
@@ -88,10 +86,10 @@ public class SchleifeMenu {
 
 		public void handle(KeyEvent event) {
 			switch (event.getCode()) {
-			case SPACE:
+			case UP:
 				System.out.println("HOCH");
 				Spring();
-				System.out.println("testup");
+				System.out.println("testup");                      
 				break;
 			case LEFT:
 				System.out.println("LINKS");
@@ -117,7 +115,7 @@ public class SchleifeMenu {
 
 		public void handle(KeyEvent event) {
 			switch (event.getCode()) {
-			case SPACE:
+			case UP:
 				System.out.println("STOP");
 				Halt();
 				break;

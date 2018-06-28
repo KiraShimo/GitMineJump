@@ -27,6 +27,34 @@ public class MainController{
 		menu.level(primaryStage);
 	}
 	
+	@FXML
+	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
+		menu.settings(primaryStage);
+	}
+
+	@FXML
+	private void BtnSettingsAbortAction(ActionEvent actionEvent) throws InterruptedException {
+		//main.start(primaryStage);
+		menu.mainmenu(primaryStage);
+	}
+
+	@FXML
+	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
+		//main.start(primaryStage);
+		menu.mainmenu(primaryStage);
+	}
+	
+	@FXML
+	private void SliderMusicAction(ActionEvent actionEvent) throws InterruptedException {
+		
+	}
+	
+	//Spiel beenden
+	@FXML
+	private void BtnExitAction(ActionEvent actionEvent) {
+		Platform.exit();
+	}
+	
 	//Level starten - Spielaufruf in Menu.java
 	@FXML
 	private void BtnLevel1Action(ActionEvent actionEvent) throws IOException {
@@ -37,11 +65,5 @@ public class MainController{
 	@FXML
 	private void BtnLevel2Action(ActionEvent actionEvent) throws IOException {
 		menu.spiel(primaryStage);
-	}
-	
-	//Spiel beenden
-	@FXML
-	private void BtnExitAction(ActionEvent actionEvent) {
-		Platform.exit();
 	}
 }
