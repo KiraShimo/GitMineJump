@@ -35,17 +35,20 @@ public class MainController{
 		menu.level(primaryStage);
 	}
 	
+	//Aufrul Einstellungsmenü
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
 		menu.settings(primaryStage);
 	}
 
+	//Einstellungen ohne Speichern der Änderungen Verlassen
 	@FXML
 	private void BtnSettingsAbortAction(ActionEvent actionEvent) throws InterruptedException {
 		//main.start(primaryStage);
 		menu.mainmenu(primaryStage);
 	}
 
+	//Einstellungen verlassen mit Speicherung der Änderungen
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
 		//main.start(primaryStage);
