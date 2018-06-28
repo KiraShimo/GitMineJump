@@ -25,7 +25,7 @@ public class Level_1 {
 	private int TempoY = 0;
 	private int RealPosX = 0;
 	private boolean Gesprungen = false;
-
+	private boolean Gewonnen = false;
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
@@ -95,6 +95,11 @@ public class Level_1 {
 				UntergrundAnzeigen.setX(UPosX);
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
+				if(Gewonnen == true) {
+					Main test = new Main();
+					test.start(primaryStage);
+					Gewonnen = false;
+				}
 				
 			}
 		};
@@ -167,7 +172,7 @@ public class Level_1 {
 
 	public void Spring() {
 		if (Gesprungen == false) {
-
+			RealPosX += TempoX;
 			TempoY = -15;
 			Gesprungen = true;
 
@@ -196,13 +201,13 @@ public class Level_1 {
 		if (TempoX < 0) {
 			PosX += TempoX;
 		} else if (TempoX == 0) {
-			System.out.println("Hintergrund nicht bewegen.");
+			//tue nichts
 
 		} else {
 			if (PosX <= 300) {
 				PosX += TempoX;
 			} else {
-				System.out.println("Hintergrund bewegen");
+				//Bewege Hintergrund
 				UPosX -= TempoX;
 				bgPosX -= TempoX;
 
@@ -229,11 +234,16 @@ public class Level_1 {
 
 		}
 
-		if (PosX + TempoX <= 50) {
+		if(PosX + TempoX <= 50) {
 			PosX = 51;
 
 		}
-
+		if(RealPosX > 800) {
+			Gewonnen = true;
+			System.out.println("gewonnen");
+			RealPosX = 0;
+		}
+			
 	}
 
 }
