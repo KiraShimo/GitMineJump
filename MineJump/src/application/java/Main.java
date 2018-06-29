@@ -46,7 +46,6 @@ public class Main extends Application {
 			primaryStage.setHeight(480);
 			//primaryStage.setMinWidth(800);
 			//primaryStage.setMinHeight(600);
-			//:::
 			primaryStage.setResizable(false);
 			primaryStage.setScene(mainmenu);
 			primaryStage.show();
@@ -55,6 +54,9 @@ public class Main extends Application {
 		}
 	}
     
+	/*public void setvolume(final double volume, MediaPlayer musicplayer) {
+    	musicplayer.setVolume(volume);
+    }*/
 	
 	public static void main(String[] args) {
 		launch(args);

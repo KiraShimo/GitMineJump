@@ -35,9 +35,13 @@ public class MainController{
 		menu.level(primaryStage);
 	}
 	
-	//Aufrul Einstellungsmenü
+	//Aufruf Einstellungsmenü
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
+		//Scene scene = primaryStage.getScene();
+		//Slider slider= (Slider) scene.lookup("#SliderMusic");
+		//final double volume = musicplayer.getVolume();
+		//slider.setValue(volume);
 		menu.settings(primaryStage);
 	}
 
@@ -57,6 +61,23 @@ public class MainController{
 		double volume = slider.getValue(); 
 		musicplayer.setVolume(volume);
 		menu.mainmenu(primaryStage);
+		/*//main.start(primaryStage);
+			Scene scene = primaryStage.getScene();
+			Slider slider= (Slider) scene.lookup("#SliderMusic");
+			double volume = slider.getValue();
+			Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
+			MediaPlayer musicplayer = new MediaPlayer(media);
+		       musicplayer.setAutoPlay(true);
+		       System.out.println(volume);
+		       musicplayer.setVolume(volume);   //zwischen 0 und 1 
+		       
+		      musicplayer.setOnEndOfMedia(new Runnable() {    
+		        public void run() {
+		        	musicplayer.seek(Duration.ZERO); 
+		        }
+		      });  
+		        
+			menu.mainmenu(primaryStage);*/
 	}
 	
 	//Spiel beenden
