@@ -154,7 +154,7 @@ public class Level_1 {
 					WillRaus = false;
 					Main test = new Main();
 					test.start(primaryStage);
-					
+
 				}
 			}
 		};
@@ -309,7 +309,7 @@ public class Level_1 {
 		// Kollisionsdetektion *FUNKTIONIERT MEHR ODER WENIGER* *MACHT PROBLEME MIT
 		// SIEGBEDINGUNG* probier mal ein bisschen am ersten block im ersten lv
 		if (PosX <= B01PosX + 10)
-			if (PosX >= B01PosX && PosX <= B01PosXR || SPosXR >= B01PosX && SPosXR <= B01PosXR) {
+			if (PosX <= B01PosX && PosX >= B01PosXR || SPosXR <= B01PosX && SPosXR >= B01PosXR) {
 				if (PosX <= B01PosX) {
 					PosX = B01PosX + 1;
 				}
