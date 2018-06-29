@@ -146,11 +146,13 @@ public class Level_1 {
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
 					Gewonnen = false;
+					RealPosX = 0;
 					Main test = new Main();
 					test.start(primaryStage);
 				}
 				if (WillRaus == true) {
 					WillRaus = false;
+					RealPosX = 0;
 					Main test = new Main();
 					test.start(primaryStage);
 
@@ -265,7 +267,6 @@ public class Level_1 {
 			PosY += TempoY;
 		}
 		// Sprungregelung
-		// Kommentar
 		if (Gesprungen == true) {
 			TempoY += 1;
 
@@ -290,15 +291,19 @@ public class Level_1 {
 		// BlockPositionen anpassen
 
 		if (TempoX >= 0 && PosX >= 300) {
+			if(PosX >= 51)
 			B01PosX -= TempoX;
 		}
 		if (TempoX >= 0 && PosX >= 300) {
+			if(PosX >= 51)
 			B02PosX -= TempoX;
 		}
 		if (TempoX >= 0 && PosX >= 300) {
+			if(PosX >= 51)
 			B03PosX -= TempoX;
 		}
 		if (TempoX >= 0 && PosX >= 300) {
+			if(PosX >= 51)
 			B04PosX -= TempoX;
 		}
 
@@ -307,14 +312,24 @@ public class Level_1 {
 	public void Kollisionsdetektion() {
 		// Kollisionsdetektion *FUNKTIONIERT MEHR ODER WENIGER* *MACHT PROBLEME MIT
 		// SIEGBEDINGUNG* probier mal ein bisschen am ersten block im ersten lv
-		if (PosX >= B01PosX - 35 && PosX <= B01PosXR - 35 && PosY >= 220 && PosX < B01PosX + 10
-				|| SPosXR >= B01PosX - 35 && SPosXR <= B01PosXR - 35 && PosY >= 220 && PosX < B01PosX + 10) {
-			if (PosX <= B01PosX) {
-				PosX = B01PosX + 1;
+		if ((B01PosX - 60) <= PosX && PosX <= (B01PosX + 70)) {
+			if (PosY >= 200) {
+				PosX = B01PosX - 60;
+			} else {
+
+				if (PosY + TempoY >= 182) {
+					PosY = 182;
+					TempoY = 0;
+					Gesprungen = false;
+				}
+
 			}
-			if (PosX >= B01PosX) {
-				PosX = B01PosX - 1;
-			}
+
 		}
+		if (PosX >= B01PosX + 210 && PosX <= B03PosX + 211 && Gesprungen == false) {
+			PosY = 252;
+
+		}
+
 	}
 }
