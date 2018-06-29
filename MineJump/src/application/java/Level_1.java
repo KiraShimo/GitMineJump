@@ -233,6 +233,10 @@ public class Level_1 {
 	}
 
 	public void NeuLaden() {
+		//Kollisiondetektion -extra-
+		if(PosX >= B01PosX - 10  && TempoX < 0 && PosX <= B01PosX + 230) {
+			TempoX = 0;
+		}
 		// Bewegen und Anpassen
 		if (PosX > 51) {
 			RealPosX += TempoX;
@@ -302,13 +306,14 @@ public class Level_1 {
 			if (PosX >= 51)
 				B04PosX -= TempoX;
 		}
-
+		
 	}
 
 	public void Kollisionsdetektion() {
 		// Kollisionsdetektion *FUNKTIONIERT MEHR ODER WENIGER* *MACHT PROBLEME MIT
 		// SIEGBEDINGUNG* probier mal ein bisschen am ersten block im ersten lv
-		if ((B01PosX - 60) <= PosX && PosX <= (B01PosX + 70)) {
+		// Kollision erster Block
+		if ((B01PosX - 50) <= PosX && PosX <= (B01PosX + 70)) {
 			if (PosY >= 200) {
 				PosX = B01PosX - 60;
 			} else {
@@ -322,10 +327,28 @@ public class Level_1 {
 			}
 
 		}
+		if (B01PosX + 40 <= PosX && PosX <= (B01PosX + 130)) {
+			if (PosY >= 140) {
+				PosX = B01PosX + 10;
+			} else {
+
+				if (PosY + TempoY >= 112) {
+					PosY = 112;
+					TempoY = 0;
+					Gesprungen = false;
+				}
+
+			}
+
+		}
+		
+		if (PosX >= B01PosX + 140 && PosX <= B03PosX + 141 && Gesprungen == false) {
+			PosY = 182;
+		}
 		if (PosX >= B01PosX + 210 && PosX <= B03PosX + 211 && Gesprungen == false) {
 			PosY = 252;
 
 		}
-
+		
 	}
 }
