@@ -113,7 +113,7 @@ public class Level_1 {
 		primaryStage.setScene(game);
 		primaryStage.show();
 
-		AnimationTimer animator = new AnimationTimer() {
+		AnimationTimer Spielschleife = new AnimationTimer() {
 			// Spielschleife
 			@Override
 			public void handle(long arg0) {
@@ -148,7 +148,6 @@ public class Level_1 {
 					Gewonnen = false;
 					Main test = new Main();
 					test.start(primaryStage);
-					Gewonnen = false;
 				}
 				if (WillRaus == true) {
 					WillRaus = false;
@@ -159,7 +158,7 @@ public class Level_1 {
 			}
 		};
 
-		animator.start();
+		Spielschleife.start();
 
 	}
 
@@ -308,14 +307,14 @@ public class Level_1 {
 	public void Kollisionsdetektion() {
 		// Kollisionsdetektion *FUNKTIONIERT MEHR ODER WENIGER* *MACHT PROBLEME MIT
 		// SIEGBEDINGUNG* probier mal ein bisschen am ersten block im ersten lv
-		if (PosX <= B01PosX + 10)
-			if (PosX <= B01PosX && PosX >= B01PosXR || SPosXR <= B01PosX && SPosXR >= B01PosXR) {
-				if (PosX <= B01PosX) {
-					PosX = B01PosX + 1;
-				}
-				if (PosX >= B01PosX) {
-					PosX = B01PosX - 1;
-				}
+		if (PosX >= B01PosX - 35 && PosX <= B01PosXR - 35 && PosY >= 220 && PosX < B01PosX + 10
+				|| SPosXR >= B01PosX - 35 && SPosXR <= B01PosXR - 35 && PosY >= 220 && PosX < B01PosX + 10) {
+			if (PosX <= B01PosX) {
+				PosX = B01PosX + 1;
 			}
+			if (PosX >= B01PosX) {
+				PosX = B01PosX - 1;
+			}
+		}
 	}
 }
