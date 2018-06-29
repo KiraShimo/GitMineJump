@@ -233,8 +233,8 @@ public class Level_1 {
 	}
 
 	public void NeuLaden() {
-		//Kollisiondetektion -extra-
-		if(PosX >= B01PosX - 10  && TempoX < 0 && PosX <= B01PosX + 230) {
+		// Kollisiondetektion -extra-
+		if (PosX >= B01PosX - 10 && TempoX < 0 && PosX <= B01PosX + 230) {
 			TempoX = 0;
 		}
 		// Bewegen und Anpassen
