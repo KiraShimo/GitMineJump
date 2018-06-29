@@ -276,7 +276,7 @@ public class Level_1 {
 
 		}
 		// Siegbedingung
-		if (RealPosX > 3000) {
+		if (RealPosX > 8000) {
 			Gewonnen = true;
 			System.out.println("gewonnen");
 			RealPosX = 0;
