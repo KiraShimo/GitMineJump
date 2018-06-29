@@ -13,9 +13,11 @@ import javafx.scene.shape.Box;
 import javafx.stage.Stage;
 
 public class Level_1 {
-
+	// Spieler und Hintergrundvariablen
 	public int PosX = 120;
 	public int PosY = 252;
+	public int SPosXR = PosX+64;
+	public int SPosYH = PosY+128;
 	public int bgPosX = 0;
 	public int bgPoY = -220;
 	public int UPosX = 0;
@@ -25,7 +27,13 @@ public class Level_1 {
 	private int TempoY = 0;
 	private int RealPosX = 0;
 	private boolean Gesprungen = false;
+	// Bedingungsvariablen
 	private boolean Gewonnen = false;
+	private boolean WillRaus = false;
+	// Blockvariablen
+	private int B01PosX = 0;
+	private int B01PosY = 310;
+	
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
@@ -59,7 +67,13 @@ public class Level_1 {
 		UntergrundAnzeigen.setX(UPosX);
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
-		
+
+		Image Block01 = new Image(
+				Main.class.getResource("/application/ressources/pictures/HolzNorm2.0.png").openStream());
+		ImageView B01Anzeigen = new ImageView(Block01);
+		B01Anzeigen.setX(B01PosX);
+		B01Anzeigen.setY(B01PosY);
+		rootPane.getChildren().add(B01Anzeigen);
 
 		Scene game = new Scene(rootPane);
 
@@ -95,12 +109,20 @@ public class Level_1 {
 				UntergrundAnzeigen.setX(UPosX);
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
-				if(Gewonnen == true) {
+				// Blöcke updaten
+				B01Anzeigen.setX(B01PosX);
+				B01Anzeigen.setY(B01PosY);
+				// Gewonnen test / ESC test
+				if (Gewonnen == true) {
 					Main test = new Main();
 					test.start(primaryStage);
 					Gewonnen = false;
 				}
-				
+				if (WillRaus == true) {
+					Main test = new Main();
+					test.start(primaryStage);
+					WillRaus = false;
+				}
 			}
 		};
 
@@ -133,7 +155,7 @@ public class Level_1 {
 
 				break;
 			case ESCAPE:
-				System.out.println("ESC");
+				WillRaus = true;
 				break;
 			default:
 				break;
@@ -160,8 +182,6 @@ public class Level_1 {
 				Halt();
 				break;
 			case ESCAPE:
-				System.out.println("ESC");
-				// Hier bitte main menu wieder einbinden (als Aufruf ^^)
 				break;
 			default:
 				break;
@@ -171,7 +191,6 @@ public class Level_1 {
 
 	public void Spring() {
 		if (Gesprungen == false) {
-			RealPosX += TempoX;
 			TempoY = -15;
 			Gesprungen = true;
 
@@ -180,13 +199,11 @@ public class Level_1 {
 
 	public void Rechts() {
 		TempoX = 6;
-		RealPosX += TempoX;
 		RLN = 2;
 	}
 
 	public void Links() {
 		TempoX = -6;
-		RealPosX += TempoX;
 		RLN = 1;
 
 	}
@@ -197,21 +214,25 @@ public class Level_1 {
 
 	public void NeuLaden() {
 		// Bewegen und Anpassen
+		if (PosX > 51) {
+			RealPosX += TempoX;
+		}
 		if (TempoX < 0) {
 			PosX += TempoX;
 		} else if (TempoX == 0) {
-			//tue nichts
+			// tue nichts
 
 		} else {
 			if (PosX <= 300) {
 				PosX += TempoX;
 			} else {
-				//Bewege Hintergrund
+				// Bewege Hintergrund
 				UPosX -= TempoX;
-				bgPosX -= (TempoX/2);
+				bgPosX -= (TempoX / 2);
 
 			}
 		}
+		// Hintergrund Loop
 		if (bgPosX <= -2382)
 			bgPosX = 0;
 		if (UPosX <= -1200)
@@ -221,7 +242,7 @@ public class Level_1 {
 		} else {
 			PosY += TempoY;
 		}
-
+		// Sprungregelung
 		if (Gesprungen == true) {
 			TempoY += 1;
 
@@ -232,17 +253,24 @@ public class Level_1 {
 			}
 
 		}
-
-		if(PosX + TempoX <= 50) {
+		// Nach links laufen unterbinden
+		if (PosX + TempoX <= 50) {
 			PosX = 51;
 
 		}
-		if(RealPosX > 800) {
+		// Siegbedingung
+		if (RealPosX > 8000) {
 			Gewonnen = true;
 			System.out.println("gewonnen");
 			RealPosX = 0;
 		}
-			
+		// BlockPositionen anpassen
+		
+		if(TempoX >= 0) {
+			B01PosX = 300 - RealPosX;
+		}
+		//Kollisionsdetektion
+		
 	}
 
 }
