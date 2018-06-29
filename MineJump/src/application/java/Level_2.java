@@ -141,14 +141,16 @@ public class Level_2 {
 				B04Anzeigen.setY(B04PosY);
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
+					Gewonnen = false;
 					Main test = new Main();
 					test.start(primaryStage);
 					Gewonnen = false;
 				}
 				if (WillRaus == true) {
+					WillRaus = false;
 					Main test = new Main();
 					test.start(primaryStage);
-					WillRaus = false;
+
 				}
 			}
 		};

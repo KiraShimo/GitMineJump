@@ -32,12 +32,16 @@ public class Level_1 {
 	private boolean WillRaus = false;
 	// Blockvariablen
 	private int B01PosX = 1000;
+	private int B01PosXR = B01PosX + 70;
 	private int B01PosY = 310;
 	private int B02PosX = 1070;
+	private int B02PosXR = B02PosX + 70;
 	private int B02PosY = 310;
 	private int B03PosX = 1140;
+	private int B03PosXR = B03PosX + 70;
 	private int B03PosY = 310;
 	private int B04PosX = 1070;
+	private int B04PosXR = B04PosX + 70;
 	private int B04PosY = 240;
 
 	public void spiel(Stage primaryStage) throws IOException {
@@ -141,14 +145,16 @@ public class Level_1 {
 				B04Anzeigen.setY(B04PosY);
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
+					Gewonnen = false;
 					Main test = new Main();
 					test.start(primaryStage);
 					Gewonnen = false;
 				}
 				if (WillRaus == true) {
+					WillRaus = false;
 					Main test = new Main();
 					test.start(primaryStage);
-					WillRaus = false;
+
 				}
 			}
 		};
@@ -303,7 +309,7 @@ public class Level_1 {
 		// Kollisionsdetektion *FUNKTIONIERT MEHR ODER WENIGER* *MACHT PROBLEME MIT
 		// SIEGBEDINGUNG* probier mal ein bisschen am ersten block im ersten lv
 		if (PosX <= B01PosX + 10)
-			if (PosX >= B01PosX && PosX <= B01PosX || SPosXR >= B01PosX && SPosXR <= B01PosX) {
+			if (PosX <= B01PosX && PosX >= B01PosXR || SPosXR <= B01PosX && SPosXR >= B01PosXR) {
 				if (PosX <= B01PosX) {
 					PosX = B01PosX + 1;
 				}
