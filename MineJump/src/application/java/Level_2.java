@@ -142,11 +142,13 @@ public class Level_2 {
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
 					Gewonnen = false;
+					RealPosX = 0;
 					Main test = new Main();
 					test.start(primaryStage);
 				}
 				if (WillRaus == true) {
 					WillRaus = false;
+					RealPosX = 0;
 					Main test = new Main();
 					test.start(primaryStage);
 
