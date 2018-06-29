@@ -144,7 +144,6 @@ public class Level_2 {
 					Gewonnen = false;
 					Main test = new Main();
 					test.start(primaryStage);
-					Gewonnen = false;
 				}
 				if (WillRaus == true) {
 					WillRaus = false;
