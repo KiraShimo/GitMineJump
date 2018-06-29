@@ -32,16 +32,12 @@ public class Level_1 {
 	private boolean WillRaus = false;
 	// Blockvariablen
 	private int B01PosX = 1000;
-	private int B01PosXR = B01PosX + 70;
 	private int B01PosY = 310;
 	private int B02PosX = 1070;
-	private int B02PosXR = B02PosX + 70;
 	private int B02PosY = 310;
 	private int B03PosX = 1140;
-	private int B03PosXR = B03PosX + 70;
 	private int B03PosY = 310;
 	private int B04PosX = 1070;
-	private int B04PosXR = B04PosX + 70;
 	private int B04PosY = 240;
 
 	public void spiel(Stage primaryStage) throws IOException {
@@ -291,20 +287,20 @@ public class Level_1 {
 		// BlockPositionen anpassen
 
 		if (TempoX >= 0 && PosX >= 300) {
-			if(PosX >= 51)
-			B01PosX -= TempoX;
+			if (PosX >= 51)
+				B01PosX -= TempoX;
 		}
 		if (TempoX >= 0 && PosX >= 300) {
-			if(PosX >= 51)
-			B02PosX -= TempoX;
+			if (PosX >= 51)
+				B02PosX -= TempoX;
 		}
 		if (TempoX >= 0 && PosX >= 300) {
-			if(PosX >= 51)
-			B03PosX -= TempoX;
+			if (PosX >= 51)
+				B03PosX -= TempoX;
 		}
 		if (TempoX >= 0 && PosX >= 300) {
-			if(PosX >= 51)
-			B04PosX -= TempoX;
+			if (PosX >= 51)
+				B04PosX -= TempoX;
 		}
 
 	}

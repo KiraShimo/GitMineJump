@@ -303,5 +303,24 @@ public class Level_2 {
 		// Kollisionsdetektion *FUNKTIONIERT NOCH NICHT* *MACHT PROBLEME MIT
 		// SIEGBEDINGUNG*
 
+		if ((B01PosX - 60) <= PosX && PosX <= (B01PosX + 70)) {
+			if (PosY >= 200) {
+				PosX = B01PosX - 60;
+			} else {
+
+				if (PosY + TempoY >= 182) {
+					PosY = 182;
+					TempoY = 0;
+					Gesprungen = false;
+				}
+
+			}
+
+		}
+		if (PosX >= B01PosX + 210 && PosX <= B03PosX + 211 && Gesprungen == false) {
+			PosY = 252;
+
+		}
+
 	}
 }
