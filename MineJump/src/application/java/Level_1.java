@@ -260,6 +260,7 @@ public class Level_1 {
 			PosY += TempoY;
 		}
 		// Sprungregelung
+		// Kommentar
 		if (Gesprungen == true) {
 			TempoY += 1;
 
