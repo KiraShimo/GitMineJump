@@ -12,14 +12,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Box;
 import javafx.stage.Stage;
 
-public class Level_1 {
+public class Level_2 {
 	// Spieler und Hintergrundvariablen
 	public int PosX = 120;
 	public int PosY = 252;
 	public int SPosXR = PosX + 64;
 	public int SPosYH = PosY + 128;
 	public int bgPosX = 0;
-	public int bgPoY = -220;
+	public int bgPoY = -40;
 	public int UPosX = 0;
 	public int UPosY = 380;
 	public int RLN = 0;
@@ -54,21 +54,21 @@ public class Level_1 {
 		Image SpielerLinks = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
 		Image HintergrundImage = new Image(
-				Main.class.getResource("/application/ressources/pictures/Hintergrund2.0.png").openStream());
+				Main.class.getResource("/application/ressources/pictures/Wüste.png").openStream());
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
 		HintergrundImageAufruf.setX(bgPosX);
 		HintergrundImageAufruf.setY(bgPoY);
 		rootPane.getChildren().add(HintergrundImageAufruf);
 
 		Image Untergrund = new Image(
-				Main.class.getResource("/application/ressources/pictures/Untergrund1.0.png").openStream());
+				Main.class.getResource("/application/ressources/pictures/UntergrundWueste.png").openStream());
 		ImageView UntergrundAnzeigen = new ImageView(Untergrund);
 		UntergrundAnzeigen.setX(UPosX);
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
 
 		Image Block01 = new Image(
-				Main.class.getResource("/application/ressources/pictures/HolzNorm2.0.png").openStream());
+				Main.class.getResource("/application/ressources/pictures/SandsteinBG.png").openStream());
 		ImageView B01Anzeigen = new ImageView(Block01);
 		B01Anzeigen.setX(B01PosX);
 		B01Anzeigen.setY(B01PosY);
