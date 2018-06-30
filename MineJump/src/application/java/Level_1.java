@@ -15,7 +15,9 @@ import javafx.stage.Stage;
 public class Level_1 {
 	// Spieler und Hintergrundvariablen
 	public int PosX = 120;
+	private int PosXAlt = 0;
 	public int PosY = 252;
+	private int PosYAlt = 0;
 	public int SPosXR = PosX + 64;
 	public int SPosYH = PosY + 128;
 	public int bgPosX = 0;
@@ -68,8 +70,8 @@ public class Level_1 {
 	private int B13PosY = 40;
 	private int B14PosX = 1070;
 	private int B14PosY = -30;
-	
-	//Loch 01
+
+	// Loch 01
 	private int B15PosX = 2000;
 	private int B15PosY = 380;
 	private int B16PosX = 2070;
@@ -91,8 +93,7 @@ public class Level_1 {
 		Image Laub = new Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
 		// Image LaubBG = new
 		// Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
-		Image Loch = new Image(
-				Main.class.getResource("/application/ressources/pictures/DirtOGBG.png").openStream());
+		Image Loch = new Image(Main.class.getResource("/application/ressources/pictures/DirtOGBG.png").openStream());
 		Image BaumBG = new Image(
 				Main.class.getResource("/application/ressources/pictures/HolzHint2.0.png").openStream());
 		Image HintergrundImage = new Image(
@@ -181,27 +182,26 @@ public class Level_1 {
 		B14Anzeigen.setX(B14PosX);
 		B14Anzeigen.setY(B14PosY);
 		rootPane.getChildren().add(B14Anzeigen);
-		
-		//Loch 01
-		
+
+		// Loch 01
+
 		ImageView B15Anzeigen = new ImageView(Loch);
 		B15Anzeigen.setX(B15PosX);
 		B15Anzeigen.setY(B15PosY);
 		rootPane.getChildren().add(B15Anzeigen);
-		
+
 		ImageView B16Anzeigen = new ImageView(Loch);
 		B16Anzeigen.setX(B16PosX);
 		B16Anzeigen.setY(B16PosY);
 		rootPane.getChildren().add(B16Anzeigen);
-		//ZielHinten
-		
-		Image Ziel01BG = new Image(
-				Main.class.getResource("/application/ressources/pictures/Ziel01.png").openStream());
+		// ZielHinten
+
+		Image Ziel01BG = new Image(Main.class.getResource("/application/ressources/pictures/Ziel01.png").openStream());
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
 		Ziel01BGAnzeiger.setY(ZPosY01);
 		rootPane.getChildren().add(Ziel01BGAnzeiger);
-		
+
 		// Spieler
 		Image SpielerBild = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne.png").openStream());
@@ -209,15 +209,14 @@ public class Level_1 {
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
-		//ZielVorne
+		// ZielVorne
 
-		Image Ziel02VG = new Image(
-				Main.class.getResource("/application/ressources/pictures/Ziel02.png").openStream());
+		Image Ziel02VG = new Image(Main.class.getResource("/application/ressources/pictures/Ziel02.png").openStream());
 		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
 		rootPane.getChildren().add(Ziel02VGAnzeiger);
-		
+
 		Scene game = new Scene(rootPane);
 
 		final Box Listener = new Box();
@@ -235,10 +234,10 @@ public class Level_1 {
 			// Spielschleife
 			@Override
 			public void handle(long arg0) {
-				
-				bgPosY = 0;
-				NeuLaden();
+
 				Kollisionsdetektion();
+				NeuLaden();
+
 				// Position Updaten
 				if (RLN == 0) {
 					Bildaufruf.setImage(SpielerBild);
@@ -283,16 +282,16 @@ public class Level_1 {
 				B13Anzeigen.setY(B13PosY);
 				B14Anzeigen.setX(B14PosX);
 				B14Anzeigen.setY(B14PosY);
-				
-				//Loch 01 aktualisieren
-				
+
+				// Loch 01 aktualisieren
+
 				B15Anzeigen.setX(B15PosX);
 				B15Anzeigen.setY(B15PosY);
 				B16Anzeigen.setX(B16PosX);
 				B16Anzeigen.setY(B16PosY);
-				
-				//Ziel Aktuallisieren
-				
+
+				// Ziel Aktuallisieren
+
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
@@ -394,6 +393,7 @@ public class Level_1 {
 	}
 
 	public void NeuLaden() {
+		PosXAlt = PosX;
 		// Kollisiondetektion -extra-
 		if (STILL == true || STILL02 == true) {
 			TempoX = 0;
@@ -510,9 +510,9 @@ public class Level_1 {
 			if (PosX >= 51)
 				B14PosX -= TempoX;
 		}
-		
-		//Loch 01 anpassen
-		
+
+		// Loch 01 anpassen
+
 		if (TempoX >= 0 && PosX >= 300) {
 			if (PosX >= 51)
 				B15PosX -= TempoX;
@@ -521,8 +521,8 @@ public class Level_1 {
 			if (PosX >= 51)
 				B16PosX -= TempoX;
 		}
-		//Ziel anpassen
-		
+		// Ziel anpassen
+
 		if (TempoX >= 0 && PosX >= 300) {
 			if (PosX >= 51)
 				ZPosX01 -= TempoX;
@@ -531,7 +531,6 @@ public class Level_1 {
 			if (PosX >= 51)
 				ZPosX02 -= TempoX;
 		}
-		
 
 	}
 
@@ -539,82 +538,85 @@ public class Level_1 {
 		// Kollisionsdetektion *FUNKTIONIERT MEHR ODER WENIGER* *MACHT PROBLEME MIT
 		// SIEGBEDINGUNG* probier mal ein bisschen am ersten block im ersten lv
 		// Kollision erster Block
-		if ((B01PosX - 50) <= PosX && PosX <= (B01PosX + 70)) {
-			if (PosY >= 200) {
-				PosX = B01PosX - 51;
-				RealPosX -= 6;
-			} else {
-
-				if (PosY + TempoY >= 182) {
-					PosY = 182;
-					TempoY = 0;
-					Gesprungen = false;
-				}
-
+		if (PosX >= B01PosX - 50 && PosX <= B01PosX + 70 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B01PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B01PosX - 49 && PosX <= B01PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
 			}
-
 		}
-		if (B01PosX + 40 <= PosX && PosX <= (B01PosX + 130)) {
-			if (PosY >= 140) {
-				PosX = B01PosX + 39;
-				RealPosX -= 6;
-			} else {
-
-				if (PosY + TempoY >= 122) {
-					PosY = 122;
-					TempoY = 0;
-					Gesprungen = false;
-				}
-
-			}
-
-		}
-
-		if (PosX >= B01PosX + 140 && PosX <= B03PosX + 141 && Gesprungen == false) {
-			PosY = 182;
-		}
+//		else {
+//			if (PosY + TempoY >= 252) {
+//				PosY = 252;
+//				TempoY = 0;
+//				Gesprungen = false;
+//			}
+//		}
+//
+//		if (B01PosX <= PosX +70 && PosX <= B01PosX + 140) {
+//			if (PosY >= 140) {
+//				PosX = B01PosX;
+//				RealPosX -= 6;
+//			} else {
+//
+//				if (PosY + TempoY >= 122) {
+//					PosY = 122;
+//					TempoY = 0;
+//					Gesprungen = false;
+//				}
+//
+//			}
+//
+//		}
+//
+//		if (PosX >= B01PosX + 140 && PosX <= B03PosX + 141 && Gesprungen == false) {
+//			PosY = 182;
+//		}
+//		if (PosX >= B01PosX -50 && PosX <= B03PosX -51 && Gesprungen == false) {
+//			PosY = 252;
+//		}
 		if (PosX >= B01PosX + 210 && PosX <= B03PosX + 211 && Gesprungen == false) {
 			PosY = 252;
 
 		}
-		if (PosX >= B01PosX - 10 && TempoX < 0 && PosX <= B01PosX + 230) {
-			STILL = true;
-		}
-		else {
-			STILL = false;
-		}
-		
-		//Kollision mit Loch 
-		
-		if(PosX >= B15PosX && PosX <= B16PosX+30 && PosY >= 249 && Gesprungen == false) {
-			
-			if(TempoX >= 0) {
+//
+//		else {
+//			STILL = false;
+//		}
+
+		// Kollision mit Loch
+
+		if (PosX >= B15PosX && PosX <= B16PosX + 30 && PosY >= 249 && Gesprungen == false) {
+
+			if (TempoX >= 0) {
 				RealPosX -= 6;
 			}
-			if(TempoX <= 0) {
+			if (TempoX <= 0) {
 				RealPosX += 6;
 			}
-			if(TempoX == 0) {
-				//tue nichts
+			if (TempoX == 0) {
+				// tue nichts
 			}
 			STILL02 = true;
-			
+
 			PosY += 4;
-		}
-		else {
+		} else {
 			STILL02 = false;
 		}
-		if(PosY >= 370) {
+		if (PosY >= 370) {
 			Gefallen = true;
-			
+
 		}
-		if(Gefallen == true) {
-			PosX = B15PosX -70;
+		if (Gefallen == true) {
+			PosX = B15PosX - 70;
 			PosY = 252;
 			RealPosX = 1800;
 			Gefallen = false;
 		}
-			
 
 	}
 

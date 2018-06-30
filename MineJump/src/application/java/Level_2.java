@@ -27,6 +27,10 @@ public class Level_2 {
 	private int TempoY = 0;
 	private int RealPosX = 0;
 	private boolean Gesprungen = false;
+	private int ZPosX01 = 2925;
+	private int ZPosY01 = 166;
+	private int ZPosX02 = 2925;
+	private int ZPosY02 = -20;
 	// Bedingungsvariablen
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
@@ -89,13 +93,28 @@ public class Level_2 {
 		B04Anzeigen.setX(B04PosX);
 		B04Anzeigen.setY(B04PosY);
 		rootPane.getChildren().add(B04Anzeigen);
+		// ZielHinten
 
+		Image Ziel01BG = new Image(Main.class.getResource("/application/ressources/pictures/Ziel01.png").openStream());
+		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
+		Ziel01BGAnzeiger.setX(ZPosX01);
+		Ziel01BGAnzeiger.setY(ZPosY01);
+		rootPane.getChildren().add(Ziel01BGAnzeiger);
+
+		// Spieler
 		Image SpielerBild = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne.png").openStream());
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
+		// ZielVorne
+
+		Image Ziel02VG = new Image(Main.class.getResource("/application/ressources/pictures/Ziel02.png").openStream());
+		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
+		Ziel02VGAnzeiger.setX(ZPosX02);
+		Ziel02VGAnzeiger.setY(ZPosY02);
+		rootPane.getChildren().add(Ziel02VGAnzeiger);
 
 		Scene game = new Scene(rootPane);
 
@@ -140,6 +159,11 @@ public class Level_2 {
 				B03Anzeigen.setY(B03PosY);
 				B04Anzeigen.setX(B04PosX);
 				B04Anzeigen.setY(B04PosY);
+
+				// Ziel anpassen
+
+				Ziel01BGAnzeiger.setX(ZPosX01);
+				Ziel02VGAnzeiger.setX(ZPosX02);
 
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
@@ -311,6 +335,15 @@ public class Level_2 {
 		if (TempoX >= 0 && PosX >= 300) {
 			B04PosX -= TempoX;
 		}
+		//Ziel anpassen
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				ZPosX01 -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				ZPosX02 -= TempoX;
+		}
 
 	}
 
@@ -358,6 +391,7 @@ public class Level_2 {
 		}
 
 	}
+
 	// Getters und Setters
 	public void setGewonnen(boolean gewonnen) {
 		Gewonnen = gewonnen;
