@@ -30,19 +30,45 @@ public class Level_1 {
 	// Bedingungsvariablen
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
+	private boolean Gefallen = false;
+	private int t = 1;
+	private int Count = 0;
 	// Blockvariablen
+	// Baum01
 	private int B01PosX = 1000;
-	private int B01PosXR = B01PosX + 70;
 	private int B01PosY = 310;
 	private int B02PosX = 1070;
-	private int B02PosXR = B02PosX + 70;
 	private int B02PosY = 310;
 	private int B03PosX = 1140;
-	private int B03PosXR = B03PosX + 70;
 	private int B03PosY = 310;
 	private int B04PosX = 1070;
-	private int B04PosXR = B04PosX + 70;
 	private int B04PosY = 240;
+	private int B05PosX = 1070;
+	private int B05PosY = 180;
+	private int B06PosX = 1070;
+	private int B06PosY = 40;
+	private int B07PosX = 1000;
+	private int B07PosY = 40;
+	private int B08PosX = 1140;
+	private int B08PosY = 40;
+	private int B09PosX = 1070;
+	private int B09PosY = 110;
+	private int B10PosX = 1140;
+	private int B10PosY = -30;
+	private int B11PosX = 1000;
+	private int B11PosY = -30;
+	private int B12PosX = 1210;
+	private int B12PosY = 40;
+	private int B13PosX = 930;
+	private int B13PosY = 40;
+	private int B14PosX = 1070;
+	private int B14PosY = -30;
+	
+	//Loch 01
+	private int B15PosX = 2000;
+	private int B15PosY = 380;
+	private int B16PosX = 2070;
+	private int B16PosY = 380;
 
 	public void spiel(Stage primaryStage) throws IOException {
 
@@ -57,6 +83,13 @@ public class Level_1 {
 				Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
 		Image SpielerLinks = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
+		Image Laub = new Image(Main.class.getResource("/application/ressources/pictures/LaubNorm.png").openStream());
+		// Image LaubBG = new
+		// Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
+		Image Loch = new Image(
+				Main.class.getResource("/application/ressources/pictures/DirtOGBG.png").openStream());
+		Image BaumBG = new Image(
+				Main.class.getResource("/application/ressources/pictures/HolzHint2.0.png").openStream());
 		Image HintergrundImage = new Image(
 				Main.class.getResource("/application/ressources/pictures/Hintergrund2.0.png").openStream());
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
@@ -73,6 +106,7 @@ public class Level_1 {
 
 		Image Block01 = new Image(
 				Main.class.getResource("/application/ressources/pictures/HolzNorm2.0.png").openStream());
+		// Baum 01
 		ImageView B01Anzeigen = new ImageView(Block01);
 		B01Anzeigen.setX(B01PosX);
 		B01Anzeigen.setY(B01PosY);
@@ -92,6 +126,68 @@ public class Level_1 {
 		B04Anzeigen.setX(B04PosX);
 		B04Anzeigen.setY(B04PosY);
 		rootPane.getChildren().add(B04Anzeigen);
+
+		ImageView B05Anzeigen = new ImageView(BaumBG);
+		B05Anzeigen.setX(B05PosX);
+		B05Anzeigen.setY(B05PosY);
+		rootPane.getChildren().add(B05Anzeigen);
+
+		ImageView B06Anzeigen = new ImageView(Laub);
+		B06Anzeigen.setX(B06PosX);
+		B06Anzeigen.setY(B06PosY);
+		rootPane.getChildren().add(B06Anzeigen);
+
+		ImageView B07Anzeigen = new ImageView(Laub);
+		B07Anzeigen.setX(B07PosX);
+		B07Anzeigen.setY(B07PosY);
+		rootPane.getChildren().add(B07Anzeigen);
+
+		ImageView B08Anzeigen = new ImageView(Laub);
+		B08Anzeigen.setX(B08PosX);
+		B08Anzeigen.setY(B08PosY);
+		rootPane.getChildren().add(B08Anzeigen);
+
+		ImageView B09Anzeigen = new ImageView(BaumBG);
+		B09Anzeigen.setX(B09PosX);
+		B09Anzeigen.setY(B09PosY);
+		rootPane.getChildren().add(B09Anzeigen);
+
+		ImageView B10Anzeigen = new ImageView(Laub);
+		B10Anzeigen.setX(B10PosX);
+		B10Anzeigen.setY(B10PosY);
+		rootPane.getChildren().add(B10Anzeigen);
+
+		ImageView B11Anzeigen = new ImageView(Laub);
+		B11Anzeigen.setX(B11PosX);
+		B11Anzeigen.setY(B11PosY);
+		rootPane.getChildren().add(B11Anzeigen);
+
+		ImageView B12Anzeigen = new ImageView(Laub);
+		B12Anzeigen.setX(B12PosX);
+		B12Anzeigen.setY(B12PosY);
+		rootPane.getChildren().add(B12Anzeigen);
+
+		ImageView B13Anzeigen = new ImageView(Laub);
+		B13Anzeigen.setX(B13PosX);
+		B13Anzeigen.setY(B13PosY);
+		rootPane.getChildren().add(B13Anzeigen);
+
+		ImageView B14Anzeigen = new ImageView(Laub);
+		B14Anzeigen.setX(B14PosX);
+		B14Anzeigen.setY(B14PosY);
+		rootPane.getChildren().add(B14Anzeigen);
+		
+		//Loch 01
+		
+		ImageView B15Anzeigen = new ImageView(Loch);
+		B15Anzeigen.setX(B15PosX);
+		B15Anzeigen.setY(B15PosY);
+		rootPane.getChildren().add(B15Anzeigen);
+		
+		ImageView B16Anzeigen = new ImageView(Loch);
+		B16Anzeigen.setX(B16PosX);
+		B16Anzeigen.setY(B16PosY);
+		rootPane.getChildren().add(B16Anzeigen);
 
 		Image SpielerBild = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne.png").openStream());
@@ -135,6 +231,7 @@ public class Level_1 {
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
 				// Blöcke updaten
+				// Baum 01 Aktualisieren
 				B01Anzeigen.setX(B01PosX);
 				B01Anzeigen.setY(B01PosY);
 				B02Anzeigen.setX(B02PosX);
@@ -143,14 +240,48 @@ public class Level_1 {
 				B03Anzeigen.setY(B03PosY);
 				B04Anzeigen.setX(B04PosX);
 				B04Anzeigen.setY(B04PosY);
+				B05Anzeigen.setX(B05PosX);
+				B05Anzeigen.setY(B05PosY);
+				B06Anzeigen.setX(B06PosX);
+				B06Anzeigen.setY(B06PosY);
+				B07Anzeigen.setX(B07PosX);
+				B07Anzeigen.setY(B07PosY);
+				B08Anzeigen.setX(B08PosX);
+				B08Anzeigen.setY(B08PosY);
+				B09Anzeigen.setX(B09PosX);
+				B09Anzeigen.setY(B09PosY);
+				B10Anzeigen.setX(B10PosX);
+				B10Anzeigen.setY(B10PosY);
+				B11Anzeigen.setX(B11PosX);
+				B11Anzeigen.setY(B11PosY);
+				B12Anzeigen.setX(B12PosX);
+				B12Anzeigen.setY(B12PosY);
+				B13Anzeigen.setX(B13PosX);
+				B13Anzeigen.setY(B13PosY);
+				B14Anzeigen.setX(B14PosX);
+				B14Anzeigen.setY(B14PosY);
+				
+				//Loch 01 aktualisieren
+				
+				B15Anzeigen.setX(B15PosX);
+				B15Anzeigen.setY(B15PosY);
+				B16Anzeigen.setX(B16PosX);
+				B16Anzeigen.setY(B16PosY);
+
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
 					Gewonnen = false;
+					RealPosX = 0;
+					PosX = 0;
+					TempoX = 0;
 					Main test = new Main();
 					test.start(primaryStage);
 				}
 				if (WillRaus == true) {
 					WillRaus = false;
+					RealPosX = 0;
+					PosX = 0;
+					TempoX = 0;
 					Main test = new Main();
 					test.start(primaryStage);
 
@@ -235,6 +366,10 @@ public class Level_1 {
 	}
 
 	public void NeuLaden() {
+		// Kollisiondetektion -extra-
+		if (PosX >= B01PosX - 10 && TempoX < 0 && PosX <= B01PosX + 230) {
+			TempoX = 0;
+		}
 		// Bewegen und Anpassen
 		if (PosX > 51) {
 			RealPosX += TempoX;
@@ -265,7 +400,6 @@ public class Level_1 {
 			PosY += TempoY;
 		}
 		// Sprungregelung
-		// Kommentar
 		if (Gesprungen == true) {
 			TempoY += 1;
 
@@ -282,24 +416,82 @@ public class Level_1 {
 
 		}
 		// Siegbedingung
-		if (RealPosX > 8000) {
-			Gewonnen = true;
-			System.out.println("gewonnen");
-			RealPosX = 0;
+		if (t == 1) {
+			if (RealPosX > 3000) {
+				Gewonnen = true;
+				t = 0;
+				System.out.println("gewonnen");
+				RealPosX = 0;
+			}
 		}
 		// BlockPositionen anpassen
-
+		// Baum 01
 		if (TempoX >= 0 && PosX >= 300) {
-			B01PosX -= TempoX;
+			if (PosX >= 51)
+				B01PosX -= TempoX;
 		}
 		if (TempoX >= 0 && PosX >= 300) {
-			B02PosX -= TempoX;
+			if (PosX >= 51)
+				B02PosX -= TempoX;
 		}
 		if (TempoX >= 0 && PosX >= 300) {
-			B03PosX -= TempoX;
+			if (PosX >= 51)
+				B03PosX -= TempoX;
 		}
 		if (TempoX >= 0 && PosX >= 300) {
-			B04PosX -= TempoX;
+			if (PosX >= 51)
+				B04PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B05PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B06PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B07PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B08PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B09PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B10PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B11PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B12PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B13PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B14PosX -= TempoX;
+		}
+		
+		//Loch 01 anpassen
+		
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B15PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B16PosX -= TempoX;
 		}
 
 	}
@@ -307,14 +499,68 @@ public class Level_1 {
 	public void Kollisionsdetektion() {
 		// Kollisionsdetektion *FUNKTIONIERT MEHR ODER WENIGER* *MACHT PROBLEME MIT
 		// SIEGBEDINGUNG* probier mal ein bisschen am ersten block im ersten lv
-		if (PosX >= B01PosX - 35 && PosX <= B01PosXR - 35 && PosY >= 220 && PosX < B01PosX + 10
-				|| SPosXR >= B01PosX - 35 && SPosXR <= B01PosXR - 35 && PosY >= 220 && PosX < B01PosX + 10) {
-			if (PosX <= B01PosX) {
-				PosX = B01PosX + 1;
+		// Kollision erster Block
+		if ((B01PosX - 50) <= PosX && PosX <= (B01PosX + 70)) {
+			if (PosY >= 200) {
+				PosX = B01PosX - 51;
+				RealPosX -= 6;
+			} else {
+
+				if (PosY + TempoY >= 182) {
+					PosY = 182;
+					TempoY = 0;
+					Gesprungen = false;
+				}
+
 			}
-			if (PosX >= B01PosX) {
-				PosX = B01PosX - 1;
-			}
+
 		}
+		if (B01PosX + 40 <= PosX && PosX <= (B01PosX + 130)) {
+			if (PosY >= 140) {
+				PosX = B01PosX + 39;
+				RealPosX -= 6;
+			} else {
+
+				if (PosY + TempoY >= 122) {
+					PosY = 122;
+					TempoY = 0;
+					Gesprungen = false;
+				}
+
+			}
+
+		}
+
+		if (PosX >= B01PosX + 140 && PosX <= B03PosX + 141 && Gesprungen == false) {
+			PosY = 182;
+		}
+		if (PosX >= B01PosX + 210 && PosX <= B03PosX + 211 && Gesprungen == false) {
+			PosY = 252;
+
+		}
+		
+		//Kollision mit Loch 
+		
+		if(PosX >= B15PosX && PosX <= B16PosX+70 && PosY <= 309 && Gesprungen == false) {
+			TempoX = 0;
+			PosY += 60;
+			Count += 1;
+		}
+		if(PosY >= 300 &&  Count >= 60) {
+			Gefallen = true;
+			
+		}
+		if(Gefallen == true) {
+			PosX = B15PosX -20;
+			PosY = 252;
+			Gefallen = false;
+		}
+			
+
+	}
+
+	// Getters und Setters
+	public void setGewonnen(boolean gewonnen) {
+		Gewonnen = gewonnen;
 	}
 }
