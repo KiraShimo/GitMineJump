@@ -21,7 +21,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="BtnLevel3" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="3" textFill="WHITE" translateX="-60.0">
+      <Button fx:id="BtnLevel3" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" onAction="#BtnLevel3Action" prefHeight="50.0" prefWidth="50.0" text="3" textFill="WHITE" translateX="-60.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -69,6 +69,11 @@
       <Button fx:id="BtnLevel12" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="12" textFill="WHITE" translateX="150.0">
          <font>
             <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevelBack" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnLevelBackAction" prefHeight="20.0" prefWidth="200.0" text="Zurück zum Hauptmenü" textFill="WHITE" translateX="-100.0" translateY="100.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
          </font>
       </Button>
    </children>

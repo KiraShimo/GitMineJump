@@ -58,32 +58,10 @@ public class MainController{
 		//main.start(primaryStage);
 		Scene scene = primaryStage.getScene();
 		Slider slider= (Slider) scene.lookup("#SliderMusic");
-		double volume = slider.getValue(); 
-		musicplayer.setVolume(volume);
+		double volume = slider.getValue();
+		System.out.println(volume);
+		main.setvolume(volume);
 		menu.mainmenu(primaryStage);
-		/*//main.start(primaryStage);
-			Scene scene = primaryStage.getScene();
-			Slider slider= (Slider) scene.lookup("#SliderMusic");
-			double volume = slider.getValue();
-			Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
-			MediaPlayer musicplayer = new MediaPlayer(media);
-		       musicplayer.setAutoPlay(true);
-		       System.out.println(volume);
-		       musicplayer.setVolume(volume);   //zwischen 0 und 1 
-		       
-		      musicplayer.setOnEndOfMedia(new Runnable() {    
-		        public void run() {
-		        	musicplayer.seek(Duration.ZERO); 
-		        }
-		      });  
-		        
-			menu.mainmenu(primaryStage);*/
-	}
-	
-	//Spiel beenden
-	@FXML
-	private void BtnExitAction(ActionEvent actionEvent) {
-		Platform.exit();
 	}
 	
 	//Level starten - Spielaufruf in Menu.java
@@ -96,5 +74,29 @@ public class MainController{
 	@FXML
 	private void BtnLevel2Action(ActionEvent actionEvent) throws IOException {
 		menu.spiel2(primaryStage);
+	}
+	
+	//Level 3 starten - Spielaufruf in Menu.java     - - - - - - - - zurzeit Test für Win-Screen
+	@FXML
+	private void BtnLevel3Action(ActionEvent actionEvent) throws IOException {
+		menu.win(primaryStage);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {              // Test für Win-Screen
+			e.printStackTrace();
+		}
+		menu.level(primaryStage);
+	}
+
+	//Level starten - Spielaufruf in Menu.java
+	@FXML
+	private void BtnLevelBackAction(ActionEvent actionEvent) throws IOException {
+		menu.mainmenu(primaryStage);
+	}
+	
+	//Spiel beenden
+	@FXML
+	private void BtnExitAction(ActionEvent actionEvent) {
+		Platform.exit();
 	}
 }

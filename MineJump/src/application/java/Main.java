@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Main extends Application {
+	
+	private MediaPlayer musicplayer;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		
@@ -16,7 +19,7 @@ public class Main extends Application {
 		
 		//Musik initialisieren
 		Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
-		MediaPlayer musicplayer = new MediaPlayer(media);
+		musicplayer = new MediaPlayer(media);
         musicplayer.setAutoPlay(true);
         musicplayer.setVolume(0.2);   //zwischen 0 und 1 
         
@@ -40,12 +43,9 @@ public class Main extends Application {
 			
 			//Initialisierung Scene und Stage
 			Scene mainmenu = new Scene(pane);
-			//mainmenu.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
 			primaryStage.setTitle("MineJump");
 			primaryStage.setWidth(854);
 			primaryStage.setHeight(480);
-			//primaryStage.setMinWidth(800);
-			//primaryStage.setMinHeight(600);
 			primaryStage.setResizable(false);
 			primaryStage.setScene(mainmenu);
 			primaryStage.show();
@@ -54,9 +54,11 @@ public class Main extends Application {
 		}
 	}
     
-	/*public void setvolume(final double volume, MediaPlayer musicplayer) {
-    	musicplayer.setVolume(volume);
-    }*/
+	public void setvolume(final double volume) {
+    	System.out.println(musicplayer);
+    	System.out.println(volume);
+		musicplayer.setVolume(volume);
+    }
 	
 	public static void main(String[] args) {
 		launch(args);

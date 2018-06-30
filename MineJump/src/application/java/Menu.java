@@ -26,8 +26,23 @@ public class Menu {
 
 	public void level(Stage primaryStage) {
 		try {
-			// Levelmenü laden und anzeigen & MainController aktualisieren
+			// Levelmenü laden und anzeigen
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Level.fxml"));
+			Pane pane = root.load();
+			Scene level = new Scene(pane);
+			MainController mainController = root.getController();
+			mainController.setPrimaryStage(primaryStage);
+			primaryStage.setScene(level);
+			primaryStage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void win(Stage primaryStage) {
+		try {
+			// Level beendet laden und anzeigen
+			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Win.fxml"));
 			Pane pane = root.load();
 			Scene level = new Scene(pane);
 			MainController mainController = root.getController();
@@ -41,7 +56,7 @@ public class Menu {
 
 	public void settings(Stage primaryStage) {
 		try {
-			// Levelmenü laden und anzeigen & MainController aktualisieren
+			// Einstellungsmenü laden und anzeigen
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Settings.fxml"));
 			Pane pane = root.load();
 			Scene level = new Scene(pane);

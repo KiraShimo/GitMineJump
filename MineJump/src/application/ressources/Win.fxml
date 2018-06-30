@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.java.MainController">
+   <children>
+      <Label layoutX="427.0" layoutY="240.0" text="Gewonnen!" textFill="WHITE" translateX="-128.2" translateY="-100.0">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="427.0" layoutY="240.0" text="Gleich ein anderes Level auswählen!" textFill="WHITE" translateX="-100.59" translateY="-20.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
