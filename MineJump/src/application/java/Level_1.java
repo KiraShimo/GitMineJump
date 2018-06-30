@@ -30,6 +30,7 @@ public class Level_1 {
 	// Bedingungsvariablen
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
+	private int t = 1;
 	// Blockvariablen
 	private int B01PosX = 1000;
 	private int B01PosY = 310;
@@ -39,6 +40,16 @@ public class Level_1 {
 	private int B03PosY = 310;
 	private int B04PosX = 1070;
 	private int B04PosY = 240;
+	private int B05PosX = 1070;
+	private int B05PosY = 180;
+	private int B06PosX = 1070;
+	private int B06PosY = 40;
+	private int B07PosX = 1000;
+	private int B07PosY = 40;
+	private int B08PosX = 1140;
+	private int B08PosY = 40;
+	private int B09PosX = 1070;
+	private int B09PosY = 110;
 
 	public void spiel(Stage primaryStage) throws IOException {
 
@@ -53,6 +64,10 @@ public class Level_1 {
 				Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
 		Image SpielerLinks = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
+		Image Laub = new Image(Main.class.getResource("/application/ressources/pictures/LaubNorm.png").openStream());
+		Image LaubBG = new Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
+		Image BaumBG = new Image(
+				Main.class.getResource("/application/ressources/pictures/HolzHint2.0.png").openStream());
 		Image HintergrundImage = new Image(
 				Main.class.getResource("/application/ressources/pictures/Hintergrund2.0.png").openStream());
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
@@ -88,6 +103,31 @@ public class Level_1 {
 		B04Anzeigen.setX(B04PosX);
 		B04Anzeigen.setY(B04PosY);
 		rootPane.getChildren().add(B04Anzeigen);
+
+		ImageView B05Anzeigen = new ImageView(BaumBG);
+		B04Anzeigen.setX(B05PosX);
+		B04Anzeigen.setY(B05PosY);
+		rootPane.getChildren().add(B05Anzeigen);
+
+		ImageView B09Anzeigen = new ImageView(BaumBG);
+		B04Anzeigen.setX(B09PosX);
+		B04Anzeigen.setY(B09PosY);
+		rootPane.getChildren().add(B09Anzeigen);
+
+		ImageView B06Anzeigen = new ImageView(Laub);
+		B04Anzeigen.setX(B06PosX);
+		B04Anzeigen.setY(B06PosY);
+		rootPane.getChildren().add(B06Anzeigen);
+
+		ImageView B07Anzeigen = new ImageView(Laub);
+		B04Anzeigen.setX(B07PosX);
+		B04Anzeigen.setY(B07PosY);
+		rootPane.getChildren().add(B07Anzeigen);
+
+		ImageView B08Anzeigen = new ImageView(Laub);
+		B04Anzeigen.setX(B08PosX);
+		B04Anzeigen.setY(B08PosY);
+		rootPane.getChildren().add(B08Anzeigen);
 
 		Image SpielerBild = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne.png").openStream());
@@ -139,16 +179,31 @@ public class Level_1 {
 				B03Anzeigen.setY(B03PosY);
 				B04Anzeigen.setX(B04PosX);
 				B04Anzeigen.setY(B04PosY);
+				B05Anzeigen.setX(B05PosX);
+				B05Anzeigen.setY(B05PosY);
+				B06Anzeigen.setX(B06PosX);
+				B06Anzeigen.setY(B06PosY);
+				B07Anzeigen.setX(B07PosX);
+				B07Anzeigen.setY(B07PosY);
+				B08Anzeigen.setX(B08PosX);
+				B08Anzeigen.setY(B08PosY);
+				B09Anzeigen.setX(B09PosX);
+				B09Anzeigen.setY(B09PosY);
+
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
 					Gewonnen = false;
 					RealPosX = 0;
+					PosX = 0;
+					TempoX = 0;
 					Main test = new Main();
 					test.start(primaryStage);
 				}
 				if (WillRaus == true) {
 					WillRaus = false;
 					RealPosX = 0;
+					PosX = 0;
+					TempoX = 0;
 					Main test = new Main();
 					test.start(primaryStage);
 
@@ -283,10 +338,13 @@ public class Level_1 {
 
 		}
 		// Siegbedingung
-		if (RealPosX > 8000) {
-			Gewonnen = true;
-			System.out.println("gewonnen");
-			RealPosX = 0;
+		if (t == 1) {
+			if (RealPosX > 3000) {
+				Gewonnen = true;
+				t = 0;
+				System.out.println("gewonnen");
+				RealPosX = 0;
+			}
 		}
 		// BlockPositionen anpassen
 
@@ -306,7 +364,27 @@ public class Level_1 {
 			if (PosX >= 51)
 				B04PosX -= TempoX;
 		}
-		
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B05PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B06PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B07PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B08PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B09PosX -= TempoX;
+		}
+
 	}
 
 	public void Kollisionsdetektion() {
@@ -315,7 +393,8 @@ public class Level_1 {
 		// Kollision erster Block
 		if ((B01PosX - 50) <= PosX && PosX <= (B01PosX + 70)) {
 			if (PosY >= 200) {
-				PosX = B01PosX - 60;
+				PosX = B01PosX - 51;
+				RealPosX -= 6;
 			} else {
 
 				if (PosY + TempoY >= 182) {
@@ -329,7 +408,8 @@ public class Level_1 {
 		}
 		if (B01PosX + 40 <= PosX && PosX <= (B01PosX + 130)) {
 			if (PosY >= 140) {
-				PosX = B01PosX + 10;
+				PosX = B01PosX + 39;
+				RealPosX -= 6;
 			} else {
 
 				if (PosY + TempoY >= 112) {
@@ -341,7 +421,7 @@ public class Level_1 {
 			}
 
 		}
-		
+
 		if (PosX >= B01PosX + 140 && PosX <= B03PosX + 141 && Gesprungen == false) {
 			PosY = 182;
 		}
@@ -349,6 +429,11 @@ public class Level_1 {
 			PosY = 252;
 
 		}
-		
+
+	}
+
+	// Getters und Setters
+	public void setGewonnen(boolean gewonnen) {
+		Gewonnen = gewonnen;
 	}
 }
