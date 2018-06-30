@@ -19,7 +19,7 @@ public class Level_1 {
 	public int SPosXR = PosX + 64;
 	public int SPosYH = PosY + 128;
 	public int bgPosX = 0;
-	public int bgPoY = -220;
+	public int bgPosY = -220;
 	public int UPosX = 0;
 	public int UPosY = 380;
 	public int RLN = 0;
@@ -27,12 +27,17 @@ public class Level_1 {
 	private int TempoY = 0;
 	private int RealPosX = 0;
 	private boolean Gesprungen = false;
+	private int ZPosX01 = 2925;
+	private int ZPosY01 = 166;
+	private int ZPosX02 = 2925;
+	private int ZPosY02 = -20;
 	// Bedingungsvariablen
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
 	private boolean Gefallen = false;
 	private int t = 1;
-	private int Count = 0;
+	private boolean STILL = false;
+	private boolean STILL02 = false;
 	// Blockvariablen
 	// Baum01
 	private int B01PosX = 1000;
@@ -83,7 +88,7 @@ public class Level_1 {
 				Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
 		Image SpielerLinks = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
-		Image Laub = new Image(Main.class.getResource("/application/ressources/pictures/LaubNorm.png").openStream());
+		Image Laub = new Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
 		// Image LaubBG = new
 		// Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
 		Image Loch = new Image(
@@ -94,7 +99,7 @@ public class Level_1 {
 				Main.class.getResource("/application/ressources/pictures/Hintergrund2.0.png").openStream());
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
 		HintergrundImageAufruf.setX(bgPosX);
-		HintergrundImageAufruf.setY(bgPoY);
+		HintergrundImageAufruf.setY(bgPosY);
 		rootPane.getChildren().add(HintergrundImageAufruf);
 
 		Image Untergrund = new Image(
@@ -188,14 +193,31 @@ public class Level_1 {
 		B16Anzeigen.setX(B16PosX);
 		B16Anzeigen.setY(B16PosY);
 		rootPane.getChildren().add(B16Anzeigen);
-
+		//ZielHinten
+		
+		Image Ziel01BG = new Image(
+				Main.class.getResource("/application/ressources/pictures/Ziel01.png").openStream());
+		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
+		Ziel01BGAnzeiger.setX(ZPosX01);
+		Ziel01BGAnzeiger.setY(ZPosY01);
+		rootPane.getChildren().add(Ziel01BGAnzeiger);
+		
+		// Spieler
 		Image SpielerBild = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne.png").openStream());
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
+		//ZielVorne
 
+		Image Ziel02VG = new Image(
+				Main.class.getResource("/application/ressources/pictures/Ziel02.png").openStream());
+		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
+		Ziel02VGAnzeiger.setX(ZPosX02);
+		Ziel02VGAnzeiger.setY(ZPosY02);
+		rootPane.getChildren().add(Ziel02VGAnzeiger);
+		
 		Scene game = new Scene(rootPane);
 
 		final Box Listener = new Box();
@@ -213,7 +235,8 @@ public class Level_1 {
 			// Spielschleife
 			@Override
 			public void handle(long arg0) {
-
+				
+				bgPosY = 0;
 				NeuLaden();
 				Kollisionsdetektion();
 				// Position Updaten
@@ -267,6 +290,11 @@ public class Level_1 {
 				B15Anzeigen.setY(B15PosY);
 				B16Anzeigen.setX(B16PosX);
 				B16Anzeigen.setY(B16PosY);
+				
+				//Ziel Aktuallisieren
+				
+				Ziel01BGAnzeiger.setX(ZPosX01);
+				Ziel02VGAnzeiger.setX(ZPosX02);
 
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
@@ -367,7 +395,7 @@ public class Level_1 {
 
 	public void NeuLaden() {
 		// Kollisiondetektion -extra-
-		if (PosX >= B01PosX - 10 && TempoX < 0 && PosX <= B01PosX + 230) {
+		if (STILL == true || STILL02 == true) {
 			TempoX = 0;
 		}
 		// Bewegen und Anpassen
@@ -493,6 +521,17 @@ public class Level_1 {
 			if (PosX >= 51)
 				B16PosX -= TempoX;
 		}
+		//Ziel anpassen
+		
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				ZPosX01 -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				ZPosX02 -= TempoX;
+		}
+		
 
 	}
 
@@ -538,20 +577,41 @@ public class Level_1 {
 			PosY = 252;
 
 		}
+		if (PosX >= B01PosX - 10 && TempoX < 0 && PosX <= B01PosX + 230) {
+			STILL = true;
+		}
+		else {
+			STILL = false;
+		}
 		
 		//Kollision mit Loch 
 		
-		if(PosX >= B15PosX && PosX <= B16PosX+70 && PosY >= 260 && Gesprungen == false) {
-			TempoX = 0;
-			PosY += 1;
+		if(PosX >= B15PosX && PosX <= B16PosX+30 && PosY >= 249 && Gesprungen == false) {
+			
+			if(TempoX >= 0) {
+				RealPosX -= 6;
+			}
+			if(TempoX <= 0) {
+				RealPosX += 6;
+			}
+			if(TempoX == 0) {
+				//tue nichts
+			}
+			STILL02 = true;
+			
+			PosY += 4;
 		}
-		if(PosY >= 300) {
+		else {
+			STILL02 = false;
+		}
+		if(PosY >= 370) {
 			Gefallen = true;
 			
 		}
 		if(Gefallen == true) {
-			PosX = B15PosX -20;
+			PosX = B15PosX -70;
 			PosY = 252;
+			RealPosX = 1800;
 			Gefallen = false;
 		}
 			
