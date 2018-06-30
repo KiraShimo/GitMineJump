@@ -32,6 +32,7 @@ public class Level_1 {
 	private boolean WillRaus = false;
 	private int t = 1;
 	// Blockvariablen
+	// Baum01
 	private int B01PosX = 1000;
 	private int B01PosY = 310;
 	private int B02PosX = 1070;
@@ -50,6 +51,16 @@ public class Level_1 {
 	private int B08PosY = 40;
 	private int B09PosX = 1070;
 	private int B09PosY = 110;
+	private int B10PosX = 1140;
+	private int B10PosY = -30;
+	private int B11PosX = 1000;
+	private int B11PosY = -30;
+	private int B12PosX = 1210;
+	private int B12PosY = 40;
+	private int B13PosX = 930;
+	private int B13PosY = 40;
+	private int B14PosX = 1070;
+	private int B14PosY = -30;
 
 	public void spiel(Stage primaryStage) throws IOException {
 
@@ -65,7 +76,8 @@ public class Level_1 {
 		Image SpielerLinks = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
 		Image Laub = new Image(Main.class.getResource("/application/ressources/pictures/LaubNorm.png").openStream());
-		Image LaubBG = new Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
+		// Image LaubBG = new
+		// Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
 		Image BaumBG = new Image(
 				Main.class.getResource("/application/ressources/pictures/HolzHint2.0.png").openStream());
 		Image HintergrundImage = new Image(
@@ -84,6 +96,7 @@ public class Level_1 {
 
 		Image Block01 = new Image(
 				Main.class.getResource("/application/ressources/pictures/HolzNorm2.0.png").openStream());
+		// Baum 01
 		ImageView B01Anzeigen = new ImageView(Block01);
 		B01Anzeigen.setX(B01PosX);
 		B01Anzeigen.setY(B01PosY);
@@ -105,29 +118,54 @@ public class Level_1 {
 		rootPane.getChildren().add(B04Anzeigen);
 
 		ImageView B05Anzeigen = new ImageView(BaumBG);
-		B04Anzeigen.setX(B05PosX);
-		B04Anzeigen.setY(B05PosY);
+		B05Anzeigen.setX(B05PosX);
+		B05Anzeigen.setY(B05PosY);
 		rootPane.getChildren().add(B05Anzeigen);
 
-		ImageView B09Anzeigen = new ImageView(BaumBG);
-		B04Anzeigen.setX(B09PosX);
-		B04Anzeigen.setY(B09PosY);
-		rootPane.getChildren().add(B09Anzeigen);
-
 		ImageView B06Anzeigen = new ImageView(Laub);
-		B04Anzeigen.setX(B06PosX);
-		B04Anzeigen.setY(B06PosY);
+		B06Anzeigen.setX(B06PosX);
+		B06Anzeigen.setY(B06PosY);
 		rootPane.getChildren().add(B06Anzeigen);
 
 		ImageView B07Anzeigen = new ImageView(Laub);
-		B04Anzeigen.setX(B07PosX);
-		B04Anzeigen.setY(B07PosY);
+		B07Anzeigen.setX(B07PosX);
+		B07Anzeigen.setY(B07PosY);
 		rootPane.getChildren().add(B07Anzeigen);
 
 		ImageView B08Anzeigen = new ImageView(Laub);
-		B04Anzeigen.setX(B08PosX);
-		B04Anzeigen.setY(B08PosY);
+		B08Anzeigen.setX(B08PosX);
+		B08Anzeigen.setY(B08PosY);
 		rootPane.getChildren().add(B08Anzeigen);
+
+		ImageView B09Anzeigen = new ImageView(BaumBG);
+		B09Anzeigen.setX(B09PosX);
+		B09Anzeigen.setY(B09PosY);
+		rootPane.getChildren().add(B09Anzeigen);
+
+		ImageView B10Anzeigen = new ImageView(Laub);
+		B10Anzeigen.setX(B10PosX);
+		B10Anzeigen.setY(B10PosY);
+		rootPane.getChildren().add(B10Anzeigen);
+
+		ImageView B11Anzeigen = new ImageView(Laub);
+		B11Anzeigen.setX(B11PosX);
+		B11Anzeigen.setY(B11PosY);
+		rootPane.getChildren().add(B11Anzeigen);
+
+		ImageView B12Anzeigen = new ImageView(Laub);
+		B12Anzeigen.setX(B12PosX);
+		B12Anzeigen.setY(B12PosY);
+		rootPane.getChildren().add(B12Anzeigen);
+
+		ImageView B13Anzeigen = new ImageView(Laub);
+		B13Anzeigen.setX(B13PosX);
+		B13Anzeigen.setY(B13PosY);
+		rootPane.getChildren().add(B13Anzeigen);
+
+		ImageView B14Anzeigen = new ImageView(Laub);
+		B14Anzeigen.setX(B14PosX);
+		B14Anzeigen.setY(B14PosY);
+		rootPane.getChildren().add(B14Anzeigen);
 
 		Image SpielerBild = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne.png").openStream());
@@ -171,6 +209,7 @@ public class Level_1 {
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
 				// Blöcke updaten
+				// Baum 01 Aktualisieren
 				B01Anzeigen.setX(B01PosX);
 				B01Anzeigen.setY(B01PosY);
 				B02Anzeigen.setX(B02PosX);
@@ -189,6 +228,16 @@ public class Level_1 {
 				B08Anzeigen.setY(B08PosY);
 				B09Anzeigen.setX(B09PosX);
 				B09Anzeigen.setY(B09PosY);
+				B10Anzeigen.setX(B10PosX);
+				B10Anzeigen.setY(B10PosY);
+				B11Anzeigen.setX(B11PosX);
+				B11Anzeigen.setY(B11PosY);
+				B12Anzeigen.setX(B12PosX);
+				B12Anzeigen.setY(B12PosY);
+				B13Anzeigen.setX(B13PosX);
+				B13Anzeigen.setY(B13PosY);
+				B14Anzeigen.setX(B14PosX);
+				B14Anzeigen.setY(B14PosY);
 
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
@@ -347,7 +396,7 @@ public class Level_1 {
 			}
 		}
 		// BlockPositionen anpassen
-
+		// Baum 01
 		if (TempoX >= 0 && PosX >= 300) {
 			if (PosX >= 51)
 				B01PosX -= TempoX;
@@ -384,6 +433,26 @@ public class Level_1 {
 			if (PosX >= 51)
 				B09PosX -= TempoX;
 		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B10PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B11PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B12PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B13PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B14PosX -= TempoX;
+		}
 
 	}
 
@@ -412,8 +481,8 @@ public class Level_1 {
 				RealPosX -= 6;
 			} else {
 
-				if (PosY + TempoY >= 112) {
-					PosY = 112;
+				if (PosY + TempoY >= 122) {
+					PosY = 122;
 					TempoY = 0;
 					Gesprungen = false;
 				}
