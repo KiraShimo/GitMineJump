@@ -541,12 +541,11 @@ public class Level_1 {
 		
 		//Kollision mit Loch 
 		
-		if(PosX >= B15PosX && PosX <= B16PosX+70 && PosY <= 309 && Gesprungen == false) {
+		if(PosX >= B15PosX && PosX <= B16PosX+70 && PosY >= 260 && Gesprungen == false) {
 			TempoX = 0;
-			PosY += 60;
-			Count += 1;
+			PosY += 1;
 		}
-		if(PosY >= 300 &&  Count >= 60) {
+		if(PosY >= 300) {
 			Gefallen = true;
 			
 		}
