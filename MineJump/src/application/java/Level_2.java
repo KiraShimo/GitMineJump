@@ -407,9 +407,4 @@ public class Level_2 {
 
 		}
 	}
-
-	// Getters und Setters
-	public void setGewonnen(boolean gewonnen) {
-		Gewonnen = gewonnen;
-	}
 }
