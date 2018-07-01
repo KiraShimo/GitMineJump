@@ -406,5 +406,11 @@ public class Level_2 {
 			PosY = 182;
 
 		}
+		if (RealPosX >= 2750) {
+			if (PosY <= 220) {
+				PosY = 221;
+			}
+		}
 	}
+	
 }

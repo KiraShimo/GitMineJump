@@ -651,7 +651,7 @@ public class Level_1 {
 			}
 			STILL = true;
 
-			PosY += 16;
+			PosY += 30;
 		} else {
 			STILL = false;
 		}
@@ -678,6 +678,11 @@ public class Level_1 {
 			Thread.sleep(200);
 		}
 
+		if (RealPosX >= 2750) {
+			if (PosY <= 220) {
+				PosY = 221;
+			}
+		}
 	}
 
 }
