@@ -327,15 +327,16 @@ public class Level_1 {
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
+				Menu menu = new Menu();
+				
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
 					Gewonnen = false;
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
-					Menu menu = new Menu();
 					menu.win(primaryStage);
-					PauseTransition delay = new PauseTransition(Duration.seconds(5));     //Test für WinScreen
+					PauseTransition delay = new PauseTransition(Duration.seconds(5));
 					delay.setOnFinished( event -> menu.level(primaryStage) );
 					delay.play();
 				}
@@ -344,9 +345,7 @@ public class Level_1 {
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
-					Main test = new Main();
-					test.start(primaryStage);
-
+					menu.level(primaryStage);
 				}
 			}
 		};
