@@ -338,8 +338,6 @@ public class Level_1 {
 					PauseTransition delay = new PauseTransition(Duration.seconds(5));     //Test für WinScreen
 					delay.setOnFinished( event -> menu.level(primaryStage) );
 					delay.play();
-					//Main test = new Main();
-					//test.start(primaryStage);
 				}
 				if (WillRaus == true) {
 					WillRaus = false;
