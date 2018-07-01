@@ -81,10 +81,11 @@ public class MainController{
 	//Level 3 starten - Spielaufruf in Menu.java     - - - - - - - - zurzeit Test für Win-Screen
 	@FXML
 	private void BtnLevel3Action(ActionEvent actionEvent) throws IOException {
-		menu.win(primaryStage);
-		PauseTransition delay = new PauseTransition(Duration.seconds(5));     //Test für WinScreen
-		delay.setOnFinished( event -> menu.level(primaryStage) );
-		delay.play();
+//		menu.win(primaryStage);
+//		PauseTransition delay = new PauseTransition(Duration.seconds(5));     //Test für WinScreen
+//		delay.setOnFinished( event -> menu.level(primaryStage) );
+//		delay.play();
+		menu.spiel3(primaryStage);
 	}
 
 	//Level starten - Spielaufruf in Menu.java

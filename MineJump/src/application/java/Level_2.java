@@ -371,10 +371,9 @@ public class Level_2 {
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
-					Menu menu1 = new Menu();
-					menu1.win(primaryStage);
+					menu.win(primaryStage);
 					PauseTransition delay = new PauseTransition(Duration.seconds(5)); // Test für WinScreen
-					delay.setOnFinished(event -> menu1.level(primaryStage));
+					delay.setOnFinished(event -> menu.level(primaryStage));
 					delay.play();
 
 				}
@@ -820,6 +819,7 @@ public class Level_2 {
 			STILL = true;
 			PosY += 8;
 			RLN = 3;
+			Gesprungen = true;
 
 		} else {
 			STILL = false;
@@ -839,11 +839,12 @@ public class Level_2 {
 			STILL = true;
 			PosY += 8;
 			RLN = 3;
+			Gesprungen = true;
 
 		} else {
 			STILL = false;
 		}
-		if (PosY >= 253) {
+		if ( PosY >= 253) {
 			Gefallen = true;
 
 		}

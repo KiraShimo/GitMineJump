@@ -82,4 +82,10 @@ public class Menu {
 		Spiel.spiel(primaryStage);
 
 	}
+	public void spiel3(Stage primaryStage) throws IOException {
+
+		Level_3 Spiel = new Level_3();
+		Spiel.spiel(primaryStage);
+
+	}
 }
