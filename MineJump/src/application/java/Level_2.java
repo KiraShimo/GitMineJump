@@ -450,7 +450,7 @@ public class Level_2 {
 		if (t == 1) {
 			if (RealPosX > 3000) {
 				Gewonnen = true;
-				t = 0;//**
+				t = 0;
 				RealPosX = 0;
 			}
 		}

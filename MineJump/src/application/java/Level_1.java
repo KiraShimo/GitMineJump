@@ -386,7 +386,7 @@ public class Level_1 {
 					PosX = 0;
 					TempoX = 0;
 					HP = 3;
-					menu.level(primaryStage);//**
+					menu.level(primaryStage);
 				}
 			}
 		};
