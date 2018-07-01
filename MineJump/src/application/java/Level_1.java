@@ -636,7 +636,7 @@ public class Level_1 {
 
 		// Kollision mit Loch
 
-		if (PosX >= B15PosX && PosX <= B16PosX + 30 && PosY >= 249 && Gesprungen == false) {
+		if (PosX >= B15PosX -20 && PosX <= B16PosX + 30 && PosY >= 249 ) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
@@ -670,7 +670,7 @@ public class Level_1 {
 		if(Gefallen == true && Flag1 == true) {
 			PosX = B16PosX + 72;
 			PosY = 252;
-			RealPosX = 2082;
+			RealPosX = 2002;
 			Gefallen = false;
 		}
 
