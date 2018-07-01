@@ -54,7 +54,7 @@ public class Main extends Application {
 		}
 	}
     
-	public void setvolume(final double volume) {
+	public void setvolume(double volume) {
     	System.out.println(musicplayer);
     	System.out.println(volume);
 		musicplayer.setVolume(volume);
