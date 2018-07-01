@@ -3,6 +3,7 @@ package application.java;
 import java.io.IOException;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.PauseTransition;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -11,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Box;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Level_1 {
 	// Spieler und Hintergrundvariablen
@@ -327,8 +329,13 @@ public class Level_1 {
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
-					Main test = new Main();
-					test.start(primaryStage);
+					Menu menu = new Menu();
+					menu.win(primaryStage);
+					PauseTransition delay = new PauseTransition(Duration.seconds(5));     //Test für WinScreen
+					delay.setOnFinished( event -> menu.level(primaryStage) );
+					delay.play();
+					//Main test = new Main();
+					//test.start(primaryStage);
 				}
 				if (WillRaus == true) {
 					WillRaus = false;
