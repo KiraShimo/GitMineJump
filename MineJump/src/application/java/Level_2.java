@@ -41,6 +41,7 @@ public class Level_2 {
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
 	private int t = 1;
+	private boolean Verloren = false;
 	// Blockvariablen
 	private int B01PosX = 1000;
 	private int B01PosY = 310;
@@ -213,9 +214,14 @@ public class Level_2 {
 					TempoX = 0;
 					menu.level(primaryStage);
 				}
-				if(HP == 0) {
+				if(Verloren == true) {
 					System.out.println("Verloren");
+					Verloren = false;
+					RealPosX = 0;
+					PosX = 0;
+					TempoX = 0;
 					HP = 3;
+					menu.level(primaryStage);
 				}
 			}
 		};
@@ -298,7 +304,9 @@ public class Level_2 {
 
 	public void NeuLaden() {
 		PosXAlt = PosX;
-		
+		if(HP == 0) {
+			Verloren = true;
+		}
 		// Bewegen und Anpassen
 		if (PosX > 51) {
 			RealPosX += TempoX;
