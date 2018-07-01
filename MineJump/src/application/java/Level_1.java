@@ -39,6 +39,7 @@ public class Level_1 {
 	private int t = 1;
 	private boolean STILL = false;
 	private boolean STILL02 = false;
+	private boolean Flag1 = false;
 	// Blockvariablen
 	// Baum01
 	private int B01PosX = 1000;
@@ -648,7 +649,7 @@ public class Level_1 {
 			}
 			STILL02 = true;
 
-			PosY += 8;
+			PosY += 16;
 		} else {
 			STILL02 = false;
 		}
@@ -656,10 +657,20 @@ public class Level_1 {
 			Gefallen = true;
 
 		}
-		if (Gefallen == true) {
+		if (Gefallen == true && Flag1 == false) {
 			PosX = B15PosX - 70;
 			PosY = 252;
 			RealPosX = 1800;
+			Gefallen = false;
+		}
+		
+		if(PosX >= B16PosX +71) {
+			Flag1 = true;
+		} 
+		if(Gefallen == true && Flag1 == true) {
+			PosX = B16PosX + 72;
+			PosY = 252;
+			RealPosX = 2082;
 			Gefallen = false;
 		}
 
