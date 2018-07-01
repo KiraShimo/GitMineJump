@@ -256,7 +256,11 @@ public class Level_1 {
 			@Override
 			public void handle(long arg0) {
 
-				Kollisionsdetektion();
+				try {
+					Kollisionsdetektion();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				NeuLaden();
 
 				// Position Updaten
@@ -578,7 +582,7 @@ public class Level_1 {
 
 	}
 
-	public void Kollisionsdetektion() {
+	public void Kollisionsdetektion() throws InterruptedException {
 
 		// Kollision mit Baum01
 
@@ -654,7 +658,7 @@ public class Level_1 {
 			}
 			STILL = true;
 
-			PosY += 16;
+			PosY += 30;
 		} else {
 			STILL = false;
 		}
@@ -667,6 +671,7 @@ public class Level_1 {
 			PosY = 252;
 			RealPosX = 1800;
 			Gefallen = false;
+			Thread.sleep(200);
 		}
 
 		if (PosX >= B16PosX + 71) {
@@ -677,8 +682,14 @@ public class Level_1 {
 			PosY = 252;
 			RealPosX = 2002;
 			Gefallen = false;
+			Thread.sleep(200);
 		}
 
+		if (RealPosX >= 2750) {
+			if (PosY <= 220) {
+				PosY = 221;
+			}
+		}
 	}
 
 }
