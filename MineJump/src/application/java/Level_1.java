@@ -38,7 +38,6 @@ public class Level_1 {
 	private boolean Gefallen = false;
 	private int t = 1;
 	private boolean STILL = false;
-	private boolean STILL02 = false;
 	private boolean Flag1 = false;
 	// Blockvariablen
 	// Baum01
@@ -97,8 +96,7 @@ public class Level_1 {
 		Image SpielerLinks = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
 		Image Laub = new Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
-		// Image LaubBG = new
-		// Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
+
 		Image Loch = new Image(Main.class.getResource("/application/ressources/pictures/DirtOGBG.png").openStream());
 		Image BaumBG = new Image(
 				Main.class.getResource("/application/ressources/pictures/HolzHint2.0.png").openStream());
@@ -423,7 +421,7 @@ public class Level_1 {
 	public void NeuLaden() {
 		PosXAlt = PosX;
 		// Kollisiondetektion -extra-
-		if (STILL == true || STILL02 == true) {
+		if (STILL == true) {
 			TempoX = 0;
 		}
 		// Bewegen und Anpassen
@@ -574,9 +572,9 @@ public class Level_1 {
 	}
 
 	public void Kollisionsdetektion() {
-		
-		//Kollision mit Baum01
-		
+
+		// Kollision mit Baum01
+
 		if (PosX >= B01PosX - 50 && PosX <= B01PosX + 70 && PosY >= 183 && PosXAlt <= PosX) {
 			PosX = B01PosX - 53;
 			RealPosX -= 6;
@@ -593,7 +591,7 @@ public class Level_1 {
 			PosX = B01PosX + 222;
 			RealPosX += 6;
 		}
-		
+
 		if (PosX >= B01PosX - 49 && PosX <= B01PosX + 70) {
 			if (PosY + TempoY >= 182) {
 				PosY = 182;
@@ -636,7 +634,7 @@ public class Level_1 {
 
 		// Kollision mit Loch
 
-		if (PosX >= B15PosX -20 && PosX <= B16PosX + 30 && PosY >= 249 ) {
+		if (PosX >= B15PosX - 20 && PosX <= B16PosX + 30 && PosY >= 249) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
@@ -647,11 +645,11 @@ public class Level_1 {
 			if (TempoX == 0) {
 				// tue nichts
 			}
-			STILL02 = true;
+			STILL = true;
 
 			PosY += 16;
 		} else {
-			STILL02 = false;
+			STILL = false;
 		}
 		if (PosY >= 370) {
 			Gefallen = true;
@@ -663,11 +661,11 @@ public class Level_1 {
 			RealPosX = 1800;
 			Gefallen = false;
 		}
-		
-		if(PosX >= B16PosX +71) {
+
+		if (PosX >= B16PosX + 71) {
 			Flag1 = true;
-		} 
-		if(Gefallen == true && Flag1 == true) {
+		}
+		if (Gefallen == true && Flag1 == true) {
 			PosX = B16PosX + 72;
 			PosY = 252;
 			RealPosX = 2002;
@@ -676,8 +674,4 @@ public class Level_1 {
 
 	}
 
-	// Getters und Setters
-	public void setGewonnen(boolean gewonnen) {
-		Gewonnen = gewonnen;
-	}
 }
