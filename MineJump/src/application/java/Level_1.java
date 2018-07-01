@@ -34,6 +34,9 @@ public class Level_1 {
 	private int ZPosY01 = 166;
 	private int ZPosX02 = 2925;
 	private int ZPosY02 = -20;
+	private int LPosX = 0;
+	private int LPosY = 0; 
+	private int HP = 3;
 	// Bedingungsvariablen
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
@@ -237,6 +240,14 @@ public class Level_1 {
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
 		rootPane.getChildren().add(Ziel02VGAnzeiger);
+		
+		Image Leben3 = new Image(Main.class.getResource("/application/ressources/pictures/Herz03f.png").openStream());
+		Image Leben2 = new Image(Main.class.getResource("/application/ressources/pictures/Herz02f.png").openStream());
+		Image Leben1 = new Image(Main.class.getResource("/application/ressources/pictures/Herz01f.png").openStream());
+		ImageView LebenAnzeiger = new ImageView(Leben3);
+		LebenAnzeiger.setX(LPosX);
+		LebenAnzeiger.setY(LPosY);
+		rootPane.getChildren().add(LebenAnzeiger);
 
 		Scene game = new Scene(rootPane);
 
@@ -277,6 +288,17 @@ public class Level_1 {
 				UntergrundAnzeigen.setX(UPosX);
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
+				LebenAnzeiger.setX(LPosX);
+				LebenAnzeiger.setY(LPosY);
+				if(HP == 3) {
+					LebenAnzeiger.setImage(Leben3);
+				}
+				if(HP == 2) {
+					LebenAnzeiger.setImage(Leben2);
+				}
+				if(HP == 1) {
+					LebenAnzeiger.setImage(Leben1);
+				}
 				// Blöcke updaten
 				// Baum 01 Aktualisieren
 				B01Anzeigen.setX(B01PosX);
@@ -346,6 +368,10 @@ public class Level_1 {
 					PosX = 0;
 					TempoX = 0;
 					menu.level(primaryStage);
+				}
+				if(HP == 0) {
+					System.out.println("Verloren");
+					HP = 3;
 				}
 			}
 		};
@@ -669,6 +695,7 @@ public class Level_1 {
 			RealPosX = 1800;
 			Gefallen = false;
 			Thread.sleep(200);
+			HP -= 1;
 		}
 
 		if (PosX >= B16PosX + 71) {
@@ -680,6 +707,7 @@ public class Level_1 {
 			RealPosX = 2002;
 			Gefallen = false;
 			Thread.sleep(200);
+			HP -= 1;
 		}
 
 		if (RealPosX >= 2750) {
