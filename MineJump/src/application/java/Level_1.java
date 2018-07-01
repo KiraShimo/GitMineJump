@@ -17,7 +17,6 @@ public class Level_1 {
 	public int PosX = 120;
 	private int PosXAlt = 0;
 	public int PosY = 252;
-	private int PosYAlt = 0;
 	public int SPosXR = PosX + 64;
 	public int SPosYH = PosY + 128;
 	public int bgPosX = 0;
@@ -76,6 +75,12 @@ public class Level_1 {
 	private int B15PosY = 380;
 	private int B16PosX = 2070;
 	private int B16PosY = 380;
+
+	// Bäume
+	private int BA01PosX = 1600;
+	private int BA01PosY = 100;
+	private int BA02PosX = 2200;
+	private int BA02PosY = 100;
 
 	public void spiel(Stage primaryStage) throws IOException {
 
@@ -183,6 +188,21 @@ public class Level_1 {
 		B14Anzeigen.setY(B14PosY);
 		rootPane.getChildren().add(B14Anzeigen);
 
+		// Baum02
+
+		Image Baum02 = new Image(Main.class.getResource("/application/ressources/pictures/Baum01BG.png").openStream());
+		ImageView Baum02Anzeigen = new ImageView(Baum02);
+		Baum02Anzeigen.setX(BA01PosX);
+		Baum02Anzeigen.setY(BA01PosY);
+		rootPane.getChildren().add(Baum02Anzeigen);
+
+		// Baum03
+
+		ImageView Baum03Anzeigen = new ImageView(Baum02);
+		Baum03Anzeigen.setX(BA02PosX);
+		Baum03Anzeigen.setY(BA02PosY);
+		rootPane.getChildren().add(Baum03Anzeigen);
+
 		// Loch 01
 
 		ImageView B15Anzeigen = new ImageView(Loch);
@@ -289,6 +309,13 @@ public class Level_1 {
 				B15Anzeigen.setY(B15PosY);
 				B16Anzeigen.setX(B16PosX);
 				B16Anzeigen.setY(B16PosY);
+
+				// Bäume 02/03 aktualisieren
+
+				Baum02Anzeigen.setX(BA01PosX);
+				Baum02Anzeigen.setY(BA01PosY);
+				Baum03Anzeigen.setX(BA02PosX);
+				Baum03Anzeigen.setY(BA02PosY);
 
 				// Ziel Aktuallisieren
 
@@ -532,16 +559,40 @@ public class Level_1 {
 				ZPosX02 -= TempoX;
 		}
 
+		// Bäume 02/03 anpassen
+
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				BA01PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				BA02PosX -= TempoX;
+		}
+
 	}
 
 	public void Kollisionsdetektion() {
-		// Kollisionsdetektion *FUNKTIONIERT MEHR ODER WENIGER* *MACHT PROBLEME MIT
-		// SIEGBEDINGUNG* probier mal ein bisschen am ersten block im ersten lv
-		// Kollision erster Block
+		
+		//Kollision mit Baum01
+		
 		if (PosX >= B01PosX - 50 && PosX <= B01PosX + 70 && PosY >= 183 && PosXAlt <= PosX) {
 			PosX = B01PosX - 53;
 			RealPosX -= 6;
 		}
+		if (PosX >= B01PosX + 20 && PosX <= B01PosX + 120 && PosY >= 123 && PosXAlt <= PosX) {
+			PosX = B01PosX + 19;
+			RealPosX -= 6;
+		}
+		if (PosX >= B01PosX + 20 && PosX <= B01PosX + 151 && PosY >= 123 && PosXAlt > PosX) {
+			PosX = B01PosX + 152;
+			RealPosX += 6;
+		}
+		if (PosX >= B01PosX + 20 && PosX <= B01PosX + 221 && PosY >= 183 && PosXAlt > PosX) {
+			PosX = B01PosX + 222;
+			RealPosX += 6;
+		}
+		
 		if (PosX >= B01PosX - 49 && PosX <= B01PosX + 70) {
 			if (PosY + TempoY >= 182) {
 				PosY = 182;
@@ -549,44 +600,38 @@ public class Level_1 {
 				Gesprungen = false;
 			}
 		}
-//		else {
-//			if (PosY + TempoY >= 252) {
-//				PosY = 252;
-//				TempoY = 0;
-//				Gesprungen = false;
-//			}
-//		}
-//
-//		if (B01PosX <= PosX +70 && PosX <= B01PosX + 140) {
-//			if (PosY >= 140) {
-//				PosX = B01PosX;
-//				RealPosX -= 6;
-//			} else {
-//
-//				if (PosY + TempoY >= 122) {
-//					PosY = 122;
-//					TempoY = 0;
-//					Gesprungen = false;
-//				}
-//
-//			}
-//
-//		}
-//
-//		if (PosX >= B01PosX + 140 && PosX <= B03PosX + 141 && Gesprungen == false) {
-//			PosY = 182;
-//		}
-//		if (PosX >= B01PosX -50 && PosX <= B03PosX -51 && Gesprungen == false) {
-//			PosY = 252;
-//		}
+		if (PosX >= B01PosX + 141 && PosX <= B01PosX + 211) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+
+		if (PosX >= B01PosX + 21 && PosX <= B01PosX + 130) {
+			if (PosY + TempoY >= 122) {
+				PosY = 122;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+
 		if (PosX >= B01PosX + 210 && PosX <= B03PosX + 211 && Gesprungen == false) {
 			PosY = 252;
 
 		}
-//
-//		else {
-//			STILL = false;
-//		}
+		if (PosX >= B01PosX - 60 && PosX <= B03PosX - 191 && Gesprungen == false) {
+			PosY = 252;
+
+		}
+		if (PosX >= B01PosX - 10 && PosX <= B03PosX - 121 && Gesprungen == false) {
+			PosY = 182;
+
+		}
+		if (PosX >= B01PosX + 130 && PosX <= B03PosX + 51 && Gesprungen == false) {
+			PosY = 182;
+
+		}
 
 		// Kollision mit Loch
 
@@ -603,7 +648,7 @@ public class Level_1 {
 			}
 			STILL02 = true;
 
-			PosY += 4;
+			PosY += 8;
 		} else {
 			STILL02 = false;
 		}

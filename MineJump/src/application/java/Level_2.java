@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 public class Level_2 {
 	// Spieler und Hintergrundvariablen
 	public int PosX = 120;
+	public int PosXAlt = 0;
 	public int PosY = 252;
 	public int SPosXR = PosX + 64;
 	public int SPosYH = PosY + 128;
@@ -263,10 +264,8 @@ public class Level_2 {
 	}
 
 	public void NeuLaden() {
-		// Kollisiondetektion -extra-
-		if (PosX >= B01PosX - 30 && TempoX < 0 && PosX <= B01PosX + 230) {
-			TempoX = 0;
-		}
+		PosXAlt = PosX;
+		
 		// Bewegen und Anpassen
 		if (PosX > 51) {
 			RealPosX += TempoX;
@@ -335,7 +334,7 @@ public class Level_2 {
 		if (TempoX >= 0 && PosX >= 300) {
 			B04PosX -= TempoX;
 		}
-		//Ziel anpassen
+		// Ziel anpassen
 		if (TempoX >= 0 && PosX >= 300) {
 			if (PosX >= 51)
 				ZPosX01 -= TempoX;
@@ -348,48 +347,65 @@ public class Level_2 {
 	}
 
 	public void Kollisionsdetektion() {
-		// Kollisionsdetektion *FUNKTIONIERT MEHR ODER WENIGER* *MACHT PROBLEME MIT
-		// SIEGBEDINGUNG* probier mal ein bisschen am ersten block im ersten lv
-		// Kollision erster Block
-		if ((B01PosX - 50) <= PosX && PosX <= (B01PosX + 70)) {
-			if (PosY >= 200) {
-				PosX = B01PosX - 51;
-				RealPosX -= 6;
-			} else {
 
-				if (PosY + TempoY >= 182) {
-					PosY = 182;
-					TempoY = 0;
-					Gesprungen = false;
-				}
+		// Kollision mit Baum
 
+		if (PosX >= B01PosX - 50 && PosX <= B01PosX + 70 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B01PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B01PosX + 20 && PosX <= B01PosX + 120 && PosY >= 113 && PosXAlt <= PosX) {
+			PosX = B01PosX + 19;
+			RealPosX -= 6;
+		}
+		if (PosX >= B01PosX + 20 && PosX <= B01PosX + 151 && PosY >= 113 && PosXAlt > PosX) {
+			PosX = B01PosX + 152;
+			RealPosX += 6;
+		}
+		if (PosX >= B01PosX + 20 && PosX <= B01PosX + 221 && PosY >= 183 && PosXAlt > PosX) {
+			PosX = B01PosX + 222;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B01PosX - 49 && PosX <= B01PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
 			}
-
 		}
-		if (B01PosX + 40 <= PosX && PosX <= (B01PosX + 130)) {
-			if (PosY >= 140) {
-				PosX = B01PosX + 39;
-				RealPosX -= 6;
-			} else {
-
-				if (PosY + TempoY >= 112) {
-					PosY = 112;
-					TempoY = 0;
-					Gesprungen = false;
-				}
-
+		if (PosX >= B01PosX + 141 && PosX <= B01PosX + 211) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
 			}
-
 		}
 
-		if (PosX >= B01PosX + 140 && PosX <= B03PosX + 141 && Gesprungen == false) {
-			PosY = 182;
+		if (PosX >= B01PosX + 21 && PosX <= B01PosX + 130) {
+			if (PosY + TempoY >= 112) {
+				PosY = 112;
+				TempoY = 0;
+				Gesprungen = false;
+			}
 		}
+
 		if (PosX >= B01PosX + 210 && PosX <= B03PosX + 211 && Gesprungen == false) {
 			PosY = 252;
 
 		}
+		if (PosX >= B01PosX - 60 && PosX <= B03PosX - 191 && Gesprungen == false) {
+			PosY = 252;
 
+		}
+		if (PosX >= B01PosX - 10 && PosX <= B03PosX - 121 && Gesprungen == false) {
+			PosY = 182;
+
+		}
+		if (PosX >= B01PosX + 130 && PosX <= B03PosX + 51 && Gesprungen == false) {
+			PosY = 182;
+
+		}
 	}
 
 	// Getters und Setters
