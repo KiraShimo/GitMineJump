@@ -35,7 +35,7 @@ public class Level_1 {
 	private int ZPosX02 = 2925;
 	private int ZPosY02 = -20;
 	private int LPosX = 0;
-	private int LPosY = 0; 
+	private int LPosY = 0;
 	private int HP = 3;
 	// Bedingungsvariablen
 	private boolean Gewonnen = false;
@@ -97,10 +97,13 @@ public class Level_1 {
 		// Erstellt das Neue RootPane
 		rootPane = new Pane();
 
+		// Bilder einbinden
 		Image SpielerRechts = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
 		Image SpielerLinks = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
+		Image SpielerSchaden = new Image(
+				Main.class.getResource("/application/ressources/pictures/Steve_Vorne_Schaden.png").openStream());
 		Image Laub = new Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
 
 		Image Loch = new Image(Main.class.getResource("/application/ressources/pictures/DirtOGBG.png").openStream());
@@ -108,20 +111,30 @@ public class Level_1 {
 				Main.class.getResource("/application/ressources/pictures/HolzHint2.0.png").openStream());
 		Image HintergrundImage = new Image(
 				Main.class.getResource("/application/ressources/pictures/Hintergrund2.0.png").openStream());
+		Image Untergrund = new Image(
+				Main.class.getResource("/application/ressources/pictures/Untergrund1.0.png").openStream());
+		Image Block01 = new Image(
+				Main.class.getResource("/application/ressources/pictures/HolzNorm2.0.png").openStream());
+		Image Baum02 = new Image(Main.class.getResource("/application/ressources/pictures/Baum01BG.png").openStream());
+		Image Ziel01BG = new Image(Main.class.getResource("/application/ressources/pictures/Ziel01.png").openStream());
+		Image SpielerBild = new Image(
+				Main.class.getResource("/application/ressources/pictures/Steve_Vorne.png").openStream());
+		Image Ziel02VG = new Image(Main.class.getResource("/application/ressources/pictures/Ziel02.png").openStream());
+		Image Leben3 = new Image(Main.class.getResource("/application/ressources/pictures/Herz03f.png").openStream());
+		Image Leben2 = new Image(Main.class.getResource("/application/ressources/pictures/Herz02f.png").openStream());
+		Image Leben1 = new Image(Main.class.getResource("/application/ressources/pictures/Herz01f.png").openStream());
+
+		// Bilder aufrufen
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
 		HintergrundImageAufruf.setX(bgPosX);
 		HintergrundImageAufruf.setY(bgPosY);
 		rootPane.getChildren().add(HintergrundImageAufruf);
 
-		Image Untergrund = new Image(
-				Main.class.getResource("/application/ressources/pictures/Untergrund1.0.png").openStream());
 		ImageView UntergrundAnzeigen = new ImageView(Untergrund);
 		UntergrundAnzeigen.setX(UPosX);
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
 
-		Image Block01 = new Image(
-				Main.class.getResource("/application/ressources/pictures/HolzNorm2.0.png").openStream());
 		// Baum 01
 		ImageView B01Anzeigen = new ImageView(Block01);
 		B01Anzeigen.setX(B01PosX);
@@ -195,7 +208,6 @@ public class Level_1 {
 
 		// Baum02
 
-		Image Baum02 = new Image(Main.class.getResource("/application/ressources/pictures/Baum01BG.png").openStream());
 		ImageView Baum02Anzeigen = new ImageView(Baum02);
 		Baum02Anzeigen.setX(BA01PosX);
 		Baum02Anzeigen.setY(BA01PosY);
@@ -221,30 +233,24 @@ public class Level_1 {
 		rootPane.getChildren().add(B16Anzeigen);
 		// ZielHinten
 
-		Image Ziel01BG = new Image(Main.class.getResource("/application/ressources/pictures/Ziel01.png").openStream());
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
 		Ziel01BGAnzeiger.setY(ZPosY01);
 		rootPane.getChildren().add(Ziel01BGAnzeiger);
 
 		// Spieler
-		Image SpielerBild = new Image(
-				Main.class.getResource("/application/ressources/pictures/Steve_Vorne.png").openStream());
+
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
 		// ZielVorne
 
-		Image Ziel02VG = new Image(Main.class.getResource("/application/ressources/pictures/Ziel02.png").openStream());
 		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
 		rootPane.getChildren().add(Ziel02VGAnzeiger);
-		
-		Image Leben3 = new Image(Main.class.getResource("/application/ressources/pictures/Herz03f.png").openStream());
-		Image Leben2 = new Image(Main.class.getResource("/application/ressources/pictures/Herz02f.png").openStream());
-		Image Leben1 = new Image(Main.class.getResource("/application/ressources/pictures/Herz01f.png").openStream());
+		// Leben
 		ImageView LebenAnzeiger = new ImageView(Leben3);
 		LebenAnzeiger.setX(LPosX);
 		LebenAnzeiger.setY(LPosY);
@@ -285,19 +291,22 @@ public class Level_1 {
 				if (RLN == 2) {
 					Bildaufruf.setImage(SpielerRechts);
 				}
+				if (RLN == 3) {
+					Bildaufruf.setImage(SpielerSchaden);
+				}
 				HintergrundImageAufruf.setX(bgPosX);
 				UntergrundAnzeigen.setX(UPosX);
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
 				LebenAnzeiger.setX(LPosX);
 				LebenAnzeiger.setY(LPosY);
-				if(HP == 3) {
+				if (HP == 3) {
 					LebenAnzeiger.setImage(Leben3);
 				}
-				if(HP == 2) {
+				if (HP == 2) {
 					LebenAnzeiger.setImage(Leben2);
 				}
-				if(HP == 1) {
+				if (HP == 1) {
 					LebenAnzeiger.setImage(Leben1);
 				}
 				// Blöcke updaten
@@ -351,7 +360,7 @@ public class Level_1 {
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
 				Menu menu = new Menu();
-				
+
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
 					Gewonnen = false;
@@ -360,7 +369,7 @@ public class Level_1 {
 					TempoX = 0;
 					menu.win(primaryStage);
 					PauseTransition delay = new PauseTransition(Duration.seconds(5));
-					delay.setOnFinished( event -> menu.level(primaryStage) );
+					delay.setOnFinished(event -> menu.level(primaryStage));
 					delay.play();
 				}
 				if (WillRaus == true) {
@@ -370,7 +379,7 @@ public class Level_1 {
 					TempoX = 0;
 					menu.level(primaryStage);
 				}
-				if(Verloren == true) {
+				if (Verloren == true) {
 					System.out.println("Verloren");
 					Verloren = false;
 					RealPosX = 0;
@@ -460,7 +469,7 @@ public class Level_1 {
 
 	public void NeuLaden() {
 		PosXAlt = PosX;
-		if(HP == 0) {
+		if (HP == 0) {
 			Verloren = true;
 		}
 		// Kollisiondetektion -extra-
@@ -517,7 +526,6 @@ public class Level_1 {
 			if (RealPosX > 3000) {
 				Gewonnen = true;
 				t = 0;
-				System.out.println("gewonnen");
 				RealPosX = 0;
 			}
 		}
@@ -688,6 +696,7 @@ public class Level_1 {
 			if (TempoX == 0) {
 				// tue nichts
 			}
+			RLN = 3;
 			STILL = true;
 
 			PosY += 30;
@@ -703,6 +712,7 @@ public class Level_1 {
 			PosY = 252;
 			RealPosX = 1800;
 			Gefallen = false;
+			RLN = 0;
 			Thread.sleep(200);
 			HP -= 1;
 		}
@@ -715,6 +725,7 @@ public class Level_1 {
 			PosY = 252;
 			RealPosX = 2002;
 			Gefallen = false;
+			RLN = 0;
 			Thread.sleep(200);
 			HP -= 1;
 		}
