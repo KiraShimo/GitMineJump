@@ -74,6 +74,10 @@ public class Level_2 {
 	private int K02PosY = 174;
 	private int K03PosX = 400;
 	private int K03PosY = 174;
+	private int K04PosX = 60;
+	private int K04PosY = 174;
+	private int K05PosX = 900;
+	private int K05PosY = 174;
 	// Kakteen klein
 
 	private int KK01PosX = 1840;
@@ -196,6 +200,16 @@ public class Level_2 {
 		K03Anzeigen.setX(K03PosX);
 		K03Anzeigen.setY(K03PosY);
 		rootPane.getChildren().add(K03Anzeigen);
+		
+		ImageView K04Anzeigen = new ImageView(KaktusBG);
+		K04Anzeigen.setX(K04PosX);
+		K04Anzeigen.setY(K04PosY);
+		rootPane.getChildren().add(K04Anzeigen);
+		
+		ImageView K05Anzeigen = new ImageView(KaktusBG);
+		K05Anzeigen.setX(K05PosX);
+		K05Anzeigen.setY(K05PosY);
+		rootPane.getChildren().add(K05Anzeigen);
 
 		// Kateen Klein
 
@@ -340,6 +354,10 @@ public class Level_2 {
 				K02Anzeigen.setY(K02PosY);
 				K03Anzeigen.setX(K03PosX);
 				K03Anzeigen.setY(K03PosY);
+				K04Anzeigen.setX(K04PosX);
+				K04Anzeigen.setY(K04PosY);
+				K05Anzeigen.setX(K05PosX);
+				K05Anzeigen.setY(K05PosY);
 
 				// kateen klein anpassen
 
@@ -593,6 +611,12 @@ public class Level_2 {
 		}
 		if (TempoX >= 0 && PosX >= 300) {
 			K03PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			K04PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			K05PosX -= TempoX;
 		}
 
 		// Kakteen Klein anpassen
