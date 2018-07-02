@@ -41,6 +41,8 @@ public class Level_3 {
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
 	private int t = 1;
+	private boolean O01 = true;
+	private boolean O02 = true;
 	private boolean STILL = false;
 	private boolean Verloren = false;
 	// Blockvariablen
@@ -62,7 +64,14 @@ public class Level_3 {
 	private int B07PosY = 170;
 	private int B08PosX = 2380;
 	private int B08PosY = 310;
-	
+	// Speervariablen
+	private int SP01PosX = 910;
+	private int SP01PosY = 100;
+	private int SP02PosX = 1050;
+	private int SP02PosY = 300;
+	// Spikevariablen
+	private int SP03PosX = 1260;
+	private int SP03PosY = 310;
 
 	public void spiel(Stage primaryStage) throws IOException {
 
@@ -80,18 +89,14 @@ public class Level_3 {
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
 		Image SpielerSchaden = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne_Schaden.png").openStream());
-		Image BT01 = new Image(
-				Main.class.getResource("/application/ressources/pictures/ICENorm01.png").openStream());
-		Image BT02 = new Image(
-				Main.class.getResource("/application/ressources/pictures/ICEBT02.png").openStream());
-		Image BT03 = new Image(
-				Main.class.getResource("/application/ressources/pictures/ICEBT03.png").openStream());
-		Image BT04 = new Image(
-				Main.class.getResource("/application/ressources/pictures/ICEBT04.png").openStream());
-		Image BT05 = new Image(
-				Main.class.getResource("/application/ressources/pictures/ICEBT05.png").openStream());
-		Image BT06 = new Image(
-				Main.class.getResource("/application/ressources/pictures/ICEBT06.png").openStream());
+		Image BT01 = new Image(Main.class.getResource("/application/ressources/pictures/ICENorm01.png").openStream());
+		Image BT02 = new Image(Main.class.getResource("/application/ressources/pictures/ICEBT02.png").openStream());
+		Image BT03 = new Image(Main.class.getResource("/application/ressources/pictures/ICEBT03.png").openStream());
+		Image BT04 = new Image(Main.class.getResource("/application/ressources/pictures/ICEBT04.png").openStream());
+		Image BT05 = new Image(Main.class.getResource("/application/ressources/pictures/ICEBT05.png").openStream());
+		Image BT06 = new Image(Main.class.getResource("/application/ressources/pictures/ICEBT06.png").openStream());
+		Image Spikes = new Image(Main.class.getResource("/application/ressources/pictures/Spikes.png").openStream());
+		Image Speer = new Image(Main.class.getResource("/application/ressources/pictures/Speer01.png").openStream());
 		Image HintergrundImage = new Image(
 				Main.class.getResource("/application/ressources/pictures/HintergrundEIS.png").openStream());
 		Image Untergrund = new Image(
@@ -110,58 +115,78 @@ public class Level_3 {
 		HintergrundImageAufruf.setY(bgPosY);
 		rootPane.getChildren().add(HintergrundImageAufruf);
 
+		// Speere aufrufen
+
+		ImageView Speer01 = new ImageView(Speer);
+		Speer01.setX(SP01PosX);
+		Speer01.setY(SP01PosY);
+		rootPane.getChildren().add(Speer01);
+
+		ImageView Speer02 = new ImageView(Speer);
+		Speer02.setX(SP02PosX);
+		Speer02.setY(SP02PosY);
+		rootPane.getChildren().add(Speer02);
+
+		// Untergrund aufrufen
 		ImageView UntergrundAnzeigen = new ImageView(Untergrund);
 		UntergrundAnzeigen.setX(UPosX);
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
-		
-		//Blöcke aufrufen
+
+		// Spikes aufrufen
+
+		ImageView Spikes01 = new ImageView(Spikes);
+		Spikes01.setX(SP03PosX);
+		Spikes01.setY(SP03PosY);
+		rootPane.getChildren().add(Spikes01);
+
+		// Blöcke aufrufen
 
 		ImageView B00Anzeigen = new ImageView(BT01);
 		B00Anzeigen.setX(B00PosX);
 		B00Anzeigen.setY(B00PosX);
 		rootPane.getChildren().add(B00Anzeigen);
-		
+
 		ImageView B01Anzeigen = new ImageView(BT02);
 		B01Anzeigen.setX(B01PosX);
 		B01Anzeigen.setY(B01PosX);
 		rootPane.getChildren().add(B01Anzeigen);
-		
+
 		ImageView B02Anzeigen = new ImageView(BT02);
 		B02Anzeigen.setX(B02PosX);
 		B02Anzeigen.setY(B02PosX);
 		rootPane.getChildren().add(B02Anzeigen);
-		
+
 		ImageView B03Anzeigen = new ImageView(BT03);
 		B03Anzeigen.setX(B03PosX);
 		B03Anzeigen.setY(B03PosX);
 		rootPane.getChildren().add(B03Anzeigen);
-		
+
 		ImageView B04Anzeigen = new ImageView(BT04);
 		B04Anzeigen.setX(B04PosX);
 		B04Anzeigen.setY(B04PosX);
 		rootPane.getChildren().add(B04Anzeigen);
-		
+
 		ImageView B05Anzeigen = new ImageView(BT05);
 		B05Anzeigen.setX(B05PosX);
 		B05Anzeigen.setY(B05PosX);
 		rootPane.getChildren().add(B05Anzeigen);
-		
+
 		ImageView B06Anzeigen = new ImageView(BT01);
 		B06Anzeigen.setX(B06PosX);
 		B06Anzeigen.setY(B06PosX);
 		rootPane.getChildren().add(B06Anzeigen);
-		
+
 		ImageView B07Anzeigen = new ImageView(BT06);
 		B07Anzeigen.setX(B07PosX);
 		B07Anzeigen.setY(B07PosX);
 		rootPane.getChildren().add(B07Anzeigen);
-		
+
 		ImageView B08Anzeigen = new ImageView(BT01);
 		B08Anzeigen.setX(B08PosX);
 		B08Anzeigen.setY(B08PosX);
 		rootPane.getChildren().add(B08Anzeigen);
-		
+
 		// ZielHinten
 
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
@@ -238,7 +263,7 @@ public class Level_3 {
 					LebenAnzeiger.setImage(Leben1);
 				}
 				// Blöcke updaten
-				
+
 				B00Anzeigen.setX(B00PosX);
 				B00Anzeigen.setY(B00PosY);
 				B01Anzeigen.setX(B01PosX);
@@ -257,7 +282,19 @@ public class Level_3 {
 				B07Anzeigen.setY(B07PosY);
 				B08Anzeigen.setX(B08PosX);
 				B08Anzeigen.setY(B08PosY);
-				
+
+				// Speere aktualisieren
+
+				Speer01.setX(SP01PosX);
+				Speer01.setY(SP01PosY);
+				Speer02.setX(SP02PosX);
+				Speer02.setY(SP02PosY);
+
+				// Spikes aktualisieren
+
+				Spikes01.setX(SP03PosX);
+				Spikes01.setY(SP03PosY);
+
 				// Ziel aktualisieren
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
@@ -488,7 +525,7 @@ public class Level_3 {
 			if (PosX >= 51)
 				B08PosX -= TempoX;
 		}
-		
+
 		// Ziel anpassen
 		if (TempoX >= 0 && PosX >= 300) {
 			if (PosX >= 51)
@@ -498,11 +535,77 @@ public class Level_3 {
 			if (PosX >= 51)
 				ZPosX02 -= TempoX;
 		}
+
+		// Speerpositionen anpassen
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				SP01PosX -= TempoX;
+		}
+		if (SP01PosY <= 310 && O01 == false && SP01PosY >= 100) {
+			SP01PosY -= 1;
+			if (SP01PosY <= 100) {
+				O01 = true;
+			}
+		}
+		if (SP01PosY >= 100 && O01 == true && SP01PosY <= 310) {
+			SP01PosY += 1;
+			if (SP01PosY >= 310) {
+				O01 = false;
+			}
+
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				SP02PosX -= TempoX;
+		}
+		if (SP02PosY <= 310 && O02 == false && SP02PosY >= 100) {
+			SP02PosY -= 1;
+			if (SP02PosY <= 100) {
+				O02 = true;
+			}
+		}
+		if (SP02PosY >= 100 && O02 == true && SP02PosY <= 310) {
+			SP02PosY += 1;
+			if (SP02PosY >= 310) {
+				O02 = false;
+			}
+		}
+		// Spikes anpassen
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				SP03PosX -= TempoX;
+		}
 	}
 
 	public void Kollisionsdetektion() {
+		// Kollision mit 1. Block (B00)
+		if (PosX >= B00PosX - 50 && PosX <= B00PosX + 70 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B00PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B00PosX - 50 && PosX <= B00PosX + 70 && PosY >= 183 && PosXAlt > PosX) {
+			PosX = B00PosX + 71;
+			RealPosX += 6;
+		}
+		if (PosX >= B00PosX - 49 && PosX <= B00PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		if (PosX <=  B00PosX - 65 && Gesprungen == false) {
+			PosY = 252;
 
-		if (RealPosX >= 2700) {
+		}
+		if (PosX >= B00PosX + 70 && PosX <= B00PosX +140 && Gesprungen == false) {
+			PosY = 252;
+
+		}
+		
+		
+
+		if (RealPosX >= 2750) {
 			if (PosY <= 220) {
 				PosY = 221;
 			}

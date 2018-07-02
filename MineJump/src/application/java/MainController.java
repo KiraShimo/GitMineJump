@@ -12,7 +12,7 @@ import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class MainController{
+public class MainController {
 	
 	public Stage primaryStage;
 	public Main main;
