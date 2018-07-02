@@ -200,12 +200,12 @@ public class Level_2 {
 		K03Anzeigen.setX(K03PosX);
 		K03Anzeigen.setY(K03PosY);
 		rootPane.getChildren().add(K03Anzeigen);
-		
+
 		ImageView K04Anzeigen = new ImageView(KaktusBG);
 		K04Anzeigen.setX(K04PosX);
 		K04Anzeigen.setY(K04PosY);
 		rootPane.getChildren().add(K04Anzeigen);
-		
+
 		ImageView K05Anzeigen = new ImageView(KaktusBG);
 		K05Anzeigen.setX(K05PosX);
 		K05Anzeigen.setY(K05PosY);
@@ -418,6 +418,7 @@ public class Level_2 {
 
 	}
 
+	// Keylistener
 	final EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
 
 		public void handle(KeyEvent event) {
@@ -762,13 +763,13 @@ public class Level_2 {
 			}
 		}
 		if (PosX >= B01PosX + 800 && PosX <= B05PosX + 100 && Gesprungen == false) {
-			Gesprungen =true;
+			Gesprungen = true;
 
 		}
-		
-		if (PosX >= B06PosX && PosX <= B06PosX +10) {
+
+		if (PosX >= B06PosX && PosX <= B06PosX + 10) {
 			Flag1 = true;
-			
+
 		}
 		// Kollision mit 3. Block der 2. Hürde
 		if (PosX >= B05PosX + 300 && PosX <= B05PosX + 420 && PosY >= 113 && PosXAlt <= PosX) {
@@ -786,11 +787,11 @@ public class Level_2 {
 				Gesprungen = false;
 			}
 		}
-		
-		if (PosX >= B07PosX && PosX <= B07PosX +10) {
+
+		if (PosX >= B07PosX && PosX <= B07PosX + 10) {
 			Flag1 = false;
 			Flag2 = true;
-			
+
 		}
 		// Kollision mit 4. Block der 2. Hürde
 		if (PosX >= B05PosX + 510 && PosX <= B05PosX + 600 && PosY >= 113 && PosXAlt <= PosX) {
@@ -808,15 +809,15 @@ public class Level_2 {
 				Gesprungen = false;
 			}
 		}
-		
+
 		if (PosX >= B06PosX + 489 && PosX <= B05PosX + 661 && Gesprungen == false) {
 			PosY = 252;
 
 		}
-		if (PosX >= B08PosX && PosX <= B08PosX +10) {
+		if (PosX >= B08PosX && PosX <= B08PosX + 10) {
 			Flag2 = false;
 			Flag3 = true;
-			
+
 		}
 		// Kollision mit 5. Block der 2. Hürde
 		if (PosX >= B05PosX + 650 && PosX <= B05PosX + 769 && PosY >= 183 && PosXAlt <= PosX) {
@@ -839,15 +840,14 @@ public class Level_2 {
 			PosY = 252;
 
 		}
-		if (PosX >= B09PosX && PosX <= B09PosX +10) {
+		if (PosX >= B09PosX && PosX <= B09PosX + 10) {
 			Flag3 = false;
 			Flag4 = true;
-			
-		
+
 		}
 
 		// Kollision mit Kakteen klein
-		if (PosX >= B06PosX +70 && PosX <= B07PosX - 50  && PosY >= 110 ) {
+		if (PosX >= B06PosX + 70 && PosX <= B07PosX - 50 && PosY >= 110) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
@@ -867,7 +867,7 @@ public class Level_2 {
 		} else {
 			STILL = false;
 		}
-		if (PosX >= B07PosX +70 && PosX <= B08PosX - 50 && PosY >= 110 ) {
+		if (PosX >= B07PosX + 70 && PosX <= B08PosX - 50 && PosY >= 110) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
@@ -887,7 +887,7 @@ public class Level_2 {
 		} else {
 			STILL = false;
 		}
-		if ( PosY >= 253) {
+		if (PosY >= 253) {
 			Gefallen = true;
 			Gesprungen = true;
 
