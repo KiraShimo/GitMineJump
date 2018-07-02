@@ -30,9 +30,9 @@ public class Level_3 {
 	private int TempoY = 0;
 	private int RealPosX = 0;
 	private boolean Gesprungen = false;
-	private int ZPosX01 = 2925;
+	private int ZPosX01 = 2725;
 	private int ZPosY01 = 166;
-	private int ZPosX02 = 2925;
+	private int ZPosX02 = 2725;
 	private int ZPosY02 = -20;
 	private int LPosX = 0;
 	private int LPosY = 0;
@@ -45,6 +45,14 @@ public class Level_3 {
 	private boolean O02 = true;
 	private boolean STILL = false;
 	private boolean Verloren = false;
+	private boolean Flag1 = false;
+	private boolean Flag2 = false;
+	private boolean Flag3 = false;
+	private boolean Flag4 = false;
+	private boolean Flag5 = false;
+	private boolean Flag6 = false;
+	private boolean Gefallen = false;
+
 	// Blockvariablen
 	private int B00PosX = 700;
 	private int B00PosY = 310;
@@ -58,12 +66,7 @@ public class Level_3 {
 	private int B04PosY = 170;
 	private int B05PosX = 1750;
 	private int B05PosY = 240;
-	private int B06PosX = 2100;
-	private int B06PosY = 310;
-	private int B07PosX = 2170;
-	private int B07PosY = 170;
-	private int B08PosX = 2380;
-	private int B08PosY = 310;
+
 	// Speervariablen
 	private int SP01PosX = 910;
 	private int SP01PosY = 100;
@@ -172,21 +175,6 @@ public class Level_3 {
 		B05Anzeigen.setY(B05PosX);
 		rootPane.getChildren().add(B05Anzeigen);
 
-		ImageView B06Anzeigen = new ImageView(BT01);
-		B06Anzeigen.setX(B06PosX);
-		B06Anzeigen.setY(B06PosX);
-		rootPane.getChildren().add(B06Anzeigen);
-
-		ImageView B07Anzeigen = new ImageView(BT06);
-		B07Anzeigen.setX(B07PosX);
-		B07Anzeigen.setY(B07PosX);
-		rootPane.getChildren().add(B07Anzeigen);
-
-		ImageView B08Anzeigen = new ImageView(BT01);
-		B08Anzeigen.setX(B08PosX);
-		B08Anzeigen.setY(B08PosX);
-		rootPane.getChildren().add(B08Anzeigen);
-
 		// ZielHinten
 
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
@@ -230,7 +218,11 @@ public class Level_3 {
 			@Override
 			public void handle(long arg0) {
 
-				Kollisionsdetektion();
+				try {
+					Kollisionsdetektion();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 
 				NeuLaden();
 
@@ -276,12 +268,6 @@ public class Level_3 {
 				B04Anzeigen.setY(B04PosY);
 				B05Anzeigen.setX(B05PosX);
 				B05Anzeigen.setY(B05PosY);
-				B06Anzeigen.setX(B06PosX);
-				B06Anzeigen.setY(B06PosY);
-				B07Anzeigen.setX(B07PosX);
-				B07Anzeigen.setY(B07PosY);
-				B08Anzeigen.setX(B08PosX);
-				B08Anzeigen.setY(B08PosY);
 
 				// Speere aktualisieren
 
@@ -482,7 +468,7 @@ public class Level_3 {
 		}
 		// Siegbedingung
 		if (t == 1) {
-			if (RealPosX > 3000) {
+			if (RealPosX > 2800) {
 				Gewonnen = true;
 				t = 0;
 				RealPosX = 0;
@@ -512,18 +498,6 @@ public class Level_3 {
 		if (TempoX >= 0 && PosX >= 300) {
 			if (PosX >= 51)
 				B05PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			if (PosX >= 51)
-				B06PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			if (PosX >= 51)
-				B07PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			if (PosX >= 51)
-				B08PosX -= TempoX;
 		}
 
 		// Ziel anpassen
@@ -577,39 +551,287 @@ public class Level_3 {
 		}
 	}
 
-	public void Kollisionsdetektion() {
+	public void Kollisionsdetektion() throws InterruptedException {
 		// Kollision mit 1. Block (B00)
-		if (PosX >= B00PosX - 50 && PosX <= B00PosX + 70 && PosY >= 183 && PosXAlt <= PosX) {
+		if (PosX >= B00PosX - 50 && PosX <= B00PosX + 65 && PosY >= 183 && PosXAlt <= PosX) {
 			PosX = B00PosX - 53;
 			RealPosX -= 6;
 		}
-		if (PosX >= B00PosX - 50 && PosX <= B00PosX + 70 && PosY >= 183 && PosXAlt > PosX) {
-			PosX = B00PosX + 71;
+		if (PosX >= B00PosX - 50 && PosX <= B00PosX + 65 && PosY >= 183 && PosXAlt > PosX) {
+			PosX = B00PosX + 66;
 			RealPosX += 6;
 		}
-		if (PosX >= B00PosX - 49 && PosX <= B00PosX + 70) {
+		if (PosX >= B00PosX - 50 && PosX <= B00PosX + 65) {
 			if (PosY + TempoY >= 182) {
 				PosY = 182;
 				TempoY = 0;
 				Gesprungen = false;
 			}
 		}
-		if (PosX <=  B00PosX - 65 && Gesprungen == false) {
+		if (PosX <= B00PosX - 65 && Gesprungen == false) {
 			PosY = 252;
 
 		}
-		if (PosX >= B00PosX + 70 && PosX <= B00PosX +140 && Gesprungen == false) {
+		if (PosX >= B00PosX + 70 && PosX <= B00PosX + 80 && Gesprungen == false) {
+			PosY = 252;
+
+		}
+		// Kollision mit 2.Block (B01)
+		if (PosX >= B01PosX - 50 && PosX <= B01PosX + 70 && PosY >= 115 && PosXAlt <= PosX) {
+			PosX = B01PosX - 51;
+			RealPosX -= 6;
+		}
+		if (PosX >= B01PosX - 50 && PosX <= B01PosX + 70 && PosY >= 115 && PosXAlt > PosX) {
+			PosX = B01PosX + 71;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B01PosX - 50 && PosX <= B01PosX + 70) {
+			if (PosY + TempoY >= 112) {
+				PosY = 112;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+
+		if (PosX >= B01PosX + 70 && PosX <= B01PosX + 90 && Gesprungen == false) {
+			PosY = 252;
+
+		}
+		if (PosX >= B01PosX && PosX <= B01PosX + 10) {
+			Flag1 = true;
+			System.out.println("F1");
+		}
+
+		// Kollision mit 3.Block (B02)
+		if (PosX >= B02PosX - 50 && PosX <= B02PosX + 70 && PosY >= 115 && PosXAlt <= PosX) {
+			PosX = B02PosX - 51;
+			RealPosX -= 6;
+		}
+		if (PosX >= B02PosX - 50 && PosX <= B02PosX + 70 && PosY >= 115 && PosXAlt > PosX) {
+			PosX = B02PosX + 71;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B02PosX - 50 && PosX <= B02PosX + 70) {
+			if (PosY + TempoY >= 112) {
+				PosY = 112;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+
+		if (PosX >= B02PosX + 70 && PosX <= B02PosX + 90 && Gesprungen == false) {
+			PosY = 252;
+
+		}
+		if (PosX >= B02PosX && PosX <= B02PosX + 10) {
+			Flag1 = false;
+			Flag2 = true;
+			System.out.println("F2");
+
+		}
+
+		// Kollision mit 4.Block (B03)
+		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 140 && PosY >= 115 && PosXAlt <= PosX) {
+			PosX = B03PosX - 51;
+			RealPosX -= 6;
+		}
+		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 140 && PosY >= 115 && PosXAlt > PosX) {
+			PosX = B03PosX + 141;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 140) {
+			if (PosY + TempoY >= 112) {
+				PosY = 112;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+
+		if (PosX >= B03PosX + 140 && PosX <= B03PosX + 160 && Gesprungen == false) {
+			PosY = 252;
+
+		}
+		if (PosX >= B03PosX && PosX <= B03PosX + 10) {
+			Flag2 = false;
+			Flag3 = true;
+			System.out.println("F3");
+
+		}
+
+		// Kollision mit 5.Block (B04)
+
+		if (PosX >= B04PosX - 50 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 111 && PosXAlt <= PosX) {
+			PosX = B04PosX - 51;
+			RealPosX -= 6;
+		}
+		if (PosX >= B04PosX - 50 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 111 && PosXAlt > PosX) {
+			PosX = B04PosX + 211;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B04PosX - 50 && PosX <= B04PosX + 210 && PosY <= 111) {
+			if (PosY + TempoY >= 44) {
+				PosY = 44;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		if (PosX >= B04PosX - 50 && PosX <= B04PosX + 210 && PosY > 111) {
+			if (PosY + TempoY >= 252) {
+				PosY = 252;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+			if(PosY <= 260  ) {
+				PosY = 261;
+			}
+		}
+
+		if (PosX >= B04PosX + 210 && PosX <= B04PosX + 380 && Gesprungen == false) {
+			PosY = 252;
+
+		}
+		if (PosX >= B04PosX && PosX <= B04PosX + 10) {
+			Flag3 = false;
+			Flag4 = true;
+			System.out.println("F4");
+
+		}
+		if (PosX >= B04PosX + 140 && PosX <= B04PosX + 150) {
+			Flag4 = false;
+			Flag5 = true;
+			System.out.println("F5");
+
+		}
+		
+		// Kollision mit 6.Block (B05)
+		
+		if (PosX >= B05PosX - 40 && PosX <= B05PosX + 70 && PosY >= 115 && PosXAlt <= PosX) {
+			PosX = B05PosX - 51;
+			RealPosX -= 6;
+		}
+		if (PosX >= B05PosX - 30 && PosX <= B05PosX + 70 && PosY >= 120 && PosXAlt > PosX) {
+			PosX = B05PosX + 71;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B05PosX - 50 && PosX <= B05PosX + 70) {
+			if (PosY + TempoY >= 112) {
+				PosY = 112;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+
+		if (PosX >= B05PosX + 70 && PosX <= B05PosX + 85 && Gesprungen == false) {
+			PosY = 182;
+
+		}
+		if (PosX >= B05PosX && PosX <= B05PosX + 10) {
+			Flag5 = false;
+			Flag6 = true;
+			System.out.println("F6");
+
+		}
+		
+		if (PosX >= B05PosX +20 && PosX <= B05PosX + 135 && PosY >= 183 && PosXAlt > PosX) {
+			PosX = B05PosX + 136;
+			RealPosX += 6;
+		}
+		if (PosX >= B05PosX +20 && PosX <= B05PosX + 130) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		
+		if (PosX >= B05PosX + 140 && PosX <= B05PosX + 150 && Gesprungen == false) {
 			PosY = 252;
 
 		}
 		
+		//kollisionen mit Schadensfolgen Spikes
 		
+		if (PosX >= B03PosX + 141 && PosX <= B05PosX  && PosY >= 113 ) {
 
-		if (RealPosX >= 2750) {
+			if (TempoX >= 0) {
+				RealPosX -= 6;
+			}
+			if (TempoX <= 0) {
+				RealPosX += 6;
+			}
+			if (TempoX == 0) {
+				// tue nichts
+			}
+
+			STILL = true;
+			PosY += 8;
+			RLN = 3;
+			Gesprungen = true;
+			System.out.println("Schaden registriert");
+
+		} else {
+			STILL = false;
+		}
+		if ( PosY >= 253) {
+			Gefallen = true;
+			Gesprungen = true;
+			System.out.println("gefallen");
+
+		}
+		if (Gefallen == true && Flag3 == true) {
+			PosX = B03PosX;
+			PosY = 112;
+			RealPosX = 1120;
+			Gefallen = false;
+			RLN = 0;
+			Thread.sleep(200);
+			HP -= 1;
+		}
+		if (Gefallen == true && Flag4 == true) {
+			PosX = B04PosX;
+			PosY = 42;
+			RealPosX = 1330;
+			Gefallen = false;
+			RLN = 0;
+			Thread.sleep(200);
+			HP -= 1;
+		}
+		if (Gefallen == true && Flag5 == true) {
+			PosX = B04PosX + 140;
+			PosY = 42;
+			RealPosX = 1470;
+			Gefallen = false;
+			RLN = 0;
+			Thread.sleep(200);
+			HP -= 1;
+		}
+		if (Gefallen == true && Flag6 == true) {
+			PosX = B05PosX;
+			PosY = 112;
+			RealPosX = 1750;
+			Gefallen = false;
+			RLN = 0;
+			Thread.sleep(200);
+			HP -= 1;
+		}
+		
+		
+		
+		
+		// Zielkollision mit Burg
+
+		if (RealPosX >= 2550) {
 			if (PosY <= 220) {
 				PosY = 221;
 			}
 		}
+		
+		
 	}
 
 }
