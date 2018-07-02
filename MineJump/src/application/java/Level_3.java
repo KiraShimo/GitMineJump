@@ -44,6 +44,24 @@ public class Level_3 {
 	private boolean STILL = false;
 	private boolean Verloren = false;
 	// Blockvariablen
+	private int B00PosX = 700;
+	private int B00PosY = 310;
+	private int B01PosX = 840;
+	private int B01PosY = 240;
+	private int B02PosX = 980;
+	private int B02PosY = 240;
+	private int B03PosX = 1120;
+	private int B03PosY = 240;
+	private int B04PosX = 1330;
+	private int B04PosY = 170;
+	private int B05PosX = 1750;
+	private int B05PosY = 240;
+	private int B06PosX = 2100;
+	private int B06PosY = 310;
+	private int B07PosX = 2170;
+	private int B07PosY = 170;
+	private int B08PosX = 2380;
+	private int B08PosY = 310;
 	
 
 	public void spiel(Stage primaryStage) throws IOException {
@@ -62,6 +80,18 @@ public class Level_3 {
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
 		Image SpielerSchaden = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne_Schaden.png").openStream());
+		Image BT01 = new Image(
+				Main.class.getResource("/application/ressources/pictures/ICENorm01.png").openStream());
+		Image BT02 = new Image(
+				Main.class.getResource("/application/ressources/pictures/ICEBT02.png").openStream());
+		Image BT03 = new Image(
+				Main.class.getResource("/application/ressources/pictures/ICEBT03.png").openStream());
+		Image BT04 = new Image(
+				Main.class.getResource("/application/ressources/pictures/ICEBT04.png").openStream());
+		Image BT05 = new Image(
+				Main.class.getResource("/application/ressources/pictures/ICEBT05.png").openStream());
+		Image BT06 = new Image(
+				Main.class.getResource("/application/ressources/pictures/ICEBT06.png").openStream());
 		Image HintergrundImage = new Image(
 				Main.class.getResource("/application/ressources/pictures/HintergrundEIS.png").openStream());
 		Image Untergrund = new Image(
@@ -84,7 +114,54 @@ public class Level_3 {
 		UntergrundAnzeigen.setX(UPosX);
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
+		
+		//Blöcke aufrufen
 
+		ImageView B00Anzeigen = new ImageView(BT01);
+		B00Anzeigen.setX(B00PosX);
+		B00Anzeigen.setY(B00PosX);
+		rootPane.getChildren().add(B00Anzeigen);
+		
+		ImageView B01Anzeigen = new ImageView(BT02);
+		B01Anzeigen.setX(B01PosX);
+		B01Anzeigen.setY(B01PosX);
+		rootPane.getChildren().add(B01Anzeigen);
+		
+		ImageView B02Anzeigen = new ImageView(BT02);
+		B02Anzeigen.setX(B02PosX);
+		B02Anzeigen.setY(B02PosX);
+		rootPane.getChildren().add(B02Anzeigen);
+		
+		ImageView B03Anzeigen = new ImageView(BT03);
+		B03Anzeigen.setX(B03PosX);
+		B03Anzeigen.setY(B03PosX);
+		rootPane.getChildren().add(B03Anzeigen);
+		
+		ImageView B04Anzeigen = new ImageView(BT04);
+		B04Anzeigen.setX(B04PosX);
+		B04Anzeigen.setY(B04PosX);
+		rootPane.getChildren().add(B04Anzeigen);
+		
+		ImageView B05Anzeigen = new ImageView(BT05);
+		B05Anzeigen.setX(B05PosX);
+		B05Anzeigen.setY(B05PosX);
+		rootPane.getChildren().add(B05Anzeigen);
+		
+		ImageView B06Anzeigen = new ImageView(BT01);
+		B06Anzeigen.setX(B06PosX);
+		B06Anzeigen.setY(B06PosX);
+		rootPane.getChildren().add(B06Anzeigen);
+		
+		ImageView B07Anzeigen = new ImageView(BT06);
+		B07Anzeigen.setX(B07PosX);
+		B07Anzeigen.setY(B07PosX);
+		rootPane.getChildren().add(B07Anzeigen);
+		
+		ImageView B08Anzeigen = new ImageView(BT01);
+		B08Anzeigen.setX(B08PosX);
+		B08Anzeigen.setY(B08PosX);
+		rootPane.getChildren().add(B08Anzeigen);
+		
 		// ZielHinten
 
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
@@ -161,6 +238,26 @@ public class Level_3 {
 					LebenAnzeiger.setImage(Leben1);
 				}
 				// Blöcke updaten
+				
+				B00Anzeigen.setX(B00PosX);
+				B00Anzeigen.setY(B00PosY);
+				B01Anzeigen.setX(B01PosX);
+				B01Anzeigen.setY(B01PosY);
+				B02Anzeigen.setX(B02PosX);
+				B02Anzeigen.setY(B02PosY);
+				B03Anzeigen.setX(B03PosX);
+				B03Anzeigen.setY(B03PosY);
+				B04Anzeigen.setX(B04PosX);
+				B04Anzeigen.setY(B04PosY);
+				B05Anzeigen.setX(B05PosX);
+				B05Anzeigen.setY(B05PosY);
+				B06Anzeigen.setX(B06PosX);
+				B06Anzeigen.setY(B06PosY);
+				B07Anzeigen.setX(B07PosX);
+				B07Anzeigen.setY(B07PosY);
+				B08Anzeigen.setX(B08PosX);
+				B08Anzeigen.setY(B08PosY);
+				
 				// Ziel aktualisieren
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
@@ -355,7 +452,42 @@ public class Level_3 {
 			}
 		}
 		// BlockPositionen anpassen
-		
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B00PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B01PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B02PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B03PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B04PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B05PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B06PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B07PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B08PosX -= TempoX;
+		}
 		
 		// Ziel anpassen
 		if (TempoX >= 0 && PosX >= 300) {
@@ -370,7 +502,7 @@ public class Level_3 {
 
 	public void Kollisionsdetektion() {
 
-		if (RealPosX >= 2750) {
+		if (RealPosX >= 2700) {
 			if (PosY <= 220) {
 				PosY = 221;
 			}
