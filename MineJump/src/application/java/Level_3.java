@@ -377,5 +377,4 @@ public class Level_3 {
 		}
 	}
 
-	//BLABLABLA
 }
