@@ -605,7 +605,6 @@ public class Level_3 {
 		}
 		if (PosX >= B01PosX && PosX <= B01PosX + 10) {
 			Flag1 = true;
-			System.out.println("F1");
 		}
 
 		// Kollision mit 3.Block (B02)
@@ -633,7 +632,6 @@ public class Level_3 {
 		if (PosX >= B02PosX && PosX <= B02PosX + 10) {
 			Flag1 = false;
 			Flag2 = true;
-			System.out.println("F2");
 
 		}
 
@@ -654,17 +652,16 @@ public class Level_3 {
 		if (PosX >= B03PosX && PosX <= B03PosX + 10) {
 			Flag2 = false;
 			Flag3 = true;
-			System.out.println("F3");
 
 		}
 
 		// Kollision mit 5.Block (B04)
 
-		if (PosX >= B04PosX - 20 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 111 && PosXAlt <= PosX) {
-			PosX = B04PosX - 21;
+		if (PosX >= B04PosX - 60 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 181 && PosXAlt <= PosX) {
+			PosX = B04PosX - 61;
 			RealPosX -= 6;
 		}
-		if (PosX >= B04PosX - 20 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 111 && PosXAlt > PosX) {
+		if (PosX >= B04PosX - 20 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 181 && PosXAlt > PosX) {
 			PosX = B04PosX + 211;
 			RealPosX += 6;
 		}
@@ -676,16 +673,6 @@ public class Level_3 {
 				Gesprungen = false;
 			}
 		}
-		if (PosX >= B04PosX - 50 && PosX <= B04PosX + 210 && PosY > 111) {
-			if (PosY + TempoY >= 252) {
-				PosY = 252;
-				TempoY = 0;
-				Gesprungen = false;
-			}
-			if (PosY <= 260) {
-				PosY = 261;
-			}
-		}
 
 		if (PosX >= B04PosX + 210 && PosX <= B04PosX + 380 && Gesprungen == false) {
 			Gesprungen = true;
@@ -694,13 +681,11 @@ public class Level_3 {
 		if (PosX >= B04PosX && PosX <= B04PosX + 10) {
 			Flag3 = false;
 			Flag4 = true;
-			System.out.println("F4");
 
 		}
 		if (PosX >= B04PosX + 140 && PosX <= B04PosX + 150) {
 			Flag4 = false;
 			Flag5 = true;
-			System.out.println("F5");
 
 		}
 
@@ -730,7 +715,6 @@ public class Level_3 {
 		if (PosX >= B05PosX && PosX <= B05PosX + 10) {
 			Flag5 = false;
 			Flag6 = true;
-			System.out.println("F6");
 
 		}
 
@@ -752,7 +736,7 @@ public class Level_3 {
 		}
 
 		// kollisionen mit Schadensfolgen Spikes
-		if (PosX >= B03PosX + 136 && PosX <= B04PosX && PosY >= 180) {
+		if (PosX >= B03PosX + 136 && PosX <= B04PosX && PosY >= 200) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
@@ -769,8 +753,6 @@ public class Level_3 {
 			RLN = 3;
 			Gesprungen = true;
 			pause.play();
-
-			System.out.println("delay");
 
 		} else {
 			STILL = false;
@@ -792,7 +774,6 @@ public class Level_3 {
 			RLN = 3;
 			Gesprungen = true;
 			pause.play();
-			System.out.println("delay");
 
 		} else {
 			STILL = false;
@@ -837,10 +818,10 @@ public class Level_3 {
 
 		// Kollision mit Speeren
 
-		if (PosX >= B01PosX + 70 && PosX <= B02PosX && PosY >= SP01PosY - 130
-				|| PosX >= B02PosX + 70 && PosX <= B03PosX && PosY >= SP02PosY - 130
-				|| PosX + 20 >= B01PosX + 70 && PosX + 20 <= B02PosX && PosY >= SP01PosY - 130
-				|| PosX + 20 >= B02PosX + 70 && PosX + 20 <= B03PosX && PosY >= SP02PosY - 130) {
+		if (PosX >= B01PosX + 70 && PosX <= B02PosX - 20 && PosY >= SP01PosY - 130
+				|| PosX >= B02PosX + 70 && PosX <= B03PosX - 20 && PosY >= SP02PosY - 130
+				|| PosX + 20 >= B01PosX + 70 && PosX + 20 <= B02PosX - 20 && PosY >= SP01PosY - 130
+				|| PosX + 20 >= B02PosX + 70 && PosX + 20 <= B03PosX - 20 && PosY >= SP02PosY - 130) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
