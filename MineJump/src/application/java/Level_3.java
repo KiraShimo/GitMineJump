@@ -53,7 +53,6 @@ public class Level_3 {
 	private boolean Flag6 = false;
 	private boolean Gefallen = false;
 	private boolean Abgestochen = false;
-	private boolean Schlafen = false;
 
 	// Blockvariablen
 	private int B00PosX = 700;
@@ -553,7 +552,12 @@ public class Level_3 {
 	}
 
 	public void Kollisionsdetektion() throws InterruptedException {
+		// pause wenn Schaden
+
+		PauseTransition pause = new PauseTransition(Duration.seconds(1));
+
 		// Kollision mit 1. Block (B00)
+
 		if (PosX >= B00PosX - 50 && PosX <= B00PosX + 65 && PosY >= 183 && PosXAlt <= PosX) {
 			PosX = B00PosX - 53;
 			RealPosX -= 6;
@@ -634,14 +638,6 @@ public class Level_3 {
 		}
 
 		// Kollision mit 4.Block (B03)
-		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 135 && PosY >= 115 && PosXAlt <= PosX) {
-			PosX = B03PosX - 51;
-			RealPosX -= 6;
-		}
-		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 135 && PosY >= 115 && PosXAlt > PosX) {
-			PosX = B03PosX + 141;
-			RealPosX += 6;
-		}
 
 		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 140) {
 			if (PosY + TempoY >= 112) {
@@ -653,7 +649,6 @@ public class Level_3 {
 
 		if (PosX >= B03PosX + 135 && PosX <= B03PosX + 160 && Gesprungen == false) {
 			Gesprungen = true;
-			
 
 		}
 		if (PosX >= B03PosX && PosX <= B03PosX + 10) {
@@ -665,11 +660,11 @@ public class Level_3 {
 
 		// Kollision mit 5.Block (B04)
 
-		if (PosX >= B04PosX - 50 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 111 && PosXAlt <= PosX) {
-			PosX = B04PosX - 51;
+		if (PosX >= B04PosX - 20 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 111 && PosXAlt <= PosX) {
+			PosX = B04PosX - 21;
 			RealPosX -= 6;
 		}
-		if (PosX >= B04PosX - 50 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 111 && PosXAlt > PosX) {
+		if (PosX >= B04PosX - 20 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 111 && PosXAlt > PosX) {
 			PosX = B04PosX + 211;
 			RealPosX += 6;
 		}
@@ -687,14 +682,13 @@ public class Level_3 {
 				TempoY = 0;
 				Gesprungen = false;
 			}
-			if(PosY <= 260  ) {
+			if (PosY <= 260) {
 				PosY = 261;
 			}
 		}
 
 		if (PosX >= B04PosX + 210 && PosX <= B04PosX + 380 && Gesprungen == false) {
 			Gesprungen = true;
-			
 
 		}
 		if (PosX >= B04PosX && PosX <= B04PosX + 10) {
@@ -709,9 +703,9 @@ public class Level_3 {
 			System.out.println("F5");
 
 		}
-		
+
 		// Kollision mit 6.Block (B05)
-		
+
 		if (PosX >= B05PosX - 40 && PosX <= B05PosX + 70 && PosY >= 115 && PosXAlt <= PosX) {
 			PosX = B05PosX - 51;
 			RealPosX -= 6;
@@ -739,27 +733,26 @@ public class Level_3 {
 			System.out.println("F6");
 
 		}
-		
-		if (PosX >= B05PosX +20 && PosX <= B05PosX + 135 && PosY >= 183 && PosXAlt > PosX) {
+
+		if (PosX >= B05PosX + 20 && PosX <= B05PosX + 135 && PosY >= 183 && PosXAlt > PosX) {
 			PosX = B05PosX + 136;
 			RealPosX += 6;
 		}
-		if (PosX >= B05PosX +20 && PosX <= B05PosX + 130) {
+		if (PosX >= B05PosX + 20 && PosX <= B05PosX + 130) {
 			if (PosY + TempoY >= 182) {
 				PosY = 182;
 				TempoY = 0;
 				Gesprungen = false;
 			}
 		}
-		
+
 		if (PosX >= B05PosX + 140 && PosX <= B05PosX + 150 && Gesprungen == false) {
 			PosY = 252;
 
 		}
-		
-		//kollisionen mit Schadensfolgen Spikes
-		
-		if (PosX >= B03PosX + 141 && PosX <= B05PosX  && PosY >= 150 ) {
+
+		// kollisionen mit Schadensfolgen Spikes
+		if (PosX >= B03PosX + 136 && PosX <= B04PosX && PosY >= 180) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
@@ -775,25 +768,46 @@ public class Level_3 {
 			PosY += 8;
 			RLN = 3;
 			Gesprungen = true;
-			Schlafen = true;
-			
+			pause.play();
+
+			System.out.println("delay");
 
 		} else {
 			STILL = false;
 		}
-		if ( PosY >= 253) {
+		if (PosX >= B04PosX + 1 && PosX <= B05PosX && PosY >= 150) {
+
+			if (TempoX >= 0) {
+				RealPosX -= 6;
+			}
+			if (TempoX <= 0) {
+				RealPosX += 6;
+			}
+			if (TempoX == 0) {
+				// tue nichts
+			}
+
+			STILL = true;
+			PosY += 8;
+			RLN = 3;
+			Gesprungen = true;
+			pause.play();
+			System.out.println("delay");
+
+		} else {
+			STILL = false;
+		}
+		if (PosY >= 253) {
 			Gefallen = true;
 			Gesprungen = true;
-			
 
 		}
 		if (Gefallen == true && Flag3 == true) {
+			RLN = 0;
 			PosX = B03PosX;
 			PosY = 112;
 			RealPosX = 1120;
 			Gefallen = false;
-			RLN = 0;
-			Schlafen = true;
 			HP -= 1;
 		}
 		if (Gefallen == true && Flag4 == true) {
@@ -802,7 +816,6 @@ public class Level_3 {
 			RealPosX = 1330;
 			Gefallen = false;
 			RLN = 0;
-			Schlafen = true;
 			HP -= 1;
 		}
 		if (Gefallen == true && Flag5 == true) {
@@ -811,7 +824,6 @@ public class Level_3 {
 			RealPosX = 1470;
 			Gefallen = false;
 			RLN = 0;
-			Schlafen = true;
 			HP -= 1;
 		}
 		if (Gefallen == true && Flag6 == true) {
@@ -820,13 +832,15 @@ public class Level_3 {
 			RealPosX = 1750;
 			Gefallen = false;
 			RLN = 0;
-			Schlafen = true;
 			HP -= 1;
 		}
-		
-		//Kollision mit Speeren
-		
-		if (PosX >= B01PosX + 70 && PosX <= B02PosX  && PosY >= SP01PosY - 130 ||  PosX >= B02PosX + 70 && PosX <= B03PosX  && PosY >= SP02PosY - 130 || PosX + 20 >= B01PosX + 70 && PosX + 20 <= B02PosX  && PosY >= SP01PosY - 130 ||  PosX + 20 >= B02PosX + 70 && PosX +20 <= B03PosX  && PosY >= SP02PosY - 130 ) {
+
+		// Kollision mit Speeren
+
+		if (PosX >= B01PosX + 70 && PosX <= B02PosX && PosY >= SP01PosY - 130
+				|| PosX >= B02PosX + 70 && PosX <= B03PosX && PosY >= SP02PosY - 130
+				|| PosX + 20 >= B01PosX + 70 && PosX + 20 <= B02PosX && PosY >= SP01PosY - 130
+				|| PosX + 20 >= B02PosX + 70 && PosX + 20 <= B03PosX && PosY >= SP02PosY - 130) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
@@ -842,41 +856,30 @@ public class Level_3 {
 			RLN = 3;
 			Gesprungen = true;
 			Abgestochen = true;
-			Schlafen = true;
-			
-			
+			pause.play();
 
 		} else {
 			STILL = false;
 		}
-		
-		if(Abgestochen == true && Flag1 == true) {
+
+		if (Abgestochen == true && Flag1 == true) {
 			PosX = B01PosX - 30;
 			PosY = 80;
 			RealPosX = 840;
 			Abgestochen = false;
 			RLN = 0;
-			Schlafen = true;
 			HP -= 1;
 		}
-		
-		if(Abgestochen == true && Flag2 == true) {
+
+		if (Abgestochen == true && Flag2 == true) {
 			PosX = B02PosX + 5;
 			PosY = 80;
 			RealPosX = 985;
 			Abgestochen = false;
-			RLN = 0;
-			Schlafen = true;
+			RLN = 3;
 			HP -= 1;
 		}
-		
-		if(Schlafen == true)
-		{
-			Thread.sleep(200);
-			Schlafen = false;
-		}
-		
-		
+
 		// Zielkollision mit Burg
 
 		if (RealPosX >= 2550) {
@@ -884,8 +887,7 @@ public class Level_3 {
 				PosY = 221;
 			}
 		}
-		
-		
+
 	}
 
 }
