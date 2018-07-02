@@ -30,9 +30,9 @@ public class Level_3 {
 	private int TempoY = 0;
 	private int RealPosX = 0;
 	private boolean Gesprungen = false;
-	private int ZPosX01 = 2725;
+	private int ZPosX01 = 2625;
 	private int ZPosY01 = 166;
-	private int ZPosX02 = 2725;
+	private int ZPosX02 = 2625;
 	private int ZPosY02 = -20;
 	private int LPosX = 0;
 	private int LPosY = 0;
@@ -52,6 +52,8 @@ public class Level_3 {
 	private boolean Flag5 = false;
 	private boolean Flag6 = false;
 	private boolean Gefallen = false;
+	private boolean Abgestochen = false;
+	private boolean Schlafen = false;
 
 	// Blockvariablen
 	private int B00PosX = 700;
@@ -97,7 +99,6 @@ public class Level_3 {
 		Image BT03 = new Image(Main.class.getResource("/application/ressources/pictures/ICEBT03.png").openStream());
 		Image BT04 = new Image(Main.class.getResource("/application/ressources/pictures/ICEBT04.png").openStream());
 		Image BT05 = new Image(Main.class.getResource("/application/ressources/pictures/ICEBT05.png").openStream());
-		Image BT06 = new Image(Main.class.getResource("/application/ressources/pictures/ICEBT06.png").openStream());
 		Image Spikes = new Image(Main.class.getResource("/application/ressources/pictures/Spikes.png").openStream());
 		Image Speer = new Image(Main.class.getResource("/application/ressources/pictures/Speer01.png").openStream());
 		Image HintergrundImage = new Image(
@@ -468,7 +469,7 @@ public class Level_3 {
 		}
 		// Siegbedingung
 		if (t == 1) {
-			if (RealPosX > 2800) {
+			if (RealPosX > 2700) {
 				Gewonnen = true;
 				t = 0;
 				RealPosX = 0;
@@ -569,11 +570,11 @@ public class Level_3 {
 			}
 		}
 		if (PosX <= B00PosX - 65 && Gesprungen == false) {
-			PosY = 252;
+			Gesprungen = true;
 
 		}
 		if (PosX >= B00PosX + 70 && PosX <= B00PosX + 80 && Gesprungen == false) {
-			PosY = 252;
+			Gesprungen = true;
 
 		}
 		// Kollision mit 2.Block (B01)
@@ -595,7 +596,7 @@ public class Level_3 {
 		}
 
 		if (PosX >= B01PosX + 70 && PosX <= B01PosX + 90 && Gesprungen == false) {
-			PosY = 252;
+			Gesprungen = true;
 
 		}
 		if (PosX >= B01PosX && PosX <= B01PosX + 10) {
@@ -622,7 +623,7 @@ public class Level_3 {
 		}
 
 		if (PosX >= B02PosX + 70 && PosX <= B02PosX + 90 && Gesprungen == false) {
-			PosY = 252;
+			Gesprungen = true;
 
 		}
 		if (PosX >= B02PosX && PosX <= B02PosX + 10) {
@@ -633,11 +634,11 @@ public class Level_3 {
 		}
 
 		// Kollision mit 4.Block (B03)
-		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 140 && PosY >= 115 && PosXAlt <= PosX) {
+		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 135 && PosY >= 115 && PosXAlt <= PosX) {
 			PosX = B03PosX - 51;
 			RealPosX -= 6;
 		}
-		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 140 && PosY >= 115 && PosXAlt > PosX) {
+		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 135 && PosY >= 115 && PosXAlt > PosX) {
 			PosX = B03PosX + 141;
 			RealPosX += 6;
 		}
@@ -650,8 +651,9 @@ public class Level_3 {
 			}
 		}
 
-		if (PosX >= B03PosX + 140 && PosX <= B03PosX + 160 && Gesprungen == false) {
-			PosY = 252;
+		if (PosX >= B03PosX + 135 && PosX <= B03PosX + 160 && Gesprungen == false) {
+			Gesprungen = true;
+			
 
 		}
 		if (PosX >= B03PosX && PosX <= B03PosX + 10) {
@@ -691,7 +693,8 @@ public class Level_3 {
 		}
 
 		if (PosX >= B04PosX + 210 && PosX <= B04PosX + 380 && Gesprungen == false) {
-			PosY = 252;
+			Gesprungen = true;
+			
 
 		}
 		if (PosX >= B04PosX && PosX <= B04PosX + 10) {
@@ -756,7 +759,7 @@ public class Level_3 {
 		
 		//kollisionen mit Schadensfolgen Spikes
 		
-		if (PosX >= B03PosX + 141 && PosX <= B05PosX  && PosY >= 113 ) {
+		if (PosX >= B03PosX + 141 && PosX <= B05PosX  && PosY >= 150 ) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
@@ -772,7 +775,8 @@ public class Level_3 {
 			PosY += 8;
 			RLN = 3;
 			Gesprungen = true;
-			System.out.println("Schaden registriert");
+			Schlafen = true;
+			
 
 		} else {
 			STILL = false;
@@ -780,7 +784,7 @@ public class Level_3 {
 		if ( PosY >= 253) {
 			Gefallen = true;
 			Gesprungen = true;
-			System.out.println("gefallen");
+			
 
 		}
 		if (Gefallen == true && Flag3 == true) {
@@ -789,7 +793,7 @@ public class Level_3 {
 			RealPosX = 1120;
 			Gefallen = false;
 			RLN = 0;
-			Thread.sleep(200);
+			Schlafen = true;
 			HP -= 1;
 		}
 		if (Gefallen == true && Flag4 == true) {
@@ -798,7 +802,7 @@ public class Level_3 {
 			RealPosX = 1330;
 			Gefallen = false;
 			RLN = 0;
-			Thread.sleep(200);
+			Schlafen = true;
 			HP -= 1;
 		}
 		if (Gefallen == true && Flag5 == true) {
@@ -807,7 +811,7 @@ public class Level_3 {
 			RealPosX = 1470;
 			Gefallen = false;
 			RLN = 0;
-			Thread.sleep(200);
+			Schlafen = true;
 			HP -= 1;
 		}
 		if (Gefallen == true && Flag6 == true) {
@@ -816,11 +820,61 @@ public class Level_3 {
 			RealPosX = 1750;
 			Gefallen = false;
 			RLN = 0;
-			Thread.sleep(200);
+			Schlafen = true;
 			HP -= 1;
 		}
 		
+		//Kollision mit Speeren
 		
+		if (PosX >= B01PosX + 70 && PosX <= B02PosX  && PosY >= SP01PosY - 130 ||  PosX >= B02PosX + 70 && PosX <= B03PosX  && PosY >= SP02PosY - 130 || PosX + 20 >= B01PosX + 70 && PosX + 20 <= B02PosX  && PosY >= SP01PosY - 130 ||  PosX + 20 >= B02PosX + 70 && PosX +20 <= B03PosX  && PosY >= SP02PosY - 130 ) {
+
+			if (TempoX >= 0) {
+				RealPosX -= 6;
+			}
+			if (TempoX <= 0) {
+				RealPosX += 6;
+			}
+			if (TempoX == 0) {
+				// tue nichts
+			}
+
+			STILL = true;
+			RLN = 3;
+			Gesprungen = true;
+			Abgestochen = true;
+			Schlafen = true;
+			
+			
+
+		} else {
+			STILL = false;
+		}
+		
+		if(Abgestochen == true && Flag1 == true) {
+			PosX = B01PosX - 30;
+			PosY = 80;
+			RealPosX = 840;
+			Abgestochen = false;
+			RLN = 0;
+			Schlafen = true;
+			HP -= 1;
+		}
+		
+		if(Abgestochen == true && Flag2 == true) {
+			PosX = B02PosX + 5;
+			PosY = 80;
+			RealPosX = 985;
+			Abgestochen = false;
+			RLN = 0;
+			Schlafen = true;
+			HP -= 1;
+		}
+		
+		if(Schlafen == true)
+		{
+			Thread.sleep(200);
+			Schlafen = false;
+		}
 		
 		
 		// Zielkollision mit Burg

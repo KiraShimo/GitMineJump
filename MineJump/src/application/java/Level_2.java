@@ -738,7 +738,7 @@ public class Level_2 {
 			}
 		}
 		if (PosX >= B01PosX + 800 && PosX <= B05PosX + 100 && Gesprungen == false) {
-			PosY = 252;
+			Gesprungen =true;
 
 		}
 		
