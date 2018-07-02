@@ -2,7 +2,6 @@ package application.java;
 
 import java.io.IOException;
 
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +9,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.Scene;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class MainController {
 	
@@ -78,13 +76,9 @@ public class MainController {
 		menu.spiel2(primaryStage);
 	}
 	
-	//Level 3 starten - Spielaufruf in Menu.java     - - - - - - - - zurzeit Test für Win-Screen
+	//Level 3 starten - Spielaufruf in Menu.java
 	@FXML
 	private void BtnLevel3Action(ActionEvent actionEvent) throws IOException {
-//		menu.win(primaryStage);
-//		PauseTransition delay = new PauseTransition(Duration.seconds(5));     //Test für WinScreen
-//		delay.setOnFinished( event -> menu.level(primaryStage) );
-//		delay.play();
 		menu.spiel3(primaryStage);
 	}
 
