@@ -410,10 +410,19 @@ public class Level_2 {
 			case SPACE:
 				Spring();
 				break;
+			case W:
+				Spring();
+				break;
 			case LEFT:
 				Links();
 				break;
 			case RIGHT:
+				Rechts();
+				break;
+			case A:
+				Links();
+				break;
+			case D:
 				Rechts();
 				break;
 			case ESCAPE:
@@ -433,11 +442,21 @@ public class Level_2 {
 				break;
 			case SPACE:
 				break;
+			case W:
+				break;
 			case LEFT:
 				RLN = 0;
 				Halt();
 				break;
 			case RIGHT:
+				RLN = 0;
+				Halt();
+				break;
+			case A:
+				RLN = 0;
+				Halt();
+				break;
+			case D:
 				RLN = 0;
 				Halt();
 				break;
@@ -804,7 +823,7 @@ public class Level_2 {
 		}
 
 		// Kollision mit Kakteen klein
-		if (PosX >= B06PosX +70 && PosX <= B07PosX -70  && PosY >= 110 ) {
+		if (PosX >= B06PosX +70 && PosX <= B07PosX - 50  && PosY >= 110 ) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
@@ -824,7 +843,7 @@ public class Level_2 {
 		} else {
 			STILL = false;
 		}
-		if (PosX >= B07PosX +70 && PosX <= B08PosX -70  && PosY >= 110 ) {
+		if (PosX >= B07PosX +70 && PosX <= B08PosX - 50 && PosY >= 110 ) {
 
 			if (TempoX >= 0) {
 				RealPosX -= 6;
@@ -846,12 +865,13 @@ public class Level_2 {
 		}
 		if ( PosY >= 253) {
 			Gefallen = true;
+			Gesprungen = true;
 
 		}
 		if (Gefallen == true && Flag1 == true) {
 			PosX = B06PosX;
 			PosY = 112;
-			RealPosX = 1840;
+			RealPosX = 1700;
 			Gefallen = false;
 			RLN = 0;
 			Thread.sleep(200);
@@ -869,18 +889,18 @@ public class Level_2 {
 
 		}
 		if (Gefallen == true && Flag3 == true) {
-			PosX = B08PosX +70;
+			PosX = B08PosX;
 			PosY = 112;
-			RealPosX = 1980;
+			RealPosX = 2120;
 			Gefallen = false;
 			RLN = 0;
 			Thread.sleep(200);
 			HP -= 1;
 		}
 		if (Gefallen == true && Flag4 == true) {
-			PosX = B09PosX +210;
+			PosX = B09PosX;
 			PosY = 182;
-			RealPosX = 2050;
+			RealPosX = 2260;
 			Gefallen = false;
 			RLN = 0;
 			Thread.sleep(200);

@@ -211,10 +211,19 @@ public class Level_3 {
 			case SPACE:
 				Spring();
 				break;
+			case W:
+				Spring();
+				break;
 			case LEFT:
 				Links();
 				break;
 			case RIGHT:
+				Rechts();
+				break;
+			case A:
+				Links();
+				break;
+			case D:
 				Rechts();
 				break;
 			case ESCAPE:
@@ -234,11 +243,21 @@ public class Level_3 {
 				break;
 			case SPACE:
 				break;
+			case W:
+				break;
 			case LEFT:
 				RLN = 0;
 				Halt();
 				break;
 			case RIGHT:
+				RLN = 0;
+				Halt();
+				break;
+			case A:
+				RLN = 0;
+				Halt();
+				break;
+			case D:
 				RLN = 0;
 				Halt();
 				break;
