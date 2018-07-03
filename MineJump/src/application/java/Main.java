@@ -10,7 +10,7 @@ import javafx.util.Duration;
 
 public class Main extends Application {
 	
-	private MediaPlayer musicplayer;
+	//private MediaPlayer musicplayer;
 	
 	
 	@Override
@@ -19,7 +19,7 @@ public class Main extends Application {
 		//Zufallswiedergabe muss noch eingefügt werden
 		
 		//Musik initialisieren
-		Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
+		/*Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
 		musicplayer = new MediaPlayer(media);
         musicplayer.setAutoPlay(true);
         musicplayer.setVolume(0.2);   //zwischen 0 und 1 
@@ -29,10 +29,15 @@ public class Main extends Application {
         	public void run() {
         		musicplayer.seek(Duration.ZERO); 
         	}
-         });  
-        
+         });  */
+		
         try {
-			//Hauptmenü laden
+        	//Musik starten
+        	Music music = new Music();
+        	//music.setMediaPlayer(musicplayer);
+        	music.startmusic();
+    		
+        	//Hauptmenü laden
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Main.fxml"));
 			Pane pane = root.load();
 
@@ -40,7 +45,7 @@ public class Main extends Application {
 			MainController mainController = root.getController();
 			mainController.setMain(this);
 			mainController.setPrimaryStage(primaryStage);
-			mainController.setMediaPlayer(musicplayer);
+			//mainController.setMediaPlayer(musicplayer);
 			
 			//Initialisierung Scene und Stage
 			Scene mainmenu = new Scene(pane);
@@ -55,11 +60,11 @@ public class Main extends Application {
 		}
 	}
     
-	public void setvolume(double volume) {
+	/*public void setvolume(double volume) {
     	System.out.println(musicplayer);
     	System.out.println(volume);
 		musicplayer.setVolume(volume);
-    }
+    }*/
 	
 	public static void main(String[] args) {
 		launch(args);

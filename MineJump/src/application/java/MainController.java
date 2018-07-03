@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.Scene;
 import javafx.scene.control.Slider;
@@ -14,15 +15,16 @@ public class MainController {
 	
 	public Stage primaryStage;
 	public Main main;
-	public MediaPlayer musicplayer;
+	//public AudioClip musicplayer;
 	Menu menu = new Menu();
+	public Music music;
 	
 	public void setMain(Main main) {
 		this.main = main;
 	}
 	
-	public void setMediaPlayer(MediaPlayer musicplayer) {
-		this.musicplayer = musicplayer;
+	public void setMusic(Music music) {
+		this.music = music;
 	}
 	
 	public void setPrimaryStage(Stage primaryStage) {
@@ -60,7 +62,9 @@ public class MainController {
 		Slider slider= (Slider) scene.lookup("#SliderMusic");
 		double volume = slider.getValue();
 		System.out.println(volume);
-		main.setvolume(volume);
+		//main.setvolume(volume);
+		//musicplayer.setVolume(volume);
+		//music.setvolume(volume);
 		menu.mainmenu(primaryStage);
 	}
 	
