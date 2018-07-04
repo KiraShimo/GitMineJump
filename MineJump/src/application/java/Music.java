@@ -1,40 +1,40 @@
 package application.java;
 
-import java.nio.file.Paths;
-
-import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 public class Music {
 
-	private AudioClip musicplayer;
+	private MediaPlayer musicplayer;
 	
 	public void startmusic() {
+		
 		//Musik initialisieren
-		String source = "src/application/ressources/music/07_Boo.mp3";
-		Media media = new Media(Paths.get(source).toUri().toString());
-		musicplayer = new AudioClip(media.getSource());
+		Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
+		musicplayer = new MediaPlayer(media);
+		musicplayer.setAutoPlay(true);
 		musicplayer.setVolume(0.2);   //zwischen 0 und 1 
-		musicplayer.setCycleCount(-1);
-		musicplayer.play();
 		
 		//Musik loopen 
-		/*musicplayer.setOnEndOfMedia(new Runnable() {    
+		musicplayer.setOnEndOfMedia(new Runnable() {    
 			public void run() {
-				musicplayer.seek(Duration.ZERO); 
-			}
-		});  */
+		        musicplayer.seek(Duration.ZERO); 
+		    }
+		});  
 	}
 	
-	public AudioClip getmusicplayer() {
+	public MediaPlayer getmusicplayer() {
 		return musicplayer;
+	}
+	
+	public double getvolume() {
+		return musicplayer.getVolume();
 	}
 	
 	public void setvolume(double volume) {
     	System.out.println(musicplayer);
     	System.out.println(volume);
-		getmusicplayer().setVolume(volume);
+		this.musicplayer.setVolume(volume);
     }
 }

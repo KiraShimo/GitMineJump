@@ -1,34 +1,30 @@
 package application.java;
 
 import java.io.IOException;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.Scene;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 
-public class MainController {
+public class MainController{
 	
 	public Stage primaryStage;
 	public Main main;
-	//public AudioClip musicplayer;
 	Menu menu = new Menu();
 	public Music music;
+	@FXML Slider SliderMusic;
 	
 	public void setMain(Main main) {
 		this.main = main;
 	}
 	
-	public void setMusic(Music music) {
-		this.music = music;
-	}
-	
 	public void setPrimaryStage(Stage primaryStage) {
 		 this.primaryStage = primaryStage;
+	}
+	
+	public void setMusic(Music music) {
+		this.music = music;
 	}
 	
 	//Aufruf Levelauswahl
@@ -40,8 +36,9 @@ public class MainController {
 	//Aufruf Einstellungsmenü
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
-		//Scene scene = primaryStage.getScene();
-		//Slider slider= (Slider) scene.lookup("#SliderMusic");
+		double volume = music.getvolume();
+		System.out.println(volume);
+		SliderMusic.setValue(volume*100);
 		//final double volume = musicplayer.getVolume();
 		//slider.setValue(volume);
 		menu.settings(primaryStage);
@@ -58,17 +55,14 @@ public class MainController {
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
 		//main.start(primaryStage);
-		Scene scene = primaryStage.getScene();
-		Slider slider= (Slider) scene.lookup("#SliderMusic");
-		double volume = slider.getValue();
+		double volume = SliderMusic.getValue()/100;
 		System.out.println(volume);
-		//main.setvolume(volume);
 		//musicplayer.setVolume(volume);
-		//music.setvolume(volume);
+		music.setvolume(volume);
 		menu.mainmenu(primaryStage);
 	}
 	
-	//Level starten - Spielaufruf in Menu.java
+	//Level 1 starten - Spielaufruf in Menu.java
 	@FXML
 	private void BtnLevel1Action(ActionEvent actionEvent) throws IOException {
 		menu.spiel(primaryStage);
@@ -86,7 +80,7 @@ public class MainController {
 		menu.spiel3(primaryStage);
 	}
 
-	//Level starten - Spielaufruf in Menu.java
+	//Hauptmenü erneut aufrufen - Aufruf in Menu.java
 	@FXML
 	private void BtnLevelBackAction(ActionEvent actionEvent) throws IOException {
 		menu.mainmenu(primaryStage);
