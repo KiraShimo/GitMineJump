@@ -47,6 +47,7 @@ public class Level_4 {
 	private boolean S = false;
 	private boolean Flag1 = false;
 	private boolean Flag2 = false;
+	private boolean Flag3 = false;
 	private boolean V = false;
 	private boolean Interaction = false;
 	private boolean H2 = false;
@@ -54,6 +55,8 @@ public class Level_4 {
 	private boolean Drop = false;
 	private boolean W04T = false;
 	private boolean W01T = false;
+	private boolean Obsidian = false;
+	private boolean test = false;
 	// Blockvariablen
 	private int B01PosX = 500;
 	private int B01PosY = 310;
@@ -401,6 +404,21 @@ public class Level_4 {
 				L04_Anzeigen.setX(L04PosX);
 				L04_Anzeigen.setY(L04PosY);
 
+				if (Obsidian == true) {
+					L01_Anzeigen.setImage(B02);
+					L02_Anzeigen.setImage(B02);
+					L03_Anzeigen.setImage(B02);
+					L04_Anzeigen.setImage(B02);
+
+					WA01_Anzeigen.setImage(null);
+					WA02_Anzeigen.setImage(null);
+					WA03_Anzeigen.setImage(null);
+					WA04_Anzeigen.setImage(null);
+
+					Wasserfall = false;
+
+				}
+
 				// Gegner updaten
 
 				E01_Anzeigen.setX(E01PosX);
@@ -416,16 +434,46 @@ public class Level_4 {
 				// Gewonnen test / ESC test
 				if (Win == true) {
 					Win = false;
-					RealPosX = 0;
-					PosX = 0;
-					TempoX = 0;
+					Exit = false;
+					Gefallen = false;
+					T = 1;
+					S = false;
+					Flag1 = false;
+					Flag2 = false;
+					Flag3 = false;
+					V = false;
+					Interaction = false;
+					H2 = false;
+					Wasserfall = false;
+					Drop = false;
+					W04T = false;
+					W01T = false;
+					Obsidian = false;
+					test = false;
 					menu.win(primaryStage);
 					PauseTransition delay = new PauseTransition(Duration.seconds(5));
 					delay.setOnFinished(event -> menu.level(primaryStage));
 					delay.play();
 				}
 				if (Exit == true) {
+					
+					Win = false;
 					Exit = false;
+					Gefallen = false;
+					T = 1;
+					S = false;
+					Flag1 = false;
+					Flag2 = false;
+					Flag3 = false;
+					V = false;
+					Interaction = false;
+					H2 = false;
+					Wasserfall = false;
+					Drop = false;
+					W04T = false;
+					W01T = false;
+					Obsidian = false;
+					test = false;
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
@@ -434,7 +482,23 @@ public class Level_4 {
 				}
 				if (V == true) {
 					System.out.println("Verloren");
+					Win = false;
+					Exit = false;
+					Gefallen = false;
+					T = 1;
+					S = false;
+					Flag1 = false;
+					Flag2 = false;
+					Flag3 = false;
 					V = false;
+					Interaction = false;
+					H2 = false;
+					Wasserfall = false;
+					Drop = false;
+					W04T = false;
+					W01T = false;
+					Obsidian = false;
+					test = false;
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
@@ -473,7 +537,10 @@ public class Level_4 {
 			case D:
 				Rechts();
 				break;
-			case T:
+			case I:
+				Interaction = true;
+				break;
+			case E:
 				Interaction = true;
 				break;
 			case ESCAPE:
@@ -511,7 +578,10 @@ public class Level_4 {
 				RLN = 0;
 				Halt();
 				break;
-			case T:
+			case I:
+				Interaction = false;
+				break;
+			case E:
 				Interaction = false;
 				break;
 			case ESCAPE:
@@ -712,8 +782,8 @@ public class Level_4 {
 
 	public void Kollisionsdetektion() throws InterruptedException {
 
-		// Timeline für reset nach dmg
-		Timeline Timer = new Timeline(new KeyFrame(Duration.millis(800), ae -> FlagFlag()));
+		PauseTransition pause = new PauseTransition(Duration.seconds(1));
+
 		// Kollision mit B01
 		if (PosX >= B01PosX - 64 && PosX <= B01PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
 			PosX = B01PosX - 53;
@@ -788,6 +858,10 @@ public class Level_4 {
 			Gesprungen = true;
 
 		}
+		if (PosX >= B03PosX && PosX <= B03PosX + 20) {
+			Flag2 = true;
+			System.out.println(RealPosX);
+		}
 		// Kollision mit B04
 
 		if (PosX >= B04PosX - 64 && PosX <= B04PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
@@ -816,9 +890,16 @@ public class Level_4 {
 
 		if (PosX >= B04PosX && PosX <= B04PosX + 20) {
 			RealPosX = 1650;
+			Flag2 = false;
+			Flag3 = true;
 			System.out.println(RealPosX);
 		}
 		// Kollision mit Gegner
+		Timeline Timer = new Timeline(new KeyFrame(Duration.millis(2500), ae -> Flag()));
+		if (test == true && Flag1 == true) {
+			Timer.play();
+			test = false;
+		}
 
 		if (PosX >= E01PosX - 64 && PosX <= E01PosX + 69 && PosY >= 153 && PosXAlt <= PosX && Flag1 == false) {
 			PosX = E01PosX - 53;
@@ -832,21 +913,18 @@ public class Level_4 {
 			Flag1 = true;
 
 		}
-		if (Flag1 == true) {
-			Timer.play();
-		}
 
-		if (Gefallen == true) {
+		if (Gefallen == true && Flag1 == true) {
 			Gefallen = false;
-			RLN = 0;
+			RLN = 3;
 			Thread.sleep(200);
 			HP -= 1;
+			test = true;
 		}
 
 		// Interaktion mit dem Hebel
 		if (PosX >= B03PosX - 140 && PosX <= B03PosX - 20 && Interaction == true) {
 			H2 = true;
-			System.out.println("Hebel gehebelt");
 			Wasserfall = true;
 		}
 		if (Drop == true) {
@@ -864,17 +942,83 @@ public class Level_4 {
 			}
 			if (WA04PosX >= WA03PosX) {
 				WA04PosX -= 7;
-				if (W04PosX == W03PosX) {
+				if (WA04PosX == WA03PosX) {
 					W04T = true;
 				}
 			}
-			if (W04T == true && WA04PosY <= 260 ) {
+			if (W04T == true && WA04PosY <= 260) {
 				WA04PosY += 8;
-			
- 			}
-			if (W01T == true && WA01PosY <= 260 ) {
+
+			}
+			if (W01T == true && WA01PosY <= 260) {
 				WA01PosY += 8;
- 			}
+
+			}
+			if (WA01PosY >= 250 && WA04PosY >= 250) {
+				Obsidian = true;
+			}
+
+		}
+		if (Obsidian == false) {
+			if (PosX >= L01PosX - 64 && PosX <= L04PosX + 69 && PosY >= 183) {
+				if (TempoX >= 0) {
+					RealPosX -= 6;
+				}
+				if (TempoX <= 0) {
+					RealPosX += 6;
+				}
+				if (TempoX == 0) {
+					// tue nichts
+				}
+
+				S = true;
+				PosY += 8;
+				RLN = 3;
+				Gesprungen = true;
+				pause.play();
+
+			} else {
+				S = false;
+			}
+			if (PosY >= 253) {
+				Gefallen = true;
+				Gesprungen = true;
+			}
+			if (Gefallen == true && Flag2 == true) {
+				RLN = 0;
+				PosX = B03PosX;
+				PosY = 112;
+				RealPosX = 1400;
+				Gefallen = false;
+				HP -= 1;
+			}
+			if (Gefallen == true && Flag3 == true) {
+				RLN = 0;
+				PosX = B04PosX;
+				PosY = 112;
+				RealPosX = 1650;
+				Gefallen = false;
+				HP -= 1;
+			}
+			if (PosX >= L01PosX - 110 && PosX <= L04PosX + 69) {
+				if (PosY <= 130) {
+					PosY = 131;
+				}
+			}
+		}
+		if (Obsidian == true) {
+			if (PosX >= B03PosX - 49 && PosX <= B04PosX + 70) {
+				if (PosY + TempoY >= 182) {
+					PosY = 182;
+					TempoY = 0;
+					Gesprungen = false;
+				}
+			}
+			if (PosX >= L01PosX - 110 && PosX <= L02PosX || PosX >= L03PosX + 20 && PosX <= L04PosX + 110) {
+				if (PosY <= 130) {
+					PosY = 131;
+				}
+			}
 		}
 
 		// Endkollision
@@ -885,9 +1029,8 @@ public class Level_4 {
 		}
 	}
 
-	public void FlagFlag() {
+	public void Flag() {
 		Flag1 = false;
-		System.out.println("flagflag");
 	}
 
 }
