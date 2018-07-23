@@ -26,7 +26,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="BtnLevel4" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="4" textFill="WHITE" translateX="10.0">
+      <Button fx:id="BtnLevel4" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" onAction="#BtnLevel4Action" prefHeight="50.0" prefWidth="50.0" text="4" textFill="WHITE" translateX="10.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
