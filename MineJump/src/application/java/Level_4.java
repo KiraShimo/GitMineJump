@@ -48,7 +48,12 @@ public class Level_4 {
 	private boolean Flag1 = false;
 	private boolean Flag2 = false;
 	private boolean V = false;
-//	private boolean Interaction = false;
+	private boolean Interaction = false;
+	private boolean H2 = false;
+	private boolean Wasserfall = false;
+	private boolean Drop = false;
+	private boolean W04T = false;
+	private boolean W01T = false;
 	// Blockvariablen
 	private int B01PosX = 500;
 	private int B01PosY = 310;
@@ -330,7 +335,9 @@ public class Level_4 {
 				if (HP == 1) {
 					LebenAnzeiger.setImage(Leben1);
 				}
-
+				if (H2 == true) {
+					H01_Anzeigen.setImage(H01);
+				}
 				// Ziel Aktuallisieren
 
 				Ziel01BGAnzeiger.setX(ZPosX01);
@@ -365,6 +372,12 @@ public class Level_4 {
 				W07_Anzeigen.setY(W07PosY);
 				W08_Anzeigen.setX(W08PosX);
 				W08_Anzeigen.setY(W08PosY);
+
+				if (Wasserfall == true) {
+					W04_Anzeigen.setImage(null);
+					W05_Anzeigen.setImage(null);
+					Drop = true;
+				}
 
 				// Wasser updaten
 
@@ -417,6 +430,7 @@ public class Level_4 {
 					PosX = 0;
 					TempoX = 0;
 					menu.level(primaryStage);
+					System.out.println("Willraus");
 				}
 				if (V == true) {
 					System.out.println("Verloren");
@@ -459,8 +473,9 @@ public class Level_4 {
 			case D:
 				Rechts();
 				break;
-			case I:
-//				Interaction = true;
+			case T:
+				Interaction = true;
+				break;
 			case ESCAPE:
 				Exit = true;
 				break;
@@ -496,8 +511,9 @@ public class Level_4 {
 				RLN = 0;
 				Halt();
 				break;
-			case I:
-//				Interaction = false;
+			case T:
+				Interaction = false;
+				break;
 			case ESCAPE:
 				break;
 			default:
@@ -530,175 +546,174 @@ public class Level_4 {
 	}
 
 	public void NeuLaden() {
-		PosXAlt = PosX;
-		if (HP == 0) {
-			V = true;
-		}
-		// Kollisiondetektion -extra-
-		if (S == true) {
-			TempoX = 0;
-		}
-		// Bewegen und Anpassen
-		if (PosX > 51) {
-			RealPosX += TempoX;
-		}
-		if (TempoX < 0) {
-			PosX += TempoX;
-		} else if (TempoX == 0) {
-			// tue nichts
-
-		} else {
-			if (PosX <= 300) {
+		if (Wasserfall == false) {
+			PosXAlt = PosX;
+			if (HP == 0) {
+				V = true;
+			}
+			// Kollisiondetektion -extra-
+			if (S == true) {
+				TempoX = 0;
+			}
+			// Bewegen und Anpassen
+			if (PosX > 51) {
+				RealPosX += TempoX;
+			}
+			if (TempoX < 0) {
 				PosX += TempoX;
+			} else if (TempoX == 0) {
+				// tue nichts
+
 			} else {
-				// Bewege Hintergrund
-				UPosX -= TempoX;
-				BGPosX -= (TempoX / 2);
+				if (PosX <= 300) {
+					PosX += TempoX;
+				} else {
+					// Bewege Hintergrund
+					UPosX -= TempoX;
+					BGPosX -= (TempoX / 2);
+
+				}
+			}
+			// Hintergrund Loop
+			if (BGPosX <= -2382)
+				BGPosX = 0;
+			if (UPosX <= -1200)
+				UPosX = 0;
+			if (PosY + TempoY >= 382) {
+				PosY = 382;
+			} else {
+				PosY += TempoY;
+			}
+			// Sprungregelung
+			if (Gesprungen == true) {
+				TempoY += 1;
+
+				if (PosY + TempoY >= 252) {
+					PosY = 252;
+					TempoY = 0;
+					Gesprungen = false;
+				}
 
 			}
-		}
-		// Hintergrund Loop
-		if (BGPosX <= -2382)
-			BGPosX = 0;
-		if (UPosX <= -1200)
-			UPosX = 0;
-		if (PosY + TempoY >= 382) {
-			PosY = 382;
-		} else {
-			PosY += TempoY;
-		}
-		// Sprungregelung
-		if (Gesprungen == true) {
-			TempoY += 1;
+			// Nach links laufen unterbinden
+			if (PosX + TempoX <= 50) {
+				PosX = 51;
 
-			if (PosY + TempoY >= 252) {
-				PosY = 252;
-				TempoY = 0;
-				Gesprungen = false;
+			}
+			// Siegbedingung
+			if (T == 1) {
+				if (RealPosX > 2500) {
+					Win = true;
+					T = 0;
+					RealPosX = 0;
+				}
+			}
+			// BlockPositionen anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
+				B01PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				B02PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				B03PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				B04PosX -= TempoX;
+			}
+			// Wassertank anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
+				W01PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W02PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W03PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W04PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W05PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W06PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W07PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W08PosX -= TempoX;
+			}
+			// Wasser anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
+				WA01PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				WA02PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				WA03PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				WA04PosX -= TempoX;
+			}
+			// Lava anpassen
+			if (TempoX >= 0 && PosX >= 300) {
+				L01PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				L02PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				L03PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				L04PosX -= TempoX;
+			}
+			// GegnerPosition anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
+				E01PosX -= TempoX;
+				E01StartX -= TempoX;
+			}
+			if (V01 == false) {
+				E01PosX -= 3;
+				if (E01PosX < E01StartX - 180) {
+					V01 = true;
+				}
+			}
+			if (V01 == true) {
+				E01PosX += 3;
+				if (E01PosX > E01StartX + 180) {
+					V01 = false;
+				}
 			}
 
-		}
-		// Nach links laufen unterbinden
-		if (PosX + TempoX <= 50) {
-			PosX = 51;
+			// Hebel anpassen
+			if (TempoX >= 0 && PosX >= 300) {
+				H01PosX -= TempoX;
+			}
 
-		}
-		// Siegbedingung
-		if (T == 1) {
-			if (RealPosX > 2500) {
-				Win = true;
-				T = 0;
-				RealPosX = 0;
+			// Ziel anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
+				ZPosX01 -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				ZPosX02 -= TempoX;
 			}
 		}
-		// BlockPositionen anpassen
-
-		if (TempoX >= 0 && PosX >= 300) {
-			B01PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			B02PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			B03PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			B04PosX -= TempoX;
-		}
-		// Wassertank anpassen
-
-		if (TempoX >= 0 && PosX >= 300) {
-			W01PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			W02PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			W03PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			W04PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			W05PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			W06PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			W07PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			W08PosX -= TempoX;
-		}
-		// Wasser anpassen
-
-		if (TempoX >= 0 && PosX >= 300) {
-			WA01PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			WA02PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			WA03PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			WA04PosX -= TempoX;
-		}
-		// Lava anpassen
-		if (TempoX >= 0 && PosX >= 300) {
-			L01PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			L02PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			L03PosX -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			L04PosX -= TempoX;
-		}
-		// GegnerPosition anpassen
-
-		if (TempoX >= 0 && PosX >= 300) {
-			E01PosX -= TempoX;
-			E01StartX -= TempoX;
-		}
-		if (V01 == false) {
-			E01PosX -= 3;
-			if (E01PosX < E01StartX - 180) {
-				V01 = true;
-			}
-		}
-		if (V01 == true) {
-			E01PosX += 3;
-			if (E01PosX > E01StartX + 180) {
-				V01 = false;
-			}
-		}
-
-		// Hebel anpassen
-		if (TempoX >= 0 && PosX >= 300) {
-			H01PosX -= TempoX;
-		}
-
-		// Ziel anpassen
-
-		if (TempoX >= 0 && PosX >= 300) {
-			ZPosX01 -= TempoX;
-		}
-		if (TempoX >= 0 && PosX >= 300) {
-			ZPosX02 -= TempoX;
-		}
-
 	}
 
 	public void Kollisionsdetektion() throws InterruptedException {
-		
-		//Timeline für reset nach dmg
-			Timeline Timer = new Timeline(new KeyFrame(
-			        Duration.millis(2500),
-			        ae -> FlagFlag()));	
+
+		// Timeline für reset nach dmg
+		Timeline Timer = new Timeline(new KeyFrame(Duration.millis(800), ae -> FlagFlag()));
 		// Kollision mit B01
 		if (PosX >= B01PosX - 64 && PosX <= B01PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
 			PosX = B01PosX - 53;
@@ -807,30 +822,61 @@ public class Level_4 {
 
 		if (PosX >= E01PosX - 64 && PosX <= E01PosX + 69 && PosY >= 153 && PosXAlt <= PosX && Flag1 == false) {
 			PosX = E01PosX - 53;
-			Gefallen = true; 
+			Gefallen = true;
 			Flag1 = true;
-			
-			
+
 		}
 		if (PosX >= E01PosX - 30 && PosX <= E01PosX + 70 && PosY >= 153 && PosXAlt >= PosX && Flag1 == false) {
 			PosX = E01PosX + 71;
 			Gefallen = true;
 			Flag1 = true;
-			
-			
+
 		}
-		if(Flag1 == true )
-		{
+		if (Flag1 == true) {
 			Timer.play();
 		}
-		
+
 		if (Gefallen == true) {
 			Gefallen = false;
 			RLN = 0;
 			Thread.sleep(200);
 			HP -= 1;
 		}
-		
+
+		// Interaktion mit dem Hebel
+		if (PosX >= B03PosX - 140 && PosX <= B03PosX - 20 && Interaction == true) {
+			H2 = true;
+			System.out.println("Hebel gehebelt");
+			Wasserfall = true;
+		}
+		if (Drop == true) {
+			if (WA02PosY <= 260) {
+				WA02PosY += 8;
+			}
+			if (WA03PosY <= 260) {
+				WA03PosY += 8;
+			}
+			if (WA01PosX <= WA02PosX) {
+				WA01PosX += 7;
+				if (W01PosX == W02PosX) {
+					W01T = true;
+				}
+			}
+			if (WA04PosX >= WA03PosX) {
+				WA04PosX -= 7;
+				if (W04PosX == W03PosX) {
+					W04T = true;
+				}
+			}
+			if (W04T == true && WA04PosY <= 260 ) {
+				WA04PosY += 8;
+			
+ 			}
+			if (W01T == true && WA01PosY <= 260 ) {
+				WA01PosY += 8;
+ 			}
+		}
+
 		// Endkollision
 		if (RealPosX >= 2200) {
 			if (PosY <= 220) {
@@ -838,6 +884,7 @@ public class Level_4 {
 			}
 		}
 	}
+
 	public void FlagFlag() {
 		Flag1 = false;
 		System.out.println("flagflag");
