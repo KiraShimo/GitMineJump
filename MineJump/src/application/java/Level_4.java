@@ -3,7 +3,9 @@ package application.java;
 import java.io.IOException;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -21,8 +23,8 @@ public class Level_4 {
 	public int PosY = 252;
 	public int SPosXR = PosX + 64;
 	public int SPosYH = PosY + 128;
-	public int bgPosX = 0;
-	public int bgPosY = -100;
+	public int BGPosX = 0;
+	public int BGPosY = -100;
 	public int UPosX = 0;
 	public int UPosY = 380;
 	public int RLN = 0;
@@ -30,26 +32,74 @@ public class Level_4 {
 	private int TempoY = 0;
 	private int RealPosX = 0;
 	private boolean Gesprungen = false;
-	private int ZPosX01 = 4925;
+	private int ZPosX01 = 2425;
 	private int ZPosY01 = 166;
-	private int ZPosX02 = 4925;
+	private int ZPosX02 = 2425;
 	private int ZPosY02 = -20;
 	private int LPosX = 0;
 	private int LPosY = 0;
 	private int HP = 3;
 	// Bedingungsvariablen
-	private boolean Gewonnen = false;
-	private boolean WillRaus = false;
+	private boolean Win = false;
+	private boolean Exit = false;
 	private boolean Gefallen = false;
-	private int t = 1;
-	private boolean STILL = false;
+	private int T = 1;
+	private boolean S = false;
 	private boolean Flag1 = false;
-	private boolean Verloren = false;
+	private boolean Flag2 = false;
+	private boolean V = false;
+//	private boolean Interaction = false;
 	// Blockvariablen
 	private int B01PosX = 500;
 	private int B01PosY = 310;
 	private int B02PosX = 1000;
 	private int B02PosY = 310;
+	private int B03PosX = 1400;
+	private int B03PosY = 310;
+	private int B04PosX = 1750;
+	private int B04PosY = 310;
+	// Lavavariablen
+	private int L01PosX = 1470;
+	private int L01PosY = 310;
+	private int L02PosX = 1540;
+	private int L02PosY = 310;
+	private int L03PosX = 1610;
+	private int L03PosY = 310;
+	private int L04PosX = 1680;
+	private int L04PosY = 310;
+
+	// Wassertankvariablen
+	private int W01PosX = 1400;
+	private int W01PosY = -20;
+	private int W02PosX = 1400;
+	private int W02PosY = 50;
+	private int W03PosX = 1470;
+	private int W03PosY = 50;
+	private int W04PosX = 1540;
+	private int W04PosY = 50;
+	private int W05PosX = 1610;
+	private int W05PosY = 50;
+	private int W06PosX = 1680;
+	private int W06PosY = 50;
+	private int W07PosX = 1750;
+	private int W07PosY = 50;
+	private int W08PosX = 1750;
+	private int W08PosY = -20;
+
+	// Wasservariablen
+	private int WA01PosX = 1470;
+	private int WA01PosY = -20;
+	private int WA02PosX = 1540;
+	private int WA02PosY = -20;
+	private int WA03PosX = 1610;
+	private int WA03PosY = -20;
+	private int WA04PosX = 1680;
+	private int WA04PosY = -20;
+
+	// Schaltervariablen
+	private int H01PosX = 1330;
+	private int H01PosY = 310;
+
 	// Gegnervariablen
 	private int E01PosX = 750;
 	private int E01StartX = 750;
@@ -84,16 +134,19 @@ public class Level_4 {
 		Image Leben2 = new Image(Main.class.getResource("/application/ressources/pictures/Herz02f.png").openStream());
 		Image Leben1 = new Image(Main.class.getResource("/application/ressources/pictures/Herz01f.png").openStream());
 		Image B01 = new Image(Main.class.getResource("/application/ressources/pictures/Level_4_B03.png").openStream());
-		Image Lava = new Image(Main.class.getResource("/application/ressources/pictures/Lava.png").openStream());
-		Image B02 = new Image(
-				Main.class.getResource("/application/ressources/pictures/Level_4_B02_BG.png").openStream());
+		Image L01 = new Image(Main.class.getResource("/application/ressources/pictures/Lava.png").openStream());
+		Image B02 = new Image(Main.class.getResource("/application/ressources/pictures/Level_4_B02.png").openStream());
+		Image B03 = new Image(Main.class.getResource("/application/ressources/pictures/Level_4_B03.png").openStream());
 		Image E01 = new Image(Main.class.getResource("/application/ressources/pictures/Level_4 _E01.png").openStream());
+		Image H01 = new Image(Main.class.getResource("/application/ressources/pictures/Hebel_An.png").openStream());
+		Image H02 = new Image(Main.class.getResource("/application/ressources/pictures/Hebel_Aus.png").openStream());
+		Image WA01 = new Image(Main.class.getResource("/application/ressources/pictures/Wasser.png").openStream());
 
 		// Bilder aufrufen
 		// Hintergrund / Untergrund aufrufen
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
-		HintergrundImageAufruf.setX(bgPosX);
-		HintergrundImageAufruf.setY(bgPosY);
+		HintergrundImageAufruf.setX(BGPosX);
+		HintergrundImageAufruf.setY(BGPosY);
 		rootPane.getChildren().add(HintergrundImageAufruf);
 
 		ImageView UntergrundAnzeigen = new ImageView(Untergrund);
@@ -110,12 +163,96 @@ public class Level_4 {
 		B02_Anzeigen.setX(B02PosX);
 		B02_Anzeigen.setY(B02PosY);
 		rootPane.getChildren().add(B02_Anzeigen);
+		ImageView B03_Anzeigen = new ImageView(B02);
+		B03_Anzeigen.setX(B03PosX);
+		B03_Anzeigen.setY(B03PosY);
+		rootPane.getChildren().add(B03_Anzeigen);
+		ImageView B04_Anzeigen = new ImageView(B02);
+		B04_Anzeigen.setX(B04PosX);
+		B04_Anzeigen.setY(B04PosY);
+		rootPane.getChildren().add(B04_Anzeigen);
+		// Wassertank aufrufen
+		ImageView W01_Anzeigen = new ImageView(B03);
+		W01_Anzeigen.setX(W01PosX);
+		W01_Anzeigen.setY(W01PosY);
+		rootPane.getChildren().add(W01_Anzeigen);
+		ImageView W02_Anzeigen = new ImageView(B03);
+		W02_Anzeigen.setX(W02PosX);
+		W02_Anzeigen.setY(W02PosY);
+		rootPane.getChildren().add(W02_Anzeigen);
+		ImageView W03_Anzeigen = new ImageView(B03);
+		W03_Anzeigen.setX(W03PosX);
+		W03_Anzeigen.setY(W03PosY);
+		rootPane.getChildren().add(W03_Anzeigen);
+		ImageView W04_Anzeigen = new ImageView(B03);
+		W04_Anzeigen.setX(W03PosX);
+		W04_Anzeigen.setY(W03PosY);
+		rootPane.getChildren().add(W04_Anzeigen);
+		ImageView W05_Anzeigen = new ImageView(B03);
+		W05_Anzeigen.setX(W05PosX);
+		W05_Anzeigen.setY(W05PosY);
+		rootPane.getChildren().add(W05_Anzeigen);
+		ImageView W06_Anzeigen = new ImageView(B03);
+		W06_Anzeigen.setX(W06PosX);
+		W06_Anzeigen.setY(W06PosY);
+		rootPane.getChildren().add(W06_Anzeigen);
+		ImageView W07_Anzeigen = new ImageView(B03);
+		W07_Anzeigen.setX(W07PosX);
+		W07_Anzeigen.setY(W07PosY);
+		rootPane.getChildren().add(W07_Anzeigen);
+		ImageView W08_Anzeigen = new ImageView(B03);
+		W08_Anzeigen.setX(W08PosX);
+		W08_Anzeigen.setY(W08PosY);
+		rootPane.getChildren().add(W08_Anzeigen);
+
+		// Wasser aufrufen
+		ImageView WA01_Anzeigen = new ImageView(WA01);
+		WA01_Anzeigen.setX(WA01PosX);
+		WA01_Anzeigen.setY(WA01PosY);
+		rootPane.getChildren().add(WA01_Anzeigen);
+		ImageView WA02_Anzeigen = new ImageView(WA01);
+		WA02_Anzeigen.setX(WA02PosX);
+		WA02_Anzeigen.setY(WA02PosY);
+		rootPane.getChildren().add(WA02_Anzeigen);
+		ImageView WA03_Anzeigen = new ImageView(WA01);
+		WA03_Anzeigen.setX(WA03PosX);
+		WA03_Anzeigen.setY(WA03PosY);
+		rootPane.getChildren().add(WA03_Anzeigen);
+		ImageView WA04_Anzeigen = new ImageView(WA01);
+		WA04_Anzeigen.setX(WA04PosX);
+		WA04_Anzeigen.setY(WA04PosY);
+		rootPane.getChildren().add(WA04_Anzeigen);
+
+		// Lava aufrufen
+		ImageView L01_Anzeigen = new ImageView(L01);
+		L01_Anzeigen.setX(L01PosX);
+		L01_Anzeigen.setY(L01PosY);
+		rootPane.getChildren().add(L01_Anzeigen);
+		ImageView L02_Anzeigen = new ImageView(L01);
+		L02_Anzeigen.setX(L02PosX);
+		L02_Anzeigen.setY(L02PosY);
+		rootPane.getChildren().add(L02_Anzeigen);
+		ImageView L03_Anzeigen = new ImageView(L01);
+		L03_Anzeigen.setX(L03PosX);
+		L03_Anzeigen.setY(L03PosY);
+		rootPane.getChildren().add(L03_Anzeigen);
+		ImageView L04_Anzeigen = new ImageView(L01);
+		L04_Anzeigen.setX(L04PosX);
+		L04_Anzeigen.setY(L04PosY);
+		rootPane.getChildren().add(L04_Anzeigen);
 
 		// Gegner anzeigen
 		ImageView E01_Anzeigen = new ImageView(E01);
 		E01_Anzeigen.setX(E01PosX);
 		E01_Anzeigen.setY(E01PosY);
 		rootPane.getChildren().add(E01_Anzeigen);
+
+		// Hebel anzeigen
+
+		ImageView H01_Anzeigen = new ImageView(H02);
+		H01_Anzeigen.setX(H01PosX);
+		H01_Anzeigen.setY(H01PosY);
+		rootPane.getChildren().add(H01_Anzeigen);
 
 		// Ziel hinten
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
@@ -178,7 +315,7 @@ public class Level_4 {
 				if (RLN == 3) {
 					Bildaufruf.setImage(SpielerSchaden);
 				}
-				HintergrundImageAufruf.setX(bgPosX);
+				HintergrundImageAufruf.setX(BGPosX);
 				UntergrundAnzeigen.setX(UPosX);
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
@@ -205,17 +342,67 @@ public class Level_4 {
 				B01_Anzeigen.setY(B01PosY);
 				B02_Anzeigen.setX(B02PosX);
 				B02_Anzeigen.setY(B02PosY);
+				B03_Anzeigen.setX(B03PosX);
+				B03_Anzeigen.setY(B03PosY);
+				B04_Anzeigen.setX(B04PosX);
+				B04_Anzeigen.setY(B04PosY);
+
+				// Wassertank updaten
+
+				W01_Anzeigen.setX(W01PosX);
+				W01_Anzeigen.setY(W01PosY);
+				W02_Anzeigen.setX(W02PosX);
+				W02_Anzeigen.setY(W02PosY);
+				W03_Anzeigen.setX(W03PosX);
+				W03_Anzeigen.setY(W03PosY);
+				W04_Anzeigen.setX(W04PosX);
+				W04_Anzeigen.setY(W04PosY);
+				W05_Anzeigen.setX(W05PosX);
+				W05_Anzeigen.setY(W05PosY);
+				W06_Anzeigen.setX(W06PosX);
+				W06_Anzeigen.setY(W06PosY);
+				W07_Anzeigen.setX(W07PosX);
+				W07_Anzeigen.setY(W07PosY);
+				W08_Anzeigen.setX(W08PosX);
+				W08_Anzeigen.setY(W08PosY);
+
+				// Wasser updaten
+
+				WA01_Anzeigen.setX(WA01PosX);
+				WA01_Anzeigen.setY(WA01PosY);
+				WA02_Anzeigen.setX(WA02PosX);
+				WA02_Anzeigen.setY(WA02PosY);
+				WA03_Anzeigen.setX(WA03PosX);
+				WA03_Anzeigen.setY(WA03PosY);
+				WA04_Anzeigen.setX(WA04PosX);
+				WA04_Anzeigen.setY(WA04PosY);
+
+				// Lava updaten
+
+				L01_Anzeigen.setX(L01PosX);
+				L01_Anzeigen.setY(L01PosY);
+				L02_Anzeigen.setX(L02PosX);
+				L02_Anzeigen.setY(L02PosY);
+				L03_Anzeigen.setX(L03PosX);
+				L03_Anzeigen.setY(L03PosY);
+				L04_Anzeigen.setX(L04PosX);
+				L04_Anzeigen.setY(L04PosY);
 
 				// Gegner updaten
 
 				E01_Anzeigen.setX(E01PosX);
 				E01_Anzeigen.setY(E01PosY);
 
+				// Hebel updaten
+
+				H01_Anzeigen.setX(H01PosX);
+				H01_Anzeigen.setY(H01PosY);
+
 				Menu menu = new Menu();
 
 				// Gewonnen test / ESC test
-				if (Gewonnen == true) {
-					Gewonnen = false;
+				if (Win == true) {
+					Win = false;
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
@@ -224,16 +411,16 @@ public class Level_4 {
 					delay.setOnFinished(event -> menu.level(primaryStage));
 					delay.play();
 				}
-				if (WillRaus == true) {
-					WillRaus = false;
+				if (Exit == true) {
+					Exit = false;
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
 					menu.level(primaryStage);
 				}
-				if (Verloren == true) {
+				if (V == true) {
 					System.out.println("Verloren");
-					Verloren = false;
+					V = false;
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
@@ -272,8 +459,10 @@ public class Level_4 {
 			case D:
 				Rechts();
 				break;
+			case I:
+//				Interaction = true;
 			case ESCAPE:
-				WillRaus = true;
+				Exit = true;
 				break;
 			default:
 				break;
@@ -307,6 +496,8 @@ public class Level_4 {
 				RLN = 0;
 				Halt();
 				break;
+			case I:
+//				Interaction = false;
 			case ESCAPE:
 				break;
 			default:
@@ -341,10 +532,10 @@ public class Level_4 {
 	public void NeuLaden() {
 		PosXAlt = PosX;
 		if (HP == 0) {
-			Verloren = true;
+			V = true;
 		}
 		// Kollisiondetektion -extra-
-		if (STILL == true) {
+		if (S == true) {
 			TempoX = 0;
 		}
 		// Bewegen und Anpassen
@@ -362,13 +553,13 @@ public class Level_4 {
 			} else {
 				// Bewege Hintergrund
 				UPosX -= TempoX;
-				bgPosX -= (TempoX / 2);
+				BGPosX -= (TempoX / 2);
 
 			}
 		}
 		// Hintergrund Loop
-		if (bgPosX <= -2382)
-			bgPosX = 0;
+		if (BGPosX <= -2382)
+			BGPosX = 0;
 		if (UPosX <= -1200)
 			UPosX = 0;
 		if (PosY + TempoY >= 382) {
@@ -393,10 +584,10 @@ public class Level_4 {
 
 		}
 		// Siegbedingung
-		if (t == 1) {
-			if (RealPosX > 5000) {
-				Gewonnen = true;
-				t = 0;
+		if (T == 1) {
+			if (RealPosX > 2500) {
+				Win = true;
+				T = 0;
 				RealPosX = 0;
 			}
 		}
@@ -408,6 +599,65 @@ public class Level_4 {
 		if (TempoX >= 0 && PosX >= 300) {
 			B02PosX -= TempoX;
 		}
+		if (TempoX >= 0 && PosX >= 300) {
+			B03PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			B04PosX -= TempoX;
+		}
+		// Wassertank anpassen
+
+		if (TempoX >= 0 && PosX >= 300) {
+			W01PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			W02PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			W03PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			W04PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			W05PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			W06PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			W07PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			W08PosX -= TempoX;
+		}
+		// Wasser anpassen
+
+		if (TempoX >= 0 && PosX >= 300) {
+			WA01PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			WA02PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			WA03PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			WA04PosX -= TempoX;
+		}
+		// Lava anpassen
+		if (TempoX >= 0 && PosX >= 300) {
+			L01PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			L02PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			L03PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			L04PosX -= TempoX;
+		}
 		// GegnerPosition anpassen
 
 		if (TempoX >= 0 && PosX >= 300) {
@@ -416,20 +666,22 @@ public class Level_4 {
 		}
 		if (V01 == false) {
 			E01PosX -= 3;
-			if(E01PosX < E01StartX - 180) {
-			V01 = true;
+			if (E01PosX < E01StartX - 180) {
+				V01 = true;
 			}
-			System.out.println("zurück");
 		}
 		if (V01 == true) {
 			E01PosX += 3;
-			if(E01PosX > E01StartX + 180) {
+			if (E01PosX > E01StartX + 180) {
 				V01 = false;
-				}
-			System.out.println("vor");
-			System.out.println(E01StartX);
-			System.out.println(E01PosX);
+			}
 		}
+
+		// Hebel anpassen
+		if (TempoX >= 0 && PosX >= 300) {
+			H01PosX -= TempoX;
+		}
+
 		// Ziel anpassen
 
 		if (TempoX >= 0 && PosX >= 300) {
@@ -442,12 +694,153 @@ public class Level_4 {
 	}
 
 	public void Kollisionsdetektion() throws InterruptedException {
+		
+		//Timeline für reset nach dmg
+			Timeline Timer = new Timeline(new KeyFrame(
+			        Duration.millis(2500),
+			        ae -> FlagFlag()));	
+		// Kollision mit B01
+		if (PosX >= B01PosX - 64 && PosX <= B01PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B01PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B01PosX - 30 && PosX <= B01PosX + 70 && PosY >= 183 && PosXAlt >= PosX) {
+			PosX = B01PosX + 71;
+			RealPosX += 6;
+		}
 
-		if (RealPosX >= 4750) {
+		if (PosX >= B01PosX - 49 && PosX <= B01PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		if (PosX <= B01PosX - 65 && Gesprungen == false) {
+			Gesprungen = true;
+		}
+		if (PosX >= B01PosX + 70 && PosX <= B01PosX + 80 && Gesprungen == false) {
+			Gesprungen = true;
+
+		}
+		// Kollision mit B02
+		if (PosX >= B02PosX - 64 && PosX <= B02PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B02PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B02PosX - 30 && PosX <= B02PosX + 70 && PosY >= 183 && PosXAlt >= PosX) {
+			PosX = B02PosX + 71;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B02PosX - 49 && PosX <= B02PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		if (PosX >= B02PosX - 70 && PosX <= B02PosX - 65 && Gesprungen == false) {
+			Gesprungen = true;
+		}
+		if (PosX >= B02PosX + 70 && PosX <= B02PosX + 80 && Gesprungen == false) {
+			Gesprungen = true;
+
+		}
+
+		// Kollision mit B03
+
+		if (PosX >= B03PosX - 64 && PosX <= B03PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B03PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B03PosX - 30 && PosX <= B03PosX + 70 && PosY >= 183 && PosXAlt >= PosX) {
+			PosX = B03PosX + 71;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B03PosX - 49 && PosX <= B03PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		if (PosX >= B03PosX - 70 && PosX <= B03PosX - 65 && Gesprungen == false) {
+			Gesprungen = true;
+		}
+		if (PosX >= B03PosX + 70 && PosX <= B03PosX + 80 && Gesprungen == false) {
+			Gesprungen = true;
+
+		}
+		// Kollision mit B04
+
+		if (PosX >= B04PosX - 64 && PosX <= B04PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B04PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B04PosX - 30 && PosX <= B04PosX + 70 && PosY >= 183 && PosXAlt >= PosX) {
+			PosX = B04PosX + 71;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B04PosX - 49 && PosX <= B04PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		if (PosX >= B04PosX - 70 && PosX <= B04PosX - 65 && Gesprungen == false) {
+			Gesprungen = true;
+		}
+		if (PosX >= B04PosX + 70 && PosX <= B04PosX + 80 && Gesprungen == false) {
+			Gesprungen = true;
+
+		}
+
+		if (PosX >= B04PosX && PosX <= B04PosX + 20) {
+			RealPosX = 1650;
+			System.out.println(RealPosX);
+		}
+		// Kollision mit Gegner
+
+		if (PosX >= E01PosX - 64 && PosX <= E01PosX + 69 && PosY >= 153 && PosXAlt <= PosX && Flag1 == false) {
+			PosX = E01PosX - 53;
+			Gefallen = true; 
+			Flag1 = true;
+			
+			
+		}
+		if (PosX >= E01PosX - 30 && PosX <= E01PosX + 70 && PosY >= 153 && PosXAlt >= PosX && Flag1 == false) {
+			PosX = E01PosX + 71;
+			Gefallen = true;
+			Flag1 = true;
+			
+			
+		}
+		if(Flag1 == true )
+		{
+			Timer.play();
+		}
+		
+		if (Gefallen == true) {
+			Gefallen = false;
+			RLN = 0;
+			Thread.sleep(200);
+			HP -= 1;
+		}
+		
+		// Endkollision
+		if (RealPosX >= 2200) {
 			if (PosY <= 220) {
 				PosY = 221;
 			}
 		}
+	}
+	public void FlagFlag() {
+		Flag1 = false;
+		System.out.println("flagflag");
 	}
 
 }
