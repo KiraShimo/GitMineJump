@@ -39,7 +39,7 @@ public class MainController {
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
 		double volume = music.getvolume();
 		System.out.println(volume);
-		SliderMusic.setValue(volume * 100);
+		//SliderMusic.setValue(volume*100);
 		// final double volume = musicplayer.getVolume();
 		// slider.setValue(volume);
 		menu.settings(primaryStage);
