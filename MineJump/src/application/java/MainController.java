@@ -5,7 +5,10 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class MainController {
 
@@ -15,7 +18,7 @@ public class MainController {
 	public Music music;
 	@FXML
 	Slider SliderMusic;
-
+	
 	public void setMain(Main main) {
 		this.main = main;
 	}
@@ -59,7 +62,8 @@ public class MainController {
 		double volume = SliderMusic.getValue() / 100;
 		System.out.println(volume);
 		// musicplayer.setVolume(volume);
-		music.setvolume(volume);
+		//music.setvolume(volume);
+		
 		menu.mainmenu(primaryStage);
 	}
 
