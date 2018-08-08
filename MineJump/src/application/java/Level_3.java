@@ -43,7 +43,7 @@ public class Level_3 {
 	private int t = 1;
 	private boolean O01 = true;
 	private boolean O02 = true;
-	private boolean STILL = false;
+	private boolean Still = false;
 	private boolean Verloren = false;
 	private boolean Flag1 = false;
 	private boolean Flag2 = false;
@@ -418,7 +418,7 @@ public class Level_3 {
 			Verloren = true;
 		}
 		// Kollisiondetektion -extra-
-		if (STILL == true) {
+		if (Still == true) {
 			TempoX = 0;
 		}
 		// Bewegen und Anpassen
@@ -748,14 +748,14 @@ public class Level_3 {
 				// tue nichts
 			}
 
-			STILL = true;
+			Still = true;
 			PosY += 8;
 			RLN = 3;
 			Gesprungen = true;
 			pause.play();
 
 		} else {
-			STILL = false;
+			Still = false;
 		}
 		if (PosX >= B04PosX + 1 && PosX <= B05PosX && PosY >= 150) {
 
@@ -769,14 +769,14 @@ public class Level_3 {
 				// tue nichts
 			}
 
-			STILL = true;
+			Still = true;
 			PosY += 8;
 			RLN = 3;
 			Gesprungen = true;
 			pause.play();
 
 		} else {
-			STILL = false;
+			Still = false;
 		}
 		if (PosY >= 253) {
 			Gefallen = true;
@@ -833,14 +833,14 @@ public class Level_3 {
 				// tue nichts
 			}
 
-			STILL = true;
+			Still = true;
 			RLN = 3;
 			Gesprungen = true;
 			Abgestochen = true;
 			pause.play();
 
 		} else {
-			STILL = false;
+			Still = false;
 		}
 
 		if (Abgestochen == true && Flag1 == true) {
