@@ -175,26 +175,29 @@ public class Level_3 {
 		B05Anzeigen.setY(B05PosX);
 		rootPane.getChildren().add(B05Anzeigen);
 
-		// ZielHinten
+		// ZielHinten aufrufen
 
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
 		Ziel01BGAnzeiger.setY(ZPosY01);
 		rootPane.getChildren().add(Ziel01BGAnzeiger);
 
-		// Spieler
+		// Spieler aufrufen
 
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
-		// ZielVorne
+		
+		// ZielVorne aufrufen
 
 		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
 		rootPane.getChildren().add(Ziel02VGAnzeiger);
-		// Leben
+		
+		// Leben aufrufen
+		
 		ImageView LebenAnzeiger = new ImageView(Leben3);
 		LebenAnzeiger.setX(LPosX);
 		LebenAnzeiger.setY(LPosY);
