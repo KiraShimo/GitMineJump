@@ -62,7 +62,7 @@ public class MainController {
 		double volume = SliderMusic.getValue() / 100;
 		System.out.println(volume);
 		// musicplayer.setVolume(volume);
-		//music.setvolume(volume);
+		music.setvolume(volume);
 		
 		menu.mainmenu(primaryStage);
 	}
