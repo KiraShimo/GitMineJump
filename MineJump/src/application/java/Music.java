@@ -14,7 +14,7 @@ public class Music {
 		Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
 		musicplayer = new MediaPlayer(media);
 		musicplayer.setAutoPlay(true);
-		musicplayer.setVolume(0.2);   //zwischen 0 und 1 
+		musicplayer.setVolume(0.3);   //zwischen 0 und 1 
 		
 		//Musik loopen 
 		musicplayer.setOnEndOfMedia(new Runnable() {    
@@ -35,6 +35,6 @@ public class Music {
 	public void setvolume(double volume) {
     	System.out.println(musicplayer);
     	System.out.println(volume);
-		this.musicplayer.setVolume(volume);
+		musicplayer.setVolume(volume);
     }
 }
