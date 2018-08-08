@@ -40,7 +40,7 @@ public class Level_4 {
 	private int LPosY = 0;
 	private int HP = 3;
 	// Bedingungsvariablen
-	private boolean Win = false;
+	private boolean Gewonnen = false;
 	private boolean Exit = false;
 	private boolean Gefallen = false;
 	private int T = 1;
@@ -56,7 +56,8 @@ public class Level_4 {
 	private boolean W04T = false;
 	private boolean W01T = false;
 	private boolean Obsidian = false;
-	private boolean test = false;
+	private boolean Check = false;
+	private boolean Abbruch = false;
 	// Blockvariablen
 	private int B01PosX = 500;
 	private int B01PosY = 310;
@@ -432,8 +433,8 @@ public class Level_4 {
 				Menu menu = new Menu();
 
 				// Gewonnen test / ESC test
-				if (Win == true) {
-					Win = false;
+				if (Gewonnen == true && Abbruch == false) {
+					Gewonnen = false;
 					Exit = false;
 					Gefallen = false;
 					T = 1;
@@ -449,15 +450,18 @@ public class Level_4 {
 					W04T = false;
 					W01T = false;
 					Obsidian = false;
-					test = false;
+					Check = false;
+					Abbruch = true;
+					RealPosX = 0;
 					menu.win(primaryStage);
 					PauseTransition delay = new PauseTransition(Duration.seconds(5));
 					delay.setOnFinished(event -> menu.level(primaryStage));
 					delay.play();
+					System.out.println("Sieg");
 				}
-				if (Exit == true) {
+				if (Exit == true && Abbruch == false) {
 					
-					Win = false;
+					Gewonnen = false;
 					Exit = false;
 					Gefallen = false;
 					T = 1;
@@ -473,16 +477,17 @@ public class Level_4 {
 					W04T = false;
 					W01T = false;
 					Obsidian = false;
-					test = false;
+					Check = false;
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
+					Abbruch = true;
 					menu.level(primaryStage);
 					System.out.println("Willraus");
 				}
-				if (V == true) {
+				if (V == true && Abbruch == false) {
 					System.out.println("Verloren");
-					Win = false;
+					Gewonnen = false;
 					Exit = false;
 					Gefallen = false;
 					T = 1;
@@ -498,11 +503,12 @@ public class Level_4 {
 					W04T = false;
 					W01T = false;
 					Obsidian = false;
-					test = false;
+					Check = false;
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
 					HP = 3;
+					Abbruch = true;
 					menu.level(primaryStage);
 				}
 			}
@@ -673,7 +679,7 @@ public class Level_4 {
 			// Siegbedingung
 			if (T == 1) {
 				if (RealPosX > 2500) {
-					Win = true;
+					Gewonnen = true;
 					T = 0;
 					RealPosX = 0;
 				}
@@ -896,9 +902,9 @@ public class Level_4 {
 		}
 		// Kollision mit Gegner
 		Timeline Timer = new Timeline(new KeyFrame(Duration.millis(2500), ae -> Flag()));
-		if (test == true && Flag1 == true) {
+		if (Check == true && Flag1 == true) {
 			Timer.play();
-			test = false;
+			Check = false;
 		}
 
 		if (PosX >= E01PosX - 64 && PosX <= E01PosX + 69 && PosY >= 153 && PosXAlt <= PosX && Flag1 == false) {
@@ -919,7 +925,7 @@ public class Level_4 {
 			RLN = 3;
 			Thread.sleep(200);
 			HP -= 1;
-			test = true;
+			Check = true;
 		}
 
 		// Interaktion mit dem Hebel
