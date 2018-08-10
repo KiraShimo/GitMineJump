@@ -41,6 +41,10 @@ public class Main extends Application {
 		}
 	}
 
+	/*public Music getmusic() {
+		return music;
+	}*/
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
