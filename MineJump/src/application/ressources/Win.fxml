@@ -11,9 +11,9 @@
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="427.0" layoutY="240.0" text="Gleich ein anderes Level auswählen!" textFill="WHITE" translateX="-109.3" translateY="-20.0">
+      <Label layoutX="427.0" layoutY="240.0" text="Gleich ein anderes Level auswählen!" textFill="WHITE" translateX="-117.7" translateY="-20.0">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
    </children>

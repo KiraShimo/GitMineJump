@@ -25,9 +25,9 @@ public class Main extends Application {
 			MainController mainController = root.getController();
 			mainController.setMain(this);
 			mainController.setPrimaryStage(primaryStage);
+			
 			mainController.setMusic(music);
 			
-
 			// Initialisierung Scene und Stage
 			Scene mainmenu = new Scene(pane);
 			primaryStage.setTitle("MineJump");
