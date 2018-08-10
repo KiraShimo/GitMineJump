@@ -33,8 +33,9 @@ public class Music {
 	}
 	
 	public void setvolume(double volume) {
-    	System.out.println(musicplayer);
+    	//musicplayer.stop();
     	System.out.println(volume);
 		musicplayer.setVolume(volume);
+		//musicplayer.setAutoPlay(true);
     }
 }
