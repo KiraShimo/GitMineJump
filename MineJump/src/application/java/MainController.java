@@ -11,16 +11,20 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainController {
+	// Variablen
+
+	private double volume = 0.2;
+
+	// Objekte
 
 	public Stage primaryStage;
 	public Main main;
 	Menu menu = new Menu();
-	// public Music music;
-	@FXML
-	Slider SliderMusic;
-	
 	Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
 	MediaPlayer musicplayer = new MediaPlayer(media);
+
+	@FXML
+	Slider SliderMusic;
 
 	public void setMain(Main main) {
 		this.main = main;
@@ -34,13 +38,10 @@ public class MainController {
 	 * public void setMusic(Music music) { this.music = music; }
 	 */
 
-	
-	private double volume = 0.2;
-
 	public void startmusic() {
 
 		// Musik initialisieren
-		
+
 		musicplayer.setAutoPlay(true);
 		musicplayer.setVolume(volume); // zwischen 0 und 1
 
