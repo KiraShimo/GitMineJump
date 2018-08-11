@@ -89,7 +89,7 @@ public class MainController {
 	// Einstellungen verlassen mit Speicherung der Änderungen -------- geht nicht
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
-		// volume = SliderMusic.getValue() / 100;
+		volume = SliderMusic.getValue() / 100;
 		System.out.println(volume);
 		// musicplayer.setVolume(volume);
 		setvolume();
