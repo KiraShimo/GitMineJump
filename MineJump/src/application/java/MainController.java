@@ -59,8 +59,8 @@ public class MainController {
 	public void setvolume() {
     	musicplayer.stop();
     	System.out.println(volume);
-		musicplayer.setVolume(volume);
-		musicplayer.setAutoPlay(true);
+    	//		musicplayer.setVolume(volume);
+    	//		musicplayer.setAutoPlay(true);
     }
 	
 
@@ -92,7 +92,7 @@ public class MainController {
 		volume = SliderMusic.getValue() / 100;
 		System.out.println(volume);
 		//music.setvolume(volume);
-		setvolume();
+		//	setvolume();
 		
 		menu.mainmenu(primaryStage);
 	}
