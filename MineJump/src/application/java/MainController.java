@@ -58,9 +58,9 @@ public class MainController {
 	
 	public void setvolume() {
     	musicplayer.stop();
-    	System.out.println(volume);
-    	//		musicplayer.setVolume(volume);
-    	//		musicplayer.setAutoPlay(true);
+		 System.out.println(volume);
+		  musicplayer.setVolume(volume);
+		  musicplayer.setAutoPlay(true);
     }
 	
 
