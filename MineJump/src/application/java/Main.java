@@ -27,7 +27,7 @@ public class Main extends Application {
 			mainController.setPrimaryStage(primaryStage);
 			
 			//mainController.setMusic(music);
-//			mainController.startmusic();
+			mainController.startmusic();
 			
 			// Initialisierung Scene und Stage
 			Scene mainmenu = new Scene(pane);
@@ -42,10 +42,6 @@ public class Main extends Application {
 		}
 	}
 
-	/*public Music getmusic() {
-		return music;
-	}*/
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
