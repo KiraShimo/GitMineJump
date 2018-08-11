@@ -19,6 +19,7 @@ public class Menu {
 
 	public void setActualvol() {
 		actualvol = slider.getValue();
+		System.out.println(actualvol);
 	}
 
 	public double getSlidervol() {
