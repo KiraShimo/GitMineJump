@@ -18,6 +18,9 @@ public class MainController {
 	// public Music music;
 	@FXML
 	Slider SliderMusic;
+	
+	Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
+	MediaPlayer musicplayer = new MediaPlayer(media);
 
 	public void setMain(Main main) {
 		this.main = main;
@@ -31,16 +34,13 @@ public class MainController {
 	 * public void setMusic(Music music) { this.music = music; }
 	 */
 
-	// private MediaPlayer musicplayer; erzeugt keine INstanz sondern nur eine
-	// Variable ...
+	
 	private double volume;
 
 	public void startmusic() {
 
 		// Musik initialisieren
-		MediaPlayer musicplayer = new MediaPlayer(null);
-		Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
-		musicplayer = new MediaPlayer(media);
+		
 		musicplayer.setAutoPlay(true);
 		musicplayer.setVolume(0.2); // zwischen 0 und 1
 
