@@ -5,14 +5,17 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class MainController {
 
 	public Stage primaryStage;
 	public Main main;
 	Menu menu = new Menu();
-	public Music music;
+	//public Music music;
 	@FXML
 	Slider SliderMusic;
 	
@@ -24,10 +27,44 @@ public class MainController {
 		this.primaryStage = primaryStage;
 	}
 
-	public void setMusic(Music music) {
+	/*public void setMusic(Music music) {
 		this.music = music;
-	}
+	}*/
 
+	//-------------------------------------------------------------------------
+	
+	private MediaPlayer musicplayer;
+	private double volume;
+	
+	public void startmusic() {
+		
+		//Musik initialisieren
+		Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
+		musicplayer = new MediaPlayer(media);
+		musicplayer.setAutoPlay(true);
+		musicplayer.setVolume(0.2);   //zwischen 0 und 1 
+		
+		//Musik loopen 
+		musicplayer.setOnEndOfMedia(new Runnable() {    
+			public void run() {
+		        musicplayer.seek(Duration.ZERO); 
+		    }
+		});  
+	}
+	
+	public double getvolume() {
+		return musicplayer.getVolume();
+	}
+	
+	public void setvolume() {
+    	musicplayer.stop();
+    	System.out.println(volume);
+		musicplayer.setVolume(volume);
+		musicplayer.setAutoPlay(true);
+    }
+	
+	//-----------------------------------------------------------------------------
+	
 	// Aufruf Levelauswahl
 	@FXML
 	private void BtnStartAction(ActionEvent actionEvent) throws InterruptedException {
@@ -52,9 +89,10 @@ public class MainController {
 	// Einstellungen verlassen mit Speicherung der Änderungen -------- geht nicht
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
-		double volume = SliderMusic.getValue() / 100;
+		volume = SliderMusic.getValue() / 100;
 		System.out.println(volume);
-		music.setvolume(volume);
+		//music.setvolume(volume);
+		setvolume();
 		
 		menu.mainmenu(primaryStage);
 	}
