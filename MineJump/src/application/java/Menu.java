@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -58,7 +59,24 @@ public class Menu {
 		try {
 			// Einstellungsmenü laden und anzeigen
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Settings.fxml"));
+			
+			Slider slider = new Slider();
+			slider.setMin(0);
+		    slider.setMax(100);
+		    slider.setValue(50);
+		    slider.setShowTickMarks(true);
+			slider.setBlockIncrement(1);
+			slider.setLayoutX(427);
+			slider.setScaleX(1);
+			slider.setTranslateX(2);
+			slider.setLayoutY(200);
+			slider.setScaleY(1);
+			slider.setTranslateY(0);
+			slider.setPrefWidth(98);
+			slider.setPrefHeight(14);
+			
 			Pane pane = root.load();
+			pane.getChildren().add(slider);
 			Scene level = new Scene(pane);
 			MainController mainController = root.getController();
 			mainController.setPrimaryStage(primaryStage);

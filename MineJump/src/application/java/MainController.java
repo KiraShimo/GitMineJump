@@ -22,8 +22,9 @@ public class MainController {
 	Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
 	MediaPlayer musicplayer = new MediaPlayer(media);
 
-	@FXML
-	Slider SliderMusic;
+	//@FXML
+	//Slider SliderMusic;
+	Slider slider;
 
 	public void setMain(Main main) {
 		this.main = main;
@@ -69,7 +70,7 @@ public class MainController {
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
 		menu.settings(primaryStage);
-		SliderMusic.setValue(volume*100);
+		slider.setValue(volume*100);
 	}
 
 	// Einstellungen ohne Speichern der Änderungen Verlassen
@@ -81,7 +82,7 @@ public class MainController {
 	// Einstellungen verlassen mit Speicherung der Änderungen -------- geht nicht
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
-		volume = SliderMusic.getValue() / 100;
+		volume = slider.getValue() / 100;
 		// musicplayer.setVolume(volume);
 		musicplayer.setVolume(volume);
 		setvolume();
