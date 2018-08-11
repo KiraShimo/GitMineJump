@@ -10,6 +10,16 @@ import javafx.stage.Stage;
 
 public class Menu {
 	double slidervol = 0.0;
+	double actualvol;
+	Slider slider = new Slider();
+
+	public double getActualvol() {
+		return actualvol;
+	}
+
+	public void setActualvol() {
+		actualvol = slider.getValue();
+	}
 
 	public double getSlidervol() {
 		System.out.println(slidervol);
@@ -71,7 +81,7 @@ public class Menu {
 			// Einstellungsmenü laden und anzeigen
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Settings.fxml"));
 	
-			Slider slider = new Slider();
+			
 			slider.setMin(0);
 		    slider.setMax(100);
 		    slider.setValue(slidervol*100);
