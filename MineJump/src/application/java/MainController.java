@@ -70,6 +70,7 @@ public class MainController {
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
 		menu.settings(primaryStage);
 		SliderMusic.setValue(volume*100);
+		SliderMusic.decrement();
 	}
 
 	// Einstellungen ohne Speichern der Änderungen Verlassen
