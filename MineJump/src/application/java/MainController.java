@@ -13,7 +13,7 @@ import javafx.util.Duration;
 public class MainController {
 	// Variablen
 
-	private static double volume = 0.2;
+	double volume = 0.2;
 
 	// Objekte
 	public Stage primaryStage;
@@ -67,9 +67,7 @@ public class MainController {
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
 		menu.settings(primaryStage);
-		slider.setValue(volume * 100);
-		slider.decrement();
-
+		//slider.setValue(volume * 100);
 	}
 
 	// Einstellungen ohne Speichern der Änderungen Verlassen
@@ -124,7 +122,7 @@ public class MainController {
 	private void BtnExitAction(ActionEvent actionEvent) {
 		Platform.exit();
 	}
-	static double getvolume() {
+	double getvolume() {
 		return volume;
 	}
 }
