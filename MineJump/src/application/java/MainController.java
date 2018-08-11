@@ -68,7 +68,6 @@ public class MainController {
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
 		menu.setSlidervol(volume);
 		menu.settings(primaryStage);
-		//slider.setValue(volume * 100);
 	}
 
 	// Einstellungen ohne Speichern der Änderungen Verlassen
