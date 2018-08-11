@@ -13,7 +13,7 @@ import javafx.util.Duration;
 public class MainController {
 	// Variablen
 
-	private static double volume = 0.2;
+	public double volume = 0.2;
 
 	// Objekte
 	public Stage primaryStage;
@@ -124,7 +124,7 @@ public class MainController {
 	private void BtnExitAction(ActionEvent actionEvent) {
 		Platform.exit();
 	}
-	static double getvolume() {
+	public double getvolume() {
 		return volume;
 	}
 }

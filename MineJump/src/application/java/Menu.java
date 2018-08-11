@@ -9,7 +9,15 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Menu {
-	
+	double slidervol;
+
+	public double getSlidervol() {
+		return slidervol;
+	}
+
+	public void setSlidervol(double slidervol) {
+		this.slidervol = slidervol;
+	}
 
 	public void mainmenu(Stage primaryStage) {
 		try {
@@ -61,13 +69,13 @@ public class Menu {
 			// Einstellungsmenü laden und anzeigen
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Settings.fxml"));
 			
-			double slidervol;
-			slidervol = MainController.getvolume();
+			
+			
 			
 			Slider slider = new Slider();
 			slider.setMin(0);
 		    slider.setMax(100);
-		    slider.setValue(slidervol);
+		    slider.setValue(slidervol * 100);
 		    slider.setShowTickMarks(true);
 		    slider.setValue(50);
 			slider.setBlockIncrement(1);
@@ -117,4 +125,6 @@ public class Menu {
 		Spiel.spiel(primaryStage);
 
 	}
+	
+	
 }
