@@ -31,12 +31,14 @@ public class MainController {
 	 * public void setMusic(Music music) { this.music = music; }
 	 */
 
-	private MediaPlayer musicplayer;
+	// private MediaPlayer musicplayer; erzeugt keine INstanz sondern nur eine
+	// Variable ...
 	private double volume;
 
 	public void startmusic() {
 
 		// Musik initialisieren
+		MediaPlayer musicplayer = new MediaPlayer(null);
 		Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
 		musicplayer = new MediaPlayer(media);
 		musicplayer.setAutoPlay(true);
@@ -56,9 +58,9 @@ public class MainController {
 
 	public void setvolume() {
 		musicplayer.stop();
-		 System.out.println(volume);
-		 musicplayer.setVolume(volume);
-		 musicplayer.setAutoPlay(true);
+		System.out.println(volume);
+		musicplayer.setVolume(volume);
+		musicplayer.setAutoPlay(true);
 	}
 
 	// Aufruf Levelauswahl
@@ -88,7 +90,7 @@ public class MainController {
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
 		// volume = SliderMusic.getValue() / 100;
 		System.out.println(volume);
-		//	musicplayer.setVolume(volume);
+		// musicplayer.setVolume(volume);
 		setvolume();
 		menu.mainmenu(primaryStage);
 	}
