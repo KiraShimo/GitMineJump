@@ -68,8 +68,8 @@ public class MainController {
 	// Aufruf Einstellungsmenü
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
-		SliderMusic.adjustValue(volume*100);
 		menu.settings(primaryStage);
+		SliderMusic.setValue(volume*100);
 	}
 
 	// Einstellungen ohne Speichern der Änderungen Verlassen
