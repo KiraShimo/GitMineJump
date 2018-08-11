@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Menu {
+	
 
 	public void mainmenu(Stage primaryStage) {
 		try {
@@ -60,10 +61,13 @@ public class Menu {
 			// Einstellungsmenü laden und anzeigen
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Settings.fxml"));
 			
+			double slidervol;
+			slidervol = MainController.getvolume();
+			
 			Slider slider = new Slider();
 			slider.setMin(0);
 		    slider.setMax(100);
-		    slider.setValue(50);
+		    slider.setValue(slidervol);
 		    slider.setShowTickMarks(true);
 			slider.setBlockIncrement(1);
 			slider.setLayoutX(427);

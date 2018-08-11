@@ -13,7 +13,7 @@ import javafx.util.Duration;
 public class MainController {
 	// Variablen
 
-	private double volume = 0.2;
+	private static double volume = 0.2;
 
 	// Objekte
 	public Stage primaryStage;
@@ -49,9 +49,6 @@ public class MainController {
 		});
 	}
 
-	public double getvolume() {
-		return musicplayer.getVolume();
-	}
 
 	public void setvolume() {
 		musicplayer.stop();
@@ -85,6 +82,7 @@ public class MainController {
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
 		volume = slider.getValue() / 100;
+		System.out.println(volume);
 		// musicplayer.setVolume(volume);
 		musicplayer.setVolume(volume);
 		setvolume();
@@ -125,5 +123,8 @@ public class MainController {
 	@FXML
 	private void BtnExitAction(ActionEvent actionEvent) {
 		Platform.exit();
+	}
+	static double getvolume() {
+		return volume;
 	}
 }
