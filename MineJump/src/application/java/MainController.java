@@ -69,10 +69,7 @@ public class MainController {
 	// Aufruf Einstellungsmenü
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
-		// double volume = music.getvolume();
-		// main.getmusic().getvolume();
-		// System.out.println(volume);
-		// SliderMusic.adjustValue(volume*100);
+		SliderMusic.adjustValue(volume*100);
 		menu.settings(primaryStage);
 	}
 
