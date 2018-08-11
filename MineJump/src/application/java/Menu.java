@@ -69,6 +69,7 @@ public class Menu {
 		    slider.setMax(100);
 		    slider.setValue(slidervol);
 		    slider.setShowTickMarks(true);
+		    slider.setValue(50);
 			slider.setBlockIncrement(1);
 			slider.setLayoutX(427);
 			slider.setScaleX(1);
