@@ -66,6 +66,7 @@ public class MainController {
 	// Aufruf Einstellungsmenü
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
+		menu.setSlidervol(volume);
 		menu.settings(primaryStage);
 		//slider.setValue(volume * 100);
 	}
