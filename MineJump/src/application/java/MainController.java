@@ -13,7 +13,7 @@ import javafx.util.Duration;
 public class MainController {
 	// Variablen
 
-	public double volume = 0.2;
+	private double volume = 0.2;
 
 	// Objekte
 	public Stage primaryStage;
@@ -79,7 +79,7 @@ public class MainController {
 	// Einstellungen verlassen mit Speicherung der Änderungen -------- geht nicht
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
-		volume = slider.getValue() / 100;
+		volume = menu.getSlidervol() / 100;
 		System.out.println(volume);
 		// musicplayer.setVolume(volume);
 		musicplayer.setVolume(volume);
