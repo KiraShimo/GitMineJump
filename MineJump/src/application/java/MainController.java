@@ -16,7 +16,6 @@ public class MainController {
 	private double volume = 0.2;
 
 	// Objekte
-
 	public Stage primaryStage;
 	public Main main;
 	Menu menu = new Menu();
@@ -83,6 +82,7 @@ public class MainController {
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
 		volume = SliderMusic.getValue() / 100;
+		// musicplayer.setVolume(volume);
 		musicplayer.setVolume(volume);
 		setvolume();
 		menu.mainmenu(primaryStage);
