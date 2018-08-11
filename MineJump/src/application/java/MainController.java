@@ -1,6 +1,7 @@
 package application.java;
 
 import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,23 +38,28 @@ public class MainController {
 	// Aufruf Einstellungsmenü
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
-		//double volume = music.getvolume(); //main.getmusic().getvolume();
-		//System.out.println(volume);
-		//SliderMusic.adjustValue(volume*100);
+		double volume = music.getvolume();
+		System.out.println(volume);
+		//SliderMusic.setValue(volume*100);
+		// final double volume = musicplayer.getVolume();
+		// slider.setValue(volume);
 		menu.settings(primaryStage);
 	}
 
 	// Einstellungen ohne Speichern der Änderungen Verlassen
 	@FXML
 	private void BtnSettingsAbortAction(ActionEvent actionEvent) throws InterruptedException {
+		// main.start(primaryStage);
 		menu.mainmenu(primaryStage);
 	}
 
-	// Einstellungen verlassen mit Speicherung der Änderungen -------- geht nicht
+	// Einstellungen verlassen mit Speicherung der Änderungen
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
+		// main.start(primaryStage);
 		double volume = SliderMusic.getValue() / 100;
 		System.out.println(volume);
+		// musicplayer.setVolume(volume);
 		music.setvolume(volume);
 		
 		menu.mainmenu(primaryStage);
@@ -77,7 +83,7 @@ public class MainController {
 		menu.spiel3(primaryStage);
 	}
 
-	// Level 4 starten - Spielaufruf in Menu.java
+	// Level 3 starten - Spielaufruf in Menu.java
 	@FXML
 	private void BtnLevel4Action(ActionEvent actionEvent) throws IOException {
 		menu.spiel4(primaryStage);
