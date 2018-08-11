@@ -35,14 +35,14 @@ public class MainController {
 	 */
 
 	
-	private double volume;
+	private double volume = 0.2;
 
 	public void startmusic() {
 
 		// Musik initialisieren
 		
 		musicplayer.setAutoPlay(true);
-		musicplayer.setVolume(0.2); // zwischen 0 und 1
+		musicplayer.setVolume(volume); // zwischen 0 und 1
 
 		// Musik loopen
 		musicplayer.setOnEndOfMedia(new Runnable() {
