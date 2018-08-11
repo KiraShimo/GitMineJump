@@ -16,11 +16,6 @@ public class MainController {
 	private double volume = 0.2;
 
 	// Objekte
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> branch 'master' of https://github.com/KiraShimo/GitMineJump.git
 	public Stage primaryStage;
 	public Main main;
 	Menu menu = new Menu();
@@ -90,11 +85,8 @@ public class MainController {
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
 		volume = SliderMusic.getValue() / 100;
-<<<<<<< HEAD
 		// musicplayer.setVolume(volume);
-=======
 		musicplayer.setVolume(volume);
->>>>>>> branch 'master' of https://github.com/KiraShimo/GitMineJump.git
 		setvolume();
 		menu.mainmenu(primaryStage);
 	}
