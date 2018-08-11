@@ -19,7 +19,7 @@ public class Menu {
 
 	public void setActualvol() {
 		actualvol = slider.getValue();
-		System.out.println(actualvol);
+		System.out.println(slider);//actualvol);
 	}
 
 	public double getSlidervol() {
@@ -82,7 +82,6 @@ public class Menu {
 			// Einstellungsmenü laden und anzeigen
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Settings.fxml"));
 	
-			
 			slider.setMin(0);
 		    slider.setMax(100);
 		    slider.setValue(slidervol*100);

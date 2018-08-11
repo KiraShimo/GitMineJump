@@ -22,8 +22,8 @@ public class MainController {
 	Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
 	MediaPlayer musicplayer = new MediaPlayer(media);
 
-	// @FXML
-	// Slider SliderMusic;
+	@FXML
+	Slider SliderMusic;
 	Slider slider;
 
 	public void setMain(Main main) {
