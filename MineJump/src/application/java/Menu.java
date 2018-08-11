@@ -68,16 +68,21 @@ public class Menu {
 		try {
 			// Einstellungsmenü laden und anzeigen
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Settings.fxml"));
-			
-			
-			
+
+			MainController mainController = root.getController();
+			double slidervol = mainController.volume;
+
 			
 			Slider slider = new Slider();
 			slider.setMin(0);
 		    slider.setMax(100);
+
 		    slider.setValue(slidervol * 100);
 		    slider.setShowTickMarks(true);
 		    slider.setValue(50);
+
+		    slider.setValue(slidervol);
+
 			slider.setBlockIncrement(1);
 			slider.setLayoutX(427);
 			slider.setScaleX(1);
@@ -91,7 +96,7 @@ public class Menu {
 			Pane pane = root.load();
 			pane.getChildren().add(slider);
 			Scene level = new Scene(pane);
-			MainController mainController = root.getController();
+			
 			mainController.setPrimaryStage(primaryStage);
 			primaryStage.setScene(level);
 			primaryStage.show();

@@ -67,9 +67,7 @@ public class MainController {
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
 		menu.settings(primaryStage);
-		slider.setValue(volume * 100);
-		slider.decrement();
-
+		//slider.setValue(volume * 100);
 	}
 
 	// Einstellungen ohne Speichern der Änderungen Verlassen
@@ -124,7 +122,5 @@ public class MainController {
 	private void BtnExitAction(ActionEvent actionEvent) {
 		Platform.exit();
 	}
-	public double getvolume() {
-		return volume;
-	}
+
 }
