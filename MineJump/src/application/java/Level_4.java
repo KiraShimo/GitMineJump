@@ -42,7 +42,7 @@ public class Level_4 {
 	// Bedingungsvariablen
 	private int T = 1;
 	private int Laufen = 0;
-	private int Stehen = 5;
+	private boolean Umdrehen = false;
 	private boolean Gewonnen = false;
 	private boolean Exit = false;
 	private boolean Gefallen = false;
@@ -129,8 +129,12 @@ public class Level_4 {
 		// Bilder einbinden
 		Image SpielerRechts = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
+		Image SpielerRechts_2 = new Image(
+				Main.class.getResource("/application/ressources/pictures/Steve_Rechts_2.png").openStream());
 		Image SpielerLinks = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
+		Image SpielerLinks_2 = new Image(
+				Main.class.getResource("/application/ressources/pictures/Steve_Links_2.png").openStream());
 		Image SpielerSchaden = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne_Schaden.png").openStream());
 		Image HintergrundImage = new Image(
@@ -165,7 +169,7 @@ public class Level_4 {
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
 
-		// Blöcke aufrufen
+		// BlÃ¶cke aufrufen
 		ImageView B01_Anzeigen = new ImageView(B01);
 		B01_Anzeigen.setX(B01PosX);
 		B01_Anzeigen.setY(B01PosY);
@@ -317,31 +321,25 @@ public class Level_4 {
 				if (RLN == 0) {
 					Bildaufruf.setImage(SpielerBild);
 					Laufen = 5;
-					Stehen = 0;
 				}
-				if (RLN == 1 && Laufen <= 5 && Stehen >= 0) {
+				if (RLN == 1 && Laufen <= 2) {
 					Bildaufruf.setImage(SpielerLinks);
-					Laufen ++; 
-					Stehen --;
+					System.out.println(Laufen);
 				}
-				if (RLN == 2 && Laufen <= 5 && Stehen >= 0) {
+				if (RLN == 1 && Laufen >= 3) {
+					Bildaufruf.setImage(SpielerLinks_2);
+					System.out.println(Laufen);
+				}
+				if (RLN == 2 && Laufen <= 2) {
 					Bildaufruf.setImage(SpielerRechts);
-					Laufen ++; 
-					Stehen --;
+					System.out.println(Laufen);
+				}
+				if (RLN == 2 && Laufen >= 3) {
+					Bildaufruf.setImage(SpielerRechts_2);
+					System.out.println(Laufen);
 				}
 				if (RLN == 3) {
 					Bildaufruf.setImage(SpielerSchaden);
-					 
-				}
-				if (RLN == 4 && Laufen >= 5 && Stehen <= 0) {
-					Bildaufruf.setImage(SpielerLinks_2);
-					Laufen --; 
-					Stehen ++;
-				}
-				if (RLN == 5 && Laufen >= 5 && Stehen <= 0) {
-					Bildaufruf.setImage(SpielerRechts_2);
-					Laufen --; 
-					Stehen ++;
 				}
 				HintergrundImageAufruf.setX(BGPosX);
 				UntergrundAnzeigen.setX(UPosX);
@@ -366,7 +364,7 @@ public class Level_4 {
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
-				// Blöcke updaten
+				// BlÃ¶cke updaten
 
 				B01_Anzeigen.setX(B01PosX);
 				B01_Anzeigen.setY(B01PosY);
@@ -472,6 +470,8 @@ public class Level_4 {
 					Check = false;
 					Abbruch = true;
 					RealPosX = 0;
+					Laufen = 0;
+					Umdrehen = false;
 					menu.win(primaryStage);
 					PauseTransition delay = new PauseTransition(Duration.seconds(5));
 					delay.setOnFinished(event -> menu.level(primaryStage));
@@ -479,7 +479,7 @@ public class Level_4 {
 					System.out.println("Sieg");
 				}
 				if (Exit == true && Abbruch == false) {
-					
+
 					Gewonnen = false;
 					Exit = false;
 					Gefallen = false;
@@ -501,6 +501,8 @@ public class Level_4 {
 					PosX = 0;
 					TempoX = 0;
 					Abbruch = true;
+					Laufen = 0;
+					Umdrehen = false;
 					menu.level(primaryStage);
 					System.out.println("Willraus");
 				}
@@ -528,6 +530,8 @@ public class Level_4 {
 					TempoX = 0;
 					HP = 3;
 					Abbruch = true;
+					Laufen = 0;
+					Umdrehen = false;
 					menu.level(primaryStage);
 				}
 			}
@@ -571,6 +575,522 @@ public class Level_4 {
 			case ESCAPE:
 				Exit = true;
 				break;
+			default:
+				break;
+			}
+		}
+	};
+
+	final EventHandler<KeyEvent> TasteLoslassen = new EventHandler<KeyEvent>() {
+
+		public void handle(KeyEvent event) {
+			switch (event.getCode()) {
+			case UP:
+				break;
+			case SPACE:
+				Halt();
+				break;
+			case W:
+				Halt();
+				break;
+			case LEFT:
+				RLN = 0;
+				Halt();
+				break;
+			case RIGHT:
+				RLN = 0;
+				Halt();
+				break;
+			case A:
+				RLN = 0;
+				Halt();
+				break;
+			case D:
+				RLN = 0;
+				Halt();
+				break;
+			case I:
+				Interaction = false;
+				break;
+			case E:
+				Interaction = false;
+				break;
+			case ESCAPE:
+				break;
+			default:
+				break;
+			}
+		}
+	};
+
+	public void Spring() {
+		if (Gesprungen == false) {
+			TempoY = -15;
+			Gesprungen = true;
+
+		}
+	}
+
+	public void Rechts() {
+		TempoX = 6;
+		if (Laufen >= 0) {
+			Laufen = Laufen + 1;
+			if(Laufen >= 5) {
+				Umdrehen = true;
+			}
+		}
+		if (Umdrehen == true) {
+			Laufen = Laufen - 2;
+			if (Laufen <= 0) {
+				Umdrehen = false;
+			}
+		}
+		RLN = 2;
+	}
+
+	public void Links() {
+		TempoX = -6;
+		if (Laufen >= 0) {
+			Laufen = Laufen + 1;
+			if(Laufen >= 5) {
+				Umdrehen = true;
+			}
+		}
+		if (Umdrehen == true) {
+			Laufen = Laufen - 2;
+			if (Laufen <= 0) {
+				Umdrehen = false;
+			}
+		}
+		RLN = 1;
+
+	}
+
+	public void Halt() {
+		TempoX = 0;
+		Laufen = 0;
+	}
+
+	public void NeuLaden() {
+		if (Wasserfall == false) {
+			PosXAlt = PosX;
+			if (HP == 0) {
+				V = true;
+			}
+			// Kollisiondetektion -extra-
+			if (S == true) {
+				TempoX = 0;
+			}
+			// Bewegen und Anpassen
+			if (PosX > 51) {
+				RealPosX += TempoX;
+			}
+			if (TempoX < 0) {
+				PosX += TempoX;
+			} else if (TempoX == 0) {
+				// tue nichts
+
+			} else {
+				if (PosX <= 300) {
+					PosX += TempoX;
+				} else {
+					// Bewege Hintergrund
+					UPosX -= TempoX;
+					BGPosX -= (TempoX / 2);
+
+				}
+			}
+			// Hintergrund Loop
+			if (BGPosX <= -2382)
+				BGPosX = 0;
+			if (UPosX <= -1200)
+				UPosX = 0;
+			if (PosY + TempoY >= 382) {
+				PosY = 382;
+			} else {
+				PosY += TempoY;
+			}
+			// Sprungregelung
+			if (Gesprungen == true) {
+				TempoY += 1;
+
+				if (PosY + TempoY >= 252) {
+					PosY = 252;
+					TempoY = 0;
+					Gesprungen = false;
+				}
+
+			}
+			// Nach links laufen unterbinden
+			if (PosX + TempoX <= 50) {
+				PosX = 51;
+
+			}
+			// Siegbedingung
+			if (T == 1) {
+				if (RealPosX > 2500) {
+					Gewonnen = true;
+					T = 0;
+					RealPosX = 0;
+				}
+			}
+			// BlockPositionen anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
+				B01PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				B02PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				B03PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				B04PosX -= TempoX;
+			}
+			// Wassertank anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
+				W01PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W02PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W03PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W04PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W05PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W06PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W07PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				W08PosX -= TempoX;
+			}
+			// Wasser anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
+				WA01PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				WA02PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				WA03PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				WA04PosX -= TempoX;
+			}
+			// Lava anpassen
+			if (TempoX >= 0 && PosX >= 300) {
+				L01PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				L02PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				L03PosX -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				L04PosX -= TempoX;
+			}
+			// GegnerPosition anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
+				E01PosX -= TempoX;
+				E01StartX -= TempoX;
+			}
+			if (V01 == false) {
+				E01PosX -= 3;
+				if (E01PosX < E01StartX - 180) {
+					V01 = true;
+				}
+			}
+			if (V01 == true) {
+				E01PosX += 3;
+				if (E01PosX > E01StartX + 180) {
+					V01 = false;
+				}
+			}
+
+			// Hebel anpassen
+			if (TempoX >= 0 && PosX >= 300) {
+				H01PosX -= TempoX;
+			}
+
+			// Ziel anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
+				ZPosX01 -= TempoX;
+			}
+			if (TempoX >= 0 && PosX >= 300) {
+				ZPosX02 -= TempoX;
+			}
+		}
+	}
+
+	public void Kollisionsdetektion() throws InterruptedException {
+
+		PauseTransition pause = new PauseTransition(Duration.seconds(1));
+
+		// Kollision mit B01
+		if (PosX >= B01PosX - 64 && PosX <= B01PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B01PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B01PosX - 30 && PosX <= B01PosX + 70 && PosY >= 183 && PosXAlt >= PosX) {
+			PosX = B01PosX + 71;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B01PosX - 49 && PosX <= B01PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		if (PosX <= B01PosX - 65 && Gesprungen == false) {
+			Gesprungen = true;
+		}
+		if (PosX >= B01PosX + 70 && PosX <= B01PosX + 80 && Gesprungen == false) {
+			Gesprungen = true;
+
+		}
+		// Kollision mit B02
+		if (PosX >= B02PosX - 64 && PosX <= B02PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B02PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B02PosX - 30 && PosX <= B02PosX + 70 && PosY >= 183 && PosXAlt >= PosX) {
+			PosX = B02PosX + 71;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B02PosX - 49 && PosX <= B02PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		if (PosX >= B02PosX - 70 && PosX <= B02PosX - 65 && Gesprungen == false) {
+			Gesprungen = true;
+		}
+		if (PosX >= B02PosX + 70 && PosX <= B02PosX + 80 && Gesprungen == false) {
+			Gesprungen = true;
+
+		}
+
+		// Kollision mit B03
+
+		if (PosX >= B03PosX - 64 && PosX <= B03PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B03PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B03PosX - 30 && PosX <= B03PosX + 70 && PosY >= 183 && PosXAlt >= PosX) {
+			PosX = B03PosX + 71;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B03PosX - 49 && PosX <= B03PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		if (PosX >= B03PosX - 70 && PosX <= B03PosX - 65 && Gesprungen == false) {
+			Gesprungen = true;
+		}
+		if (PosX >= B03PosX + 70 && PosX <= B03PosX + 80 && Gesprungen == false) {
+			Gesprungen = true;
+
+		}
+		if (PosX >= B03PosX && PosX <= B03PosX + 20) {
+			Flag2 = true;
+			System.out.println(RealPosX);
+		}
+		// Kollision mit B04
+
+		if (PosX >= B04PosX - 64 && PosX <= B04PosX + 69 && PosY >= 183 && PosXAlt <= PosX) {
+			PosX = B04PosX - 53;
+			RealPosX -= 6;
+		}
+		if (PosX >= B04PosX - 30 && PosX <= B04PosX + 70 && PosY >= 183 && PosXAlt >= PosX) {
+			PosX = B04PosX + 71;
+			RealPosX += 6;
+		}
+
+		if (PosX >= B04PosX - 49 && PosX <= B04PosX + 70) {
+			if (PosY + TempoY >= 182) {
+				PosY = 182;
+				TempoY = 0;
+				Gesprungen = false;
+			}
+		}
+		if (PosX >= B04PosX - 70 && PosX <= B04PosX - 65 && Gesprungen == false) {
+			Gesprungen = true;
+		}
+		if (PosX >= B04PosX + 70 && PosX <= B04PosX + 80 && Gesprungen == false) {
+			Gesprungen = true;
+
+		}
+
+		if (PosX >= B04PosX && PosX <= B04PosX + 20) {
+			RealPosX = 1650;
+			Flag2 = false;
+			Flag3 = true;
+			System.out.println(RealPosX);
+		}
+		// Kollision mit Gegner
+		Timeline Timer = new Timeline(new KeyFrame(Duration.millis(2500), ae -> Flag()));
+		if (Check == true && Flag1 == true) {
+			Timer.play();
+			Check = false;
+		}
+
+		if (PosX >= E01PosX - 64 && PosX <= E01PosX + 69 && PosY >= 153 && PosXAlt <= PosX && Flag1 == false) {
+			PosX = E01PosX - 53;
+			Gefallen = true;
+			Flag1 = true;
+
+		}
+		if (PosX >= E01PosX - 30 && PosX <= E01PosX + 70 && PosY >= 153 && PosXAlt >= PosX && Flag1 == false) {
+			PosX = E01PosX + 71;
+			Gefallen = true;
+			Flag1 = true;
+
+		}
+
+		if (Gefallen == true && Flag1 == true) {
+			Gefallen = false;
+			RLN = 3;
+			Thread.sleep(200);
+			HP -= 1;
+			Check = true;
+		}
+
+		// Interaktion mit dem Hebel
+		if (PosX >= B03PosX - 140 && PosX <= B03PosX - 20 && Interaction == true) {
+			H2 = true;
+			Wasserfall = true;
+		}
+		if (Drop == true) {
+			if (WA02PosY <= 260) {
+				WA02PosY += 8;
+			}
+			if (WA03PosY <= 260) {
+				WA03PosY += 8;
+			}
+			if (WA01PosX <= WA02PosX) {
+				WA01PosX += 7;
+				if (W01PosX == W02PosX) {
+					W01T = true;
+				}
+			}
+			if (WA04PosX >= WA03PosX) {
+				WA04PosX -= 7;
+				if (WA04PosX == WA03PosX) {
+					W04T = true;
+				}
+			}
+			if (W04T == true && WA04PosY <= 260) {
+				WA04PosY += 8;
+
+			}
+			if (W01T == true && WA01PosY <= 260) {
+				WA01PosY += 8;
+
+			}
+			if (WA01PosY >= 250 && WA04PosY >= 250) {
+				Obsidian = true;
+			}
+
+		}
+		if (Obsidian == false) {
+			if (PosX >= L01PosX - 64 && PosX <= L04PosX + 69 && PosY >= 183) {
+				if (TempoX >= 0) {
+					RealPosX -= 6;
+				}
+				if (TempoX <= 0) {
+					RealPosX += 6;
+				}
+				if (TempoX == 0) {
+					// tue nichts
+				}
+
+				S = true;
+				PosY += 8;
+				RLN = 3;
+				Gesprungen = true;
+				pause.play();
+
+			} else {
+				S = false;
+			}
+			if (PosY >= 253) {
+				Gefallen = true;
+				Gesprungen = true;
+			}
+			if (Gefallen == true && Flag2 == true) {
+				RLN = 0;
+				PosX = B03PosX;
+				PosY = 112;
+				RealPosX = 1400;
+				Gefallen = false;
+				HP -= 1;
+			}
+			if (Gefallen == true && Flag3 == true) {
+				RLN = 0;
+				PosX = B04PosX;
+				PosY = 112;
+				RealPosX = 1650;
+				Gefallen = false;
+				HP -= 1;
+			}
+			if (PosX >= L01PosX - 110 && PosX <= L04PosX + 69) {
+				if (PosY <= 130) {
+					PosY = 131;
+				}
+			}
+		}
+		if (Obsidian == true) {
+			if (PosX >= B03PosX - 49 && PosX <= B04PosX + 70) {
+				if (PosY + TempoY >= 182) {
+					PosY = 182;
+					TempoY = 0;
+					Gesprungen = false;
+				}
+			}
+			if (PosX >= L01PosX - 110 && PosX <= L02PosX || PosX >= L03PosX + 20 && PosX <= L04PosX + 110) {
+				if (PosY <= 130) {
+					PosY = 131;
+				}
+			}
+		}
+
+		// Endkollision
+		if (RealPosX >= 2200) {
+			if (PosY <= 220) {
+				PosY = 221;
+			}
+		}
+	}
+
+	public void Flag() {
+		Flag1 = false;
+	}
+
+}
+
 			default:
 				break;
 			}
