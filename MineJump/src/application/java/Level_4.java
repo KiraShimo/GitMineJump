@@ -40,10 +40,12 @@ public class Level_4 {
 	private int LPosY = 0;
 	private int HP = 3;
 	// Bedingungsvariablen
+	private int T = 1;
+	private int Laufen = 0;
+	private int Stehen = 5;
 	private boolean Gewonnen = false;
 	private boolean Exit = false;
 	private boolean Gefallen = false;
-	private int T = 1;
 	private boolean S = false;
 	private boolean Flag1 = false;
 	private boolean Flag2 = false;
@@ -57,7 +59,7 @@ public class Level_4 {
 	private boolean W01T = false;
 	private boolean Obsidian = false;
 	private boolean Check = false;
-	private boolean Abbruch = false;
+	private boolean Abbruch = false;;
 	// Blockvariablen
 	private int B01PosX = 500;
 	private int B01PosY = 310;
@@ -163,7 +165,7 @@ public class Level_4 {
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
 
-		// Blöcke aufrufen
+		// BlÃ¶cke aufrufen
 		ImageView B01_Anzeigen = new ImageView(B01);
 		B01_Anzeigen.setX(B01PosX);
 		B01_Anzeigen.setY(B01PosY);
@@ -314,15 +316,32 @@ public class Level_4 {
 				// Position Updaten
 				if (RLN == 0) {
 					Bildaufruf.setImage(SpielerBild);
+					Laufen = 5;
+					Stehen = 0;
 				}
-				if (RLN == 1) {
+				if (RLN == 1 && Laufen <= 5 && Stehen >= 0) {
 					Bildaufruf.setImage(SpielerLinks);
+					Laufen ++; 
+					Stehen --;
 				}
-				if (RLN == 2) {
+				if (RLN == 2 && Laufen <= 5 && Stehen >= 0) {
 					Bildaufruf.setImage(SpielerRechts);
+					Laufen ++; 
+					Stehen --;
 				}
 				if (RLN == 3) {
 					Bildaufruf.setImage(SpielerSchaden);
+					 
+				}
+				if (RLN == 4 && Laufen >= 5 && Stehen <= 0) {
+					Bildaufruf.setImage(SpielerLinks_2);
+					Laufen --; 
+					Stehen ++;
+				}
+				if (RLN == 5 && Laufen >= 5 && Stehen <= 0) {
+					Bildaufruf.setImage(SpielerRechts_2);
+					Laufen --; 
+					Stehen ++;
 				}
 				HintergrundImageAufruf.setX(BGPosX);
 				UntergrundAnzeigen.setX(UPosX);
@@ -347,7 +366,7 @@ public class Level_4 {
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
-				// Blöcke updaten
+				// BlÃ¶cke updaten
 
 				B01_Anzeigen.setX(B01PosX);
 				B01_Anzeigen.setY(B01PosY);
