@@ -1,6 +1,11 @@
 package application.java;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,10 +54,21 @@ public class MainController {
 		});
 	}
 
-
-	public void setvolume() {
+	public void setvolume() throws NumberFormatException, IOException {
+		
+//		FileWriter Lautstärkeschreiber = new FileWriter("C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt", false);
+//		BufferedWriter Schreib = new BufferedWriter(Lautstärkeschreiber); 
+//		Schreib.write(menu.getActualvol());
+//		
+//		
+//		FileReader Lautstaerke = new FileReader(
+//				"C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt");
+//		BufferedReader Lautstaerkeausleser = new BufferedReader(Lautstaerke);
+//		volume = Double.parseDouble(Lautstaerkeausleser.readLine());
+//		Lautstaerkeausleser.close();
+		
+		
 		musicplayer.stop();
-		System.out.println(volume);
 		musicplayer.setVolume(volume);
 		musicplayer.setAutoPlay(true);
 	}
@@ -65,8 +81,14 @@ public class MainController {
 
 	// Aufruf Einstellungsmenü
 	@FXML
-	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
-		menu.setSlidervol(volume);
+	private void BtnOptionsAction(ActionEvent actionEvent)
+			throws InterruptedException, NumberFormatException, IOException {
+		// das muss noch geändert werden
+		FileReader Lautstaerke = new FileReader(
+				"C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt");
+		BufferedReader Lautstärkeausleser = new BufferedReader(Lautstaerke);
+		volume = Double.parseDouble(Lautstärkeausleser.readLine());
+		Lautstärkeausleser.close();
 		System.out.println(volume);
 		menu.settings(primaryStage);
 	}
@@ -77,11 +99,10 @@ public class MainController {
 		menu.mainmenu(primaryStage);
 	}
 
-	// Einstellungen verlassen mit Speicherung der Änderungen -------- geht nicht
+	// Einstellungen verlassen mit Speicherung der Änderungen -------- geht noch
+	// nicht
 	@FXML
-	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException {
-		menu.setActualvol();
-		volume = menu.getActualvol();
+	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException, NumberFormatException, IOException {
 		System.out.println(volume);
 		setvolume();
 		menu.mainmenu(primaryStage);

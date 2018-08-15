@@ -1,5 +1,7 @@
 package application.java;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
@@ -9,28 +11,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Menu {
-	double slidervol = 0.0;
+	double volume;
 	double actualvol;
-	Slider slider = new Slider();
+	char hilf;
+		Slider slider = new Slider();
 
-	public double getActualvol() {
-		return actualvol;
-	}
-
-	public void setActualvol() {
-		actualvol = slider.getValue();
-		System.out.println(slider);//actualvol);
-	}
-
-	public double getSlidervol() {
-		System.out.println(slidervol);
-		return slidervol;
-	}
-
-	public void setSlidervol(double slidervol) {
-		System.out.println(slidervol);
-		this.slidervol = slidervol;
-	}
+	
 
 	public void mainmenu(Stage primaryStage) {
 		try {
@@ -61,7 +47,7 @@ public class Menu {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void win(Stage primaryStage) {
 		try {
 			// Level beendet laden und anzeigen
@@ -81,10 +67,14 @@ public class Menu {
 		try {
 			// Einstellungsmenü laden und anzeigen
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Settings.fxml"));
-	
+			FileReader Lautstaerke = new FileReader(
+					"C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt");
+			BufferedReader Lautstärkeausleser = new BufferedReader(Lautstaerke);
+			volume = Double.parseDouble(Lautstärkeausleser.readLine());
+			Lautstärkeausleser.close();
 			slider.setMin(0);
 		    slider.setMax(100);
-		    slider.setValue(slidervol*100);
+		    slider.setValue(volume*100);
 			slider.setBlockIncrement(1);
 			slider.setLayoutX(427);
 			slider.setScaleX(1);
@@ -94,7 +84,7 @@ public class Menu {
 			slider.setTranslateY(0);
 			slider.setPrefWidth(98);
 			slider.setPrefHeight(14);
-			
+
 			Pane pane = root.load();
 			pane.getChildren().add(slider);
 			Scene level = new Scene(pane);
@@ -120,12 +110,14 @@ public class Menu {
 		Spiel.spiel(primaryStage);
 
 	}
+
 	public void spiel3(Stage primaryStage) throws IOException {
 
 		Level_3 Spiel = new Level_3();
 		Spiel.spiel(primaryStage);
 
 	}
+
 	public void spiel4(Stage primaryStage) throws IOException {
 
 		Level_4 Spiel = new Level_4();
@@ -133,5 +125,10 @@ public class Menu {
 
 	}
 	
-	
+	public int getActualvol() {
+		actualvol = slider.getValue();
+		System.out.println(slider.getValue());
+		return (int) actualvol;
+	}
+
 }
