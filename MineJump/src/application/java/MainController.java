@@ -67,6 +67,7 @@ public class MainController {
 	@FXML
 	private void BtnOptionsAction(ActionEvent actionEvent) throws InterruptedException {
 		menu.setSlidervol(volume);
+		System.out.println(volume);
 		menu.settings(primaryStage);
 	}
 
@@ -82,8 +83,6 @@ public class MainController {
 		menu.setActualvol();
 		volume = menu.getActualvol();
 		System.out.println(volume);
-		// musicplayer.setVolume(volume);
-		musicplayer.setVolume(volume);
 		setvolume();
 		menu.mainmenu(primaryStage);
 	}
