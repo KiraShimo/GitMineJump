@@ -1,10 +1,6 @@
 package application.java;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -45,8 +41,7 @@ public class MainController {
 	public void startmusic() throws NumberFormatException, IOException {
 
 		// Musik initialisieren
-		FileReader Lautstaerke = new FileReader(
-				"C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt");
+		FileReader Lautstaerke = new FileReader("src/application/ressources/Music.txt");
 		BufferedReader Lautstärkeausleser = new BufferedReader(Lautstaerke);
 		volume = Double.parseDouble(Lautstärkeausleser.readLine());
 		Lautstärkeausleser.close();
@@ -83,8 +78,7 @@ public class MainController {
 	private void BtnOptionsAction(ActionEvent actionEvent)
 			throws InterruptedException, NumberFormatException, IOException {
 		// das muss noch geändert werden
-		FileReader Lautstaerke = new FileReader(
-				"C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt");
+		FileReader Lautstaerke = new FileReader("src/application/ressources/Music.txt");
 		BufferedReader Lautstärkeausleser = new BufferedReader(Lautstaerke);
 		volume = Double.parseDouble(Lautstärkeausleser.readLine());
 		Lautstärkeausleser.close();
@@ -110,8 +104,7 @@ public class MainController {
 	@FXML
 	private void BtnSettingsSaveTake(ActionEvent actionEvent) throws NumberFormatException, IOException {
 		System.out.println(SliderMusic.getValue());
-		FileWriter Lautstärkeschreiber = new FileWriter(
-				"C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt",
+		FileWriter Lautstärkeschreiber = new FileWriter("src/application/ressources/Music.txt",
 				false);
 		BufferedWriter Schreib = new BufferedWriter(Lautstärkeschreiber);
 		str = String.valueOf(SliderMusic.getValue());
