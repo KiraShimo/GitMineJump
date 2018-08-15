@@ -46,7 +46,7 @@ public class MainController {
 		volume = Double.parseDouble(Lautstärkeausleser.readLine());
 		Lautstärkeausleser.close();
 		System.out.println(musicplayer.statusProperty());
-		musicplayer.play();
+		musicplayer.isAutoPlay();
 		System.out.println("musik läuft villeich....");
 		musicplayer.setVolume(volume); // zwischen 0 und 1
 		System.out.println(musicplayer.statusProperty());
