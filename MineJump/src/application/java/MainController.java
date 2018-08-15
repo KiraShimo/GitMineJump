@@ -25,12 +25,13 @@ public class MainController {
 	public Main main;
 	Menu menu = new Menu();
 	Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
-	MediaPlayer musicplayer = new MediaPlayer(media);
+	final MediaPlayer musicplayer = new MediaPlayer(media);
 	String str;
 
 	@FXML
 	Slider SliderMusic;
 	Slider slider;
+						
 
 	public void setMain(Main main) {
 		this.main = main;
@@ -64,10 +65,10 @@ public class MainController {
 
 	public void setvolume() throws NumberFormatException, IOException {
 
-		musicplayer.stop();
+		musicplayer.pause();
 		System.out.println("musik gestoppt");
-		musicplayer.setVolume(volume);
-		musicplayer.setAutoPlay(true);
+		musicplayer.setVolume(volume/100);
+		musicplayer.play();
 	}
 
 	// Aufruf Levelauswahl
@@ -100,7 +101,7 @@ public class MainController {
 	// nicht
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent)
-			throws InterruptedException, NumberFormatException, IOException {
+		throws InterruptedException, NumberFormatException, IOException {
 		System.out.println(volume);
 		menu.mainmenu(primaryStage);
 	}
@@ -115,7 +116,7 @@ public class MainController {
 		str = String.valueOf(SliderMusic.getValue());
 		Schreib.write(str);
 		Schreib.close();
-		musicplayer.stop();
+		startmusic();
 		setvolume();
 		System.out.println(musicplayer.statusProperty());
 

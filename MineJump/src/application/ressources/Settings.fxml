@@ -38,7 +38,7 @@
 		<Button fx:id="BtnSettingsTake" alignment="CENTER"
 			contentDisplay="CENTER" layoutX="427.0" layoutY="240.0"
 			mnemonicParsing="false" onAction="#BtnSettingsSaveTake"
-			prefHeight="20.0" prefWidth="98.0" text="Übernehmen" textFill="WHITE"
+			prefHeight="20.0" prefWidth="98.0" text="Starten" textFill="WHITE"
 			translateX="104.0" translateY="84.0">
 			<font>
 				<Font name="System Bold" size="14.0" />
