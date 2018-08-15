@@ -74,7 +74,7 @@ public class Menu {
 			Lautstärkeausleser.close();
 			slider.setMin(0);
 		    slider.setMax(100);
-		    slider.setValue(volume*100);
+		    slider.setValue(volume);
 			slider.setBlockIncrement(1);
 			slider.setLayoutX(427);
 			slider.setScaleX(1);
