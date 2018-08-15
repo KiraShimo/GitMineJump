@@ -50,11 +50,11 @@ public class MainController {
 		volume = Double.parseDouble(Lautstärkeausleser.readLine());
 		Lautstärkeausleser.close();
 		System.out.println(musicplayer.statusProperty());
-		musicplayer.setAutoPlay(true);
+		musicplayer.play();
 		System.out.println("musik läuft villeich....");
 		musicplayer.setVolume(volume); // zwischen 0 und 1
 		System.out.println(musicplayer.statusProperty());
-		
+
 		// Musik loopen
 		musicplayer.setOnEndOfMedia(new Runnable() {
 			public void run() {
@@ -64,7 +64,7 @@ public class MainController {
 	}
 
 	public void setvolume() throws NumberFormatException, IOException {
-		
+
 		musicplayer.stop();
 		System.out.println("musik gestoppt");
 		musicplayer.setVolume(volume);
@@ -100,23 +100,26 @@ public class MainController {
 	// Einstellungen verlassen mit Speicherung der Änderungen -------- geht noch
 	// nicht
 	@FXML
-	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException, NumberFormatException, IOException {
+	private void BtnSettingsSaveAction(ActionEvent actionEvent)
+			throws InterruptedException, NumberFormatException, IOException {
 		System.out.println(volume);
 		menu.mainmenu(primaryStage);
 	}
+
 	@FXML
-	private void BtnSettingsSaveTake(ActionEvent actionEvent) throws NumberFormatException, IOException  {
+	private void BtnSettingsSaveTake(ActionEvent actionEvent) throws NumberFormatException, IOException {
 		System.out.println(SliderMusic.getValue());
-		FileWriter Lautstärkeschreiber = new FileWriter("C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt", false);
-		BufferedWriter Schreib = new BufferedWriter(Lautstärkeschreiber); 
+		FileWriter Lautstärkeschreiber = new FileWriter(
+				"C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt",
+				false);
+		BufferedWriter Schreib = new BufferedWriter(Lautstärkeschreiber);
 		str = String.valueOf(SliderMusic.getValue());
 		Schreib.write(str);
 		Schreib.close();
 		musicplayer.stop();
 		setvolume();
 		System.out.println(musicplayer.statusProperty());
-		
-		
+
 	}
 
 	// Level 1 starten - Spielaufruf in Menu.java
