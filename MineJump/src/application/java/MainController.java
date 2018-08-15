@@ -13,7 +13,7 @@ import javafx.util.Duration;
 public class MainController {
 	// Variablen
 
-	private double volume = 0.2;
+	private double volume;
 
 	// Objekte
 	public Stage primaryStage;
