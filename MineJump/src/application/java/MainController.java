@@ -30,6 +30,7 @@ public class MainController {
 
 	@FXML
 	Slider SliderMusic;
+	
 	Slider slider;
 						
 
