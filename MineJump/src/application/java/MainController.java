@@ -1,7 +1,10 @@
 package application.java;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.application.Platform;
@@ -24,6 +27,7 @@ public class MainController {
 	Menu menu = new Menu();
 	Media media = new Media(getClass().getResource("/application/ressources/music/07_Boo.mp3").toExternalForm());
 	MediaPlayer musicplayer = new MediaPlayer(media);
+	String str;
 
 	@FXML
 	Slider SliderMusic;
@@ -37,13 +41,20 @@ public class MainController {
 		this.primaryStage = primaryStage;
 	}
 
-	public void startmusic() {
+	public void startmusic() throws NumberFormatException, IOException {
 
 		// Musik initialisieren
-
+		FileReader Lautstaerke = new FileReader(
+				"C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt");
+		BufferedReader Lautstärkeausleser = new BufferedReader(Lautstaerke);
+		volume = Double.parseDouble(Lautstärkeausleser.readLine());
+		Lautstärkeausleser.close();
+		System.out.println(musicplayer.statusProperty());
 		musicplayer.setAutoPlay(true);
+		System.out.println("musik läuft villeich....");
 		musicplayer.setVolume(volume); // zwischen 0 und 1
-
+		System.out.println(musicplayer.statusProperty());
+		
 		// Musik loopen
 		musicplayer.setOnEndOfMedia(new Runnable() {
 			public void run() {
@@ -54,19 +65,8 @@ public class MainController {
 
 	public void setvolume() throws NumberFormatException, IOException {
 		
-//		FileWriter Lautstärkeschreiber = new FileWriter("C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt", false);
-//		BufferedWriter Schreib = new BufferedWriter(Lautstärkeschreiber); 
-//		Schreib.write(menu.getActualvol());
-//		
-//		
-//		FileReader Lautstaerke = new FileReader(
-//				"C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt");
-//		BufferedReader Lautstaerkeausleser = new BufferedReader(Lautstaerke);
-//		volume = Double.parseDouble(Lautstaerkeausleser.readLine());
-//		Lautstaerkeausleser.close();
-		
-		
 		musicplayer.stop();
+		System.out.println("musik gestoppt");
 		musicplayer.setVolume(volume);
 		musicplayer.setAutoPlay(true);
 	}
@@ -102,8 +102,21 @@ public class MainController {
 	@FXML
 	private void BtnSettingsSaveAction(ActionEvent actionEvent) throws InterruptedException, NumberFormatException, IOException {
 		System.out.println(volume);
-		setvolume();
 		menu.mainmenu(primaryStage);
+	}
+	@FXML
+	private void BtnSettingsSaveTake(ActionEvent actionEvent) throws NumberFormatException, IOException  {
+		System.out.println(SliderMusic.getValue());
+		FileWriter Lautstärkeschreiber = new FileWriter("C:\\Users\\max.burkhardt\\git\\GitMineJump02\\MineJump\\src\\application\\ressources\\Music.txt", false);
+		BufferedWriter Schreib = new BufferedWriter(Lautstärkeschreiber); 
+		str = String.valueOf(SliderMusic.getValue());
+		Schreib.write(str);
+		Schreib.close();
+		musicplayer.stop();
+		setvolume();
+		System.out.println(musicplayer.statusProperty());
+		
+		
 	}
 
 	// Level 1 starten - Spielaufruf in Menu.java
