@@ -104,8 +104,7 @@ public class MainController {
 	@FXML
 	private void BtnSettingsSaveTake(ActionEvent actionEvent) throws NumberFormatException, IOException {
 		System.out.println(SliderMusic.getValue());
-		FileWriter Lautstärkeschreiber = new FileWriter("src/application/ressources/Music.txt",
-				false);
+		FileWriter Lautstärkeschreiber = new FileWriter("src/application/ressources/Music.txt",false);
 		BufferedWriter Schreib = new BufferedWriter(Lautstärkeschreiber);
 		str = String.valueOf(SliderMusic.getValue());
 		Schreib.write(str);
