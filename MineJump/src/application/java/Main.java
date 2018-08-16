@@ -12,7 +12,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-
+		boolean Music;
 		try {
 			// Musik starten
 			// music.startmusic();
