@@ -7,12 +7,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
-	// Music music = new Music();
+	
 
 	@Override
 	public void start(Stage primaryStage) {
-		boolean Music;
+		
 		try {
 			// Musik starten
 			// music.startmusic();
