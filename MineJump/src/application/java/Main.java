@@ -8,13 +8,13 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-
+	Music music = new Music();
+	
 	@Override
 	public void start(Stage primaryStage) {
-		
 		try {
 			// Musik starten
-			// music.startmusic();
+			music.startmusic();
 
 			// Hauptmenü laden
 			FXMLLoader root = new FXMLLoader(getClass().getResource("/application/ressources/Main.fxml"));
@@ -24,9 +24,6 @@ public class Main extends Application {
 			MainController mainController = root.getController();
 			mainController.setMain(this);
 			mainController.setPrimaryStage(primaryStage);
-
-			// mainController.setMusic(music);
-			// mainController.startmusic();
 
 			// Initialisierung Scene und Stage
 			Scene mainmenu = new Scene(pane);

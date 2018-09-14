@@ -6,58 +6,31 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane stylesheets="@application.css"
-	xmlns="http://javafx.com/javafx/8.0.141"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="application.java.MainController">
+<Pane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.java.MainController">
 	<children>
-		<Button fx:id="BtnSettingsAbort" alignment="CENTER"
-			contentDisplay="CENTER" layoutX="427.0" layoutY="240.0"
-			mnemonicParsing="false" onAction="#BtnSettingsAbortAction"
-			prefHeight="20.0" prefWidth="98.0" text="Abbrechen" textFill="WHITE"
-			translateX="-100.0" translateY="84.0">
+		<Button fx:id="BtnSettingsAbort" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnSettingsAbortAction" prefHeight="20.0" prefWidth="98.0" text="Abbrechen" textFill="WHITE" translateX="-100.0" translateY="84.0">
 			<font>
 				<Font name="System Bold" size="14.0" />
 			</font>
 		</Button>
-		<Label layoutX="427.0" layoutY="60.0" text="Einstellungen"
-			textFill="WHITE" translateX="-152.03">
+		<Label layoutX="427.0" layoutY="60.0" text="Einstellungen" textFill="WHITE" translateX="-152.03">
 			<font>
 				<Font name="System Bold" size="48.0" />
 			</font>
 		</Label>
-		<Button fx:id="BtnSettingsSave" alignment="CENTER"
-			contentDisplay="CENTER" layoutX="427.0" layoutY="240.0"
-			mnemonicParsing="false" onAction="#BtnSettingsSaveAction"
-			prefHeight="20.0" prefWidth="98.0" text="Ok" textFill="WHITE"
-			translateX="2.0" translateY="84.0">
+		<Button fx:id="BtnSettingsSave" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnSettingsSaveAction" prefHeight="20.0" prefWidth="98.0" text="Ok" textFill="WHITE" translateX="2.0" translateY="84.0">
 			<font>
 				<Font name="System Bold" size="14.0" />
 			</font>
 		</Button>
-		<Button fx:id="BtnSettingsTake" alignment="CENTER"
-			contentDisplay="CENTER" layoutX="427.0" layoutY="240.0"
-			mnemonicParsing="false" onAction="#BtnSettingsSaveTake"
-			prefHeight="20.0" prefWidth="98.0" text="Starten" textFill="WHITE"
-			translateX="104.0" translateY="84.0">
-			<font>
-				<Font name="System Bold" size="14.0" />
-			</font>
-		</Button>
-		<Slider fx:id="SliderMusic" blockIncrement="1.0"
-			layoutX="427.0" layoutY="200.0" prefHeight="14.0" prefWidth="98.0"
-			translateX="2.0" />
-		<Label layoutX="427.0" layoutY="200.0" text="Musiklautstärke"
-			textFill="WHITE" translateX="-100.0" translateY="-2.0">
+		<Slider blockIncrement="1.0" disable="true" layoutX="427.0" layoutY="200.0" prefHeight="14.0" prefWidth="98.0" translateX="2.0" />
+		<Label layoutX="427.0" layoutY="200.0" text="Musiklautstärke" textFill="WHITE" translateX="-100.0" translateY="-2.0">
 			<font>
 				<Font name="System Bold" size="12.0" />
 			</font>
 		</Label>
-		<Slider blockIncrement="0.01" disable="true" layoutX="427.0"
-			layoutY="200.0" max="1.0" prefHeight="14.0" prefWidth="98.0"
-			translateX="2.0" translateY="30.0" />
-		<Label layoutX="427.0" layoutY="200.0" text="Effektlautstärke"
-			textFill="WHITE" translateX="-100.0" translateY="28.0">
+		<Slider blockIncrement="0.01" disable="true" layoutX="427.0" layoutY="200.0" max="1.0" prefHeight="14.0" prefWidth="98.0" translateX="2.0" translateY="30.0" />
+		<Label layoutX="427.0" layoutY="200.0" text="Effektlautstärke" textFill="WHITE" translateX="-100.0" translateY="28.0">
 			<font>
 				<Font name="System Bold" size="12.0" />
 			</font>
