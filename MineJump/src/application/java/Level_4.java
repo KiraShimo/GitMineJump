@@ -1,7 +1,6 @@
 package application.java;
 
 import java.io.IOException;
-
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
@@ -12,7 +11,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Box;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -111,6 +112,11 @@ public class Level_4 {
 	private int H01PosX = 1330;
 	private int H01PosY = 310;
 
+	// Tutorialtext
+	private int T01PosX = 1300;
+	private int T01PosY = 250;
+	private String T01Text = "Um mit einem Hebel zu interagieren\ndrücken Sie 'E' oder 'ENTER'.";
+	
 	// Gegnervariablen
 	private int E01PosX = 750;
 	private int E01StartX = 750;
@@ -169,7 +175,7 @@ public class Level_4 {
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
 
-		// BlÃƒÂ¶cke aufrufen
+		// Blöcke aufrufen
 		ImageView B01_Anzeigen = new ImageView(B01);
 		B01_Anzeigen.setX(B01PosX);
 		B01_Anzeigen.setY(B01PosY);
@@ -186,6 +192,7 @@ public class Level_4 {
 		B04_Anzeigen.setX(B04PosX);
 		B04_Anzeigen.setY(B04PosY);
 		rootPane.getChildren().add(B04_Anzeigen);
+		
 		// Wassertank aufrufen
 		ImageView W01_Anzeigen = new ImageView(B03);
 		W01_Anzeigen.setX(W01PosX);
@@ -263,12 +270,20 @@ public class Level_4 {
 		rootPane.getChildren().add(E01_Anzeigen);
 
 		// Hebel anzeigen
-
 		ImageView H01_Anzeigen = new ImageView(H02);
 		H01_Anzeigen.setX(H01PosX);
 		H01_Anzeigen.setY(H01PosY);
 		rootPane.getChildren().add(H01_Anzeigen);
 
+		// Tutorialtext anzeigen
+		Text text = new Text();
+		text.setFont(new Font(18));
+		text.setX(T01PosX);
+		text.setY(T01PosY);
+		text.setText(T01Text);
+		text.setFill(Color.WHITE);
+		rootPane.getChildren().add(text);
+				
 		// Ziel hinten
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
@@ -280,12 +295,13 @@ public class Level_4 {
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
+		
 		// ZielVorne
-
 		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
 		rootPane.getChildren().add(Ziel02VGAnzeiger);
+		
 		// Leben
 		ImageView LebenAnzeiger = new ImageView(Leben3);
 		LebenAnzeiger.setX(LPosX);
@@ -359,13 +375,12 @@ public class Level_4 {
 				if (H2 == true) {
 					H01_Anzeigen.setImage(H01);
 				}
+				
 				// Ziel Aktuallisieren
-
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
-				// BlÃƒÂ¶cke updaten
-
+				// Blöcke updaten
 				B01_Anzeigen.setX(B01PosX);
 				B01_Anzeigen.setY(B01PosY);
 				B02_Anzeigen.setX(B02PosX);
@@ -376,7 +391,6 @@ public class Level_4 {
 				B04_Anzeigen.setY(B04PosY);
 
 				// Wassertank updaten
-
 				W01_Anzeigen.setX(W01PosX);
 				W01_Anzeigen.setY(W01PosY);
 				W02_Anzeigen.setX(W02PosX);
@@ -401,7 +415,6 @@ public class Level_4 {
 				}
 
 				// Wasser updaten
-
 				WA01_Anzeigen.setX(WA01PosX);
 				WA01_Anzeigen.setY(WA01PosY);
 				WA02_Anzeigen.setX(WA02PosX);
@@ -412,7 +425,6 @@ public class Level_4 {
 				WA04_Anzeigen.setY(WA04PosY);
 
 				// Lava updaten
-
 				L01_Anzeigen.setX(L01PosX);
 				L01_Anzeigen.setY(L01PosY);
 				L02_Anzeigen.setX(L02PosX);
@@ -434,19 +446,18 @@ public class Level_4 {
 					WA04_Anzeigen.setImage(null);
 
 					Wasserfall = false;
-
 				}
 
 				// Gegner updaten
-
 				E01_Anzeigen.setX(E01PosX);
 				E01_Anzeigen.setY(E01PosY);
 
 				// Hebel updaten
-
 				H01_Anzeigen.setX(H01PosX);
 				H01_Anzeigen.setY(H01PosY);
 
+				text.setX(T01PosX);
+				
 				Menu menu = new Menu();
 
 				// Gewonnen test / ESC test
@@ -823,6 +834,7 @@ public class Level_4 {
 			// Hebel anpassen
 			if (TempoX >= 0 && PosX >= 300) {
 				H01PosX -= TempoX;
+				T01PosX -= TempoX;
 			}
 
 			// Ziel anpassen
