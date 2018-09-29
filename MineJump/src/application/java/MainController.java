@@ -1,7 +1,6 @@
 package application.java;
 
 import java.io.*;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,7 +69,7 @@ public class MainController {
 		menu.spiel4(primaryStage);
 	}
 
-	// Hauptmenü erneut aufrufen
+	// Hauptmenü aus Levelauswahl aufrufen
 	@FXML
 	private void BtnLevelBackAction(ActionEvent actionEvent) throws IOException {
 		menu.mainmenu(primaryStage);

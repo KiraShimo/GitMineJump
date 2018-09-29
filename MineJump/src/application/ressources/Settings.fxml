@@ -18,7 +18,7 @@
 				<Font name="System Bold" size="48.0" />
 			</font>
 		</Label>
-		<Button fx:id="BtnSettingsSave" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnSettingsSaveAction" prefHeight="20.0" prefWidth="98.0" text="Ok" textFill="WHITE" translateX="2.0" translateY="84.0">
+		<Button fx:id="BtnSettingsSave" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnSettingsSaveAction" prefHeight="20.0" prefWidth="98.0" text="Ok" textFill="WHITE" translateX="2.0" translateY="84.0">
 			<font>
 				<Font name="System Bold" size="14.0" />
 			</font>

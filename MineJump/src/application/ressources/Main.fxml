@@ -9,11 +9,11 @@
 
 <Pane styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.java.MainController">
    <children>
-      <Button fx:id="BtnOptions" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnOptionsAction" prefHeight="20.0" prefWidth="200.0" text="Optionen" textFill="WHITE" translateX="-100.0" translateY="36.0">
+      <Button fx:id="BtnStart" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnStartAction" prefHeight="20.0" prefWidth="200.0" snapToPixel="false" text="Start" textFill="WHITE" translateX="-100.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button fx:id="BtnStart" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnStartAction" prefHeight="20.0" prefWidth="200.0" snapToPixel="false" text="Start" textFill="WHITE" translateX="-100.0">
+      <Button fx:id="BtnOptions" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="240.0" mnemonicParsing="false" onAction="#BtnOptionsAction" prefHeight="20.0" prefWidth="200.0" text="Optionen" textFill="WHITE" translateX="-100.0" translateY="36.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>

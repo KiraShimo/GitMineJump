@@ -7,7 +7,7 @@
 
 <Pane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.java.MainController">
    <children>
-      <Button fx:id="BtnLevel1" alignment="CENTER" contentDisplay="CENTER" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" onAction="#BtnLevel1Action" prefHeight="50.0" prefWidth="50.0" text="1" textFill="WHITE" translateX="-200.0">
+      <Button fx:id="BtnLevel1" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" onAction="#BtnLevel1Action" prefHeight="50.0" prefWidth="50.0" text="1" textFill="WHITE" translateX="-200.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Button>
@@ -41,17 +41,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="BtnLevel10" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="10" textFill="WHITE" translateX="10.0">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="BtnLevel11" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="11" textFill="WHITE" translateX="80.0">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="BtnLevel9" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="9" textFill="WHITE" translateX="-60.0">
+      <Button fx:id="BtnLevel7" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="7" textFill="WHITE" translateX="-200.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -61,7 +51,17 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="BtnLevel7" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="7" textFill="WHITE" translateX="-200.0">
+      <Button fx:id="BtnLevel9" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="9" textFill="WHITE" translateX="-60.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel10" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="10" textFill="WHITE" translateX="10.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="BtnLevel11" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="427.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="11" textFill="WHITE" translateX="80.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
