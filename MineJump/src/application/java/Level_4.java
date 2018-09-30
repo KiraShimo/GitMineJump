@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Level_4 {
-	
+
 	// Variablen
 	// Spieler und Hintergrundvariablen
 	private int PosX = 120;
@@ -41,7 +41,7 @@ public class Level_4 {
 	private int LPosX = 0;
 	private int LPosY = 0;
 	private int HP = 3;
-	
+
 	// Bedingungsvariablen
 	private int GewonnenTest = 1;
 	private boolean Gesprungen = false;
@@ -62,7 +62,7 @@ public class Level_4 {
 	private boolean Obsidian = false;
 	private boolean Check = false;
 	private boolean Abbruch = false;;
-	
+
 	// Blockvariablen
 	private int B01PosX = 500;
 	private int B01PosY = 310;
@@ -72,7 +72,7 @@ public class Level_4 {
 	private int B03PosY = 310;
 	private int B04PosX = 1750;
 	private int B04PosY = 310;
-	
+
 	// Lavavariablen
 	private int L01PosX = 1470;
 	private int L01PosY = 310;
@@ -119,7 +119,7 @@ public class Level_4 {
 	private int T01PosX = 1300;
 	private int T01PosY = 250;
 	private String T01Text = "Um mit einem Hebel zu interagieren\ndrücken Sie 'E' oder 'ENTER'.";
-	
+
 	// Gegnervariablen
 	private int E01PosX = 750;
 	private int E01StartX = 750;
@@ -129,10 +129,10 @@ public class Level_4 {
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
-		Pane rootPane;
-
+		Pane RootPane;
+		System.out.println("Starte Pane LV4");
 		// Erstellt das Neue RootPane
-		rootPane = new Pane();
+		RootPane = new Pane();
 
 		// Bilder einbinden
 		Image SpielerRechts = new Image(
@@ -166,112 +166,112 @@ public class Level_4 {
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
 		HintergrundImageAufruf.setX(BGPosX);
 		HintergrundImageAufruf.setY(BGPosY);
-		rootPane.getChildren().add(HintergrundImageAufruf);
+		RootPane.getChildren().add(HintergrundImageAufruf);
 
 		ImageView UntergrundAnzeigen = new ImageView(Untergrund);
 		UntergrundAnzeigen.setX(UPosX);
 		UntergrundAnzeigen.setY(UPosY);
-		rootPane.getChildren().add(UntergrundAnzeigen);
+		RootPane.getChildren().add(UntergrundAnzeigen);
 
 		// Blöcke aufrufen und anzeigen
 		ImageView B01_Anzeigen = new ImageView(B01);
 		B01_Anzeigen.setX(B01PosX);
 		B01_Anzeigen.setY(B01PosY);
-		rootPane.getChildren().add(B01_Anzeigen);
+		RootPane.getChildren().add(B01_Anzeigen);
 		ImageView B02_Anzeigen = new ImageView(B01);
 		B02_Anzeigen.setX(B02PosX);
 		B02_Anzeigen.setY(B02PosY);
-		rootPane.getChildren().add(B02_Anzeigen);
+		RootPane.getChildren().add(B02_Anzeigen);
 		ImageView B03_Anzeigen = new ImageView(B02);
 		B03_Anzeigen.setX(B03PosX);
 		B03_Anzeigen.setY(B03PosY);
-		rootPane.getChildren().add(B03_Anzeigen);
+		RootPane.getChildren().add(B03_Anzeigen);
 		ImageView B04_Anzeigen = new ImageView(B02);
 		B04_Anzeigen.setX(B04PosX);
 		B04_Anzeigen.setY(B04PosY);
-		rootPane.getChildren().add(B04_Anzeigen);
-		
+		RootPane.getChildren().add(B04_Anzeigen);
+
 		// Wassertank aufrufen und anzeigen
 		ImageView W01_Anzeigen = new ImageView(B03);
 		W01_Anzeigen.setX(W01PosX);
 		W01_Anzeigen.setY(W01PosY);
-		rootPane.getChildren().add(W01_Anzeigen);
+		RootPane.getChildren().add(W01_Anzeigen);
 		ImageView W02_Anzeigen = new ImageView(B03);
 		W02_Anzeigen.setX(W02PosX);
 		W02_Anzeigen.setY(W02PosY);
-		rootPane.getChildren().add(W02_Anzeigen);
+		RootPane.getChildren().add(W02_Anzeigen);
 		ImageView W03_Anzeigen = new ImageView(B03);
 		W03_Anzeigen.setX(W03PosX);
 		W03_Anzeigen.setY(W03PosY);
-		rootPane.getChildren().add(W03_Anzeigen);
+		RootPane.getChildren().add(W03_Anzeigen);
 		ImageView W04_Anzeigen = new ImageView(B03);
 		W04_Anzeigen.setX(W03PosX);
 		W04_Anzeigen.setY(W03PosY);
-		rootPane.getChildren().add(W04_Anzeigen);
+		RootPane.getChildren().add(W04_Anzeigen);
 		ImageView W05_Anzeigen = new ImageView(B03);
 		W05_Anzeigen.setX(W05PosX);
 		W05_Anzeigen.setY(W05PosY);
-		rootPane.getChildren().add(W05_Anzeigen);
+		RootPane.getChildren().add(W05_Anzeigen);
 		ImageView W06_Anzeigen = new ImageView(B03);
 		W06_Anzeigen.setX(W06PosX);
 		W06_Anzeigen.setY(W06PosY);
-		rootPane.getChildren().add(W06_Anzeigen);
+		RootPane.getChildren().add(W06_Anzeigen);
 		ImageView W07_Anzeigen = new ImageView(B03);
 		W07_Anzeigen.setX(W07PosX);
 		W07_Anzeigen.setY(W07PosY);
-		rootPane.getChildren().add(W07_Anzeigen);
+		RootPane.getChildren().add(W07_Anzeigen);
 		ImageView W08_Anzeigen = new ImageView(B03);
 		W08_Anzeigen.setX(W08PosX);
 		W08_Anzeigen.setY(W08PosY);
-		rootPane.getChildren().add(W08_Anzeigen);
+		RootPane.getChildren().add(W08_Anzeigen);
 
 		// Wasser aufrufen und anzeigen
 		ImageView WA01_Anzeigen = new ImageView(WA01);
 		WA01_Anzeigen.setX(WA01PosX);
 		WA01_Anzeigen.setY(WA01PosY);
-		rootPane.getChildren().add(WA01_Anzeigen);
+		RootPane.getChildren().add(WA01_Anzeigen);
 		ImageView WA02_Anzeigen = new ImageView(WA01);
 		WA02_Anzeigen.setX(WA02PosX);
 		WA02_Anzeigen.setY(WA02PosY);
-		rootPane.getChildren().add(WA02_Anzeigen);
+		RootPane.getChildren().add(WA02_Anzeigen);
 		ImageView WA03_Anzeigen = new ImageView(WA01);
 		WA03_Anzeigen.setX(WA03PosX);
 		WA03_Anzeigen.setY(WA03PosY);
-		rootPane.getChildren().add(WA03_Anzeigen);
+		RootPane.getChildren().add(WA03_Anzeigen);
 		ImageView WA04_Anzeigen = new ImageView(WA01);
 		WA04_Anzeigen.setX(WA04PosX);
 		WA04_Anzeigen.setY(WA04PosY);
-		rootPane.getChildren().add(WA04_Anzeigen);
+		RootPane.getChildren().add(WA04_Anzeigen);
 
 		// Lava aufrufen und anzeigen
 		ImageView L01_Anzeigen = new ImageView(L01);
 		L01_Anzeigen.setX(L01PosX);
 		L01_Anzeigen.setY(L01PosY);
-		rootPane.getChildren().add(L01_Anzeigen);
+		RootPane.getChildren().add(L01_Anzeigen);
 		ImageView L02_Anzeigen = new ImageView(L01);
 		L02_Anzeigen.setX(L02PosX);
 		L02_Anzeigen.setY(L02PosY);
-		rootPane.getChildren().add(L02_Anzeigen);
+		RootPane.getChildren().add(L02_Anzeigen);
 		ImageView L03_Anzeigen = new ImageView(L01);
 		L03_Anzeigen.setX(L03PosX);
 		L03_Anzeigen.setY(L03PosY);
-		rootPane.getChildren().add(L03_Anzeigen);
+		RootPane.getChildren().add(L03_Anzeigen);
 		ImageView L04_Anzeigen = new ImageView(L01);
 		L04_Anzeigen.setX(L04PosX);
 		L04_Anzeigen.setY(L04PosY);
-		rootPane.getChildren().add(L04_Anzeigen);
+		RootPane.getChildren().add(L04_Anzeigen);
 
 		// Gegner aufrufen und anzeigen
 		ImageView E01_Anzeigen = new ImageView(E01);
 		E01_Anzeigen.setX(E01PosX);
 		E01_Anzeigen.setY(E01PosY);
-		rootPane.getChildren().add(E01_Anzeigen);
+		RootPane.getChildren().add(E01_Anzeigen);
 
 		// Hebel aufrufen und anzeigen
 		ImageView H01_Anzeigen = new ImageView(H02);
 		H01_Anzeigen.setX(H01PosX);
 		H01_Anzeigen.setY(H01PosY);
-		rootPane.getChildren().add(H01_Anzeigen);
+		RootPane.getChildren().add(H01_Anzeigen);
 
 		// Tutorialtext aufrufen und anzeigen
 		Text text = new Text();
@@ -280,33 +280,33 @@ public class Level_4 {
 		text.setY(T01PosY);
 		text.setText(T01Text);
 		text.setFill(Color.WHITE);
-		rootPane.getChildren().add(text);
-				
+		RootPane.getChildren().add(text);
+
 		// Ziel hinten aufrufen und anzeigen
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
 		Ziel01BGAnzeiger.setY(ZPosY01);
-		rootPane.getChildren().add(Ziel01BGAnzeiger);
+		RootPane.getChildren().add(Ziel01BGAnzeiger);
 
 		// Spieler aufrufen und anzeigen
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
-		rootPane.getChildren().add(Bildaufruf);
-		
+		RootPane.getChildren().add(Bildaufruf);
+
 		// ZielVorne aufrufen und anzeigen
 		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
-		rootPane.getChildren().add(Ziel02VGAnzeiger);
-		
+		RootPane.getChildren().add(Ziel02VGAnzeiger);
+
 		// Leben aufrufen und anzeigen
 		ImageView LebenAnzeiger = new ImageView(Leben3);
 		LebenAnzeiger.setX(LPosX);
 		LebenAnzeiger.setY(LPosY);
-		rootPane.getChildren().add(LebenAnzeiger);
+		RootPane.getChildren().add(LebenAnzeiger);
 
-		Scene game = new Scene(rootPane);
+		Scene game = new Scene(RootPane);
 
 		final Box Listener = new Box();
 		Listener.setFocusTraversable(true);
@@ -314,13 +314,13 @@ public class Level_4 {
 		Listener.setOnKeyPressed(keyEventHandler);
 		Listener.setOnKeyReleased(TasteLoslassen);
 
-		rootPane.getChildren().add(Listener);
+		RootPane.getChildren().add(Listener);
 
 		primaryStage.setScene(game);
 		primaryStage.show();
 
 		AnimationTimer Spielschleife = new AnimationTimer() {
-			
+
 			// Spielschleife
 			@Override
 			public void handle(long arg0) {
@@ -363,7 +363,7 @@ public class Level_4 {
 				if (Haltzustand02 == true) {
 					H01_Anzeigen.setImage(H01);
 				}
-				
+
 				// Ziel updaten
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
@@ -418,7 +418,7 @@ public class Level_4 {
 				L02_Anzeigen.setX(L02PosX);
 				L02_Anzeigen.setY(L02PosY);
 				L03_Anzeigen.setX(L03PosX);
-				L03_Anzeigen.setY(L03PosY);
+				L03_Anzeigen.setY(L03PosY);  
 				L04_Anzeigen.setX(L04PosX);
 				L04_Anzeigen.setY(L04PosY);
 
@@ -445,7 +445,7 @@ public class Level_4 {
 				H01_Anzeigen.setY(H01PosY);
 
 				text.setX(T01PosX);
-				
+
 				Menu menu = new Menu();
 
 				// Gewonnen test / ESC test
@@ -530,6 +530,7 @@ public class Level_4 {
 		Spielschleife.start();
 
 	}
+
 	// Keylistener
 	final EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
 
@@ -620,30 +621,30 @@ public class Level_4 {
 	};
 
 	// Springen solange nicht schon gesprungen wird
-		public void Spring() {
-			if (Gesprungen == false) {
-				TempoY = -15;
-				Gesprungen = true;
-			}
+	public void Spring() {
+		if (Gesprungen == false) {
+			TempoY = -15;
+			Gesprungen = true;
 		}
+	}
 
-		// nach rechts gehen
-		public void Rechts() {
-			TempoX = 6;
-			RLN = 2;
-		}
+	// nach rechts gehen
+	public void Rechts() {
+		TempoX = 6;
+		RLN = 2;
+	}
 
-		// nach Links gehen
-		public void Links() {
-			TempoX = -6;
-			RLN = 1;
+	// nach Links gehen
+	public void Links() {
+		TempoX = -6;
+		RLN = 1;
 
-		}
+	}
 
-		// Anhalten
-		public void Halt() {
-			TempoX = 0;
-		}
+	// Anhalten
+	public void Halt() {
+		TempoX = 0;
+	}
 
 	public void NeuLaden() {
 		if (Wasserfall == false) {
@@ -798,10 +799,10 @@ public class Level_4 {
 			if (TempoX >= 0 && PosX >= 300) {
 				H01PosX -= TempoX;
 			}
-			
-			//Text anpassen
-			
-			if(TempoX >= 0 && PosX >= 300) {
+
+			// Text anpassen
+
+			if (TempoX >= 0 && PosX >= 300) {
 				T01PosX -= TempoX;
 			}
 
@@ -935,13 +936,15 @@ public class Level_4 {
 			Check = false;
 		}
 
-		if (PosX >= E01PosX - 64 && PosX <= E01PosX + 69 && PosY >= 153 && PosXAlt <= PosX && Speicherpunkt01 == false) {
+		if (PosX >= E01PosX - 64 && PosX <= E01PosX + 69 && PosY >= 153 && PosXAlt <= PosX
+				&& Speicherpunkt01 == false) {
 			PosX = E01PosX - 53;
 			Gefallen = true;
 			Speicherpunkt01 = true;
 
 		}
-		if (PosX >= E01PosX - 30 && PosX <= E01PosX + 70 && PosY >= 153 && PosXAlt >= PosX && Speicherpunkt01 == false) {
+		if (PosX >= E01PosX - 30 && PosX <= E01PosX + 70 && PosY >= 153 && PosXAlt >= PosX
+				&& Speicherpunkt01 == false) {
 			PosX = E01PosX + 71;
 			Gefallen = true;
 			Speicherpunkt01 = true;
@@ -1068,5 +1071,3 @@ public class Level_4 {
 	}
 
 }
-
-		
