@@ -105,9 +105,9 @@ public class Level_1 {
 	private int T04PosX = 2400;
 	private int T04PosY = 100;
 
-	private String T01Text = "Um Ihren Charakter zu bewegen drücken sie 'A' oder 'D'\n oder benutzen sie die Pfeiltasten. ";
-	private String T02Text = "Um zu springen drücken Sie 'W' oder 'SPACE' \noder die Pfeiltaste nach oben";
-	private String T03Text = "       Springen Sie über Löcher wie dieses! \nWenn Sie hineinfallen verlieren sie ein Herz. \nWenn Sie keine Herzen mehr haben\nmüssen sie den gesamten Level erneut spielen.";
+	private String T01Text = "Um Ihren Charakter zu bewegen drücken Sie 'A' oder 'D'\n oder benutzen sie die Pfeiltasten. ";
+	private String T02Text = "Um zu springen drücken Sie 'W', 'SPACE' \noder die Pfeiltaste nach oben";
+	private String T03Text = "       Springen Sie über Löcher wie dieses! \nWenn Sie hineinfallen, verlieren Sie ein Herz. \nWenn Sie keine Herzen mehr haben,\nmüssen sie den gesamten Level erneut spielen.";
 	private String T04Text = "Erreichen Sie die Burg und gehen Sie durch den Eingang\num das Level erfolgreich Abzuschließen.";
 
 	public void spiel(Stage primaryStage) throws IOException {
