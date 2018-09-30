@@ -520,7 +520,6 @@ public class Level_1 {
 	};
 
 	// Springen solange nicht schon gesprungen wird
-
 	public void Spring() {
 		if (Gesprungen == false) {
 			TempoY = -15;

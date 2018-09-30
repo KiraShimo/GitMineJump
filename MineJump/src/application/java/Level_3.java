@@ -387,25 +387,28 @@ public class Level_3 {
 		}
 	};
 
+	// Springen solange nicht schon gesprungen wird
 	public void Spring() {
 		if (Gesprungen == false) {
 			TempoY = -15;
 			Gesprungen = true;
-
 		}
 	}
 
+	// nach rechts gehen
 	public void Rechts() {
 		TempoX = 6;
 		RLN = 2;
 	}
 
+	// nach Links gehen
 	public void Links() {
 		TempoX = -6;
 		RLN = 1;
 
 	}
 
+	// Anhalten
 	public void Halt() {
 		TempoX = 0;
 	}
