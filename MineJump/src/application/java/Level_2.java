@@ -18,16 +18,16 @@ public class Level_2 {
 	
 	// Variablen
 	// Spieler und Hintergrundvariablen
-	public int PosX = 120;
-	public int PosXAlt = 0;
-	public int PosY = 252;
+	private int PosX = 120;
+	private int PosXAlt = 0;
+	private int PosY = 252;
 	public int SPosXR = PosX + 64;
 	public int SPosYH = PosY + 128;
-	public int bgPosX = 0;
-	public int bgPoY = -40;
-	public int UPosX = 0;
-	public int UPosY = 380;
-	public int RLN = 0;
+	private int BGPosX = 0;
+	private int BGPoY = -40;
+	private int UPosX = 0;
+	private int UPosY = 380;
+	private int RLN = 0;
 	private int TempoX = 0;
 	private int TempoY = 0;
 	private int RealPosX = 0;
@@ -135,8 +135,8 @@ public class Level_2 {
 
 		// Bilder aufrufen und anzeigen
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
-		HintergrundImageAufruf.setX(bgPosX);
-		HintergrundImageAufruf.setY(bgPoY);
+		HintergrundImageAufruf.setX(BGPosX);
+		HintergrundImageAufruf.setY(BGPoY);
 		rootPane.getChildren().add(HintergrundImageAufruf);
 
 		ImageView UntergrundAnzeigen = new ImageView(Untergrund);
@@ -315,7 +315,7 @@ public class Level_2 {
 				if (RLN == 3) {
 					Bildaufruf.setImage(SpielerSchaden);
 				}
-				HintergrundImageAufruf.setX(bgPosX);
+				HintergrundImageAufruf.setX(BGPosX);
 				UntergrundAnzeigen.setX(UPosX);
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
@@ -538,13 +538,13 @@ public class Level_2 {
 			} else {
 				// Bewege Hintergrund
 				UPosX -= TempoX;
-				bgPosX -= (TempoX / 2);
+				BGPosX -= (TempoX / 2);
 
 			}
 		}
 		// Hintergrund Loop
-		if (bgPosX <= -2382)
-			bgPosX = 0;
+		if (BGPosX <= -2382)
+			BGPosX = 0;
 		if (UPosX <= -1200)
 			UPosX = 0;
 		if (PosY + TempoY >= 382) {
