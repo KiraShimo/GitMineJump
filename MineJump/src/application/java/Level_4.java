@@ -44,8 +44,6 @@ public class Level_4 {
 	
 	// Bedingungsvariablen
 	private int GewonnenTest = 1;
-	private int Laufen = 0;
-	private boolean Umdrehen = false;
 	private boolean Gesprungen = false;
 	private boolean Gewonnen = false;
 	private boolean Exit = false;
@@ -139,12 +137,8 @@ public class Level_4 {
 		// Bilder einbinden
 		Image SpielerRechts = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
-		Image SpielerRechts_2 = new Image(
-				Main.class.getResource("/application/ressources/pictures/Steve_Rechts_2.png").openStream());
 		Image SpielerLinks = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Links.png").openStream());
-		Image SpielerLinks_2 = new Image(
-				Main.class.getResource("/application/ressources/pictures/Steve_Links_2.png").openStream());
 		Image SpielerSchaden = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne_Schaden.png").openStream());
 		Image HintergrundImage = new Image(
@@ -341,23 +335,12 @@ public class Level_4 {
 				// Position updaten
 				if (RLN == 0) {
 					Bildaufruf.setImage(SpielerBild);
-					Laufen = 5;
 				}
-				if (RLN == 1 && Laufen <= 2) {
+				if (RLN == 1) {
 					Bildaufruf.setImage(SpielerLinks);
-					System.out.println(Laufen);
 				}
-				if (RLN == 1 && Laufen >= 3) {
-					Bildaufruf.setImage(SpielerLinks_2);
-					System.out.println(Laufen);
-				}
-				if (RLN == 2 && Laufen <= 2) {
+				if (RLN == 2) {
 					Bildaufruf.setImage(SpielerRechts);
-					System.out.println(Laufen);
-				}
-				if (RLN == 2 && Laufen >= 3) {
-					Bildaufruf.setImage(SpielerRechts_2);
-					System.out.println(Laufen);
 				}
 				if (RLN == 3) {
 					Bildaufruf.setImage(SpielerSchaden);
@@ -486,13 +469,10 @@ public class Level_4 {
 					Check = false;
 					Abbruch = true;
 					RealPosX = 0;
-					Laufen = 0;
-					Umdrehen = false;
 					menu.win(primaryStage);
 					PauseTransition delay = new PauseTransition(Duration.seconds(5));
 					delay.setOnFinished(event -> menu.level(primaryStage));
 					delay.play();
-					System.out.println("Sieg");
 				}
 				if (Exit == true && Abbruch == false) {
 
@@ -517,13 +497,9 @@ public class Level_4 {
 					PosX = 0;
 					TempoX = 0;
 					Abbruch = true;
-					Laufen = 0;
-					Umdrehen = false;
 					menu.level(primaryStage);
-					System.out.println("Willraus");
 				}
 				if (Verloren == true && Abbruch == false) {
-					System.out.println("Verloren");
 					Gewonnen = false;
 					Exit = false;
 					Gefallen = false;
@@ -546,8 +522,6 @@ public class Level_4 {
 					TempoX = 0;
 					HP = 3;
 					Abbruch = true;
-					Laufen = 0;
-					Umdrehen = false;
 					menu.level(primaryStage);
 				}
 			}
@@ -645,53 +619,31 @@ public class Level_4 {
 		}
 	};
 
-	public void Spring() {
-		if (Gesprungen == false) {
-			TempoY = -15;
-			Gesprungen = true;
-
-		}
-	}
-
-	public void Rechts() {
-		TempoX = 6;
-		if (Laufen >= 0) {
-			Laufen = Laufen + 1;
-			if(Laufen >= 5) {
-				Umdrehen = true;
+	// Springen solange nicht schon gesprungen wird
+		public void Spring() {
+			if (Gesprungen == false) {
+				TempoY = -15;
+				Gesprungen = true;
 			}
 		}
-		if (Umdrehen == true) {
-			Laufen = Laufen - 2;
-			if (Laufen <= 0) {
-				Umdrehen = false;
-			}
-		}
-		RLN = 2;
-	}
 
-	public void Links() {
-		TempoX = -6;
-		if (Laufen >= 0) {
-			Laufen = Laufen + 1;
-			if(Laufen >= 5) {
-				Umdrehen = true;
-			}
+		// nach rechts gehen
+		public void Rechts() {
+			TempoX = 6;
+			RLN = 2;
 		}
-		if (Umdrehen == true) {
-			Laufen = Laufen - 2;
-			if (Laufen <= 0) {
-				Umdrehen = false;
-			}
+
+		// nach Links gehen
+		public void Links() {
+			TempoX = -6;
+			RLN = 1;
+
 		}
-		RLN = 1;
 
-	}
-
-	public void Halt() {
-		TempoX = 0;
-		Laufen = 0;
-	}
+		// Anhalten
+		public void Halt() {
+			TempoX = 0;
+		}
 
 	public void NeuLaden() {
 		if (Wasserfall == false) {
@@ -944,7 +896,6 @@ public class Level_4 {
 		}
 		if (PosX >= B03PosX && PosX <= B03PosX + 20) {
 			Speicherpunkt02 = true;
-			System.out.println(RealPosX);
 		}
 		// Kollision mit B04
 
@@ -976,7 +927,6 @@ public class Level_4 {
 			RealPosX = 1650;
 			Speicherpunkt02 = false;
 			Speicherpunkt03 = true;
-			System.out.println(RealPosX);
 		}
 		// Kollision mit Gegner
 		Timeline Timer = new Timeline(new KeyFrame(Duration.millis(2500), ae -> Flag()));
