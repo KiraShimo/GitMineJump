@@ -583,6 +583,9 @@ public class Level_4 {
 			case E:
 				Interaction = true;
 				break;
+			case ENTER:
+				Interaction = true;
+				break;
 			case ESCAPE:
 				Exit = true;
 				break;
@@ -624,6 +627,9 @@ public class Level_4 {
 				Interaction = false;
 				break;
 			case E:
+				Interaction = false;
+				break;
+			case ENTER:
 				Interaction = false;
 				break;
 			case ESCAPE:
@@ -834,6 +840,11 @@ public class Level_4 {
 			// Hebel anpassen
 			if (TempoX >= 0 && PosX >= 300) {
 				H01PosX -= TempoX;
+			}
+			
+			//Text anpassen
+			
+			if(TempoX >= 0 && PosX >= 300) {
 				T01PosX -= TempoX;
 			}
 

@@ -10,11 +10,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Box;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Level_1 {
+
 	// Spieler und Hintergrundvariablen
 	public int PosX = 120;
 	private int PosXAlt = 0;
@@ -37,17 +41,16 @@ public class Level_1 {
 	private int LPosX = 0;
 	private int LPosY = 0;
 	private int HP = 3;
+
 	// Bedingungsvariablen
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
 	private boolean Gefallen = false;
 	private int t = 1;
-	private boolean STILL = false;
+	private boolean Stillstand = false;
 	private boolean Flag1 = false;
 	private boolean Verloren = false;
-	private boolean TutorialAn = true;
-	private int TutNR = 0;
-	private int T = 0; 
+
 	// Blockvariablen
 	// Baum01
 	private int B01PosX = 1000;
@@ -79,17 +82,32 @@ public class Level_1 {
 	private int B14PosX = 1070;
 	private int B14PosY = -30;
 
-	// Loch 01
+	// Lochvariablen 
 	private int B15PosX = 2000;
 	private int B15PosY = 380;
 	private int B16PosX = 2070;
 	private int B16PosY = 380;
 
-	// Bäume
+	// Baumvariablen
 	private int BA01PosX = 1600;
 	private int BA01PosY = 100;
 	private int BA02PosX = 2200;
 	private int BA02PosY = 100;
+
+	// Tutorialtextvariablen
+	private int T01PosX = 200;
+	private int T01PosY = 120;
+	private int T02PosX = 700;
+	private int T02PosY = 100;
+	private int T03PosX = 1800;
+	private int T03PosY = 100;
+	private int T04PosX = 2400;
+	private int T04PosY = 100;
+	
+	private String T01Text = "Um Ihren Charakter zu bewegen drücken sie 'A' oder 'D'\n oder benutzen sie die Pfeiltasten. ";
+	private String T02Text = "Um zu springen drücken Sie 'W' oder 'SPACE' \noder die Pfeiltaste nach oben";
+	private String T03Text = "       Springen Sie über Löcher wie dieses! \nWenn Sie hineinfallen verlieren sie ein Herz. \nWenn Sie keine Herzen mehr haben\nmüssen sie den gesamten Level erneut spielen.";
+	private String T04Text = "Erreichen Sie die Burg und gehen Sie durch den Eingang\num das Level erfolgreich Abzuschließen.";
 
 	public void spiel(Stage primaryStage) throws IOException {
 
@@ -126,15 +144,8 @@ public class Level_1 {
 		Image Leben3 = new Image(Main.class.getResource("/application/ressources/pictures/Herz03f.png").openStream());
 		Image Leben2 = new Image(Main.class.getResource("/application/ressources/pictures/Herz02f.png").openStream());
 		Image Leben1 = new Image(Main.class.getResource("/application/ressources/pictures/Herz01f.png").openStream());
-		Image Tut01 = new Image(Main.class.getResource("/application/ressources/pictures/Tutorial01.png").openStream());
-		Image Tut02 = new Image(Main.class.getResource("/application/ressources/pictures/Tutorial02.png").openStream());
-		Image Tut03 = new Image(Main.class.getResource("/application/ressources/pictures/Tutorial03.png").openStream());
-		Image Tut04 = new Image(Main.class.getResource("/application/ressources/pictures/Tutorial04.png").openStream());
-		Image Tut05 = new Image(Main.class.getResource("/application/ressources/pictures/Turorial05.png").openStream());
-		Image Tut06 = new Image(Main.class.getResource("/application/ressources/pictures/Tutorial06.png").openStream());
-		Image Tut07 = new Image(Main.class.getResource("/application/ressources/pictures/Tutorial07.png").openStream());
 
-		// Bilder aufrufen
+		// Bilder aufrufen und anzeigen
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
 		HintergrundImageAufruf.setX(bgPosX);
 		HintergrundImageAufruf.setY(bgPosY);
@@ -241,6 +252,40 @@ public class Level_1 {
 		B16Anzeigen.setX(B16PosX);
 		B16Anzeigen.setY(B16PosY);
 		rootPane.getChildren().add(B16Anzeigen);
+
+		// Tutorialtexte anzeigen
+		Text Text = new Text();
+		Text.setFont(new Font(18));
+		Text.setX(T01PosX);
+		Text.setY(T01PosY);
+		Text.setText(T01Text);
+		Text.setFill(Color.WHITE);
+		rootPane.getChildren().add(Text);
+
+		Text Text2 = new Text();
+		Text2.setFont(new Font(18));
+		Text2.setX(T02PosX);
+		Text2.setY(T02PosY);
+		Text2.setText(T02Text);
+		Text2.setFill(Color.WHITE);
+		rootPane.getChildren().add(Text2);
+
+		Text Text3 = new Text();
+		Text3.setFont(new Font(18));
+		Text3.setX(T03PosX);
+		Text3.setY(T03PosY);
+		Text3.setText(T03Text);
+		Text3.setFill(Color.WHITE);
+		rootPane.getChildren().add(Text3);
+		
+		Text Text4 = new Text();
+		Text4.setFont(new Font(18));
+		Text4.setX(T04PosX);
+		Text4.setY(T04PosY);
+		Text4.setText(T04Text);
+		Text4.setFill(Color.WHITE);
+		rootPane.getChildren().add(Text4);
+
 		// ZielHinten
 
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
@@ -265,11 +310,6 @@ public class Level_1 {
 		LebenAnzeiger.setX(LPosX);
 		LebenAnzeiger.setY(LPosY);
 		rootPane.getChildren().add(LebenAnzeiger);
-		// Tutorial
-		ImageView Tutorial = new ImageView(Tut01);
-		Tutorial.setX(0);
-		Tutorial.setY(0);
-		rootPane.getChildren().add(Tutorial);
 
 		Scene game = new Scene(rootPane);
 
@@ -369,71 +409,17 @@ public class Level_1 {
 				Baum03Anzeigen.setX(BA02PosX);
 				Baum03Anzeigen.setY(BA02PosY);
 
-				// Ziel Aktuallisieren
+				// Ziel aktuallisieren
 
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
-				if (TutNR <= 11 && TutorialAn == true) {
-					switch (TutNR) {
-					case 0:
-						Tutorial.setImage(Tut01);
-						Tutorial.setX(0);
-						Tutorial.setY(0);
-						break;
-					case 1:
-						Tutorial.setImage(Tut02);
-						Tutorial.setX(0);
-						Tutorial.setY(0);
-						break;
-					case 2:
-						Tutorial.setImage(Tut03);
-						Tutorial.setX(0);
-						Tutorial.setY(0);
-						break;
-					case 3:
-						TutNR = 200;
-						TutorialAn = false;
-						break;
-					case 4:
-						Tutorial.setImage(Tut04);
-						Tutorial.setX(0);
-						Tutorial.setY(0);
-						break;
-					case 5: 
-						Tutorial.setImage(Tut03);
-						Tutorial.setX(0);
-						Tutorial.setY(0);
-						break;
-					case 6:
-						TutNR = 200;
-						TutorialAn = false;
-						break;
-					case 7:
-						Tutorial.setImage(Tut05);
-						Tutorial.setX(0);
-						Tutorial.setY(0);
-						break;
-					case 8:
-						Tutorial.setImage(Tut06);
-						Tutorial.setX(0);
-						Tutorial.setY(0);
-						break;
-					case 9:
-						Tutorial.setImage(Tut07);
-						Tutorial.setX(0);
-						Tutorial.setY(0);
-						break;
-					case 10:
-						TutNR = 200;
-						TutorialAn = false;
-						break;
-						
-					}
-				}
-				if (TutorialAn == false) {
-					Tutorial.setImage(null);
-				}
+				// Tutorial aktualisieren
+
+				Text.setX(T01PosX);
+				Text2.setX(T02PosX);
+				Text3.setX(T03PosX);
+				Text4.setX(T04PosX);
 
 				Menu menu = new Menu();
 
@@ -443,7 +429,6 @@ public class Level_1 {
 					RealPosX = 0;
 					PosX = 0;
 					TempoX = 0;
-					T = 0;
 					menu.win(primaryStage);
 					PauseTransition delay = new PauseTransition(Duration.seconds(3));
 					delay.setOnFinished(event -> menu.level(primaryStage));
@@ -500,8 +485,6 @@ public class Level_1 {
 			case ESCAPE:
 				WillRaus = true;
 				break;
-			case K:
-				TutNR += 1;
 			default:
 				break;
 			}
@@ -543,27 +526,22 @@ public class Level_1 {
 	};
 
 	public void Spring() {
-		if (TutorialAn == false) {
-			if (Gesprungen == false) {
-				TempoY = -15;
-				Gesprungen = true;
+		if (Gesprungen == false) {
+			TempoY = -15;
+			Gesprungen = true;
 
-			}
 		}
 	}
 
 	public void Rechts() {
-		if (TutorialAn == false) {
-			TempoX = 6;
-			RLN = 2;
-		}
+		TempoX = 6;
+		RLN = 2;
 	}
 
 	public void Links() {
-		if (TutorialAn == false) {
-			TempoX = -6;
-			RLN = 1;
-		}
+		TempoX = -6;
+		RLN = 1;
+
 	}
 
 	public void Halt() {
@@ -571,170 +549,177 @@ public class Level_1 {
 	}
 
 	public void NeuLaden() {
-		if (TutorialAn == false) {
-			PosXAlt = PosX;
-			if (HP == 0) {
-				Verloren = true;
-			}
-			if (RealPosX >= 800 && T == 0) {
-				TutNR = 4; 
-				TutorialAn = true;
-				T ++;
-			}
-			if (RealPosX >= 1800 && T == 1) {
-				TutNR = 7; 
-				TutorialAn = true;
-				T ++;
-			}
-			// Kollisiondetektion -extra-
-			if (STILL == true) {
-				TempoX = 0;
-			}
-			// Bewegen und Anpassen
-			if (PosX > 51) {
-				RealPosX += TempoX;
-			}
-			if (TempoX < 0) {
+
+		PosXAlt = PosX;
+		if (HP == 0) {
+			Verloren = true;
+		}
+		// Kollisiondetektion -extra-
+		if (Stillstand == true) {
+			TempoX = 0;
+		}
+		// Bewegen und Anpassen
+		if (PosX > 51) {
+			RealPosX += TempoX;
+		}
+		if (TempoX < 0) {
+			PosX += TempoX;
+		} else if (TempoX == 0) {
+			// tue nichts
+
+		} else {
+			if (PosX <= 300) {
 				PosX += TempoX;
-			} else if (TempoX == 0) {
-				// tue nichts
-
 			} else {
-				if (PosX <= 300) {
-					PosX += TempoX;
-				} else {
-					// Bewege Hintergrund
-					UPosX -= TempoX;
-					bgPosX -= (TempoX / 2);
-
-				}
-			}
-			// Hintergrund Loop
-			if (bgPosX <= -2382)
-				bgPosX = 0;
-			if (UPosX <= -1200)
-				UPosX = 0;
-			if (PosY + TempoY >= 382) {
-				PosY = 382;
-			} else {
-				PosY += TempoY;
-			}
-			// Sprungregelung
-			if (Gesprungen == true) {
-				TempoY += 1;
-
-				if (PosY + TempoY >= 252) {
-					PosY = 252;
-					TempoY = 0;
-					Gesprungen = false;
-				}
+				// Bewege Hintergrund
+				UPosX -= TempoX;
+				bgPosX -= (TempoX / 2);
 
 			}
-			// Nach links laufen unterbinden
-			if (PosX + TempoX <= 50) {
-				PosX = 51;
+		}
+		// Hintergrund Loop
+		if (bgPosX <= -2382)
+			bgPosX = 0;
+		if (UPosX <= -1200)
+			UPosX = 0;
+		if (PosY + TempoY >= 382) {
+			PosY = 382;
+		} else {
+			PosY += TempoY;
+		}
+		// Sprungregelung
+		if (Gesprungen == true) {
+			TempoY += 1;
 
-			}
-			// Siegbedingung
-			if (t == 1) {
-				if (RealPosX > 3000) {
-					Gewonnen = true;
-					t = 0;
-					RealPosX = 0;
-				}
-			}
-			// BlockPositionen anpassen
-			// Baum 01
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B01PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B02PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B03PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B04PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B05PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B06PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B07PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B08PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B09PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B10PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B11PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B12PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B13PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B14PosX -= TempoX;
-			}
-
-			// Loch 01 anpassen
-
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B15PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					B16PosX -= TempoX;
-			}
-			// Ziel anpassen
-
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					ZPosX01 -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					ZPosX02 -= TempoX;
-			}
-
-			// Bäume 02/03 anpassen
-
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					BA01PosX -= TempoX;
-			}
-			if (TempoX >= 0 && PosX >= 300) {
-				if (PosX >= 51)
-					BA02PosX -= TempoX;
+			if (PosY + TempoY >= 252) {
+				PosY = 252;
+				TempoY = 0;
+				Gesprungen = false;
 			}
 
 		}
+		// Nach links laufen unterbinden
+		if (PosX + TempoX <= 50) {
+			PosX = 51;
+
+		}
+		// Siegbedingung
+		if (t == 1) {
+			if (RealPosX > 3000) {
+				Gewonnen = true;
+				t = 0;
+				RealPosX = 0;
+			}
+		}
+		// BlockPositionen anpassen
+		// Baum 01
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B01PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B02PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B03PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B04PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B05PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B06PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B07PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B08PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B09PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B10PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B11PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B12PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B13PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B14PosX -= TempoX;
+		}
+
+		// Loch 01 anpassen
+
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B15PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				B16PosX -= TempoX;
+		}
+		// Ziel anpassen
+
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				ZPosX01 -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				ZPosX02 -= TempoX;
+		}
+
+		// Bäume 02/03 anpassen
+
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				BA01PosX -= TempoX;
+		}
+		if (TempoX >= 0 && PosX >= 300) {
+			if (PosX >= 51)
+				BA02PosX -= TempoX;
+		}
+
+		// Texte anpassen
+
+		if (TempoX >= 0 && PosX >= 300) {
+			T01PosX -= TempoX;
+		}
+
+		if (TempoX >= 0 && PosX >= 300) {
+			T02PosX -= TempoX;
+		}
+
+		if (TempoX >= 0 && PosX >= 300) {
+			T03PosX -= TempoX;
+		}
+		
+		if (TempoX >= 0 && PosX >= 300) {
+			T04PosX -= TempoX;
+		}
+
 	}
 
 	public void Kollisionsdetektion() throws InterruptedException {
@@ -812,11 +797,11 @@ public class Level_1 {
 				// tue nichts
 			}
 			RLN = 3;
-			STILL = true;
+			Stillstand = true;
 
 			PosY += 30;
 		} else {
-			STILL = false;
+			Stillstand = false;
 		}
 		if (PosY >= 370) {
 			Gefallen = true;
