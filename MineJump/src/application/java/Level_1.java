@@ -18,7 +18,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Level_1 {
-
+	
+	// Variablen
 	// Spieler und Hintergrundvariablen
 	private int PosX = 120;
 	private int PosXAlt = 0;

@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Level_2 {
+	
+	// Variablen
 	// Spieler und Hintergrundvariablen
 	public int PosX = 120;
 	public int PosXAlt = 0;
@@ -37,17 +39,19 @@ public class Level_2 {
 	private int LPosX = 0;
 	private int LPosY = 0;
 	private int HP = 3;
+	
 	// Bedingungsvariablen
+	private int GewonnenTest = 1;
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
-	private int t = 1;
 	private boolean Verloren = false;
-	private boolean Flag1 = false;
-	private boolean Flag2 = false;
-	private boolean Flag3 = false;
-	private boolean Flag4 = false;
-	private boolean STILL = false;
+	private boolean Speicherpunkt01 = false;
+	private boolean Speicherpunkt02 = false;
+	private boolean Speicherpunkt03 = false;
+	private boolean Speicherpunkt04 = false;
+	private boolean Stillstand = false;
 	private boolean Gefallen = false;
+	
 	// Blockvariablen
 	private int B01PosX = 1000;
 	private int B01PosY = 310;
@@ -67,7 +71,8 @@ public class Level_2 {
 	private int B08PosY = 240;
 	private int B09PosX = 2400;
 	private int B09PosY = 310;
-	// Kakteen
+	
+	// Kakteenvariablen
 	private int K01PosX = 1300;
 	private int K01PosY = 174;
 	private int K02PosX = 2500;
@@ -78,8 +83,8 @@ public class Level_2 {
 	private int K04PosY = 174;
 	private int K05PosX = 900;
 	private int K05PosY = 174;
-	// Kakteen klein
-
+	
+	// Kakteenkleinvariablen
 	private int KK01PosX = 1840;
 	private int KK01PosY = 311;
 	private int KK02PosX = 1910;
@@ -98,11 +103,11 @@ public class Level_2 {
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
-
 		Pane rootPane;
 
-		// Erstellt das Neue RootPane
+		// Erstellt das neue RootPane
 		rootPane = new Pane();
+		
 		// Bilder einbinden
 		Image SpielerRechts = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Rechts.png").openStream());
@@ -128,7 +133,7 @@ public class Level_2 {
 		Image KaktusKlein = new Image(
 				Main.class.getResource("/application/ressources/pictures/KaktusBlock.png").openStream());
 
-		// Bilder aufrufen
+		// Bilder aufrufen und anzeigen
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
 		HintergrundImageAufruf.setX(bgPosX);
 		HintergrundImageAufruf.setY(bgPoY);
@@ -184,8 +189,7 @@ public class Level_2 {
 		B09Anzeigen.setY(B09PosY);
 		rootPane.getChildren().add(B09Anzeigen);
 
-		// Kakteen
-
+		// Kakteen aufrufen und anzeigen
 		ImageView K01Anzeigen = new ImageView(KaktusBG);
 		B04Anzeigen.setX(K01PosX);
 		B04Anzeigen.setY(K01PosY);
@@ -211,7 +215,7 @@ public class Level_2 {
 		K05Anzeigen.setY(K05PosY);
 		rootPane.getChildren().add(K05Anzeigen);
 
-		// Kateen Klein
+		// Kateenklein aufrufen und anzeigen 
 
 		ImageView KK01Anzeigen = new ImageView(KaktusKlein);
 		KK01Anzeigen.setX(KK01PosX);
@@ -248,27 +252,27 @@ public class Level_2 {
 		KK07Anzeigen.setY(KK07PosY);
 		rootPane.getChildren().add(KK07Anzeigen);
 
-		// ZielHinten
+		// ZielHinten aufrufen und anzeigen
 
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
 		Ziel01BGAnzeiger.setY(ZPosY01);
 		rootPane.getChildren().add(Ziel01BGAnzeiger);
 
-		// Spieler
+		// Spieler aufrufen und anzeigen
 
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
-		// ZielVorne
-
+		
+		// ZielVorne aufrufen und anzeigen
 		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
 		rootPane.getChildren().add(Ziel02VGAnzeiger);
 
-		// Leben
+		// Leben aufrufen und anzeigen
 		ImageView LebenAnzeiger = new ImageView(Leben3);
 		LebenAnzeiger.setX(LPosX);
 		LebenAnzeiger.setY(LPosY);
@@ -298,7 +302,7 @@ public class Level_2 {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				// Position Updaten
+				// Position updaten
 				if (RLN == 0) {
 					Bildaufruf.setImage(SpielerBild);
 				}
@@ -326,6 +330,7 @@ public class Level_2 {
 				if (HP == 1) {
 					LebenAnzeiger.setImage(Leben1);
 				}
+				
 				// Blöcke updaten
 				B01Anzeigen.setX(B01PosX);
 				B01Anzeigen.setY(B01PosY);
@@ -346,8 +351,7 @@ public class Level_2 {
 				B09Anzeigen.setX(B09PosX);
 				B09Anzeigen.setY(B09PosY);
 
-				// Kakteen anpassen
-
+				// Kakteen updaten
 				K01Anzeigen.setX(K01PosX);
 				K01Anzeigen.setY(K01PosY);
 				K02Anzeigen.setX(K02PosX);
@@ -359,8 +363,7 @@ public class Level_2 {
 				K05Anzeigen.setX(K05PosX);
 				K05Anzeigen.setY(K05PosY);
 
-				// kateen klein anpassen
-
+				// Kateenklein updaten
 				KK01Anzeigen.setX(KK01PosX);
 				KK01Anzeigen.setY(KK01PosY);
 				KK02Anzeigen.setX(KK02PosX);
@@ -376,8 +379,7 @@ public class Level_2 {
 				KK07Anzeigen.setX(KK07PosX);
 				KK07Anzeigen.setY(KK07PosY);
 
-				// Ziel anpassen
-
+				// Ziel updaten
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
@@ -486,38 +488,39 @@ public class Level_2 {
 			}
 		}
 	};
-
+	// Springen falls nicht schon gesprungen wurde
 	public void Spring() {
 		if (Gesprungen == false) {
 			TempoY = -15;
 			Gesprungen = true;
-
 		}
 	}
-
+	
+	// nach Rechts bewegen
 	public void Rechts() {
 		TempoX = 6;
 		RLN = 2;
 	}
-
+	
+	// nach Links bewegen
 	public void Links() {
 		TempoX = -6;
 		RLN = 1;
-
 	}
 
+	// Anhalten
 	public void Halt() {
 		TempoX = 0;
 	}
-
+	
 	public void NeuLaden() {
-
+		
 		PosXAlt = PosX;
 		if (HP == 0) {
 			Verloren = true;
 		}
 		// Kollisiondetektion -extra-
-		if (STILL == true) {
+		if (Stillstand == true) {
 			TempoX = 0;
 		}
 		// Bewegen und Anpassen
@@ -566,10 +569,10 @@ public class Level_2 {
 
 		}
 		// Siegbedingung
-		if (t == 1) {
+		if (GewonnenTest == 1) {
 			if (RealPosX > 3000) {
 				Gewonnen = true;
-				t = 0;
+				GewonnenTest = 0;
 				RealPosX = 0;
 			}
 		}
@@ -768,7 +771,7 @@ public class Level_2 {
 		}
 
 		if (PosX >= B06PosX && PosX <= B06PosX + 10) {
-			Flag1 = true;
+			Speicherpunkt01 = true;
 
 		}
 		// Kollision mit 3. Block der 2. Hürde
@@ -789,8 +792,8 @@ public class Level_2 {
 		}
 
 		if (PosX >= B07PosX && PosX <= B07PosX + 10) {
-			Flag1 = false;
-			Flag2 = true;
+			Speicherpunkt01 = false;
+			Speicherpunkt02 = true;
 
 		}
 		// Kollision mit 4. Block der 2. Hürde
@@ -815,8 +818,8 @@ public class Level_2 {
 
 		}
 		if (PosX >= B08PosX && PosX <= B08PosX + 10) {
-			Flag2 = false;
-			Flag3 = true;
+			Speicherpunkt02 = false;
+			Speicherpunkt03 = true;
 
 		}
 		// Kollision mit 5. Block der 2. Hürde
@@ -841,12 +844,12 @@ public class Level_2 {
 
 		}
 		if (PosX >= B09PosX && PosX <= B09PosX + 10) {
-			Flag3 = false;
-			Flag4 = true;
+			Speicherpunkt03 = false;
+			Speicherpunkt04 = true;
 
 		}
 
-		// Kollision mit Kakteen klein
+		// Kollision mit Kakteenklein
 		if (PosX >= B06PosX + 70 && PosX <= B07PosX - 50 && PosY >= 110) {
 
 			if (TempoX >= 0) {
@@ -859,13 +862,13 @@ public class Level_2 {
 				// tue nichts
 			}
 
-			STILL = true;
+			Stillstand = true;
 			PosY += 8;
 			RLN = 3;
 			Gesprungen = true;
 
 		} else {
-			STILL = false;
+			Stillstand = false;
 		}
 		if (PosX >= B07PosX + 70 && PosX <= B08PosX - 50 && PosY >= 110) {
 
@@ -879,20 +882,20 @@ public class Level_2 {
 				// tue nichts
 			}
 
-			STILL = true;
+			Stillstand = true;
 			PosY += 8;
 			RLN = 3;
 			Gesprungen = true;
 
 		} else {
-			STILL = false;
+			Stillstand = false;
 		}
 		if (PosY >= 253) {
 			Gefallen = true;
 			Gesprungen = true;
 
 		}
-		if (Gefallen == true && Flag1 == true) {
+		if (Gefallen == true && Speicherpunkt01 == true) {
 			PosX = B06PosX;
 			PosY = 112;
 			RealPosX = 1700;
@@ -902,7 +905,7 @@ public class Level_2 {
 			HP -= 1;
 
 		}
-		if (Gefallen == true && Flag2 == true) {
+		if (Gefallen == true && Speicherpunkt02 == true) {
 			PosX = B07PosX;
 			PosY = 112;
 			RealPosX = 1910;
@@ -912,7 +915,7 @@ public class Level_2 {
 			HP -= 1;
 
 		}
-		if (Gefallen == true && Flag3 == true) {
+		if (Gefallen == true && Speicherpunkt03 == true) {
 			PosX = B08PosX;
 			PosY = 112;
 			RealPosX = 2120;
@@ -921,7 +924,7 @@ public class Level_2 {
 			Thread.sleep(200);
 			HP -= 1;
 		}
-		if (Gefallen == true && Flag4 == true) {
+		if (Gefallen == true && Speicherpunkt04 == true) {
 			PosX = B09PosX;
 			PosY = 182;
 			RealPosX = 2260;

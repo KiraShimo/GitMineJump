@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"application.java","l":"Level_1"},{"p":"application.java","l":"Level_2"},{"p":"application.java","l":"Level_3"},{"p":"application.java","l":"Level_4"},{"p":"application.java","l":"Main"},{"p":"application.java","l":"MainController"},{"p":"application.java","l":"Menu"},{"p":"application.java","l":"Music"}]
