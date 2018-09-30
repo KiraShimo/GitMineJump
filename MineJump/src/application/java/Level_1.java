@@ -833,6 +833,7 @@ public class Level_1 {
 			Thread.sleep(200);
 			HP -= 1;
 		}
+		
 		// Kollision mit der Burg
 		if (RPosX >= 2750) {
 			if (PosY <= 220) {
