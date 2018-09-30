@@ -31,7 +31,6 @@ public class Level_3 {
 	private int TempoX = 0;
 	private int TempoY = 0;
 	private int RealPosX = 0;
-	private boolean Gesprungen = false;
 	private int ZPosX01 = 2625;
 	private int ZPosY01 = 166;
 	private int ZPosX02 = 2625;
@@ -42,6 +41,7 @@ public class Level_3 {
 	
 	// Bedingungsvariablen
 	private int GewonnenTest = 1;
+	private boolean Gesprungen = false;
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
 	private boolean SpeerOben01 = true;

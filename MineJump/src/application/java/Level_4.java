@@ -18,21 +18,22 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Level_4 {
+	
+	// Variablen
 	// Spieler und Hintergrundvariablen
-	public int PosX = 120;
+	private int PosX = 120;
 	private int PosXAlt = 0;
-	public int PosY = 252;
+	private int PosY = 252;
 	public int SPosXR = PosX + 64;
 	public int SPosYH = PosY + 128;
-	public int BGPosX = 0;
-	public int BGPosY = -100;
-	public int UPosX = 0;
-	public int UPosY = 380;
-	public int RLN = 0;
+	private int BGPosX = 0;
+	private int BGPosY = -100;
+	private int UPosX = 0;
+	private int UPosY = 380;
+	private int RLN = 0;
 	private int TempoX = 0;
 	private int TempoY = 0;
 	private int RealPosX = 0;
-	private boolean Gesprungen = false;
 	private int ZPosX01 = 2425;
 	private int ZPosY01 = 166;
 	private int ZPosX02 = 2425;
@@ -40,27 +41,30 @@ public class Level_4 {
 	private int LPosX = 0;
 	private int LPosY = 0;
 	private int HP = 3;
+	
 	// Bedingungsvariablen
-	private int T = 1;
+	private int GewonnenTest = 1;
 	private int Laufen = 0;
 	private boolean Umdrehen = false;
+	private boolean Gesprungen = false;
 	private boolean Gewonnen = false;
 	private boolean Exit = false;
 	private boolean Gefallen = false;
-	private boolean S = false;
-	private boolean Flag1 = false;
-	private boolean Flag2 = false;
-	private boolean Flag3 = false;
-	private boolean V = false;
+	private boolean Stillstand = false;
+	private boolean Speicherpunkt01 = false;
+	private boolean Speicherpunkt02 = false;
+	private boolean Speicherpunkt03 = false;
+	private boolean Verloren = false;
 	private boolean Interaction = false;
-	private boolean H2 = false;
+	private boolean Haltzustand02 = false;
 	private boolean Wasserfall = false;
-	private boolean Drop = false;
-	private boolean W04T = false;
-	private boolean W01T = false;
+	private boolean WasserFaellt = false;
+	private boolean WasserBewegung01 = false;
+	private boolean WasserBewegung02 = false;
 	private boolean Obsidian = false;
 	private boolean Check = false;
 	private boolean Abbruch = false;;
+	
 	// Blockvariablen
 	private int B01PosX = 500;
 	private int B01PosY = 310;
@@ -70,6 +74,7 @@ public class Level_4 {
 	private int B03PosY = 310;
 	private int B04PosX = 1750;
 	private int B04PosY = 310;
+	
 	// Lavavariablen
 	private int L01PosX = 1470;
 	private int L01PosY = 310;
@@ -126,7 +131,6 @@ public class Level_4 {
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
-
 		Pane rootPane;
 
 		// Erstellt das Neue RootPane
@@ -163,8 +167,8 @@ public class Level_4 {
 		Image H02 = new Image(Main.class.getResource("/application/ressources/pictures/Hebel_Aus.png").openStream());
 		Image WA01 = new Image(Main.class.getResource("/application/ressources/pictures/Wasser.png").openStream());
 
-		// Bilder aufrufen
-		// Hintergrund / Untergrund aufrufen
+		// Bilder aufrufen und anzeigen
+		// Hintergrund / Untergrund aufrufen und anzeigen
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
 		HintergrundImageAufruf.setX(BGPosX);
 		HintergrundImageAufruf.setY(BGPosY);
@@ -175,7 +179,7 @@ public class Level_4 {
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
 
-		// Blöcke aufrufen
+		// Blöcke aufrufen und anzeigen
 		ImageView B01_Anzeigen = new ImageView(B01);
 		B01_Anzeigen.setX(B01PosX);
 		B01_Anzeigen.setY(B01PosY);
@@ -193,7 +197,7 @@ public class Level_4 {
 		B04_Anzeigen.setY(B04PosY);
 		rootPane.getChildren().add(B04_Anzeigen);
 		
-		// Wassertank aufrufen
+		// Wassertank aufrufen und anzeigen
 		ImageView W01_Anzeigen = new ImageView(B03);
 		W01_Anzeigen.setX(W01PosX);
 		W01_Anzeigen.setY(W01PosY);
@@ -227,7 +231,7 @@ public class Level_4 {
 		W08_Anzeigen.setY(W08PosY);
 		rootPane.getChildren().add(W08_Anzeigen);
 
-		// Wasser aufrufen
+		// Wasser aufrufen und anzeigen
 		ImageView WA01_Anzeigen = new ImageView(WA01);
 		WA01_Anzeigen.setX(WA01PosX);
 		WA01_Anzeigen.setY(WA01PosY);
@@ -245,7 +249,7 @@ public class Level_4 {
 		WA04_Anzeigen.setY(WA04PosY);
 		rootPane.getChildren().add(WA04_Anzeigen);
 
-		// Lava aufrufen
+		// Lava aufrufen und anzeigen
 		ImageView L01_Anzeigen = new ImageView(L01);
 		L01_Anzeigen.setX(L01PosX);
 		L01_Anzeigen.setY(L01PosY);
@@ -263,19 +267,19 @@ public class Level_4 {
 		L04_Anzeigen.setY(L04PosY);
 		rootPane.getChildren().add(L04_Anzeigen);
 
-		// Gegner anzeigen
+		// Gegner aufrufen und anzeigen
 		ImageView E01_Anzeigen = new ImageView(E01);
 		E01_Anzeigen.setX(E01PosX);
 		E01_Anzeigen.setY(E01PosY);
 		rootPane.getChildren().add(E01_Anzeigen);
 
-		// Hebel anzeigen
+		// Hebel aufrufen und anzeigen
 		ImageView H01_Anzeigen = new ImageView(H02);
 		H01_Anzeigen.setX(H01PosX);
 		H01_Anzeigen.setY(H01PosY);
 		rootPane.getChildren().add(H01_Anzeigen);
 
-		// Tutorialtext anzeigen
+		// Tutorialtext aufrufen und anzeigen
 		Text text = new Text();
 		text.setFont(new Font(18));
 		text.setX(T01PosX);
@@ -284,25 +288,25 @@ public class Level_4 {
 		text.setFill(Color.WHITE);
 		rootPane.getChildren().add(text);
 				
-		// Ziel hinten
+		// Ziel hinten aufrufen und anzeigen
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
 		Ziel01BGAnzeiger.setY(ZPosY01);
 		rootPane.getChildren().add(Ziel01BGAnzeiger);
 
-		// Spieler
+		// Spieler aufrufen und anzeigen
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
 		
-		// ZielVorne
+		// ZielVorne aufrufen und anzeigen
 		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
 		rootPane.getChildren().add(Ziel02VGAnzeiger);
 		
-		// Leben
+		// Leben aufrufen und anzeigen
 		ImageView LebenAnzeiger = new ImageView(Leben3);
 		LebenAnzeiger.setX(LPosX);
 		LebenAnzeiger.setY(LPosY);
@@ -322,6 +326,7 @@ public class Level_4 {
 		primaryStage.show();
 
 		AnimationTimer Spielschleife = new AnimationTimer() {
+			
 			// Spielschleife
 			@Override
 			public void handle(long arg0) {
@@ -333,7 +338,7 @@ public class Level_4 {
 				}
 				NeuLaden();
 
-				// Position Updaten
+				// Position updaten
 				if (RLN == 0) {
 					Bildaufruf.setImage(SpielerBild);
 					Laufen = 5;
@@ -372,11 +377,11 @@ public class Level_4 {
 				if (HP == 1) {
 					LebenAnzeiger.setImage(Leben1);
 				}
-				if (H2 == true) {
+				if (Haltzustand02 == true) {
 					H01_Anzeigen.setImage(H01);
 				}
 				
-				// Ziel Aktuallisieren
+				// Ziel updaten
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
@@ -411,7 +416,7 @@ public class Level_4 {
 				if (Wasserfall == true) {
 					W04_Anzeigen.setImage(null);
 					W05_Anzeigen.setImage(null);
-					Drop = true;
+					WasserFaellt = true;
 				}
 
 				// Wasser updaten
@@ -465,18 +470,18 @@ public class Level_4 {
 					Gewonnen = false;
 					Exit = false;
 					Gefallen = false;
-					T = 1;
-					S = false;
-					Flag1 = false;
-					Flag2 = false;
-					Flag3 = false;
-					V = false;
+					GewonnenTest = 1;
+					Stillstand = false;
+					Speicherpunkt01 = false;
+					Speicherpunkt02 = false;
+					Speicherpunkt03 = false;
+					Verloren = false;
 					Interaction = false;
-					H2 = false;
+					Haltzustand02 = false;
 					Wasserfall = false;
-					Drop = false;
-					W04T = false;
-					W01T = false;
+					WasserFaellt = false;
+					WasserBewegung01 = false;
+					WasserBewegung02 = false;
 					Obsidian = false;
 					Check = false;
 					Abbruch = true;
@@ -494,18 +499,18 @@ public class Level_4 {
 					Gewonnen = false;
 					Exit = false;
 					Gefallen = false;
-					T = 1;
-					S = false;
-					Flag1 = false;
-					Flag2 = false;
-					Flag3 = false;
-					V = false;
+					GewonnenTest = 1;
+					Stillstand = false;
+					Speicherpunkt01 = false;
+					Speicherpunkt02 = false;
+					Speicherpunkt03 = false;
+					Verloren = false;
 					Interaction = false;
-					H2 = false;
+					Haltzustand02 = false;
 					Wasserfall = false;
-					Drop = false;
-					W04T = false;
-					W01T = false;
+					WasserFaellt = false;
+					WasserBewegung01 = false;
+					WasserBewegung02 = false;
 					Obsidian = false;
 					Check = false;
 					RealPosX = 0;
@@ -517,23 +522,23 @@ public class Level_4 {
 					menu.level(primaryStage);
 					System.out.println("Willraus");
 				}
-				if (V == true && Abbruch == false) {
+				if (Verloren == true && Abbruch == false) {
 					System.out.println("Verloren");
 					Gewonnen = false;
 					Exit = false;
 					Gefallen = false;
-					T = 1;
-					S = false;
-					Flag1 = false;
-					Flag2 = false;
-					Flag3 = false;
-					V = false;
+					GewonnenTest = 1;
+					Stillstand = false;
+					Speicherpunkt01 = false;
+					Speicherpunkt02 = false;
+					Speicherpunkt03 = false;
+					Verloren = false;
 					Interaction = false;
-					H2 = false;
+					Haltzustand02 = false;
 					Wasserfall = false;
-					Drop = false;
-					W04T = false;
-					W01T = false;
+					WasserFaellt = false;
+					WasserBewegung01 = false;
+					WasserBewegung02 = false;
 					Obsidian = false;
 					Check = false;
 					RealPosX = 0;
@@ -551,7 +556,7 @@ public class Level_4 {
 		Spielschleife.start();
 
 	}
-
+	// Keylistener
 	final EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
 
 		public void handle(KeyEvent event) {
@@ -692,10 +697,10 @@ public class Level_4 {
 		if (Wasserfall == false) {
 			PosXAlt = PosX;
 			if (HP == 0) {
-				V = true;
+				Verloren = true;
 			}
 			// Kollisiondetektion -extra-
-			if (S == true) {
+			if (Stillstand == true) {
 				TempoX = 0;
 			}
 			// Bewegen und Anpassen
@@ -744,10 +749,10 @@ public class Level_4 {
 
 			}
 			// Siegbedingung
-			if (T == 1) {
+			if (GewonnenTest == 1) {
 				if (RealPosX > 2500) {
 					Gewonnen = true;
-					T = 0;
+					GewonnenTest = 0;
 					RealPosX = 0;
 				}
 			}
@@ -938,7 +943,7 @@ public class Level_4 {
 
 		}
 		if (PosX >= B03PosX && PosX <= B03PosX + 20) {
-			Flag2 = true;
+			Speicherpunkt02 = true;
 			System.out.println(RealPosX);
 		}
 		// Kollision mit B04
@@ -969,31 +974,31 @@ public class Level_4 {
 
 		if (PosX >= B04PosX && PosX <= B04PosX + 20) {
 			RealPosX = 1650;
-			Flag2 = false;
-			Flag3 = true;
+			Speicherpunkt02 = false;
+			Speicherpunkt03 = true;
 			System.out.println(RealPosX);
 		}
 		// Kollision mit Gegner
 		Timeline Timer = new Timeline(new KeyFrame(Duration.millis(2500), ae -> Flag()));
-		if (Check == true && Flag1 == true) {
+		if (Check == true && Speicherpunkt01 == true) {
 			Timer.play();
 			Check = false;
 		}
 
-		if (PosX >= E01PosX - 64 && PosX <= E01PosX + 69 && PosY >= 153 && PosXAlt <= PosX && Flag1 == false) {
+		if (PosX >= E01PosX - 64 && PosX <= E01PosX + 69 && PosY >= 153 && PosXAlt <= PosX && Speicherpunkt01 == false) {
 			PosX = E01PosX - 53;
 			Gefallen = true;
-			Flag1 = true;
+			Speicherpunkt01 = true;
 
 		}
-		if (PosX >= E01PosX - 30 && PosX <= E01PosX + 70 && PosY >= 153 && PosXAlt >= PosX && Flag1 == false) {
+		if (PosX >= E01PosX - 30 && PosX <= E01PosX + 70 && PosY >= 153 && PosXAlt >= PosX && Speicherpunkt01 == false) {
 			PosX = E01PosX + 71;
 			Gefallen = true;
-			Flag1 = true;
+			Speicherpunkt01 = true;
 
 		}
 
-		if (Gefallen == true && Flag1 == true) {
+		if (Gefallen == true && Speicherpunkt01 == true) {
 			Gefallen = false;
 			RLN = 3;
 			Thread.sleep(200);
@@ -1003,10 +1008,10 @@ public class Level_4 {
 
 		// Interaktion mit dem Hebel
 		if (PosX >= B03PosX - 140 && PosX <= B03PosX - 20 && Interaction == true) {
-			H2 = true;
+			Haltzustand02 = true;
 			Wasserfall = true;
 		}
-		if (Drop == true) {
+		if (WasserFaellt == true) {
 			if (WA02PosY <= 260) {
 				WA02PosY += 8;
 			}
@@ -1016,20 +1021,20 @@ public class Level_4 {
 			if (WA01PosX <= WA02PosX) {
 				WA01PosX += 7;
 				if (W01PosX == W02PosX) {
-					W01T = true;
+					WasserBewegung02 = true;
 				}
 			}
 			if (WA04PosX >= WA03PosX) {
 				WA04PosX -= 7;
 				if (WA04PosX == WA03PosX) {
-					W04T = true;
+					WasserBewegung01 = true;
 				}
 			}
-			if (W04T == true && WA04PosY <= 260) {
+			if (WasserBewegung01 == true && WA04PosY <= 260) {
 				WA04PosY += 8;
 
 			}
-			if (W01T == true && WA01PosY <= 260) {
+			if (WasserBewegung02 == true && WA01PosY <= 260) {
 				WA01PosY += 8;
 
 			}
@@ -1050,20 +1055,20 @@ public class Level_4 {
 					// tue nichts
 				}
 
-				S = true;
+				Stillstand = true;
 				PosY += 8;
 				RLN = 3;
 				Gesprungen = true;
 				pause.play();
 
 			} else {
-				S = false;
+				Stillstand = false;
 			}
 			if (PosY >= 253) {
 				Gefallen = true;
 				Gesprungen = true;
 			}
-			if (Gefallen == true && Flag2 == true) {
+			if (Gefallen == true && Speicherpunkt02 == true) {
 				RLN = 0;
 				PosX = B03PosX;
 				PosY = 112;
@@ -1071,7 +1076,7 @@ public class Level_4 {
 				Gefallen = false;
 				HP -= 1;
 			}
-			if (Gefallen == true && Flag3 == true) {
+			if (Gefallen == true && Speicherpunkt03 == true) {
 				RLN = 0;
 				PosX = B04PosX;
 				PosY = 112;
@@ -1109,7 +1114,7 @@ public class Level_4 {
 	}
 
 	public void Flag() {
-		Flag1 = false;
+		Speicherpunkt01 = false;
 	}
 
 }
