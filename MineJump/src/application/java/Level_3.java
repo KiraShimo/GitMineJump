@@ -18,16 +18,16 @@ public class Level_3 {
 	
 	// Variablen
 	// Spieler und Hintergrundvariablen
-	public int PosX = 120;
+	private int PosX = 120;
 	private int PosXAlt = 0;
-	public int PosY = 252;
+	private int PosY = 252;
 	public int SPosXR = PosX + 64;
 	public int SPosYH = PosY + 128;
-	public int bgPosX = 0;
-	public int bgPosY = -220;
-	public int UPosX = 0;
-	public int UPosY = 380;
-	public int RLN = 0;
+	private int BGPosX = 0;
+	private int BGPosY = -220;
+	private int UPosX = 0;
+	private int UPosY = 380;
+	private int RLN = 0;
 	private int TempoX = 0;
 	private int TempoY = 0;
 	private int RealPosX = 0;
@@ -41,19 +41,19 @@ public class Level_3 {
 	private int HP = 3;
 	
 	// Bedingungsvariablen
+	private int GewonnenTest = 1;
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
-	private int t = 1;
-	private boolean O01 = true;
-	private boolean O02 = true;
-	private boolean Still = false;
+	private boolean SpeerOben01 = true;
+	private boolean SpeerOben02 = true;
+	private boolean Stillstand = false;
 	private boolean Verloren = false;
-	private boolean Flag1 = false;
-	private boolean Flag2 = false;
-	private boolean Flag3 = false;
-	private boolean Flag4 = false;
-	private boolean Flag5 = false;
-	private boolean Flag6 = false;
+	private boolean Speicherpunkt01 = false;
+	private boolean Speicherpunkt02 = false;
+	private boolean Speicherpunkt03 = false;
+	private boolean Speicherpunkt04 = false;
+	private boolean Speicherpunkt05 = false;
+	private boolean Speicherpunkt06 = false;
 	private boolean Gefallen = false;
 	private boolean Abgestochen = false;
 
@@ -115,13 +115,13 @@ public class Level_3 {
 		Image Leben2 = new Image(Main.class.getResource("/application/ressources/pictures/Herz02f.png").openStream());
 		Image Leben1 = new Image(Main.class.getResource("/application/ressources/pictures/Herz01f.png").openStream());
 
-		// Bilder aufrufen
+		// Bilder aufrufen und anzeigen
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
-		HintergrundImageAufruf.setX(bgPosX);
-		HintergrundImageAufruf.setY(bgPosY);
+		HintergrundImageAufruf.setX(BGPosX);
+		HintergrundImageAufruf.setY(BGPosY);
 		rootPane.getChildren().add(HintergrundImageAufruf);
 
-		// Speere aufrufen
+		// Speere aufrufen und anzeigen
 		ImageView Speer01 = new ImageView(Speer);
 		Speer01.setX(SP01PosX);
 		Speer01.setY(SP01PosY);
@@ -132,19 +132,19 @@ public class Level_3 {
 		Speer02.setY(SP02PosY);
 		rootPane.getChildren().add(Speer02);
 
-		// Untergrund aufrufen
+		// Untergrund aufrufen und anzeigen
 		ImageView UntergrundAnzeigen = new ImageView(Untergrund);
 		UntergrundAnzeigen.setX(UPosX);
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
 
-		// Spikes aufrufen
+		// Spikes aufrufen und anzeigen
 		ImageView Spikes01 = new ImageView(Spikes);
 		Spikes01.setX(SP03PosX);
 		Spikes01.setY(SP03PosY);
 		rootPane.getChildren().add(Spikes01);
 
-		// Blöcke aufrufen
+		// Blöcke aufrufen und anzeigen
 		ImageView B00Anzeigen = new ImageView(BT01);
 		B00Anzeigen.setX(B00PosX);
 		B00Anzeigen.setY(B00PosX);
@@ -175,25 +175,25 @@ public class Level_3 {
 		B05Anzeigen.setY(B05PosX);
 		rootPane.getChildren().add(B05Anzeigen);
 
-		// ZielHinten aufrufen
+		// ZielHinten aufrufen und anzeigen
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
 		Ziel01BGAnzeiger.setY(ZPosY01);
 		rootPane.getChildren().add(Ziel01BGAnzeiger);
 
-		// Spieler aufrufen
+		// Spieler aufrufen und anzeigen
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
 		
-		// ZielVorne aufrufen
+		// ZielVorne aufrufen und anzeigen
 		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
 		rootPane.getChildren().add(Ziel02VGAnzeiger);
 		
-		// Leben aufrufen
+		// Leben aufrufen und anzeigen
 		ImageView LebenAnzeiger = new ImageView(Leben3);
 		LebenAnzeiger.setX(LPosX);
 		LebenAnzeiger.setY(LPosY);
@@ -226,7 +226,7 @@ public class Level_3 {
 
 				NeuLaden();
 
-				// Position Updaten
+				// Position updaten
 				if (RLN == 0) {
 					Bildaufruf.setImage(SpielerBild);
 				}
@@ -239,7 +239,7 @@ public class Level_3 {
 				if (RLN == 3) {
 					Bildaufruf.setImage(SpielerSchaden);
 				}
-				HintergrundImageAufruf.setX(bgPosX);
+				HintergrundImageAufruf.setX(BGPosX);
 				UntergrundAnzeigen.setX(UPosX);
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
@@ -419,7 +419,7 @@ public class Level_3 {
 			Verloren = true;
 		}
 		// Kollisiondetektion -extra-
-		if (Still == true) {
+		if (Stillstand == true) {
 			TempoX = 0;
 		}
 		// Bewegen und Anpassen
@@ -437,13 +437,13 @@ public class Level_3 {
 			} else {
 				// Bewege Hintergrund
 				UPosX -= TempoX;
-				bgPosX -= (TempoX / 2);
+				BGPosX -= (TempoX / 2);
 
 			}
 		}
 		// Hintergrund Loop
-		if (bgPosX <= -2880)
-			bgPosX = 0;
+		if (BGPosX <= -2880)
+			BGPosX = 0;
 		if (UPosX <= -1200)
 			UPosX = 0;
 		if (PosY + TempoY >= 382) {
@@ -468,10 +468,10 @@ public class Level_3 {
 
 		}
 		// Siegbedingung
-		if (t == 1) {
+		if (GewonnenTest == 1) {
 			if (RealPosX > 2700) {
 				Gewonnen = true;
-				t = 0;
+				GewonnenTest = 0;
 				RealPosX = 0;
 			}
 		}
@@ -516,16 +516,16 @@ public class Level_3 {
 			if (PosX >= 51)
 				SP01PosX -= TempoX;
 		}
-		if (SP01PosY <= 310 && O01 == false && SP01PosY >= 100) {
+		if (SP01PosY <= 310 && SpeerOben01 == false && SP01PosY >= 100) {
 			SP01PosY -= 1;
 			if (SP01PosY <= 100) {
-				O01 = true;
+				SpeerOben01 = true;
 			}
 		}
-		if (SP01PosY >= 100 && O01 == true && SP01PosY <= 310) {
+		if (SP01PosY >= 100 && SpeerOben01 == true && SP01PosY <= 310) {
 			SP01PosY += 1;
 			if (SP01PosY >= 310) {
-				O01 = false;
+				SpeerOben01 = false;
 			}
 
 		}
@@ -533,16 +533,16 @@ public class Level_3 {
 			if (PosX >= 51)
 				SP02PosX -= TempoX;
 		}
-		if (SP02PosY <= 310 && O02 == false && SP02PosY >= 100) {
+		if (SP02PosY <= 310 && SpeerOben02 == false && SP02PosY >= 100) {
 			SP02PosY -= 1;
 			if (SP02PosY <= 100) {
-				O02 = true;
+				SpeerOben02 = true;
 			}
 		}
-		if (SP02PosY >= 100 && O02 == true && SP02PosY <= 310) {
+		if (SP02PosY >= 100 && SpeerOben02 == true && SP02PosY <= 310) {
 			SP02PosY += 1;
 			if (SP02PosY >= 310) {
-				O02 = false;
+				SpeerOben02 = false;
 			}
 		}
 		// Spikes anpassen
@@ -553,12 +553,11 @@ public class Level_3 {
 	}
 
 	public void Kollisionsdetektion() throws InterruptedException {
-		// pause wenn Schaden
-
+		
+		// Pause wenn Schaden
 		PauseTransition pause = new PauseTransition(Duration.seconds(1));
 
 		// Kollision mit 1. Block (B00)
-
 		if (PosX >= B00PosX - 50 && PosX <= B00PosX + 65 && PosY >= 183 && PosXAlt <= PosX) {
 			PosX = B00PosX - 53;
 			RealPosX -= 6;
@@ -582,6 +581,7 @@ public class Level_3 {
 			Gesprungen = true;
 
 		}
+		
 		// Kollision mit 2.Block (B01)
 		if (PosX >= B01PosX - 50 && PosX <= B01PosX + 70 && PosY >= 115 && PosXAlt <= PosX) {
 			PosX = B01PosX - 51;
@@ -605,7 +605,7 @@ public class Level_3 {
 
 		}
 		if (PosX >= B01PosX && PosX <= B01PosX + 10) {
-			Flag1 = true;
+			Speicherpunkt01 = true;
 		}
 
 		// Kollision mit 3.Block (B02)
@@ -631,13 +631,12 @@ public class Level_3 {
 
 		}
 		if (PosX >= B02PosX && PosX <= B02PosX + 10) {
-			Flag1 = false;
-			Flag2 = true;
+			Speicherpunkt01 = false;
+			Speicherpunkt02 = true;
 
 		}
 
 		// Kollision mit 4.Block (B03)
-
 		if (PosX >= B03PosX - 50 && PosX <= B03PosX + 140) {
 			if (PosY + TempoY >= 112) {
 				PosY = 112;
@@ -651,13 +650,12 @@ public class Level_3 {
 
 		}
 		if (PosX >= B03PosX && PosX <= B03PosX + 10) {
-			Flag2 = false;
-			Flag3 = true;
+			Speicherpunkt02 = false;
+			Speicherpunkt03 = true;
 
 		}
 
 		// Kollision mit 5.Block (B04)
-
 		if (PosX >= B04PosX - 60 && PosX <= B04PosX + 210 && PosY >= 45 && PosY <= 181 && PosXAlt <= PosX) {
 			PosX = B04PosX - 61;
 			RealPosX -= 6;
@@ -680,18 +678,17 @@ public class Level_3 {
 
 		}
 		if (PosX >= B04PosX && PosX <= B04PosX + 10) {
-			Flag3 = false;
-			Flag4 = true;
+			Speicherpunkt03 = false;
+			Speicherpunkt04 = true;
 
 		}
 		if (PosX >= B04PosX + 140 && PosX <= B04PosX + 150) {
-			Flag4 = false;
-			Flag5 = true;
+			Speicherpunkt04 = false;
+			Speicherpunkt05 = true;
 
 		}
 
 		// Kollision mit 6.Block (B05)
-
 		if (PosX >= B05PosX - 40 && PosX <= B05PosX + 70 && PosY >= 115 && PosXAlt <= PosX) {
 			PosX = B05PosX - 51;
 			RealPosX -= 6;
@@ -714,8 +711,8 @@ public class Level_3 {
 
 		}
 		if (PosX >= B05PosX && PosX <= B05PosX + 10) {
-			Flag5 = false;
-			Flag6 = true;
+			Speicherpunkt05 = false;
+			Speicherpunkt06 = true;
 
 		}
 
@@ -736,7 +733,7 @@ public class Level_3 {
 
 		}
 
-		// kollisionen mit Schadensfolgen Spikes
+		// Kollisionen mit Schadensfolgen Spikes
 		if (PosX >= B03PosX + 136 && PosX <= B04PosX && PosY >= 200) {
 
 			if (TempoX >= 0) {
@@ -749,14 +746,14 @@ public class Level_3 {
 				// tue nichts
 			}
 
-			Still = true;
+			Stillstand = true;
 			PosY += 8;
 			RLN = 3;
 			Gesprungen = true;
 			pause.play();
 
 		} else {
-			Still = false;
+			Stillstand = false;
 		}
 		if (PosX >= B04PosX + 1 && PosX <= B05PosX && PosY >= 150) {
 
@@ -770,21 +767,21 @@ public class Level_3 {
 				// tue nichts
 			}
 
-			Still = true;
+			Stillstand = true;
 			PosY += 8;
 			RLN = 3;
 			Gesprungen = true;
 			pause.play();
 
 		} else {
-			Still = false;
+			Stillstand = false;
 		}
 		if (PosY >= 253) {
 			Gefallen = true;
 			Gesprungen = true;
 
 		}
-		if (Gefallen == true && Flag3 == true) {
+		if (Gefallen == true && Speicherpunkt03 == true) {
 			RLN = 0;
 			PosX = B03PosX;
 			PosY = 112;
@@ -792,7 +789,7 @@ public class Level_3 {
 			Gefallen = false;
 			HP -= 1;
 		}
-		if (Gefallen == true && Flag4 == true) {
+		if (Gefallen == true && Speicherpunkt04 == true) {
 			PosX = B04PosX;
 			PosY = 42;
 			RealPosX = 1330;
@@ -800,7 +797,7 @@ public class Level_3 {
 			RLN = 0;
 			HP -= 1;
 		}
-		if (Gefallen == true && Flag5 == true) {
+		if (Gefallen == true && Speicherpunkt05 == true) {
 			PosX = B04PosX + 140;
 			PosY = 42;
 			RealPosX = 1470;
@@ -808,7 +805,7 @@ public class Level_3 {
 			RLN = 0;
 			HP -= 1;
 		}
-		if (Gefallen == true && Flag6 == true) {
+		if (Gefallen == true && Speicherpunkt06 == true) {
 			PosX = B05PosX;
 			PosY = 112;
 			RealPosX = 1750;
@@ -818,7 +815,6 @@ public class Level_3 {
 		}
 
 		// Kollision mit Speeren
-
 		if (PosX >= B01PosX + 70 && PosX <= B02PosX - 20 && PosY >= SP01PosY - 130
 				|| PosX >= B02PosX + 70 && PosX <= B03PosX - 20 && PosY >= SP02PosY - 130
 				|| PosX + 20 >= B01PosX + 70 && PosX + 20 <= B02PosX - 20 && PosY >= SP01PosY - 130
@@ -834,17 +830,17 @@ public class Level_3 {
 				// tue nichts
 			}
 
-			Still = true;
+			Stillstand = true;
 			RLN = 3;
 			Gesprungen = true;
 			Abgestochen = true;
 			pause.play();
 
 		} else {
-			Still = false;
+			Stillstand = false;
 		}
 
-		if (Abgestochen == true && Flag1 == true) {
+		if (Abgestochen == true && Speicherpunkt01 == true) {
 			PosX = B01PosX - 30;
 			PosY = 80;
 			RealPosX = 840;
@@ -853,7 +849,7 @@ public class Level_3 {
 			HP -= 1;
 		}
 
-		if (Abgestochen == true && Flag2 == true) {
+		if (Abgestochen == true && Speicherpunkt02 == true) {
 			PosX = B02PosX + 5;
 			PosY = 80;
 			RealPosX = 985;
@@ -863,7 +859,6 @@ public class Level_3 {
 		}
 
 		// Zielkollision mit Burg
-
 		if (RealPosX >= 2550) {
 			if (PosY <= 220) {
 				PosY = 221;
