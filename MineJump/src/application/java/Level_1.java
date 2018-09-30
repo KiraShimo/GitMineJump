@@ -20,19 +20,19 @@ import javafx.util.Duration;
 public class Level_1 {
 
 	// Spieler und Hintergrundvariablen
-	public int PosX = 120;
+	private int PosX = 120;
 	private int PosXAlt = 0;
-	public int PosY = 252;
+	private int PosY = 252;
 	public int SPosXR = PosX + 64;
 	public int SPosYH = PosY + 128;
-	public int bgPosX = 0;
-	public int bgPosY = -220;
-	public int UPosX = 0;
-	public int UPosY = 380;
-	public int RLN = 0;
+	private int BGPosX = 0;
+	private int BGPosY = -220;
+	private int UPosX = 0;
+	private int UPosY = 380;
+	private int RLN = 0;
 	private int TempoX = 0;
 	private int TempoY = 0;
-	private int RealPosX = 0;
+	private int RPosX = 0;
 	private boolean Gesprungen = false;
 	private int ZPosX01 = 2925;
 	private int ZPosY01 = 166;
@@ -46,9 +46,9 @@ public class Level_1 {
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
 	private boolean Gefallen = false;
-	private int t = 1;
+	private int GewonnenTest = 1;
 	private boolean Stillstand = false;
-	private boolean Flag1 = false;
+	private boolean Speicherpunkt01 = false;
 	private boolean Verloren = false;
 
 	// Blockvariablen
@@ -82,7 +82,7 @@ public class Level_1 {
 	private int B14PosX = 1070;
 	private int B14PosY = -30;
 
-	// Lochvariablen 
+	// Lochvariablen
 	private int B15PosX = 2000;
 	private int B15PosY = 380;
 	private int B16PosX = 2070;
@@ -103,7 +103,7 @@ public class Level_1 {
 	private int T03PosY = 100;
 	private int T04PosX = 2400;
 	private int T04PosY = 100;
-	
+
 	private String T01Text = "Um Ihren Charakter zu bewegen drücken sie 'A' oder 'D'\n oder benutzen sie die Pfeiltasten. ";
 	private String T02Text = "Um zu springen drücken Sie 'W' oder 'SPACE' \noder die Pfeiltaste nach oben";
 	private String T03Text = "       Springen Sie über Löcher wie dieses! \nWenn Sie hineinfallen verlieren sie ein Herz. \nWenn Sie keine Herzen mehr haben\nmüssen sie den gesamten Level erneut spielen.";
@@ -147,8 +147,8 @@ public class Level_1 {
 
 		// Bilder aufrufen und anzeigen
 		ImageView HintergrundImageAufruf = new ImageView(HintergrundImage);
-		HintergrundImageAufruf.setX(bgPosX);
-		HintergrundImageAufruf.setY(bgPosY);
+		HintergrundImageAufruf.setX(BGPosX);
+		HintergrundImageAufruf.setY(BGPosY);
 		rootPane.getChildren().add(HintergrundImageAufruf);
 
 		ImageView UntergrundAnzeigen = new ImageView(Untergrund);
@@ -277,7 +277,7 @@ public class Level_1 {
 		Text3.setText(T03Text);
 		Text3.setFill(Color.WHITE);
 		rootPane.getChildren().add(Text3);
-		
+
 		Text Text4 = new Text();
 		Text4.setFont(new Font(18));
 		Text4.setX(T04PosX);
@@ -349,7 +349,7 @@ public class Level_1 {
 				if (RLN == 3) {
 					Bildaufruf.setImage(SpielerSchaden);
 				}
-				HintergrundImageAufruf.setX(bgPosX);
+				HintergrundImageAufruf.setX(BGPosX);
 				UntergrundAnzeigen.setX(UPosX);
 				Bildaufruf.setX(PosX);
 				Bildaufruf.setY(PosY);
@@ -426,7 +426,7 @@ public class Level_1 {
 				// Gewonnen test / ESC test
 				if (Gewonnen == true) {
 					Gewonnen = false;
-					RealPosX = 0;
+					RPosX = 0;
 					PosX = 0;
 					TempoX = 0;
 					menu.win(primaryStage);
@@ -436,7 +436,7 @@ public class Level_1 {
 				}
 				if (WillRaus == true) {
 					WillRaus = false;
-					RealPosX = 0;
+					RPosX = 0;
 					PosX = 0;
 					TempoX = 0;
 					menu.level(primaryStage);
@@ -444,7 +444,7 @@ public class Level_1 {
 				if (Verloren == true) {
 					System.out.println("Verloren");
 					Verloren = false;
-					RealPosX = 0;
+					RPosX = 0;
 					PosX = 0;
 					TempoX = 0;
 					HP = 3;
@@ -525,25 +525,29 @@ public class Level_1 {
 		}
 	};
 
+	// Springen solange nicht schon gesprungen wird
+
 	public void Spring() {
 		if (Gesprungen == false) {
 			TempoY = -15;
 			Gesprungen = true;
-
 		}
 	}
 
+	// nach rechts gehen
 	public void Rechts() {
 		TempoX = 6;
 		RLN = 2;
 	}
 
+	// nach Links gehen
 	public void Links() {
 		TempoX = -6;
 		RLN = 1;
 
 	}
 
+	// Anhalten
 	public void Halt() {
 		TempoX = 0;
 	}
@@ -560,7 +564,7 @@ public class Level_1 {
 		}
 		// Bewegen und Anpassen
 		if (PosX > 51) {
-			RealPosX += TempoX;
+			RPosX += TempoX;
 		}
 		if (TempoX < 0) {
 			PosX += TempoX;
@@ -573,13 +577,13 @@ public class Level_1 {
 			} else {
 				// Bewege Hintergrund
 				UPosX -= TempoX;
-				bgPosX -= (TempoX / 2);
+				BGPosX -= (TempoX / 2);
 
 			}
 		}
 		// Hintergrund Loop
-		if (bgPosX <= -2382)
-			bgPosX = 0;
+		if (BGPosX <= -2382)
+			BGPosX = 0;
 		if (UPosX <= -1200)
 			UPosX = 0;
 		if (PosY + TempoY >= 382) {
@@ -604,11 +608,11 @@ public class Level_1 {
 
 		}
 		// Siegbedingung
-		if (t == 1) {
-			if (RealPosX > 3000) {
+		if (GewonnenTest == 1) {
+			if (RPosX > 3000) {
 				Gewonnen = true;
-				t = 0;
-				RealPosX = 0;
+				GewonnenTest = 0;
+				RPosX = 0;
 			}
 		}
 		// BlockPositionen anpassen
@@ -715,7 +719,7 @@ public class Level_1 {
 		if (TempoX >= 0 && PosX >= 300) {
 			T03PosX -= TempoX;
 		}
-		
+
 		if (TempoX >= 0 && PosX >= 300) {
 			T04PosX -= TempoX;
 		}
@@ -728,19 +732,19 @@ public class Level_1 {
 
 		if (PosX >= B01PosX - 50 && PosX <= B01PosX + 70 && PosY >= 183 && PosXAlt <= PosX) {
 			PosX = B01PosX - 53;
-			RealPosX -= 6;
+			RPosX -= 6;
 		}
 		if (PosX >= B01PosX + 20 && PosX <= B01PosX + 120 && PosY >= 123 && PosXAlt <= PosX) {
 			PosX = B01PosX + 19;
-			RealPosX -= 6;
+			RPosX -= 6;
 		}
 		if (PosX >= B01PosX + 20 && PosX <= B01PosX + 151 && PosY >= 123 && PosXAlt > PosX) {
 			PosX = B01PosX + 152;
-			RealPosX += 6;
+			RPosX += 6;
 		}
 		if (PosX >= B01PosX + 20 && PosX <= B01PosX + 221 && PosY >= 183 && PosXAlt > PosX) {
 			PosX = B01PosX + 222;
-			RealPosX += 6;
+			RPosX += 6;
 		}
 
 		if (PosX >= B01PosX - 49 && PosX <= B01PosX + 70) {
@@ -788,10 +792,10 @@ public class Level_1 {
 		if (PosX >= B15PosX - 20 && PosX <= B16PosX + 30 && PosY >= 249) {
 
 			if (TempoX >= 0) {
-				RealPosX -= 6;
+				RPosX -= 6;
 			}
 			if (TempoX <= 0) {
-				RealPosX += 6;
+				RPosX += 6;
 			}
 			if (TempoX == 0) {
 				// tue nichts
@@ -807,10 +811,10 @@ public class Level_1 {
 			Gefallen = true;
 
 		}
-		if (Gefallen == true && Flag1 == false) {
+		if (Gefallen == true && Speicherpunkt01 == false) {
 			PosX = B15PosX - 70;
 			PosY = 252;
-			RealPosX = 1800;
+			RPosX = 1800;
 			Gefallen = false;
 			RLN = 0;
 			Thread.sleep(200);
@@ -818,19 +822,19 @@ public class Level_1 {
 		}
 
 		if (PosX >= B16PosX + 71) {
-			Flag1 = true;
+			Speicherpunkt01 = true;
 		}
-		if (Gefallen == true && Flag1 == true) {
+		if (Gefallen == true && Speicherpunkt01 == true) {
 			PosX = B16PosX + 72;
 			PosY = 252;
-			RealPosX = 2002;
+			RPosX = 2002;
 			Gefallen = false;
 			RLN = 0;
 			Thread.sleep(200);
 			HP -= 1;
 		}
-
-		if (RealPosX >= 2750) {
+		// Kollision mit der Burg
+		if (RPosX >= 2750) {
 			if (PosY <= 220) {
 				PosY = 221;
 			}
