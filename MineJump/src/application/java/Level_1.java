@@ -98,12 +98,12 @@ public class Level_1 {
 	// Tutorialtextvariablen
 	private int T01PosX = 200;
 	private int T01PosY = 120;
-	private int T02PosX = 700;
-	private int T02PosY = 100;
-	private int T03PosX = 1800;
+	private int T02PosX = 950;
+	private int T02PosY = 75;
+	private int T03PosX = 1900;
 	private int T03PosY = 100;
 	private int T04PosX = 2400;
-	private int T04PosY = 100;
+	private int T04PosY = 200;
 
 	private String T01Text = "Um Ihren Charakter zu bewegen drücken Sie 'A' oder 'D'\n oder benutzen sie die Pfeiltasten. ";
 	private String T02Text = "Um zu springen drücken Sie 'W', 'SPACE' \noder die Pfeiltaste nach oben";
