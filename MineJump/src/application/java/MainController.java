@@ -60,13 +60,13 @@ public class MainController {
 	// Level 3 starten
 	@FXML
 	private void BtnLevel3Action(ActionEvent actionEvent) throws IOException {
-		menu.spiel4(primaryStage);
+		menu.spiel3(primaryStage);
 	}
 
 	// Level 4 starten
 	@FXML
 	private void BtnLevel4Action(ActionEvent actionEvent) throws IOException {
-		menu.spiel3(primaryStage);
+		menu.spiel4(primaryStage);
 	}
 
 	// Hauptmenü aus Levelauswahl aufrufen
