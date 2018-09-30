@@ -1,7 +1,6 @@
 package application.java;
 
 import java.io.IOException;
-
 import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
 import javafx.event.EventHandler;
@@ -113,24 +112,9 @@ public class Level_1 {
 	private String T04Text = "Gehen Sie in die Burg\num das Level zu beenden.";
 	private String T05Text = "Ihr Charakter hat 3 Leben. Wenn alle Leben\nverbraucht sind, wird das Level neu gestartet!";
 
-	/*private int T01PosX = 200;
-	private int T01PosY = 120;
-	private int T02PosX = 950;
-	private int T02PosY = 75;
-	private int T03PosX = 1900;
-	private int T03PosY = 100;
-	private int T04PosX = 2400;
-	private int T04PosY = 200;
-
-	private String T01Text = "Um Ihren Charakter zu bewegen drücken Sie 'A' oder 'D'\n oder benutzen sie die Pfeiltasten. ";
-	private String T02Text = "Um zu springen drücken Sie 'W', 'SPACE' \noder die Pfeiltaste nach oben";
-	private String T03Text = "       Springen Sie über Löcher wie dieses! \nWenn Sie hineinfallen, verlieren Sie ein Herz. \nWenn Sie keine Herzen mehr haben,\nmüssen sie den gesamten Level erneut spielen.";
-	private String T04Text = "Erreichen Sie die Burg und gehen Sie durch den Eingang\num das Level erfolgreich Abzuschließen.";
-*/
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
-
 		Pane rootPane;
 
 		// Erstellt das Neue RootPane
