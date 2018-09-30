@@ -130,7 +130,7 @@ public class Level_4 {
 
 		// Spiel initialisieren
 		Pane RootPane;
-		System.out.println("Starte Pane LV4");
+		
 		// Erstellt das Neue RootPane
 		RootPane = new Pane();
 
@@ -158,7 +158,7 @@ public class Level_4 {
 		Image B03 = new Image(Main.class.getResource("/application/ressources/pictures/Level_4_B03.png").openStream());
 		Image E01 = new Image(Main.class.getResource("/application/ressources/pictures/Level_4 _E01.png").openStream());
 		Image H01 = new Image(Main.class.getResource("/application/ressources/pictures/Hebel_An.png").openStream());
-		Image H02 = new Image(Main.class.getResource("/application/ressources/pictures/Hebel_Aus.png").openStream());
+		Image H02 = new Image(Main.class.getResource("/application/ressources/pictures/Hebel_aus.png").openStream());
 		Image WA01 = new Image(Main.class.getResource("/application/ressources/pictures/Wasser.png").openStream());
 
 		// Bilder aufrufen und anzeigen
