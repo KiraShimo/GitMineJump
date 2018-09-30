@@ -96,7 +96,24 @@ public class Level_1 {
 	private int BA02PosY = 100;
 
 	// Tutorialtextvariablen
-	private int T01PosX = 200;
+	private int T01PosX = 120;
+	private int T01PosY = 180;
+	private int T02PosX = 700;
+	private int T02PosY = 180;
+	private int T03PosX = 2010;
+	private int T03PosY = 300;
+	private int T04PosX = 2650;
+	private int T04PosY = 300;
+	private int T05PosX = 200;
+	private int T05PosY = 25;
+
+	private String T01Text = "Um Ihren Charakter zu bewegen drücken sie 'A' oder 'D'\noder benutzen sie die Pfeiltasten. ";
+	private String T02Text = "Um zu springen drücken Sie 'W', 'SPACE'\noder die Pfeiltaste nach oben.";
+	private String T03Text = "Vorsicht, Loch!";
+	private String T04Text = "Gehen Sie in die Burg\num das Level zu beenden.";
+	private String T05Text = "Ihr Charakter hat 3 Leben. Wenn alle Leben\nverbraucht sind, wird das Level neu gestartet!";
+
+	/*private int T01PosX = 200;
 	private int T01PosY = 120;
 	private int T02PosX = 950;
 	private int T02PosY = 75;
@@ -109,7 +126,7 @@ public class Level_1 {
 	private String T02Text = "Um zu springen drücken Sie 'W', 'SPACE' \noder die Pfeiltaste nach oben";
 	private String T03Text = "       Springen Sie über Löcher wie dieses! \nWenn Sie hineinfallen, verlieren Sie ein Herz. \nWenn Sie keine Herzen mehr haben,\nmüssen sie den gesamten Level erneut spielen.";
 	private String T04Text = "Erreichen Sie die Burg und gehen Sie durch den Eingang\num das Level erfolgreich Abzuschließen.";
-
+*/
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
@@ -283,6 +300,14 @@ public class Level_1 {
 		Text4.setFill(Color.WHITE);
 		rootPane.getChildren().add(Text4);
 
+		Text Text5 = new Text();
+		Text5.setFont(new Font(18));
+		Text5.setX(T05PosX);
+		Text5.setY(T05PosY);
+		Text5.setText(T05Text);
+		Text5.setFill(Color.WHITE);
+		rootPane.getChildren().add(Text5);
+		
 		// ZielHinten aufrufen und anzeigen
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
@@ -413,6 +438,7 @@ public class Level_1 {
 				Text2.setX(T02PosX);
 				Text3.setX(T03PosX);
 				Text4.setX(T04PosX);
+				Text5.setX(T05PosX);
 
 				Menu menu = new Menu();
 
@@ -702,18 +728,10 @@ public class Level_1 {
 
 		if (TempoX >= 0 && PosX >= 300) {
 			T01PosX -= TempoX;
-		}
-
-		if (TempoX >= 0 && PosX >= 300) {
 			T02PosX -= TempoX;
-		}
-
-		if (TempoX >= 0 && PosX >= 300) {
 			T03PosX -= TempoX;
-		}
-
-		if (TempoX >= 0 && PosX >= 300) {
 			T04PosX -= TempoX;
+			T05PosX -= TempoX;
 		}
 
 	}
