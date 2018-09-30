@@ -157,7 +157,7 @@ public class Level_1 {
 		UntergrundAnzeigen.setY(UPosY);
 		rootPane.getChildren().add(UntergrundAnzeigen);
 
-		// Baum 01
+		// Baum 01 aufrufen und anzeigen
 		ImageView B01Anzeigen = new ImageView(Block01);
 		B01Anzeigen.setX(B01PosX);
 		B01Anzeigen.setY(B01PosY);
@@ -228,22 +228,19 @@ public class Level_1 {
 		B14Anzeigen.setY(B14PosY);
 		rootPane.getChildren().add(B14Anzeigen);
 
-		// Baum02
-
+		// Baum02 aufrufen und anzeigen
 		ImageView Baum02Anzeigen = new ImageView(Baum02);
 		Baum02Anzeigen.setX(BA01PosX);
 		Baum02Anzeigen.setY(BA01PosY);
 		rootPane.getChildren().add(Baum02Anzeigen);
 
-		// Baum03
-
+		// Baum03 aufrufen und anzeigen
 		ImageView Baum03Anzeigen = new ImageView(Baum02);
 		Baum03Anzeigen.setX(BA02PosX);
 		Baum03Anzeigen.setY(BA02PosY);
 		rootPane.getChildren().add(Baum03Anzeigen);
 
-		// Loch 01
-
+		// Loch 01 aufrufen und anzeigen
 		ImageView B15Anzeigen = new ImageView(Loch);
 		B15Anzeigen.setX(B15PosX);
 		B15Anzeigen.setY(B15PosY);
@@ -254,7 +251,7 @@ public class Level_1 {
 		B16Anzeigen.setY(B16PosY);
 		rootPane.getChildren().add(B16Anzeigen);
 
-		// Tutorialtexte anzeigen
+		// Tutorialtexte aufrufen und anzeigen
 		Text Text = new Text();
 		Text.setFont(new Font(18));
 		Text.setX(T01PosX);
@@ -287,26 +284,25 @@ public class Level_1 {
 		Text4.setFill(Color.WHITE);
 		rootPane.getChildren().add(Text4);
 
-		// ZielHinten
-
+		// ZielHinten aufrufen und anzeigen
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
 		Ziel01BGAnzeiger.setY(ZPosY01);
 		rootPane.getChildren().add(Ziel01BGAnzeiger);
 
-		// Spieler
-
+		// Spieler aufrufen und anzeigen
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
-		// ZielVorne
-
+		
+		// ZielVorne aufrufen und anzeigen
 		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
 		rootPane.getChildren().add(Ziel02VGAnzeiger);
-		// Leben
+		
+		// Leben aufrufen und anzeigen
 		ImageView LebenAnzeiger = new ImageView(Leben3);
 		LebenAnzeiger.setX(LPosX);
 		LebenAnzeiger.setY(LPosY);
@@ -326,6 +322,7 @@ public class Level_1 {
 		primaryStage.show();
 
 		AnimationTimer Spielschleife = new AnimationTimer() {
+			
 			// Spielschleife
 			@Override
 			public void handle(long arg0) {
@@ -337,7 +334,7 @@ public class Level_1 {
 				}
 				NeuLaden();
 
-				// Position Updaten
+				// Position updaten
 				if (RLN == 0) {
 					Bildaufruf.setImage(SpielerBild);
 				}
@@ -366,7 +363,7 @@ public class Level_1 {
 					LebenAnzeiger.setImage(Leben1);
 				}
 				// Blöcke updaten
-				// Baum 01 Aktualisieren
+				// Baum 01 updaten
 				B01Anzeigen.setX(B01PosX);
 				B01Anzeigen.setY(B01PosY);
 				B02Anzeigen.setX(B02PosX);
@@ -396,27 +393,23 @@ public class Level_1 {
 				B14Anzeigen.setX(B14PosX);
 				B14Anzeigen.setY(B14PosY);
 
-				// Loch 01 aktualisieren
-
+				// Loch 01 updaten
 				B15Anzeigen.setX(B15PosX);
 				B15Anzeigen.setY(B15PosY);
 				B16Anzeigen.setX(B16PosX);
 				B16Anzeigen.setY(B16PosY);
 
-				// Bäume 02/03 aktualisieren
-
+				// Bäume 02/03 updaten
 				Baum02Anzeigen.setX(BA01PosX);
 				Baum02Anzeigen.setY(BA01PosY);
 				Baum03Anzeigen.setX(BA02PosX);
 				Baum03Anzeigen.setY(BA02PosY);
 
-				// Ziel aktuallisieren
-
+				// Ziel updaten
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
-				// Tutorial aktualisieren
-
+				// Tutorial updaten
 				Text.setX(T01PosX);
 				Text2.setX(T02PosX);
 				Text3.setX(T03PosX);

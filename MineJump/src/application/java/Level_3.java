@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Level_3 {
+	
+	// Variablen
 	// Spieler und Hintergrundvariablen
 	public int PosX = 120;
 	private int PosXAlt = 0;
@@ -37,6 +39,7 @@ public class Level_3 {
 	private int LPosX = 0;
 	private int LPosY = 0;
 	private int HP = 3;
+	
 	// Bedingungsvariablen
 	private boolean Gewonnen = false;
 	private boolean WillRaus = false;
@@ -73,6 +76,7 @@ public class Level_3 {
 	private int SP01PosY = 100;
 	private int SP02PosX = 1050;
 	private int SP02PosY = 300;
+	
 	// Spikevariablen
 	private int SP03PosX = 1260;
 	private int SP03PosY = 310;
@@ -80,7 +84,6 @@ public class Level_3 {
 	public void spiel(Stage primaryStage) throws IOException {
 
 		// Spiel initialisieren
-
 		Pane rootPane;
 
 		// Erstellt das Neue RootPane
@@ -119,7 +122,6 @@ public class Level_3 {
 		rootPane.getChildren().add(HintergrundImageAufruf);
 
 		// Speere aufrufen
-
 		ImageView Speer01 = new ImageView(Speer);
 		Speer01.setX(SP01PosX);
 		Speer01.setY(SP01PosY);
@@ -137,14 +139,12 @@ public class Level_3 {
 		rootPane.getChildren().add(UntergrundAnzeigen);
 
 		// Spikes aufrufen
-
 		ImageView Spikes01 = new ImageView(Spikes);
 		Spikes01.setX(SP03PosX);
 		Spikes01.setY(SP03PosY);
 		rootPane.getChildren().add(Spikes01);
 
 		// Blöcke aufrufen
-
 		ImageView B00Anzeigen = new ImageView(BT01);
 		B00Anzeigen.setX(B00PosX);
 		B00Anzeigen.setY(B00PosX);
@@ -176,28 +176,24 @@ public class Level_3 {
 		rootPane.getChildren().add(B05Anzeigen);
 
 		// ZielHinten aufrufen
-
 		ImageView Ziel01BGAnzeiger = new ImageView(Ziel01BG);
 		Ziel01BGAnzeiger.setX(ZPosX01);
 		Ziel01BGAnzeiger.setY(ZPosY01);
 		rootPane.getChildren().add(Ziel01BGAnzeiger);
 
 		// Spieler aufrufen
-
 		ImageView Bildaufruf = new ImageView(SpielerBild);
 		Bildaufruf.setX(PosX);
 		Bildaufruf.setY(PosY);
 		rootPane.getChildren().add(Bildaufruf);
 		
 		// ZielVorne aufrufen
-
 		ImageView Ziel02VGAnzeiger = new ImageView(Ziel02VG);
 		Ziel02VGAnzeiger.setX(ZPosX02);
 		Ziel02VGAnzeiger.setY(ZPosY02);
 		rootPane.getChildren().add(Ziel02VGAnzeiger);
 		
 		// Leben aufrufen
-		
 		ImageView LebenAnzeiger = new ImageView(Leben3);
 		LebenAnzeiger.setX(LPosX);
 		LebenAnzeiger.setY(LPosY);
@@ -217,6 +213,7 @@ public class Level_3 {
 		primaryStage.show();
 
 		AnimationTimer Spielschleife = new AnimationTimer() {
+			
 			// Spielschleife
 			@Override
 			public void handle(long arg0) {
@@ -257,8 +254,8 @@ public class Level_3 {
 				if (HP == 1) {
 					LebenAnzeiger.setImage(Leben1);
 				}
+				
 				// Blöcke updaten
-
 				B00Anzeigen.setX(B00PosX);
 				B00Anzeigen.setY(B00PosY);
 				B01Anzeigen.setX(B01PosX);
@@ -272,19 +269,17 @@ public class Level_3 {
 				B05Anzeigen.setX(B05PosX);
 				B05Anzeigen.setY(B05PosY);
 
-				// Speere aktualisieren
-
+				// Speere updaten
 				Speer01.setX(SP01PosX);
 				Speer01.setY(SP01PosY);
 				Speer02.setX(SP02PosX);
 				Speer02.setY(SP02PosY);
 
-				// Spikes aktualisieren
-
+				// Spikes updaten
 				Spikes01.setX(SP03PosX);
 				Spikes01.setY(SP03PosY);
 
-				// Ziel aktualisieren
+				// Ziel updaten
 				Ziel01BGAnzeiger.setX(ZPosX01);
 				Ziel02VGAnzeiger.setX(ZPosX02);
 
