@@ -127,7 +127,6 @@ public class Level_1 {
 		Image SpielerSchaden = new Image(
 				Main.class.getResource("/application/ressources/pictures/Steve_Vorne_Schaden.png").openStream());
 		Image Laub = new Image(Main.class.getResource("/application/ressources/pictures/LaubBG.png").openStream());
-
 		Image Loch = new Image(Main.class.getResource("/application/ressources/pictures/DirtOGBG.png").openStream());
 		Image BaumBG = new Image(
 				Main.class.getResource("/application/ressources/pictures/HolzHint2.0.png").openStream());
