@@ -1,2 +1,3 @@
 # GitMineJump
-MineJump res
+MineJump Res
+pository als Kopie
